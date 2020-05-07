@@ -1,24 +1,49 @@
-# README
+# Ruby on Rails Tutorial sample application
+This is the sample application for
+[*Ruby on Rails Tutorial:
+Learn Web Development with Rails*](https://www.railstutorial.org/)
+(6th Edition)
+by [Michael Hartl](https://www.michaelhartl.com/).
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## License
+All source code in the [Ruby on Rails Tutorial](https://www.railstutorial.org/)
+is available jointly under the MIT License and the Beerware License. See
+[LICENSE.md](LICENSE.md) for details.
 
-Things you may want to cover:
+## Prerequisite
+* Ruby 2.7.1
+* NodeJS
+* Yarn
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Getting started
+To get started with the app, clone the repo and then install the needed gems:
+```
+$ bundle install --without production
+```
+Next, migrate the database:
+```
+$ rails db:migrate
+```
+Finally, run the test suite to verify that everything is working correctly:
+```
+$ rails test
+```
+If the test suite passes, you'll be ready to run the app in a local server:
+```
+$ rails server
+```
+## Note: 
+If you can't start the server, and the error is
+```
+Your Yarn packages are out of date!
+Please run `yarn install --check-files` to update.
+```
+Just run
+```
+yarn install --check-files
+```
+or
+```
+yarn --update-checksums
+```
+and start the local server again.
