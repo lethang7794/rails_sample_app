@@ -5,11 +5,6 @@ Learn Web Development with Rails*](https://www.railstutorial.org/)
 (6th Edition)
 by [Michael Hartl](https://www.michaelhartl.com/).
 
-## License
-All source code in the [Ruby on Rails Tutorial](https://www.railstutorial.org/)
-is available jointly under the MIT License and the Beerware License. See
-[LICENSE.md](LICENSE.md) for details.
-
 ## Prerequisite
 * Ruby 2.7.1
 * NodeJS
@@ -47,3 +42,8 @@ or
 yarn --update-checksums
 ```
 and start the local server again.
+
+## License
+All source code in the [Ruby on Rails Tutorial](https://www.railstutorial.org/)
+is available jointly under the MIT License and the Beerware License. See
+[LICENSE.md](LICENSE.md) for details.
