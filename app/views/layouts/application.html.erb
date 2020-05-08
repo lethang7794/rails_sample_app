@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= yield :title %> | Ruby on Rails Tutorials Sample Application</title>
+    <title><%= full_title(yield :page_title) %></title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
