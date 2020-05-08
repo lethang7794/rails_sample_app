@@ -49,6 +49,11 @@ group :test do
   # Easy installation and use of web drivers to run system tests with browsers
   gem 'webdrivers'
   gem 'minitest-reporters', '~> 1.1', '>= 1.1.11'
+
+  # Use Guard to handle events on file system modifications
+  gem 'guard', '~> 2.16', '>= 2.16.2'
+  # Run your tests with Minitest framework with Guard
+  gem 'guard-minitest', '~> 2.4', '>= 2.4.6'
 end
 
 group :production do
