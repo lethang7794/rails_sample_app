@@ -10,6 +10,18 @@
   </head>
 
   <body>
+    <header class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <%= link_to 'Sample App', '#', id: 'logo' %>
+        <nav>
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to 'Home', '#' %></li>
+            <li><%= link_to 'Help', '#' %></li>
+            <li><%= link_to 'Login', '#' %></li>
+          </ul>
+        </nav>
+      </div>
+    </header>
     <%= yield %>
   </body>
 </html>
