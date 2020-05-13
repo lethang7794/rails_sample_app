@@ -57,6 +57,7 @@ class UserTest < ActiveSupport::TestCase
   test "email validation should not accept invalid emails" do
     invalid_emails = %w[
       user@example,com
+      user@example..com
       user_at_example.com
       user@example
       user@more_example.com
