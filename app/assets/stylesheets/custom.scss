@@ -1,70 +1,86 @@
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
 /* universal */
 body {
-  padding-top: 70px;
+    padding-top: 70px;
 }
 
 .center {
-  text-align: center;
+    text-align: center;
 
-  h1 {
-    margin-bottom: 10px;
-  }
+    h1 {
+        margin-bottom: 10px;
+    }
 }
+
 /* header */
 #logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: #fff;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold;
+    float: left;
+    margin-right: 10px;
+    font-size: 1.7em;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+    padding-top: 9px;
+    font-weight: bold;
 }
 
 #logo:hover {
-  color: #fff;
-  text-decoration: none;
+    color: #fff;
+    text-decoration: none;
 }
 
 /* typography */
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    list-style: 1;
+}
+
 h1 {
-  font-size: 3em;
-  font-weight: bold;
-  margin-bottom: 30px;
-  text-align: center;
+    font-size: 3em;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+p {
+    font-size: 1.1em;
+    line-height: 1.7em;
 }
 
 /* footer */
 footer {
-  margin-top: 45px;
-  padding-top: 5px;
-  border-top: 1px solid $gray-lighter;
-  color: $gray;
+    margin-top: 45px;
+    padding-top: 5px;
+    border-top: 1px solid $gray-lighter;
+    color: $gray;
 
-  a {
-    color: $gray-light;
+    a {
+        color: $gray-light;
 
-    &:hover {
-      color: $gray-darker;
+        &:hover {
+            color: $gray-darker;
+        }
     }
-  }
 
-  small {
-    float: left;
-  }
-
-  ul {
-    float: right;
-    list-style: none;
-
-    li {
-      float: left;
-      margin-left: 15px;
+    small {
+        float: left;
     }
-  }
+
+    ul {
+        float: right;
+        list-style: none;
+
+        li {
+            float: left;
+            margin-left: 15px;
+        }
+    }
 }
