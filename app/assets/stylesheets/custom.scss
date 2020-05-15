@@ -139,3 +139,18 @@ aside {
     margin-top: 45px;
     @include box_sizing;
 }
+
+/* forms */
+.uneditable-input,
+input,
+select,
+textarea {
+  border: 1px solid #bbb;
+  width: 100%;
+  margin-bottom: 15px;
+  @include box_sizing;
+}
+
+input {
+  height: auto !important;
+}
