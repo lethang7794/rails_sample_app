@@ -154,3 +154,12 @@ textarea {
 input {
   height: auto !important;
 }
+
+#error_explanation {
+  color: red;
+
+  ul {
+    color: red;
+    margin: 0 0 30px;
+  }
+}
