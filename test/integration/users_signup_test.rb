@@ -32,5 +32,6 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
 
     # Test the flash message
     assert_not flash[:success].empty?
+    assert is_logged_in?
   end
 end
