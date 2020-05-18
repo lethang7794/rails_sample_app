@@ -3,9 +3,15 @@
     <%= link_to 'Sample App', root_path , id: 'logo' %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to 'Home',   root_path %></li>
-        <li><%= link_to 'Help',   help_path %></li>
-        <li><%= link_to 'Log in', '#' %></li>
+        <li><%= link_to 'Home', root_path %></li>
+        <li><%= link_to 'Help', help_path %></li>
+        <% if logged_in? %>
+          <li><%= link_to 'Profile', current_user %></li>
+          <li><%= link_to 'Settings', '#' %></li>
+          <li><%= link_to 'Log out', logout_path, method: 'delete' %></li>
+        <% else %>
+          <li><%= link_to 'Log in', '#' %></li>
+        <% end %>
       </ul>
     </nav>
   </div>
