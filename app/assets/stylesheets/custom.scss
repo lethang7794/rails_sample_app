@@ -1,34 +1,31 @@
 // "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
 @import "bootstrap";
-
 /* universal */
 body {
-    padding-top: 70px;
+  padding-top: 70px;
 }
 
 .center {
-    text-align: center;
+  text-align: center;
 
-    h1 {
-        margin-bottom: 10px;
-    }
+  h1 {
+    margin-bottom: 10px;
+  }
 }
-
 /* header */
 #logo {
-    font-size: 1.7em;
-    color: #fff;
-    text-transform: uppercase;
-    letter-spacing: -1px;
-    font-weight: bold;
+  font-size: 1.7em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  font-weight: bold;
 }
 
 #logo:hover {
-    color: hsla(0,0%,100%,.7);
-    text-decoration: none;
+  color: hsla(0,0%,100%,.7);
+  text-decoration: none;
 }
-
 /* typography */
 h1,
 h2,
@@ -36,107 +33,102 @@ h3,
 h4,
 h5,
 h6 {
-    list-style: 1;
+  list-style: 1;
 }
 
 h1 {
-    font-size: 3em;
-    font-weight: bold;
-    margin-bottom: 30px;
-    text-align: center;
+  font-size: 3em;
+  font-weight: bold;
+  margin-bottom: 30px;
+  text-align: center;
 }
 
 p {
-    font-size: 1.1em;
-    line-height: 1.7em;
+  font-size: 1.1em;
+  line-height: 1.7em;
 }
-
 /* footer */
 footer {
-    margin-top: 45px;
-    padding-top: 5px;
-    border-top: 1px solid $gray-lighter;
-    color: $gray;
+  margin-top: 45px;
+  padding-top: 5px;
+  border-top: 1px solid $gray-lighter;
+  color: $gray;
 
-    a {
-        color: $gray-light;
+  a {
+    color: $gray-light;
 
-        &:hover {
-            color: $gray-darker;
-        }
+    &:hover {
+      color: $gray-darker;
     }
+  }
 
-    small {
-        float: left;
+  small {
+    float: left;
+  }
+
+  ul {
+    float: right;
+    list-style: none;
+
+    li {
+      float: left;
+      margin-left: 15px;
     }
-
-    ul {
-        float: right;
-        list-style: none;
-
-        li {
-            float: left;
-            margin-left: 15px;
-        }
-    }
+  }
 }
-
 /* sidebar */
 aside {
-    section.user_info {
-        margin-top: 20px;
+  section.user_info {
+    margin-top: 20px;
+  }
+
+  section {
+    padding: 10px 0;
+    margin-top: 20px;
+
+    &:first-child {
+      border: 0;
+      padding-top: 0;
     }
 
-    section {
-        padding: 10px 0;
-        margin-top: 20px;
-
-        &:first-child {
-            border: 0;
-            padding-top: 0;
-        }
-
-        span {
-            display: block;
-            margin-bottom: 3px;
-            line-height: 1;
-        }
-
-        h1 {
-            font-size: 1.4em;
-            text-align: left;
-            letter-spacing: -1px;
-            margin-bottom: 3px;
-            margin-top: 0px;
-        }
+    span {
+      display: block;
+      margin-bottom: 3px;
+      line-height: 1;
     }
+
+    h1 {
+      font-size: 1.4em;
+      text-align: left;
+      letter-spacing: -1px;
+      margin-bottom: 3px;
+      margin-top: 0;
+    }
+  }
 }
 
 .gravatar {
-    float: left;
-    margin-right: 10px;
+  float: left;
+  margin-right: 10px;
 }
 
 .gravatar_edit {
-    margin-top: 15px;
+  margin-top: 15px;
 }
-
 /* mixins, variables, etc. */
 @mixin box_sizing {
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
 }
-
 /* miscellaneous */
 .debug_dump {
-    clear: both;
-    float: left;
-    width: 100%;
-    margin-top: 45px;
-    @include box_sizing;
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 45px;
+  @include box_sizing;
 }
-
 /* forms */
 .uneditable-input,
 input,
