@@ -76,6 +76,28 @@ footer {
     }
   }
 }
+// Medium devices (tablets, 768px and up)
+@media (max-width: 768px) {
+  footer {
+    text-align: center;
+
+    p {
+      float: none;
+      display: block;
+      margin-bottom: 1em;
+    }
+
+    ul {
+      float: none;
+      padding: 0;
+
+      li {
+        float: none;
+        display: inline-block;
+      }
+    }
+  }
+}
 /* sidebar */
 aside {
   section.user_info {
