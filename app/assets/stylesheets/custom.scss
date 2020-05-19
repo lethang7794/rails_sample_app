@@ -26,6 +26,22 @@ body {
   color: hsla(0,0%,100%,.7);
   text-decoration: none;
 }
+
+// Change to flexbox to move the site logo to the center in mobile layout
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.5rem 1rem;
+}
+
+// Move the site logo to the center in mobile layout
+@media (max-width: 768px) {
+  .navbar-brand {
+    margin-left: auto!important;
+    margin-right: auto!important;
+  }
+}
+
 /* typography */
 h1,
 h2,
