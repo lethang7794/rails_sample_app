@@ -39,6 +39,10 @@ body {
   // (Set width of flex item to 100% to move it down)
   -ms-flex-preferred-size: 100%;
   flex-basis: 100%;
+
+  // Move the layout links in PC layout to the right
+  -ms-flex-positive: 1;
+  flex-grow: 1;
 }
 
 
