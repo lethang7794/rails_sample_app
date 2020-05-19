@@ -45,6 +45,11 @@ body {
   flex-grow: 1;
 }
 
+// Add spacing to the navigation bar
+.my-navbar-collapse {
+  padding-left: 15px!important;
+  padding-right: 15px!important;
+}
 
 // Change the layout for PC layout
 @media (min-width: 768px) {
