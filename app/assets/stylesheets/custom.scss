@@ -41,6 +41,17 @@ body {
   flex-basis: 100%;
 }
 
+
+// Change the layout for PC layout
+@media (min-width: 768px) {
+  .navbar-collapse {
+    // Move the layout link back inline with site logo
+    // by set flex item's width back to auto
+    -ms-flex-preferred-size: auto;
+    flex-basis: auto;
+  }
+}
+
 // Move the site logo to the center in mobile layout
 @media (max-width: 768px) {
   .navbar-brand {
