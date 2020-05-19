@@ -26,8 +26,8 @@ body {
   color: hsla(0,0%,100%,.7);
   text-decoration: none;
 }
-
 // Change to flexbox to move the site logo to the center in mobile layout
+
 .navbar {
   display: flex;
   flex-wrap: wrap;
@@ -39,18 +39,16 @@ body {
   // (Set width of flex item to 100% to move it down)
   -ms-flex-preferred-size: 100%;
   flex-basis: 100%;
-
   // Move the layout links in PC layout to the right
   -ms-flex-positive: 1;
   flex-grow: 1;
 }
-
 // Add spacing to the navigation bar
+
 .my-navbar-collapse {
   padding-left: 15px!important;
   padding-right: 15px!important;
 }
-
 // Change the layout for PC layout
 @media (min-width: 768px) {
   .navbar-collapse {
@@ -60,7 +58,6 @@ body {
     flex-basis: auto;
   }
 }
-
 // Move the site logo to the center in mobile layout
 @media (max-width: 768px) {
   .navbar-brand {
@@ -68,7 +65,14 @@ body {
     margin-right: auto!important;
   }
 }
+// Move the site logo to center absolutely position
+// by changing the hamburger bar to absolute position
+// and give the flex item with logo inside the whole flex container
 
+.my-navbar-toggler-mobile {
+  position: absolute;
+  right: 0;
+}
 /* typography */
 h1,
 h2,
