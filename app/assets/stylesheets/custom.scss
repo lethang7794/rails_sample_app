@@ -34,6 +34,13 @@ body {
   padding: 0.5rem 1rem;
 }
 
+.navbar-collapse {
+  // Show hamburger collapse below the menu
+  // (Set width of flex item to 100% to move it down)
+  -ms-flex-preferred-size: 100%;
+  flex-basis: 100%;
+}
+
 // Move the site logo to the center in mobile layout
 @media (max-width: 768px) {
   .navbar-brand {
