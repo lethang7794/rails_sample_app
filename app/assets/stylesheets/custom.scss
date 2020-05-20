@@ -182,7 +182,12 @@ aside {
 }
 
 .gravatar_edit {
-  margin-top: 15px;
+  margin-bottom: 15px;
+
+  .gravatar {
+    float: none;
+    margin-right: 0px;
+  }
 }
 /* mixins, variables, etc. */
 @mixin box_sizing {
