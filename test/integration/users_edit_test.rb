@@ -8,8 +8,11 @@ class UsersEditTest < ActionDispatch::IntegrationTest
   test 'should show edit form after an unsuccessful edit' do
     get edit_user_path(@user)
     assert_template 'users/edit'
-    patch user_path(@user), params: { user: { name: '', email: 'not_an_email',
-                                       password: 'foo', password_confirmation: 'bar' }}
+    patch user_path(@user), params: { user: { name: '',
+                                              email: 'not_an_email',
+                                              password: 'foo',
+                                              password_confirmation: 'bar' } }
     assert_template 'users/edit'
+    assert_select 'div.alert', 'The form contains 4 errors:'
   end
 end
