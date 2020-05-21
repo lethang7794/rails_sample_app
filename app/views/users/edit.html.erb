@@ -9,7 +9,10 @@
       <div class="gravatar_edit">
         <%= gravatar_for @user %>
         <div>
-          <a href="https://gravatar.com/emails" target="_blank" rel=”noopener noreferrer”>Change Gravatar</a>
+          <a href="https://gravatar.com/emails" target="_blank" rel=”noopener noreferrer>
+            Change Gravatar
+            <img alt="(Open in new window)" src="<%= image_path "open-in-new-window.svg" %>">
+          </a>
         </div>
       </div>
     </div>

@@ -188,6 +188,10 @@ aside {
     float: none;
     margin-right: 0px;
   }
+
+  img {
+    vertical-align: text-top;
+  }
 }
 /* mixins, variables, etc. */
 @mixin box_sizing {
