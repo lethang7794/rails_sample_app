@@ -5,6 +5,7 @@ harry:
   email: harry@potter.com
   password_digest: <%= User.digest("password") %>
 
-two:
-  name:
-  email:
+ron:
+  name: Ron Weasley
+  email: ron@weasley.com
+  password_digest: <%= User.digest('password') %>
