@@ -252,3 +252,14 @@ input {
     color: $state-danger-text;
   }
 }
+
+/* Users index */
+ul.users {
+  list-style: none;
+
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid $gray-lighter;
+  }
+}
