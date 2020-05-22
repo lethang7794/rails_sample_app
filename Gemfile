@@ -15,6 +15,10 @@ gem 'bootstrap-sass', '~> 3.4.1'
 # Used to easily generate fake data: names, addresses, phone numbers, etc.
 gem 'faker', '~> 2.11'
 
+# Paginates index pages
+gem 'will_paginate', '~> 3.3'
+gem 'bootstrap-will_paginate', '~> 1.0'
+
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 4.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
