@@ -12,6 +12,8 @@ gem 'sassc-rails', '>= 2.1.0'
 
 # Use Bootstrap 3
 gem 'bootstrap-sass', '~> 3.4.1'
+# Used to easily generate fake data: names, addresses, phone numbers, etc.
+gem 'faker', '~> 2.11'
 
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 4.0'
