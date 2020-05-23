@@ -1,14 +1,15 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 harry:
-  name:              Harry Potter
-  email:             harry@potter.com
-  password_digest:   <%= User.digest("password") %>
+  name:            Harry Potter
+  email:           harry@potter.com
+  password_digest: <%= User.digest("password") %>
+  admin:           true
 
 ron:
-  name:              Ron Weasley
-  email:             ron@weasley.com
-  password_digest:   <%= User.digest('password') %>
+  name:            Ron Weasley
+  email:           ron@weasley.com
+  password_digest: <%= User.digest('password') %>
 
 <% (1..30).each do |n| %>
 user_<%= n %>:
