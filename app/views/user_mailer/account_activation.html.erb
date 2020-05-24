@@ -1,5 +1,17 @@
-<h1>User#account_activation</h1>
+<h1>Welcome to the Sample App!</h1>
 
 <p>
-  <%= @greeting %>, find me in app/views/user_mailer/account_activation.html.erb
+  Hi, <strong><%= @user.name %></strong>!
 </p>
+
+<p>
+  You have successfully created a Sample App account for <strong><%= @user.email %></strong>.
+</p>
+
+<p>
+   To complete the process, please visit the link below:<br>
+   <%= link_to 'Activate', edit_account_activation_url(@user.activation_token, email: @user.email) %></p>
+</p>
+
+
+<p>Enjoy,<br>Sample App Team</p>

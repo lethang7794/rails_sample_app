@@ -1,3 +1,11 @@
-User#account_activation
+Welcome to the Sample App!
 
-<%= @greeting %>, find me in app/views/user_mailer/account_activation.text.erb
+Hi, <%= @user.name %>!
+
+You have successfully created a Sample App account for <%= @user.email %>.
+
+To complete the process, please visit the link below:
+<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>
+
+Enjoy,
+Sample App Team
