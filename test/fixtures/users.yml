@@ -5,15 +5,21 @@ harry:
   email:           harry@potter.com
   password_digest: <%= User.digest("password") %>
   admin:           true
+  activated:       true
+  activated_at:    <%= Time.zone.now %>
 
 ron:
   name:            Ron Weasley
   email:           ron@weasley.com
   password_digest: <%= User.digest('password') %>
+  activated:       true
+  activated_at:    <%= Time.zone.now %>
 
 <% (1..30).each do |n| %>
 user_<%= n %>:
   name:            User-<%= n %>
   email:           <%= "user#{n}@railstutorial.org" %>
   password_digest: <%= User.digest('password') %>
+  activated:       true
+  activated_at:    <%= Time.zone.now %>
 <% end %>
