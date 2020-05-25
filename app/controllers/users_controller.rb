@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   before_action :logged_in_user,  only: [:index, :edit, :update, :destroy]
   before_action :correct_user,    only: [:edit, :update]
   before_action :admin_user,      only: :destroy
+  before_action :activated_user,  only: [:index, :update]
 
   def index
     @users = User.paginate(page: params[:page])
@@ -70,5 +71,13 @@ class UsersController < ApplicationController
     # Confirms the logged in user is an admin
     def admin_user
       redirect_to root_path unless current_user.admin?
+    end
+
+    # Confirms the logged in user is activated.
+    def activated_user
+      unless current_user.activated?
+        flash[:warning] = "Account unactivated! Please activate your account!"
+        redirect_to root_path
+      end
     end
 end
