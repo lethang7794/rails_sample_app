@@ -4,6 +4,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   def setup
     @user = users(:harry)
     @other_user = users(:ron)
+    @not_activated_user = users(:hermione)
   end
 
   test "should get new" do
@@ -67,5 +68,23 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       delete user_path(@other_user)
     end
     assert_redirected_to root_path
+  end
+
+  test 'should redirect index when not activated' do
+    log_in_as(@not_activated_user)
+    get users_path
+    assert_redirected_to root_url
+    follow_redirect!
+    assert_not flash[:warning].empty?
+  end
+
+  test 'should redirect update when not activated' do
+    log_in_as(@not_activated_user)
+    get edit_user_path(@not_activated_user)
+    new_name = "A New Name"
+    patch user_path(@not_activated_user), params: { user: { name: new_name } }
+    assert_redirected_to root_url
+    follow_redirect!
+    assert_not flash[:warning].empty?
   end
 end
