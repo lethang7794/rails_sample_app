@@ -1,2 +1,18 @@
-<h1>PasswordResets#new</h1>
-<p>Find me in app/views/password_resets/new.html.erb</p>
+<% provide :page_title, "Reset Password" %>
+
+<h1>Reset your password</h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <p>Forgot password? Don't worry! Enter your email below and we'll email you a link to reset your password.</p>
+    <%= form_with(url: password_resets_url, scope: 'password_reset', local: true) do |f| %>
+      <%= f.label :email %>
+      <%= f.email_field :email, class: "form-control" %>
+      <%= f.submit "Email Me", class: "btn btn-primary"%>
+    <% end %>
+    <div class="center bottom-text">
+      Remember Password?
+      <%= link_to "LOG IN", login_path %>
+    </div>
+  </div>
+</div>
