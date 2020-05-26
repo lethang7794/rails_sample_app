@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-	attr_accessor :remember_token, :activation_token
+	attr_accessor :remember_token, :activation_token, :reset_token
 	before_create :create_activation_digest
 	before_save 	:downcase_email
 
@@ -16,15 +16,15 @@ class User < ApplicationRecord
 	validates :password, presence: true,
 												length: { minimum: 6 }, allow_nil: true
 
+	# Returns random token used for remember me, account activation, password reset.
+	def self.new_token
+		SecureRandom.urlsafe_base64
+	end
+
 	# Return the hash digest for the given string
 	def self.digest(string)
 		cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
 		BCrypt::Password.create(string, cost: cost)
-	end
-
-	# Return random token used for remember me
-	def self.new_token
-		SecureRandom.urlsafe_base64
 	end
 
 	# Remember the user in the dababase for use in persisten sessions.
@@ -53,6 +53,20 @@ class User < ApplicationRecord
 	# Sends activation email to a user.
 	def send_activation_email
 		UserMailer.account_activation(self).deliver_now
+	end
+
+	# Sets password resets attribute
+	def create_reset_digest
+		self.reset_token = User.new_token
+		update_columns(
+			reset_digest: User.digest(reset_token),
+			reset_sent_at: Time.zone.now
+		)
+	end
+
+	# Sends password reset email to a user
+	def send_password_reset_email
+		UserMailer.password_reset(self).deliver_now
 	end
 
 	private
