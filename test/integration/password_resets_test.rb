@@ -95,6 +95,7 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
                               password_confirmation:  "newpassword"} }
     assert is_logged_in?
     assert_not_equal user.reload.password_digest, @user.password_digest
+    assert_nil user.reload.reset_digest
     assert_equal "Password has been changed.", flash[:success]
     assert_redirected_to @user
     follow_redirect!
