@@ -268,3 +268,29 @@ ul.users {
     border-bottom: 1px solid $gray-lighter;
   }
 }
+
+/* Microposts*/
+.microposts {
+  list-style: none;
+  padding: 0;
+
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+    overflow: auto;
+  }
+
+  .user {}
+
+  .content {
+    display: block;
+  }
+
+  .timestamp {
+    color: rgb(136, 153, 166); // From Twitter's tweet
+  }
+
+  .gravatar {
+    margin-right: 10px;
+  }
+}
