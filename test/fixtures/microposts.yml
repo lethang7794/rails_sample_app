@@ -14,3 +14,10 @@ most_recent:
   content:    This is the most recent micropost.
   user:       harry
   created_at: <%= 1.hours.ago %>
+
+<% 30.times do |n| %>
+micropost_<%= n %>:
+  content:    <%= Faker::Lorem.sentence(word_count: 5) %>
+  user:       harry
+  created_at: <%= 1.days.ago %>
+<% end %>
