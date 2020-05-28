@@ -14,4 +14,17 @@ class MicropostTest < ActiveSupport::TestCase
   	@micropost.user_id = nil
   	assert_not @micropost.valid?
   end
+
+  test "content shoud be presence" do
+    @micropost.content = nil
+    assert_not @micropost.valid?
+    @micropost.content = " "
+    assert_not @micropost.valid?
+  end
+
+  test "content should be at most 140 characters" do
+    more_than_140 = "a" * 141
+    @micropost.content = more_than_140
+    assert_not @micropost.valid?
+  end
 end
