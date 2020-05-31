@@ -19,5 +19,8 @@
 
 	<span class="content">
 		<%= micropost.content %>
+		<div class="image">
+			<%= image_tag micropost.image if micropost.image.attached? %>
+		</div>
 	</span>
 </li>
