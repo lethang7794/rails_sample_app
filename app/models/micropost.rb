@@ -12,4 +12,8 @@ class Micropost < ApplicationRecord
                             { in: %w[image/png image/jpeg image/gif], message: 'should be png/jpeg/gif.' },
                     size: { less_than: 3.megabytes, message: 'should be less than 3MB.' }
 
+  # Returns a resized image for display.
+  def display_image
+    image.variant(resize_to_limit: [500, 500])
+  end
 end
