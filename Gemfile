@@ -20,6 +20,9 @@ gem 'faker', '~> 2.11'
 gem 'will_paginate', '~> 3.3'
 gem 'bootstrap-will_paginate', '~> 1.0'
 
+# Add validation to Active Storage
+gem 'active_storage_validations', '~> 0.1'
+
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 4.0'
 # Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
