@@ -13,6 +13,7 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
     log_in_as @harry
     get root_url
     assert_template 'static_pages/home'
+    assert_select 'input[type="file"][name="micropost[image]"]'
 
     # check the micropost pagination
     assert_select 'div.pagination'
@@ -27,12 +28,15 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
 
     # make a valid submission
     content = "An awesome new micropost"
+    image   = fixture_file_upload('test/fixtures/files/rails-logo.png', 'image/png')
     assert_difference 'Micropost.count', 1 do
-      post microposts_path, params: { micropost: { content: content }}
+      post microposts_path, params: { micropost: { content: content, image: image }}
     end
+    assert @harry.microposts.first.image.attached?
     assert_redirected_to root_url
     follow_redirect!
     assert_match content, response.body
+
 
     # delete a post
     assert_select 'span.delete>a', text: 'delete'
