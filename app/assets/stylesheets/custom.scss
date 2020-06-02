@@ -34,6 +34,30 @@ body {
   padding: 0.5rem 1rem;
 }
 
+// Change the narbar-inverse's default color
+.dropdown-menu,
+.navbar-inverse {
+  background-color: #232f3e;
+}
+
+// Change the navbar link's default color
+.navbar-inverse .navbar-nav .open .dropdown-menu > li > a,
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > li > a {
+  color: rgba(255, 255, 255, 0.7);
+
+  &:focus,
+  &:hover {
+    color: white;
+    background-color: transparent;
+  }
+}
+
+.dropdown-menu {
+  border: 1px solid white;
+  min-width: auto; // Reduce the dropdown menu width
+}
+
 .navbar-collapse {
   // Show hamburger collapse below the menu
   // (Set width of flex item to 100% to move it down)
