@@ -78,8 +78,11 @@ group :test do
 end
 
 group :production do
-  # Use Postgres for Heroku deploment
+  # Use Postgres for Heroku deployment
   gem 'pg', '~> 0.18.4'
+
+  # Use AWS S3 to store images
+  gem 'aws-sdk-s3', '~> 1.67', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
