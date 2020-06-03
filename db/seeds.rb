@@ -41,3 +41,13 @@ users = User.order(:created_at).take(5)
     user.microposts.create!(content: content)
   end
 end
+
+# Seed the relatioships.
+user = User.first
+users = User.all
+
+following = users[2..50]
+following.each { |followed| user.follow(followed) }
+
+followers = users[3..40]
+followers.each { |follower| follower.follow(user) }
