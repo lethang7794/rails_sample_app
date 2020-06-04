@@ -6,6 +6,10 @@ body {
   padding-top: 70px;
 }
 
+section {
+  overflow: auto;
+}
+
 .center {
   text-align: center;
 
@@ -199,27 +203,36 @@ aside {
   margin-top: 0;
   padding: 0;
 
-  a {
-    float: left;
-    padding: 0 10px;
-    border-left: 1px solid $gray-lighter;
+  div.stats {
+    a {
+      float: left;
+      padding: 0 10px;
+      border-left: 1px solid $gray-lighter;
 
-    &:first-child {
-      padding-left: 0;
-      border-left: 0;
-    }
-    color: gray;
-
-    strong {
-      color: $gray;
-    }
-
-    &:hover {
-      text-decoration: none;
-      color: #286090; //Bootstrap Primary button hover
-      strong {
-        color: #286090; //Bootstrap Primary button hover
+      &:first-child {
+        padding-left: 0;
+        border-left: 0;
       }
+      color: gray;
+
+      strong {
+        color: $gray;
+      }
+
+      &:hover {
+        text-decoration: none;
+        color: #286090; //Bootstrap Primary button hover
+        strong {
+          color: #286090; //Bootstrap Primary button hover
+        }
+      }
+    }
+  }
+
+  div.user_avatars {
+    .gravatar {
+      float: left;
+      margin: 1px;
     }
   }
 }
