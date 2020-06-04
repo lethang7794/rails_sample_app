@@ -302,14 +302,20 @@ div.bottom-text {
   }
 }
 
-/* Users index */
-ul.users {
+/* Users index + Following/Followers list*/
+ol.users, // Following/Followers list
+ul.users { // Users index
   list-style: none;
 
   li {
     overflow: auto;
     padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
+  }
+
+  // Following/Followers list
+  &.follow {
+    padding: 0
   }
 }
 
