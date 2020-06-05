@@ -27,10 +27,8 @@ class FollowingFollowersPagesTest < ActionDispatch::IntegrationTest
 
   test "should follow a user the standard way" do
     Relationship.delete_all
-    assert_difference '@harry.following.count', 1 do
-      assert_difference '@ron.followers.count', 1 do
-        post relationships_path, params: { followed_id: @ron.id }
-      end
+    assert_difference -> { @harry.following.count } => 1, -> { @ron.followers.count } => 1 do
+      post relationships_path, params: { followed_id: @ron.id }
     end
   end
 
@@ -38,19 +36,15 @@ class FollowingFollowersPagesTest < ActionDispatch::IntegrationTest
     Relationship.delete_all
     @harry.follow(@ron)
     relationship = @harry.active_relationships.find_by(followed_id: @ron.id)
-    assert_difference '@harry.following.count', -1 do
-      assert_difference '@ron.followers.count', -1 do
-        delete relationship_path(relationship)
-      end
+    assert_difference -> { @harry.following.count } => -1, -> { @ron.followers.count } => -1 do
+      delete relationship_path(relationship)
     end
   end
 
   test "should follow a user the Ajax way" do
     Relationship.delete_all
-    assert_difference '@harry.following.count', 1 do
-      assert_difference '@ron.followers.count', 1 do
-        post relationships_path, xhr: true, params: { followed_id: @ron.id }
-      end
+    assert_difference -> { @harry.following.count } => 1, -> { @ron.followers.count } => 1 do
+      post relationships_path, xhr: true, params: { followed_id: @ron.id }
     end
   end
 
@@ -58,10 +52,8 @@ class FollowingFollowersPagesTest < ActionDispatch::IntegrationTest
     Relationship.delete_all
     @harry.follow(@ron)
     relationship = @harry.active_relationships.find_by(followed_id: @ron.id)
-    assert_difference '@harry.following.count', -1 do
-      assert_difference '@ron.followers.count', -1 do
-        delete relationship_path(relationship), xhr: true
-      end
+    assert_difference -> { @harry.following.count } => -1, -> { @ron.followers.count } => -1 do
+      delete relationship_path(relationship), xhr: true
     end
   end
 end
