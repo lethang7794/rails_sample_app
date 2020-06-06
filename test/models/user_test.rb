@@ -111,6 +111,8 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "should follow and unfollow" do
+    Relationship.delete_all
+    
     harry = users(:harry)
     ron = users(:ron)
     assert_not harry.following?(ron)
