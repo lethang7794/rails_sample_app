@@ -88,7 +88,8 @@ class User < ApplicationRecord
 
 	# Defines a proto-feed.
 	def feed
-		Micropost.where("user_id = ? OR user_id IN (?)", id, following_ids)
+		followed_ids = "SELECT followed_id FROM relationships WHERE follower_id = :user_id"
+		Micropost.where("user_id = :user_id OR user_id IN (#{followed_ids})", user_id: id)
 	end
 
 	# Follows another user.
