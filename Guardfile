@@ -16,6 +16,10 @@
 # and, you'll have to watch "config/Guardfile" instead of "Guardfile"
 
 require 'active_support/core_ext/string'
+
+# Ignore unrelated stuffs to test
+ignore %r{^(bin|config|db|lib|node_modules|public/storage/vendor)/*}
+
 # Defines the matching rules for Guard.
 guard :minitest, spring: "bin/rails test", all_on_start: false do
   watch(%r{^test/(.*)/?(.*)_test\.rb$})
