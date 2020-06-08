@@ -30,7 +30,8 @@
           </ul>
         </li>
       <% else %>
-        <li><%= link_to 'Log in', login_path %></li>
+        <li><%= active_link_to 'Log in', login_path, active: [sessions: :new] %></li>
+        <li><%= active_link_to 'Sign up', signup_path, active: [users: :new] %></li>
       <% end %>
     </ul>
   </div>
