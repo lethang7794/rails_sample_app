@@ -334,6 +334,15 @@ ul.users { // Users index
 
   .content {
     display: block;
+
+    .image {
+      margin-top: 10px;
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
   }
 
   .timestamp {
@@ -342,6 +351,7 @@ ul.users { // Users index
 
   .gravatar {
     margin-right: 10px;
+    margin-bottom: 10px;
   }
 }
 
