@@ -37,6 +37,17 @@ body {
 
 div.collapse {
   ul.nav > li {
+    // Add current page indicator for navbar links
+    a.active:before {
+      background-image: linear-gradient(270deg,#ff8a00,#e52e71);
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+    }
+
     // Add box hover indicate to links in navigation bar
     &:active,
     a:hover,
@@ -53,6 +64,11 @@ div.collapse {
   &[aria-expanded="true"],
   .in {
     ul.nav > li {
+      // Not show current page indicator in the hamburger or dropdown menu
+      a.active:before {
+        background-image: none;
+      }
+
       // Turn off background for account dropdown-menu when not hovering
       &:active {
         background: none;
