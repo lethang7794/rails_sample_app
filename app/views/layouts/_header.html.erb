@@ -14,9 +14,9 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse my-navbar-collapse" id="bs-navbar-collapse-1">
     <ul class="nav navbar-nav navbar-right">
-      <li><%= link_to 'Home', root_path %></li>
+      <li><%= active_link_to 'Home', root_path, active: [static_pages: :home] %></li>
       <% if logged_in? %>
-        <li><%= link_to 'Users', users_path %></li>
+        <li><%= active_link_to 'Users', users_path, active: [users: :index] %></li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             Account
