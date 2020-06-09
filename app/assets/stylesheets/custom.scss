@@ -257,6 +257,18 @@ div.collapse {
   position: absolute;
   right: 0;
 }
+
+// Change hamburger default color
+.navbar-inverse .navbar-toggle {
+	border-color: white;
+
+  &:hover,
+  &:focus {
+    // background-color: $gray;
+    background-image: $hover-box-gradient;
+  }
+}
+
 /* typography */
 h1,
 h2,
