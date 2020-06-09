@@ -183,6 +183,23 @@ div.collapse {
     color: white;
     background: $hover-box-gradient; // Color of dropdown-menu
   }
+  
+  &[aria-expanded="true"] .my-caret svg {
+    transform: rotate(180deg);
+  }
+}
+
+// Change to SVG caret
+.nav.navbar-nav.navbar-right .dropdown .dropdown-toggle .my-caret,
+.nav.navbar-nav.navbar-right .dropdown.open .dropdown-toggle .my-caret {
+	float: right;
+	width: 1.5rem;
+	height: 1.5rem;
+}
+
+// Navbar link texts
+.my-label {
+  margin-right: 7.5px;
 }
 
 .dropdown-menu {
