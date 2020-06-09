@@ -183,18 +183,25 @@ div.collapse {
     color: white;
     background: $hover-box-gradient; // Color of dropdown-menu
   }
-  
+
   &[aria-expanded="true"] .my-caret svg {
     transform: rotate(180deg);
   }
 }
 
 // Change to SVG caret
+.navbar-nav.navbar-right li a .my-arrow,
 .nav.navbar-nav.navbar-right .dropdown .dropdown-toggle .my-caret,
 .nav.navbar-nav.navbar-right .dropdown.open .dropdown-toggle .my-caret {
 	float: right;
 	width: 1.5rem;
 	height: 1.5rem;
+
+  svg {
+    fill: white;
+    filter:
+      brightness(1);
+  }
 }
 
 // Navbar link texts
@@ -229,6 +236,10 @@ div.collapse {
     // by set flex item's width back to auto
     -ms-flex-preferred-size: auto;
     flex-basis: auto;
+
+    span.my-arrow {
+      display: none;
+    }
   }
 }
 // Move the site logo to the center in mobile layout
