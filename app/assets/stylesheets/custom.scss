@@ -174,10 +174,13 @@ div.collapse {
 .navbar-inverse .navbar-nav > li > a {
   color: rgba(255, 255, 255, 0.7);
 
-  &:focus,
+  &:focus {
+    background: transparent;
+  }
+
   &:hover {
     color: white;
-    background-color: transparent;
+    background: $hover-box-gradient; // Color of dropdown-menu
   }
 }
 
