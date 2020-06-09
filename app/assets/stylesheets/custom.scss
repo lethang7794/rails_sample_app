@@ -207,11 +207,13 @@ div.collapse {
 // Navbar link texts
 .my-label {
   margin-right: 7.5px;
+  font-size: 1.3em; // Increase navbar-links' font-size
 }
 
 .dropdown-menu {
   border: 1px solid white;
   min-width: auto; // Reduce the dropdown menu width
+  font-size: 1.2em; // Increase dropdown-menu item font-size
 }
 
 .navbar-collapse {
