@@ -189,6 +189,11 @@ div.collapse {
   }
 }
 
+// Change Bootstrap's default divider color
+.navbar-inverse .navbar-nav .open .dropdown-menu .divider {
+	background-color: rgba(255, 255, 255, 0.3);
+}
+
 // Change to SVG caret
 .navbar-nav.navbar-right li a .my-arrow,
 .nav.navbar-nav.navbar-right .dropdown .dropdown-toggle .my-caret,
@@ -225,6 +230,14 @@ div.collapse {
   -ms-flex-positive: 1;
   flex-grow: 1;
 }
+
+
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+  box-shadow: none; // Turn off box-shadow from Bootstrap
+  border-color: rgba(255, 255, 255, 0.3); 
+}
+
+
 // Add spacing to the navigation bar
 
 .my-navbar-collapse {
