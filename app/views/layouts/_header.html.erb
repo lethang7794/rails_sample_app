@@ -53,10 +53,22 @@
             </span>
           </a>
           <ul class="dropdown-menu">
-            <li><%= link_to 'Profile', current_user %></li>
-            <li><%= link_to 'Settings', edit_user_path(current_user) %></li>
+            <li>
+              <%= link_to current_user do %>
+                Profile
+              <% end %>
+            </li>
+            <li>
+              <%= link_to edit_user_path(current_user) do %>
+                Settings
+              <% end %>
+            </li>
             <li class="divider"></li>
-            <li><%= link_to 'Log out', logout_path, method: 'delete' %></li>
+            <li>
+              <%= link_to logout_path, method: 'delete' do %>
+                Log out
+              <% end %>
+            </li>
           </ul>
         </li>
       <% else %>
