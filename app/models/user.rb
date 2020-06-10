@@ -1,4 +1,16 @@
 class User < ApplicationRecord
+	has_many :microposts, dependent: :destroy
+
+	has_many :active_relationships, class_name: "Relationship",
+																	foreign_key: "follower_id",
+																	dependent: :destroy
+	has_many :following, through: :active_relationships, source: :followed
+
+	has_many :passive_relationships, class_name: "Relationship",
+																	foreign_key: "followed_id",
+																	dependent: :destroy
+	has_many :followers, through: :passive_relationships, source: :follower
+
 	attr_accessor :remember_token, :activation_token, :reset_token
 	before_create :create_activation_digest
 	before_save 	:downcase_email
@@ -21,7 +33,7 @@ class User < ApplicationRecord
 		SecureRandom.urlsafe_base64
 	end
 
-	# Return the hash digest for the given string
+	# Return the hash digest for the given string.
 	def self.digest(string)
 		cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
 		BCrypt::Password.create(string, cost: cost)
@@ -33,7 +45,7 @@ class User < ApplicationRecord
 		update_attribute(:remember_digest, User.digest(remember_token))
 	end
 
-	# Return true if remember token match the remember digest in the database
+	# Return true if remember token match the remember digest in the database.
 	def authenticated?(attribute, token)
 		digest = send("#{attribute}_digest")
 		return false if digest.nil?
@@ -55,7 +67,7 @@ class User < ApplicationRecord
 		UserMailer.account_activation(self).deliver_now
 	end
 
-	# Sets password resets attribute
+	# Sets password resets attribute.
 	def create_reset_digest
 		self.reset_token = User.new_token
 		update_columns(
@@ -64,7 +76,7 @@ class User < ApplicationRecord
 		)
 	end
 
-	# Sends password reset email to a user
+	# Sends password reset email to a user.
 	def send_password_reset_email
 		UserMailer.password_reset(self).deliver_now
 	end
@@ -72,6 +84,27 @@ class User < ApplicationRecord
 	# Returns true if a passwrd reset has expired.
 	def password_reset_expired?
 		reset_sent_at < 2.hours.ago
+	end
+
+	# Defines a proto-feed.
+	def feed
+		followed_ids = "SELECT followed_id FROM relationships WHERE follower_id = :user_id"
+		Micropost.where("user_id = :user_id OR user_id IN (#{followed_ids})", user_id: id)
+	end
+
+	# Follows another user.
+	def follow(an_other_user)
+		following << an_other_user
+	end
+
+	# Unfollows another user.
+	def unfollow(an_other_user)
+		following.delete(an_other_user)
+	end
+
+	# Return true if the current user is following an other user.
+	def following?(an_other_user)
+		following.include?(an_other_user)
 	end
 
 	private

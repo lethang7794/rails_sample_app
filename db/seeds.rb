@@ -32,3 +32,35 @@ User.create!(
     activated_at:          Time.zone.now
   )
 end
+
+# Gererates microposts for a subset of users.
+users = User.order(:created_at).take(5)
+50.times do
+  users.each do |user|
+    content = Faker::Lorem.sentence(word_count: 5)
+    user.microposts.create!(content: content)
+  end
+end
+
+
+users = User.order(:created_at).take(6)
+users.each_with_index do |user, index|
+  content = Faker::Lorem.sentence(word_count: 5)
+  micropost = user.microposts.create!(content: content)
+  micropost.image.attach(io: File.open("app/assets/images/#{12-index}.png"), filename: "#{12-index}.png", content_type: 'image/png')
+end
+users.each_with_index do |user, index|
+  content = Faker::Lorem.sentence(word_count: 5)
+  micropost = user.microposts.create!(content: content)
+  micropost.image.attach(io: File.open("app/assets/images/#{6-index}.png"), filename: "#{6-index}.png", content_type: 'image/png')
+end
+
+# Seed the relatioships.
+user = User.first
+users = User.all
+
+following = users[1..49]
+following.each { |followed| user.follow(followed) }
+
+followers = users[2..39]
+followers.each { |follower| follower.follow(user) }

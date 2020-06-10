@@ -1,7 +1,5 @@
-<div class="center jumbotron">
-  <h1>Welcome to the Sample App</h1>
-  <p>
-      This is the homepage for the <a href="#">Ruby on Rails Tutorials</a> Sample App
-  </p>
-  <%= link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary" %>
-</div>
+<% if logged_in? %>
+  <%= render 'static_pages/home_logged_in' %>
+<% else %>
+  <%= render 'static_pages/home_not_logged_in' %>
+<% end %>

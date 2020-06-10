@@ -7,6 +7,10 @@ body {
   font-size: 16px;
 }
 
+section {
+  overflow: auto;
+}
+
 .center {
   text-align: center;
 
@@ -374,7 +378,7 @@ h3,
 h4,
 h5,
 h6 {
-  list-style: 1;
+  line-height: 1;
 }
 
 h1 {
@@ -487,6 +491,46 @@ aside {
     vertical-align: text-top;
   }
 }
+
+.stats {
+  overflow: auto;
+  margin-top: 0;
+  padding: 0;
+
+  div.stats {
+    a {
+      float: left;
+      padding: 0 10px;
+      border-left: 1px solid $gray-lighter;
+
+      &:first-child {
+        padding-left: 0;
+        border-left: 0;
+      }
+      color: gray;
+
+      strong {
+        color: $gray;
+      }
+
+      &:hover {
+        text-decoration: none;
+        color: #286090; //Bootstrap Primary button hover
+        strong {
+          color: #286090; //Bootstrap Primary button hover
+        }
+      }
+    }
+  }
+
+  div.user_avatars {
+    .gravatar {
+      float: left;
+      margin: 1px;
+    }
+  }
+}
+
 /* mixins, variables, etc. */
 @mixin box_sizing {
   -moz-box-sizing: border-box;
@@ -552,13 +596,72 @@ div.bottom-text {
   }
 }
 
-/* Users index */
-ul.users {
+/* Users index + Following/Followers list*/
+ol.users, // Following/Followers list
+ul.users { // Users index
   list-style: none;
 
   li {
     overflow: auto;
     padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
+  }
+
+  // Following/Followers list
+  &.follow {
+    padding: 0
+  }
+}
+
+/* Microposts*/
+.microposts {
+  list-style: none;
+  padding: 0;
+
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+    overflow: auto;
+  }
+
+  .user {}
+
+  .content {
+    display: block;
+
+    .image {
+      margin-top: 10px;
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+    }
+  }
+
+  .timestamp {
+    color: rgb(136, 153, 166); // From Twitter's tweet
+  }
+
+  .gravatar {
+    margin-right: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+aside {
+  div.field {
+    textarea {
+      height: 100px;
+      padding: 10px;
+    }
+  }
+
+  span.image {
+    margin-top: 10px;
+
+    input {
+      border: 0;
+    }
   }
 }

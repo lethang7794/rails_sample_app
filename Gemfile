@@ -22,6 +22,12 @@ gem 'bootstrap-will_paginate', '~> 1.0'
 
 # Figure the active in navbar
 gem 'active_link_to', '~> 1.0', '>= 1.0.5'
+# Add validation to Active Storage
+gem 'active_storage_validations', '~> 0.1'
+
+# Use ImageMagick to change image size
+gem 'image_processing', '~> 1.11'
+gem 'mini_magick', '~> 4.10', '>= 4.10.1'
 
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 4.0'
@@ -74,8 +80,11 @@ group :test do
 end
 
 group :production do
-  # Use Postgres for Heroku deploment
+  # Use Postgres for Heroku deployment
   gem 'pg', '~> 0.18.4'
+
+  # Use AWS S3 to store images
+  gem 'aws-sdk-s3', '~> 1.67', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

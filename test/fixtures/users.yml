@@ -21,6 +21,12 @@ hermione:
   password_digest: <%= User.digest('password') %>
   activated:       false
 
+draco:
+  name:            Draco Malfoy
+  email:           draco@malfoy.com
+  password_digest: <%= User.digest('password') %>
+  activated:       true
+
 <% (1..30).each do |n| %>
 user_<%= n %>:
   name:            User-<%= n %>
