@@ -4,6 +4,7 @@
 /* universal */
 body {
   padding-top: 70px;
+  font-size: 16px;
 }
 
 section {
@@ -30,12 +31,198 @@ section {
   color: hsla(0,0%,100%,.7);
   text-decoration: none;
 }
+
+/* Add pride banner */
+// Move the navbar down to show the pride banner
+.navbar-fixed-top {
+    top: 4px;
+}
+
+
+.pride-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1100;
+  width: 100%;
+  height: 4px;
+  text-align: center;
+  color: white;
+  font-size: 1.7em;
+  -webkit-transition: box-shadow 0.2s, height 0.2s;
+  transition: box-shadow 0.2s, height 0.2s;
+  background-image: -webkit-gradient(linear, left top, right top, color-stop(3%, #D64241), color-stop(21%, #FA9F47), color-stop(36%, #F6DA3F), color-stop(51%, #73C080), color-stop(66%, #3098DA), color-stop(80%, #195DAE), color-stop(97%, #79589F));
+  background-image: linear-gradient(90deg, #D64241 3%, #FA9F47 21%, #F6DA3F 36%, #73C080 51%, #3098DA 66%, #195DAE 80%, #79589F 97%);
+  box-shadow: 0 1px 3px 0 rgba(89,105,128,0.05),0 1px 1px 0 rgba(0,0,0,0.025);
+  overflow: hidden;
+  opacity: 1;
+
+  .pride-wrapper {
+    background-image: inherit;
+    background-size: 100%;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    flex-direction: row;
+    padding: 2px 10px;
+    opacity: 0;
+    height: inherit;
+    -webkit-animation: animate-background 10s infinite;
+    animation: animate-background 10s infinite;
+    -webkit-transition: opacity 0.5s;
+    transition: opacity 0.5s;
+  }
+
+  &:active,
+  &:focus,
+  &:hover {
+    height: 60px;
+    box-shadow: 0 0 0 1px rgba(89,105,128,0.1),0 1px 3px 0 rgba(89,105,128,0.1),0 1px 2px 0 rgba(0,0,0,0.05);
+
+    .pride-wrapper {
+      opacity: 1;
+
+      p {
+        display: block;
+      }
+    }
+  }
+
+  p {
+    display: none;
+    margin: 0;
+    font-weight: 700;
+    text-shadow: 0 1px 1px rgba(0,0,0,0.25),0 0 20px rgba(0,0,0,0.1);
+  }
+
+  a {
+    text-decoration: underline;
+    color: inherit;
+  }
+}
+@media (max-width: 768px) {
+  .pride-banner {
+    font-size: 1.4em;
+    p {
+      line-height: normal;
+    }
+  }
+}
+
 // Change to flexbox to move the site logo to the center in mobile layout
 
 .navbar {
   display: flex;
   flex-wrap: wrap;
-  padding: 0.5rem 1rem;
+  padding: 0rem 1rem;
+}
+
+
+$current-page-gradient: linear-gradient(270deg, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 0%, rgba(18,95,139,1) 100%);
+$hover-box-gradient: linear-gradient(270deg, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 0%, rgba(18,95,139,1) 100%);
+div.collapse {
+  ul.nav > li {
+    // Add current page indicator for navbar links
+    a.active:before {
+      background-image: $current-page-gradient;
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 5px;
+    }
+
+    // Add box hover indicate to links in navigation bar
+    &:active,
+    a:hover,
+     {
+      background: $hover-box-gradient;
+    }
+  }
+
+  // Box hover indicate for items in account dropdown-menu in hamburger button
+  ul.nav > li ul li:hover {
+    background: $hover-box-gradient;
+  }
+
+  &[aria-expanded="true"],
+  .in {
+    ul.nav > li {
+      // Not show current page indicator in the hamburger or dropdown menu
+      a.active:before {
+        background-image: none;
+      }
+
+      // Turn off background for account dropdown-menu when not hovering
+      &:active {
+        background: none;
+      }
+    }
+  }
+}
+
+// Change the narbar-inverse's default color
+.dropdown-menu,
+.navbar-inverse {
+  background-color: #232f3e;
+}
+
+// Change the navbar link's default color
+.navbar-inverse .navbar-nav .open .dropdown-menu > li > a,
+.navbar-inverse .navbar-nav > .open > a,
+.navbar-inverse .navbar-nav > li > a {
+  color: rgba(255, 255, 255, 0.7);
+
+  &:focus {
+    background: transparent;
+  }
+
+  &:hover {
+    color: white;
+    background: $hover-box-gradient; // Color of dropdown-menu
+  }
+
+  &[aria-expanded="true"] .my-caret svg {
+    transform: rotate(180deg);
+  }
+}
+
+// Change Bootstrap's default divider color
+.navbar-inverse .navbar-nav .open .dropdown-menu .divider {
+	background-color: rgba(255, 255, 255, 0.3);
+}
+
+// Change to SVG caret
+.navbar-nav.navbar-right li a .my-arrow,
+.nav.navbar-nav.navbar-right .dropdown .dropdown-toggle .my-caret,
+.nav.navbar-nav.navbar-right .dropdown.open .dropdown-toggle .my-caret {
+	float: right;
+	width: 1.5rem;
+	height: 1.5rem;
+
+  svg {
+    fill: white;
+    filter:
+      brightness(1);
+  }
+}
+
+// Navbar link texts
+.my-label {
+  margin-right: 7.5px;
+  font-size: 1.3em; // Increase navbar-links' font-size
+}
+
+.dropdown-menu {
+  border: 1px solid white;
+  min-width: auto; // Reduce the dropdown menu width
+  font-size: 1.2em; // Increase dropdown-menu item font-size
 }
 
 .navbar-collapse {
@@ -47,12 +234,28 @@ section {
   -ms-flex-positive: 1;
   flex-grow: 1;
 }
-// Add spacing to the navigation bar
 
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+  box-shadow: none; // Turn off box-shadow from Bootstrap
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+// Add spacing to the navigation bar
 .my-navbar-collapse {
   padding-left: 15px!important;
   padding-right: 15px!important;
 }
+
+// Make the hamburger menu fullscreen
+#bs-navbar-collapse-1 {
+  height: 100vh;
+  max-height: none;
+  -webkit-transition-duration: 0.7s;
+  transition-duration: 0.7s;
+  -webkit-transition-timing-function: ease;
+  transition-timing-function: ease;
+}
+
 // Change the layout for PC layout
 @media (min-width: 768px) {
   .navbar-collapse {
@@ -60,6 +263,10 @@ section {
     // by set flex item's width back to auto
     -ms-flex-preferred-size: auto;
     flex-basis: auto;
+
+    span.my-arrow {
+      display: none;
+    }
   }
 }
 // Move the site logo to the center in mobile layout
@@ -76,7 +283,94 @@ section {
 .my-navbar-toggler-mobile {
   position: absolute;
   right: 0;
+
+  &[aria-expanded="true"] {
+    .hamburger-inner {
+      transform: translate3d(0,5px,0) rotate(45deg);
+
+      &:before {
+        transform: rotate(-45deg) translate3d(-5px, -4px, 0px);
+        opacity: 0;
+      }
+
+      &:after {
+        transform: translate3d(0,-12px,0) rotate(-90deg);
+      }
+    }
+  }
 }
+// Change hamburger default color
+.navbar-inverse .navbar-toggle {
+	border-color: white;
+
+  &:hover,
+  &:focus {
+    // background-color: $gray;
+    background-image: $hover-box-gradient;
+  }
+}
+
+.hamburger-box {
+  position: relative;
+  display: inline-block;
+  width: 22px;
+  height: 12px;
+}
+
+.hamburger-inner,
+.hamburger-inner::after,
+.hamburger-inner::before {
+  position: absolute;
+  width: 22px;
+  height: 2px;
+  transition-timing-function: ease;
+  transition-duration: 0.3s;
+  transition-property: transform;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.hamburger-inner {
+  display: block;
+  &:before,
+  &:after {
+    display: block;
+    content: "";
+  }
+
+  &:before {
+    top: 6px;
+    transition-timing-function: ease;
+  	transition-duration: 0.3s;
+  	transition-property: transform,opacity;
+  }
+
+  &:after {
+    top: 12px;
+    bottom: -6px;
+  }
+}
+
+.hamburger-label {
+  font-weight: 600;
+  display: inline-block;
+  margin-right: 5px;
+  vertical-align: middle;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+
+  &:hover {
+    color: rgba(255, 255, 255, 1);
+  }
+}
+
+.my-navbar-toggle {
+  // padding: 7.5px 7.5px;
+  margin: 2.9px 10px 2.9px 5px;
+  border: 1px solid transparent;
+  border-radius: 5px 5px 5px 5px;
+}
+
 /* typography */
 h1,
 h2,

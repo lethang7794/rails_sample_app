@@ -20,6 +20,8 @@ gem 'faker', '~> 2.11'
 gem 'will_paginate', '~> 3.3'
 gem 'bootstrap-will_paginate', '~> 1.0'
 
+# Figure the active in navbar
+gem 'active_link_to', '~> 1.0', '>= 1.0.5'
 # Add validation to Active Storage
 gem 'active_storage_validations', '~> 0.1'
 

@@ -1,36 +1,80 @@
+<div class="pride-banner">
+  <div class="pride-wrapper">
+    <p>SAMPLE APP supports LGBTQ+ community.</p>
+  </div>
+</div>
+
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
 
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-brand">
     <%= link_to 'Sample App', root_path , id: 'logo' %>
   </div>
-  <button type="button" class="navbar-toggle collapsed my-navbar-toggler-mobile" data-toggle="collapse" data-target="#bs-navbar-collapse-1" aria-expanded="false">
-    <span class="sr-only">Toggle navigation</span>
-    <span class="icon-bar"></span>
-    <span class="icon-bar"></span>
-    <span class="icon-bar"></span>
+
+  <button type="button" class="navbar-toggle my-navbar-toggle collapsed my-navbar-toggler-mobile" data-toggle="collapse" data-target="#bs-navbar-collapse-1" aria-expanded="false">
+    <!-- <span class="hamburger-label">Menu</span> -->
+    <div class="hamburger-box">
+      <div class="hamburger-inner"></div>
+    </div>
   </button>
 
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse my-navbar-collapse" id="bs-navbar-collapse-1">
     <ul class="nav navbar-nav navbar-right">
-      <li><%= link_to 'Home', root_path %></li>
+      <li>
+        <%= active_link_to root_path, active: [static_pages: :home] do %>
+          <span class="my-label">Home</span>
+          <span class="my-arrow">
+            <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 16">
+              <path d="M12.58,0a1.19,1.19,0,0,0-1,.89,1.53,1.53,0,0,0,.29,1.42l3.71,4.53H1c-.63,0-1,.48-1,1.22a1.09,1.09,0,0,0,1.2,1.1H15.61l-3.73,4.52a1.52,1.52,0,0,0,0,1.91,1,1,0,0,0,1.63,0L19.18,9,20,8l-.82-.94L13.51.41A1,1,0,0,0,12.58,0Z"></path>
+            </svg>
+          </span>
+        <% end %>
+      </li>
       <% if logged_in? %>
-        <li><%= link_to 'Users', users_path %></li>
+        <li>
+          <%= active_link_to users_path, active: [users: :index] do %>
+            <span class="my-label">Explore</span>
+            <span class="my-arrow">
+              <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 16">
+                <path d="M12.58,0a1.19,1.19,0,0,0-1,.89,1.53,1.53,0,0,0,.29,1.42l3.71,4.53H1c-.63,0-1,.48-1,1.22a1.09,1.09,0,0,0,1.2,1.1H15.61l-3.73,4.52a1.52,1.52,0,0,0,0,1.91,1,1,0,0,0,1.63,0L19.18,9,20,8l-.82-.94L13.51.41A1,1,0,0,0,12.58,0Z"></path>
+              </svg>
+            </span>
+          <% end %>
+        </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            Account
-            <b class="caret"></b>
+            <span class="my-label">Account</span>
+            <span class="my-caret">
+              <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
+                <title>dropdown-caret</title>
+                <path d="M20,7a1,1,0,0,0-.7.31L12,14.59,4.72,7.31A1,1,0,0,0,4,7a1,1,0,0,0-.7,1.71l8,8a1,1,0,0,0,1.41,0l8-8a1,1,0,0,0,.23-1.1A1,1,0,0,0,20,7Z"></path>
+              </svg>
+            </span>
           </a>
           <ul class="dropdown-menu">
-            <li><%= link_to 'Profile', current_user %></li>
-            <li><%= link_to 'Settings', edit_user_path(current_user) %></li>
+            <li>
+              <%= link_to current_user do %>
+                Profile
+              <% end %>
+            </li>
+            <li>
+              <%= link_to edit_user_path(current_user) do %>
+                Settings
+              <% end %>
+            </li>
             <li class="divider"></li>
-            <li><%= link_to 'Log out', logout_path, method: 'delete' %></li>
+            <li>
+              <%= link_to logout_path, method: 'delete' do %>
+                Log out
+              <% end %>
+            </li>
           </ul>
         </li>
       <% else %>
-        <li><%= link_to 'Log in', login_path %></li>
+        <li><%= active_link_to 'Log in', login_path, active: [sessions: :new] %></li>
+        <li><%= active_link_to 'Sign up', signup_path, active: [users: :new] %></li>
       <% end %>
     </ul>
   </div>
