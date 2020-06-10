@@ -233,7 +233,7 @@ div.collapse {
 
 .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
   box-shadow: none; // Turn off box-shadow from Bootstrap
-  border-color: rgba(255, 255, 255, 0.3); 
+  border-color: rgba(255, 255, 255, 0.3);
 }
 
 // Add spacing to the navigation bar
@@ -290,6 +290,61 @@ div.collapse {
     // background-color: $gray;
     background-image: $hover-box-gradient;
   }
+}
+
+.hamburger-box {
+  position: relative;
+  display: inline-block;
+  width: 22px;
+  height: 12px;
+}
+
+.hamburger-inner,
+.hamburger-inner::after,
+.hamburger-inner::before {
+  position: absolute;
+  width: 22px;
+  height: 2px;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+.hamburger-inner {
+  display: block;
+  &:before,
+  &:after {
+    display: block;
+    content: "";
+  }
+
+  &:before {
+    top: 6px;
+  }
+
+  &:after {
+    top: 12px;
+    bottom: -6px;
+  }
+}
+
+.hamburger-label {
+  font-weight: 600;
+  display: inline-block;
+  margin-right: 5px;
+  vertical-align: middle;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+
+  &:hover {
+    color: rgba(255, 255, 255, 1);
+  }
+}
+
+.my-navbar-toggle {
+  // padding: 7.5px 7.5px;
+  margin: 2.9px 10px 2.9px 5px;
+  border: 1px solid transparent;
+  border-radius: 5px 5px 5px 5px;
 }
 
 /* typography */
