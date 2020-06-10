@@ -56,25 +56,33 @@
           <ul class="dropdown-menu">
             <li>
               <%= link_to current_user do %>
-                Profile
+                <span class="my-label">Profile</span>
               <% end %>
             </li>
             <li>
               <%= link_to edit_user_path(current_user) do %>
-                Settings
+                <span class="my-label">Settings</span>
               <% end %>
             </li>
             <li class="divider"></li>
             <li>
               <%= link_to logout_path, method: 'delete' do %>
-                Log out
+                <span class="my-label">Log out</span>
               <% end %>
             </li>
           </ul>
         </li>
       <% else %>
-        <li><%= active_link_to 'Log in', login_path, active: [sessions: :new] %></li>
-        <li><%= active_link_to 'Sign up', signup_path, active: [users: :new] %></li>
+        <li>
+          <%= active_link_to login_path, active: [sessions: :new] do %>
+            <span class="my-label">Log in</span>
+          <% end %>
+        </li>
+        <li>
+          <%= active_link_to signup_path, active: [users: :new] do %>
+            <span class="my-label">Sign up</span>
+          <% end %>
+        </li>
       <% end %>
     </ul>
   </div>
