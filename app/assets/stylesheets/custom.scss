@@ -279,8 +279,22 @@ div.collapse {
 .my-navbar-toggler-mobile {
   position: absolute;
   right: 0;
-}
 
+  &[aria-expanded="true"] {
+    .hamburger-inner {
+      transform: translate3d(0,5px,0) rotate(45deg);
+
+      &:before {
+        transform: rotate(-45deg) translate3d(-5px, -4px, 0px);
+        opacity: 0;
+      }
+
+      &:after {
+        transform: translate3d(0,-12px,0) rotate(-90deg);
+      }
+    }
+  }
+}
 // Change hamburger default color
 .navbar-inverse .navbar-toggle {
 	border-color: white;
@@ -305,6 +319,9 @@ div.collapse {
   position: absolute;
   width: 22px;
   height: 2px;
+  transition-timing-function: ease;
+  transition-duration: 0.3s;
+  transition-property: transform;
   border-radius: 4px;
   background-color: #fff;
 }
@@ -319,6 +336,9 @@ div.collapse {
 
   &:before {
     top: 6px;
+    transition-timing-function: ease;
+  	transition-duration: 0.3s;
+  	transition-property: transform,opacity;
   }
 
   &:after {
