@@ -231,19 +231,27 @@ div.collapse {
   flex-grow: 1;
 }
 
-
 .navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
   box-shadow: none; // Turn off box-shadow from Bootstrap
   border-color: rgba(255, 255, 255, 0.3); 
 }
 
-
 // Add spacing to the navigation bar
-
 .my-navbar-collapse {
   padding-left: 15px!important;
   padding-right: 15px!important;
 }
+
+// Make the hamburger menu fullscreen
+#bs-navbar-collapse-1 {
+  height: 100vh;
+  max-height: none;
+  -webkit-transition-duration: 0.7s;
+  transition-duration: 0.7s;
+  -webkit-transition-timing-function: ease;
+  transition-timing-function: ease;
+}
+
 // Change the layout for PC layout
 @media (min-width: 768px) {
   .navbar-collapse {
