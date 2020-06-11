@@ -16,4 +16,9 @@ class Micropost < ApplicationRecord
   def display_image
     image.variant(resize_to_limit: [500, 500])
   end
+
+  # Returns url for resized image.
+  def image_url
+    Rails.application.routes.url_helpers.rails_representation_url(image.variant(resize_to_limit: [500, 500]).processed, only_path: true)
+  end
 end
