@@ -649,6 +649,20 @@ ul.users { // Users index
   }
 }
 
+
+// Fix the user's new micropost sidebar
+.affix {
+  position: fixed;
+}
+
+// Unfix the user's new micropost sidebar
+@media (max-width: 991.98px) {
+  .affix {
+    position: static;
+  }
+}
+// Fix the user's new micropost sidebar
+
 aside {
   div.field {
     textarea {
