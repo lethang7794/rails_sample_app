@@ -248,6 +248,7 @@ div.collapse {
 
 // Make the hamburger menu fullscreen
 #bs-navbar-collapse-1 {
+  overflow-y: hidden;
   height: 100vh;
   max-height: none;
   -webkit-transition-duration: 0.7s;
