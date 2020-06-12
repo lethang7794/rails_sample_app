@@ -1,26 +1,34 @@
-<li id="micropost-<%= micropost.id %>">
-	<%= link_to gravatar_for(micropost.user, size:50), micropost.user %>
-
-	<span class="user">
-		<%= link_to micropost.user.name, micropost.user %>
-	</span>
-
-	<span class="timestamp">
-		·
-		<%= time_ago_in_words(micropost.created_at) %>
-	</span>
-
-	<% if current_user?(micropost.user) %>
-		<span class="delete">
-			·
-			<%= link_to 'delete', micropost, method: :delete, data: { confirm: 'Are you sure?'} %>
-		</span>
-	<% end %>
-
-	<span class="content">
-		<%= micropost.content %>
-		<div class="image center">
-			<%= image_tag micropost.display_image if micropost.image.attached? %>
+<article class="micropost-<%= micropost.id %>">
+	<div class="micropost-container">
+		<div class="my-flex-container flex-row micropost-flex-container">
+			<div class="micropost-avatar">
+				<%= link_to gravatar_for(micropost.user, size:50), micropost.user %>
+			</div>
+			<div class="my-flex-container flex-column micropost-main">
+				<div>
+					<span class="user">
+						<%= link_to micropost.user.name, micropost.user %>
+					</span>
+					<span class="timestamp">
+						·
+						<%= time_ago_in_words(micropost.created_at) %>
+					</span>
+					<% if current_user?(micropost.user) %>
+						<span class="delete">
+							·
+							<%= link_to 'delete', micropost, method: :delete, data: { confirm: 'Are you sure?'} %>
+						</span>
+					<% end %>
+				</div>
+				<div>
+					<%= micropost.content %>
+					<% if micropost.image.attached? %>
+						<div class="image-block micropost-image-cover" style="background-image: url('<%= micropost.image_url %>');">
+							<div class="micropost-image"></div>
+						</div>
+					<% end %>
+				</div>
+			</div>
 		</div>
-	</span>
-</li>
+	</div>
+</article>
