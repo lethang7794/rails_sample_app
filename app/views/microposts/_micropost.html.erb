@@ -26,6 +26,30 @@
 						<div class="image-block micropost-image-cover" style="background-image: url('<%= micropost.image_url %>');">
 							<div class="micropost-image"></div>
 						</div>
+
+						<!-- IMAGE MODAL - BEGIN -->
+							<!-- Button trigger modal -->
+							<div class="flex-center">
+								<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#my-micropost-modal-<%= micropost.id %>">
+								  Show large image
+								</button>
+							</div>
+							<!-- Modal -->
+							<div class="modal fade" id="my-micropost-modal-<%= micropost.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+							  <div class="modal-dialog" role="document">
+							    <div class="modal-content">
+							      <div class="modal-body">
+											<div class="flex-center max-dem no-scroll">
+												<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+												<div>
+													<%= image_tag micropost.image %>
+												</div>
+											</div>
+							      </div>
+							    </div>
+							  </div>
+							</div>
+						<!-- IMAGE MODAL - END -->
 					<% end %>
 				</div>
 			</div>
