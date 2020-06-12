@@ -649,6 +649,59 @@ ul.users { // Users index
   }
 }
 
+/* Microposts Flex - BEGIN */
+.my-flex-container {
+  display: flex;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+// Add border: Only first micropost need top border.
+.microposts-flex-container:first-of-type {
+  border-top: 1px solid #e8e8e8;
+}
+
+.micropost-container {
+  // Add some spacing to breath
+  padding: 15px;
+  // Add border: Each micropost need border on three sides.
+  border-bottom: 1px solid #e8e8e8;
+  border-left: 1px solid #e8e8e8;
+  border-right: 1px solid #e8e8e8;
+
+  .micropost-avatar {
+    flex: 0 0 50px; // Set width of flex item: Fixed width
+
+    .gravatar {
+      margin: 0;
+    }
+  }
+
+  .micropost-main {
+    flex: 1; //Set width of flex item: Fill up remaining spacing
+    padding-left: 10px;
+
+    .image-block {
+      height: 350px; // 1 height for all resized image.
+      border-radius: 14px;
+      border: 1px solid #e8e8e8;
+      margin-top: 10px;
+
+      .micropost-image {}
+    }
+
+    .micropost-image-cover {
+      background-size: cover;
+      background-position: center center;
+    }
+  }
+}
+/* Microposts Flex - BEGIN */
 
 // Fix the user's new micropost sidebar
 .affix {
