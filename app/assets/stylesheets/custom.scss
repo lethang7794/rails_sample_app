@@ -188,10 +188,31 @@ div.collapse {
   &:hover {
     color: white;
     background: $hover-box-gradient; // Color of dropdown-menu
+    .my-caret {
+      svg {
+        filter:
+          brightness(1);
+      }
+    }
   }
 
-  &[aria-expanded="true"] .my-caret svg {
-    transform: rotate(180deg);
+  &[aria-expanded="true"] {
+    .my-caret {
+      svg {
+        transform: rotate(180deg);
+        filter:
+          brightness(0.7);
+      }
+    }
+
+    &:hover {
+      .my-caret {
+        svg {
+          filter:
+            brightness(1);
+        }
+      }
+    }
   }
 }
 
@@ -201,9 +222,9 @@ div.collapse {
 }
 
 // Change to SVG caret
-.navbar-nav.navbar-right li a .my-arrow,
-.nav.navbar-nav.navbar-right .dropdown .dropdown-toggle .my-caret,
-.nav.navbar-nav.navbar-right .dropdown.open .dropdown-toggle .my-caret {
+.navbar-collapse li a .my-arrow,
+.dropdown .dropdown-toggle .my-caret,
+.dropdown.open .dropdown-toggle .my-caret {
 	float: right;
 	width: 1.5rem;
 	height: 1.5rem;
@@ -211,7 +232,7 @@ div.collapse {
   svg {
     fill: white;
     filter:
-      brightness(1);
+      brightness(0.7);
   }
 }
 
@@ -227,6 +248,20 @@ div.collapse {
   &:hover {
     .my-arrow {
       transform: translate(5px,0);
+    }
+
+    svg {
+      filter:
+        brightness(1);
+    }
+  }
+}
+
+a.dropdown-toggle[aria-expanded="true"] {
+  &:hover {
+    svg {
+      filter:
+        brightness(1);
     }
   }
 }
@@ -303,6 +338,18 @@ div.collapse {
   position: absolute;
   right: 0;
 
+
+  // Change hamburger button color when hover
+  &:hover {
+    .hamburger-inner {
+      background-color: rgba(255, 255, 255, 1);
+      &:before,
+      &:after {
+        background-color: rgba(255, 255, 255, 1);
+      }
+    }
+  }
+
   &[aria-expanded="true"] {
     .hamburger-inner {
       transform: translate3d(0,5px,0) rotate(45deg);
@@ -347,7 +394,7 @@ div.collapse {
   transition-duration: 0.3s;
   transition-property: transform;
   border-radius: 4px;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.7);
 }
 
 .hamburger-inner {
