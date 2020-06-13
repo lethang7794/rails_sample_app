@@ -124,7 +124,9 @@ section {
 
 
 $current-page-gradient: linear-gradient(270deg, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 0%, rgba(18,95,139,1) 100%);
-$hover-box-gradient: linear-gradient(270deg, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 0%, rgba(18,95,139,1) 100%);
+// $hover-box-gradient: linear-gradient(270deg, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 0%, rgba(18,95,139,1) 100%);
+$hover-box-gradient: transparent;
+
 div.collapse {
   ul.nav > li {
     // Add current page indicator for navbar links
@@ -300,13 +302,14 @@ div.collapse {
     }
   }
 }
+
 // Change hamburger default color
 .navbar-inverse .navbar-toggle {
-	border-color: white;
+	border-color: transparent;
 
   &:hover,
   &:focus {
-    // background-color: $gray;
+    background-color: transparent; // Overwrite Bootstrap's default value
     background-image: $hover-box-gradient;
   }
 }
