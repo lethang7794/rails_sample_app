@@ -338,6 +338,15 @@ a.dropdown-toggle[aria-expanded="true"] {
   position: absolute;
   right: 0;
 
+  // Hamburger's middle line disappear when hover
+  &:hover {
+    .hamburger-inner {
+      &:before {
+        transform: translate3d(15px, 0, 0px);
+        opacity: 0;
+      }
+    }
+  }
 
   // Change hamburger button color when hover
   &:hover {
@@ -355,7 +364,7 @@ a.dropdown-toggle[aria-expanded="true"] {
       transform: translate3d(0,5px,0) rotate(45deg);
 
       &:before {
-        transform: rotate(-45deg) translate3d(-5px, -4px, 0px);
+        transform: rotate(-45deg) translate3d(15px, -4px, 0px);
         opacity: 0;
       }
 
