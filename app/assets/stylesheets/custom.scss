@@ -215,6 +215,22 @@ div.collapse {
   }
 }
 
+// Add animation to arrow indicator
+.my-arrow {
+  transition-duration: .2s;
+  transition-timing-function: linear;
+  transition-delay: 0s;
+}
+
+.navbar-collapse.collapse.in a {
+  &:active,
+  &:hover {
+    .my-arrow {
+      transform: translate(5px,0);
+    }
+  }
+}
+
 // Navbar link texts
 .my-label {
   margin-right: 7.5px;
