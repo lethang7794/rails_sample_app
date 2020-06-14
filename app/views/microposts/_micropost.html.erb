@@ -21,7 +21,11 @@
 					<% end %>
 				</div>
 				<div>
-					<%= micropost.content %>
+					<div >
+						<span class="content">
+							<%= micropost.content %>
+						</span>
+					</div>
 					<% if micropost.image.attached? %>
 						<div class="image-block micropost-image-cover" style="background-image: url('<%= micropost.image_url %>');" data-toggle="modal" data-target="#my-micropost-modal-<%= micropost.id %>">
 							<div class="micropost-image"></div>

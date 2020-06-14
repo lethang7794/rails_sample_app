@@ -715,10 +715,6 @@ ul.users { // Users index
     }
   }
 
-  .timestamp {
-    color: rgb(136, 153, 166); // From Twitter's tweet
-  }
-
   .gravatar {
     margin-right: 10px;
     margin-bottom: 10px;
@@ -761,6 +757,21 @@ ul.users { // Users index
   .micropost-main {
     flex: 1; //Set width of flex item: Fill up remaining spacing
     padding-left: 10px;
+
+    .user {
+      font-weight: 700;
+      a {
+        color: black;
+      }
+    }
+
+    .timestamp {
+      color: rgb(136, 153, 166); // From Twitter's tweet
+    }
+
+    .content {
+      font-weight: 400;
+    }
 
     .image-block {
       height: 350px; // 1 height for all resized image.
