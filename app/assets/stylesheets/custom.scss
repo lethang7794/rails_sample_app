@@ -738,56 +738,64 @@ ul.users { // Users index
   border-top: 1px solid #e8e8e8;
 }
 
-.micropost-container {
-  // Add some spacing to breath
-  padding: 15px;
-  // Add border: Each micropost need border on three sides.
-  border-bottom: 1px solid #e8e8e8;
-  border-left: 1px solid #e8e8e8;
-  border-right: 1px solid #e8e8e8;
+article {
+  .micropost-container {
+    // Add some spacing to breath
+    padding: 15px;
+    // Add border: Each micropost need border on three sides.
+    border-bottom: 1px solid #e8e8e8;
+    border-left: 1px solid #e8e8e8;
+    border-right: 1px solid #e8e8e8;
 
-  .micropost-avatar {
-    flex: 0 0 50px; // Set width of flex item: Fixed width
+    .micropost-avatar {
+      flex: 0 0 50px; // Set width of flex item: Fixed width
 
-    .gravatar {
-      margin: 0;
-    }
-  }
-
-  .micropost-main {
-    flex: 1; //Set width of flex item: Fill up remaining spacing
-    padding-left: 10px;
-
-    .user {
-      font-weight: 700;
-      a {
-        color: black;
+      .gravatar {
+        margin: 0;
       }
     }
 
-    .timestamp {
-      color: rgb(136, 153, 166); // From Twitter's tweet
-    }
+    .micropost-main {
+      flex: 1; //Set width of flex item: Fill up remaining spacing
+      padding-left: 10px;
 
-    .content {
-      font-weight: 400;
-    }
+      .user {
+        font-weight: 700;
+        a {
+          color: black;
+        }
+      }
 
-    .image-block {
-      height: 350px; // 1 height for all resized image.
-      border-radius: 14px;
-      border: 1px solid #e8e8e8;
-      margin-top: 10px;
+      .timestamp {
+        color: rgb(136, 153, 166); // From Twitter's tweet
+      }
 
-      .micropost-image {}
-    }
+      .content {
+        font-weight: 400;
+      }
 
-    .micropost-image-cover {
-      background-size: cover;
-      background-position: center center;
+      .image-block {
+        height: 350px; // 1 height for all resized image.
+        border-radius: 14px;
+        border: 1px solid #e8e8e8;
+        margin-top: 10px;
+
+        .micropost-image {}
+      }
+
+      .micropost-image-cover {
+        background-size: cover;
+        background-position: center center;
+      }
     }
   }
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    transition: 0.2s;
+  }
 }
+
 /* Microposts Flex - END */
 
 /* DIMMER - BEGIN */
