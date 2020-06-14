@@ -838,12 +838,23 @@ aside {
       }
 
       .close {
-        font-size: 50px;
         // Move the button to top right
         position: absolute;
         right: 20px;
         top: 20px;
         color: rgb(255, 255, 255);
+        opacity: 1; // Overwrite Bootstrap's default value
+      .button-bg-wrapper {
+        .button-bg {
+          .close-button {
+            height: 1em;
+            width: 1em;
+
+            svg {
+              fill: white;
+            }
+          }
+        }
       }
     }
   }
