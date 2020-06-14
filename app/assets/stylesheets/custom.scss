@@ -844,8 +844,26 @@ aside {
         top: 20px;
         color: rgb(255, 255, 255);
         opacity: 1; // Overwrite Bootstrap's default value
+        outline: none; // Hide the square outline when click (and after click) the close button
+      }
+
       .button-bg-wrapper {
+        transition-duration: 0.5s;
+      	transition-property: background-color;
+
         .button-bg {
+          border-radius: 9999px;
+          height: 40px;
+          width: 40px;
+
+          background-color: rgba(13, 51, 64, 0.77);
+          &:hover {
+            background-color: rgba(64, 35, 33, 0.77);
+          }
+          &:active {
+            background-color: rgba(61, 92, 102, 0.77);
+          }
+
           .close-button {
             height: 1em;
             width: 1em;
