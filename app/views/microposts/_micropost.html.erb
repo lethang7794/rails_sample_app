@@ -2,7 +2,10 @@
 	<div class="micropost-container">
 		<div class="my-flex-container flex-row micropost-flex-container">
 			<div class="micropost-avatar">
-				<%= link_to gravatar_for(micropost.user, size:50), micropost.user %>
+				<%= link_to micropost.user, class: "dimmer-wrapper" do %>
+					<%= gravatar_for(micropost.user, size:50) %>
+					<div class="dimmer transition-03s"></div>
+				<% end %>
 			</div>
 			<div class="my-flex-container flex-column micropost-main">
 				<div>

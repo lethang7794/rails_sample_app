@@ -788,7 +788,36 @@ ul.users { // Users index
     }
   }
 }
-/* Microposts Flex - BEGIN */
+/* Microposts Flex - END */
+
+/* DIMMER - BEGIN */
+.transition-1s {
+  transition-property: all;
+  transition-duration: 1s;
+}
+
+.transition-03s {
+  transition-property: all;
+  transition-duration: 0.3s;
+}
+
+.dimmer-wrapper {
+  position: relative;
+  display: flex;
+
+  .dimmer {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    &:hover {
+      background-color: rgba(26, 26, 26, 0.15);
+    }
+  }
+}
+/* DIMMER - END */
 
 // Fix the user's new micropost sidebar
 .affix {
