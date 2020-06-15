@@ -524,14 +524,6 @@ aside {
   section.user_info {
     margin-top: 20px;
 
-    .flex-50 {
-      flex: 0 0 50px; // Set width of flex item: Fixed width
-    }
-
-    .flex-80 {
-      flex: 0 0 80px;
-    }
-
     .gravatar {
       margin: 0;
     }
@@ -750,6 +742,15 @@ ul.users { // Users index
 .flex-column {
   flex-direction: column;
 }
+
+.flex-50 {
+  flex: 0 0 50px; // Set width of flex item: Fixed width
+}
+
+.flex-80 {
+  flex: 0 0 80px;
+}
+
 // Add border: Only first micropost need top border.
 .microposts-flex-container:first-of-type {
   border-top: 1px solid #e8e8e8;
