@@ -577,20 +577,16 @@ aside {
 }
 
 .stats {
-  overflow: auto;
+  .stat {
+    margin-right: 10px;
+  }
+  overflow: visible;
+
   margin-top: 0;
   padding: 0;
 
   div.stats {
     a {
-      float: left;
-      padding: 0 10px;
-      border-left: 1px solid $gray-lighter;
-
-      &:first-child {
-        padding-left: 0;
-        border-left: 0;
-      }
       color: gray;
 
       strong {
@@ -985,3 +981,10 @@ aside {
 }
 
 /* MICROPOST IMAGE MODAL */
+
+/* FLEX - BEGIN */
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+/* FLEX - END */
