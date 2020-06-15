@@ -1,4 +1,12 @@
-<%= link_to gravatar_for(current_user, size: 50), current_user %>
-<h1><%= link_to current_user.name, current_user %></h1>
-<span><%= link_to 'view my profile', user_path(current_user) %></span>
-<span><%=  %> <%= pluralize(current_user.microposts.count, 'micropost') %></span>
+<div class="flex flex-column">
+  <div class="flex flex-row">
+    <div class="flex-50">
+      <%= link_to gravatar_for(current_user, size: 50), current_user %>
+    </div>
+    <div class="info">
+      <h1><%= link_to current_user.name, current_user %></h1>
+      <span><%= link_to 'view my profile', user_path(current_user) %></span>
+      <span><%=  %> <%= pluralize(current_user.microposts.count, 'micropost') %></span>
+    </div>
+  </div>
+</div>

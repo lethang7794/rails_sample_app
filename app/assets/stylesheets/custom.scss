@@ -523,6 +523,19 @@ footer {
 aside {
   section.user_info {
     margin-top: 20px;
+
+    .flex-50 {
+      flex: 0 0 50px; // Set width of flex item: Fixed width
+    }
+
+    .flex-80 {
+    .gravatar {
+      margin: 0;
+    }
+
+    .info {
+      margin-left: 10px;
+    }
   }
 
   section {
@@ -722,7 +735,8 @@ ul.users { // Users index
 }
 
 /* Microposts Flex - BEGIN */
-.my-flex-container {
+.my-flex-container,
+.flex {
   display: flex;
 }
 
