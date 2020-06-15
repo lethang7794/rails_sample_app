@@ -2,13 +2,22 @@
 <div class="row">
 	<aside class="col-md-4">
 		<section class="user_info">
-			<h1>
-				<%= gravatar_for @user %>
-				<%= @user.name %>
-			</h1>
-			<section class="stats">
-				<%= render 'shared/stats' %>
-			</section>
+			<div class="flex flex-row">
+				<div class="flex-80 flex flex-column">
+					<div class="flex-80">
+			      <%= gravatar_for @user %>
+			    </div>
+				</div>
+				<div class="info">
+					<h1>
+						<%= @user.name %>
+					</h1>
+					<section class="stats">
+						<%= render 'shared/stats' %>
+					</section>
+				</div>
+			</div>
+
 		</section>
 	</aside>
 	<div class="col-md-8">
