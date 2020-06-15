@@ -5,8 +5,9 @@
 			<div class="flex flex-row">
 				<div class="flex-80 flex flex-column">
 					<div class="flex-80">
-						<div data-toggle="modal" data-target="#my-micropost-modal-<%= @user.id %>">
+						<div class="dimmer-wrapper" data-toggle="modal" data-target="#my-micropost-modal-<%= @user.id %>">
 							<%= gravatar_for @user %>
+			        <div class="dimmer transition-03s"></div>
 						</div>
 						<!-- MODAL - BEGIN -->
 						<div class="modal fade" id="my-micropost-modal-<%= @user.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
