@@ -937,7 +937,13 @@ aside {
       .button-bg-wrapper {
 
         .button-bg {
-          border-radius: 9999px;
+          // border-radius: 9999px; // Twitter's way to make circle
+          // Facebook's way to make circle
+          border-top-left-radius: 50%;
+          border-top-right-radius: 50%;
+          border-bottom-right-radius: 50%;
+          border-bottom-left-radius: 50%;
+
           height: 40px;
           width: 40px;
 
