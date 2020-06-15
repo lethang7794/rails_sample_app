@@ -27,7 +27,9 @@
 			<ol class="users follow">
 				<%= render @users %>
 			</ol>
-			<%= will_paginate %>
+			<div class="flex-center">
+				<%= will_paginate @microposts %>
+			</div>
 		<% end %>
 	</div>
 	<!-- Following/Followers list - End -->

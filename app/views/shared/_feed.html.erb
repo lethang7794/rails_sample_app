@@ -5,7 +5,7 @@
     <%= render @feed_items %>
   </div>
   <!-- FLEX MICROPOSTS -->
-  <div class="text-center">
+  <div class="flex-center">
     <%= will_paginate @feed_items, params: { controller: 'static_pages', action: 'home' } %>
   </div>
 <% end %>
