@@ -935,14 +935,14 @@ aside {
       }
 
       .button-bg-wrapper {
-        transition-duration: 0.5s;
-      	transition-property: background-color;
 
         .button-bg {
           border-radius: 9999px;
           height: 40px;
           width: 40px;
 
+          transition-duration: 0.3s;
+          transition-property: all;
           background-color: rgba(13, 51, 64, 0.77);
           &:hover {
             background-color: rgba(64, 35, 33, 0.77);
