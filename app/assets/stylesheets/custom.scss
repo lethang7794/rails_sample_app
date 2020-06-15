@@ -680,6 +680,7 @@ div.bottom-text {
   }
 }
 
+/* Old Users Index - BEGIN*/
 /* Users index + Following/Followers list*/
 ol.users, // Following/Followers list
 ul.users { // Users index
@@ -696,6 +697,30 @@ ul.users { // Users index
     padding: 0
   }
 }
+/* Old Users Index - END */
+
+/* New Users Index - BEGIN */
+.user-container {
+  padding: 10px;
+  border-bottom: 1px solid $gray-lighter;
+
+  .gravatar {
+    margin: 0;
+  }
+
+  .main-content {
+    padding-left: 10px;
+  }
+}
+
+.user-container:last-of-type {
+  border-bottom: none;
+}
+
+.flex-grow-1 {
+  flex: 1;
+}
+/* New Users Index - END*/
 
 /* Microposts*/
 .microposts {
