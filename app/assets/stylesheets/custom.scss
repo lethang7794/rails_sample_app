@@ -707,6 +707,16 @@ ul.users { // Users index
   .main-content {
     padding-left: 10px;
   }
+
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    transition: 0.2s;
+  }
+
+  &:active {
+    background-color: rgba(0, 0, 0, 0.1);
+    transition: 0.2s;
+  }
 }
 
 .user-container:last-of-type {
@@ -831,6 +841,11 @@ article {
 
   &:hover {
     background-color: rgba(0, 0, 0, 0.05);
+    transition: 0.2s;
+  }
+
+  &:active {
+    background-color: rgba(0, 0, 0, 0.1);
     transition: 0.2s;
   }
 }
