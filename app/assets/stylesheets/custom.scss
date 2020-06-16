@@ -1003,6 +1003,21 @@ aside {
 
 /* MICROPOST IMAGE MODAL */
 
+/* Show large image button - BEGIN */
+.empty {
+  height: 0;
+}
+
+.show-large-button {
+  position: relative;
+  top: -40px;
+  right: 20px; // Half of top
+}
+
+.justify-content-flex-end {
+  justify-content: flex-end;
+}
+/* Show large image button - END */
 
 /* FLEX - BEGIN */
 .flex-wrap {
