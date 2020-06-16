@@ -1010,6 +1010,21 @@ aside {
 
 /* Following/Followers page - BEGIN */
 .follow-list {
+  .user_info {
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    font-size: 2em;
+  }
+
+  .gravatar {
+    margin: 0;
+  }
+
+  .info {
+    margin-left: 10px;
+  }
 
   .tab-container {
     a {
