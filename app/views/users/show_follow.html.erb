@@ -22,7 +22,17 @@
 	<!-- User overview - End -->
 	<!-- Following/Followers list - Begin -->
 	<div class="col-md-8">
-		<h3><%= @title %></h3>
+		<!-- User overview - End -->
+
+		<div class="flex flex-row">
+			<div class="flex-grow-1 flex-center tab-container">
+				<%= active_link_to 'Following', following_user_path(@user), class: "flex-grow-1 flex-center" %>
+			</div>
+			<div class="flex-grow-1 flex-center tab-container">
+				<%= active_link_to 'Followers', followers_user_path(@user), class: "flex-grow-1 flex-center" %>
+			</div>
+		</div>
+
 		<% if @users.any? %>
 			<ol class="users follow">
 				<%= render @users %>
