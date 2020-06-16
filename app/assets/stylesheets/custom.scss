@@ -1010,14 +1010,14 @@ aside {
 
 .right-bottom-corner {
   position: relative;
-  top: -40px;
-  right: 20px; // Half of top
+  top: -20px;
+  right: 20px;
 }
 
 .right-top-corner {
   position: relative;
-  top: 50px; // 40 + 10 margin-top
-  right: 20px; // Half of top
+  top: 40px; // 20 + 10 margin-top
+  right: 20px;
 }
 
 .justify-content-flex-end {
