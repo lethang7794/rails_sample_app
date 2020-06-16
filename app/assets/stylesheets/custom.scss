@@ -829,6 +829,16 @@ article {
         border: 1px solid #e8e8e8;
         margin-top: 10px;
 
+        .button-wrapper {
+          opacity: 0;
+        }
+
+        &:hover {
+          .button-wrapper {
+            opacity: 1;
+          }
+        }
+
         .micropost-image {}
       }
 
