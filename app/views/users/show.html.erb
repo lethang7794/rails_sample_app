@@ -6,7 +6,9 @@
 				<div class="flex-80 flex flex-column">
 					<div class="flex-80">
 						<div class="dimmer-wrapper" data-toggle="modal" data-target="#my-micropost-modal-<%= @user.id %>">
-							<%= gravatar_for @user %>
+							<div class="user_avatar">
+								<%= gravatar_for @user %>
+							</div>
 			        <div class="dimmer transition-03s"></div>
 						</div>
 						<!-- MODAL - BEGIN -->

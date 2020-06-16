@@ -17,7 +17,7 @@ class UserProfileTest < ActionDispatch::IntegrationTest
                   "Wrong title."
 
     assert_select 'h1', text: @user.name
-    assert_select 'h1>img.gravatar'
+    assert_select '.user_avatar>img.gravatar'
 
     assert_select 'h3>span', count: 1, text: @user.microposts.count.to_s
 
