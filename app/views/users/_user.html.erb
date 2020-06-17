@@ -17,6 +17,9 @@
                                             data: { confirm: 'You sure?'} %>
         <% end %>
       </span>
+      <span>
+        <%= render partial: 'shared/follow_form', locals: {user: user} %>
+      </span>
     </div>
   </div>
 </div>
