@@ -47,7 +47,8 @@
 		</section>
 	</aside>
 	<div class="col-md-8">
-		<%= render 'shared/follow_form' if logged_in? %>
+		<%= render partial: 'shared/follow_form', locals: { user: @user } if logged_in? %>
+
 		<% if @user.microposts.any? %>
 			<h3>
 				Microposts (<span><%= @user.microposts.count %></span>)
