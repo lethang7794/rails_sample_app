@@ -5,4 +5,7 @@ class Relationship < ApplicationRecord
   # Not needed from Rails 5
   validates :follower_id, presence: true
   validates :followed_id, presence: true
+
+  # Make sure a user cannot follow him/herself.
+  validates :follower_id, exclusion: { in: ->(relationship) { [relationship.followed_id] } }
 end
