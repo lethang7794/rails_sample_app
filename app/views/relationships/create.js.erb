@@ -1,2 +1,3 @@
-$("#followers").html("<%= @user.followers.count %>");
 $("#follow_form_for_<%= @user.id %>").html("<%= escape_javascript(render partial: 'shared/unfollow', locals: { user: @user }) %>");
+$("#followers_of_<%= @user.id %>").html("<%= @user.followers.count %>");
+$("#following_of_<%= current_user.id %>").html("<%= current_user.following.count %>");
