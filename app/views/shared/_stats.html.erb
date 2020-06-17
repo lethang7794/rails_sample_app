@@ -3,7 +3,7 @@
 <div class="flex flex-row flex-wrap stats">
   <div class="stat">
     <%= link_to following_user_path(@user) do %>
-      <strong id="following" class="stats">
+      <strong id="following_of_<%= @user.id %>" class="stats">
         <%= @user.following.count %>
       </strong>
       following
@@ -11,7 +11,7 @@
   </div>
   <div class="stat">
     <%= link_to followers_user_path(@user) do %>
-      <strong id="followers" class="stats">
+      <strong id="followers_of_<%= @user.id %>" class="stats">
         <%= @user.followers.count %>
       </strong>
       followers
