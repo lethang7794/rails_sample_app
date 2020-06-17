@@ -13,10 +13,13 @@
 						</div>
 					</div>
 				</div>
-				<div class="info flex-center">
+				<div class="info flex-center flex-column">
 					<h1>
 						<%= @user.name %>
 					</h1>
+					<section class="stats">
+						<%= render 'shared/stats' %>
+					</section>
 				</div>
 			</div>
 		</section>
