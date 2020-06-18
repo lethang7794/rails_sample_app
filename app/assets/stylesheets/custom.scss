@@ -853,7 +853,7 @@ article.micropost-container-wrapper {
     transition: 0.2s;
   }
 
-  &:active {
+  &:active:not(:has(:active)) {
     background-color: rgba(0, 0, 0, 0.1);
     transition: 0.2s;
   }
