@@ -92,6 +92,11 @@ class User < ApplicationRecord
 		Micropost.where("user_id = :user_id OR user_id IN (#{followed_ids})", user_id: id)
 	end
 
+	# Returns microposts with media.
+	def media
+		Micropost.joins(:image_attachment).where(user_id: id)
+	end
+
 	# Follows another user.
 	def follow(an_other_user)
 		following << an_other_user
