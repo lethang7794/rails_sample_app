@@ -710,18 +710,6 @@ ul.users { // Users index
   }
 }
 
-.user-container {
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-    transition: 0.2s;
-  }
-
-  &:active {
-    background-color: rgba(0, 0, 0, 0.1);
-    transition: 0.2s;
-  }
-}
-
 .user-container:last-of-type {
   border-bottom: none;
 }
@@ -793,18 +781,6 @@ ul.users { // Users index
   }
 }
 
-article.micropost-container-wrapper {
-  &:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-    transition: 0.2s;
-  }
-
-  &:active {
-    background-color: rgba(0, 0, 0, 0.1);
-    transition: 0.2s;
-  }
-}
-
 .micropost-container {
   // Add some spacing to breath
   padding: 15px;
@@ -868,6 +844,21 @@ article.micropost-container-wrapper {
 }
 
 /* Microposts Flex - END */
+
+/* User and Micropost hover - BEGIN */
+.user-container,
+article.micropost-container-wrapper {
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+    transition: 0.2s;
+  }
+
+  &:active {
+    background-color: rgba(0, 0, 0, 0.1);
+    transition: 0.2s;
+  }
+}
+/* User and Micropost hover - END */
 
 /* DIMMER - BEGIN */
 .transition-1s {
