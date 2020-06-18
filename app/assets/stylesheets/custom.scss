@@ -1061,25 +1061,25 @@ aside {
   .info {
     margin-left: 10px;
   }
+}
 
-  .tab-container {
-    a {
-      color: rgb(136, 153, 166);
+.tab-container {
+  a {
+    color: rgb(136, 153, 166);
 
-      &.active {
-        border-bottom: 3px solid rgb(29, 161, 242);
-        padding: 15px;
-        color: rgb(29, 161, 242)
-      }
-
-      &:hover {
-        text-decoration: none;
-      }
+    &.active {
+      border-bottom: 3px solid rgb(29, 161, 242);
+      padding: 15px;
+      color: rgb(29, 161, 242)
     }
 
     &:hover {
-      background-color: rgba(29, 161, 242, 0.2);
+      text-decoration: none;
     }
+  }
+
+  &:hover {
+    background-color: rgba(29, 161, 242, 0.2);
   }
 }
 /* Following/Followers page - END */
