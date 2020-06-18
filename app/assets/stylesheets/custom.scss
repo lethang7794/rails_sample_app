@@ -791,69 +791,7 @@ ul.users { // Users index
   }
 }
 
-article {
-  .micropost-container {
-    // Add some spacing to breath
-    padding: 15px;
-    // Add border: Each micropost need border on three sides.
-    border-bottom: 1px solid #e8e8e8;
-    border-left: 1px solid #e8e8e8;
-    border-right: 1px solid #e8e8e8;
-
-    .micropost-avatar {
-      flex: 0 0 50px; // Set width of flex item: Fixed width
-
-      .gravatar {
-        margin: 0;
-      }
-    }
-
-    .micropost-main {
-      flex: 1; //Set width of flex item: Fill up remaining spacing
-      padding-left: 10px;
-
-      .user {
-        font-weight: 700;
-        a {
-          color: black;
-        }
-      }
-
-      .timestamp {
-        color: rgb(136, 153, 166); // From Twitter's tweet
-      }
-
-      .content {
-        font-weight: 400;
-      }
-
-      .image-block {
-        height: 350px; // 1 height for all resized image.
-        border-radius: 14px;
-        border: 1px solid #e8e8e8;
-        margin-top: 10px;
-
-        .button-wrapper {
-          opacity: 0;
-        }
-
-        &:hover {
-          .button-wrapper {
-            opacity: 1;
-            transform: scale(1.1);
-          }
-        }
-
-        .micropost-image {}
-      }
-
-      .micropost-image-cover {
-        background-size: cover;
-        background-position: center center;
-      }
-    }
-  }
-
+article.micropost-container-wrapper {
   &:hover {
     background-color: rgba(0, 0, 0, 0.05);
     transition: 0.2s;
@@ -862,6 +800,68 @@ article {
   &:active {
     background-color: rgba(0, 0, 0, 0.1);
     transition: 0.2s;
+  }
+}
+
+.micropost-container {
+  // Add some spacing to breath
+  padding: 15px;
+  // Add border: Each micropost need border on three sides.
+  border-bottom: 1px solid #e8e8e8;
+  border-left: 1px solid #e8e8e8;
+  border-right: 1px solid #e8e8e8;
+
+  .micropost-avatar {
+    flex: 0 0 50px; // Set width of flex item: Fixed width
+
+    .gravatar {
+      margin: 0;
+    }
+  }
+
+  .micropost-main {
+    flex: 1; //Set width of flex item: Fill up remaining spacing
+    padding-left: 10px;
+
+    .user {
+      font-weight: 700;
+      a {
+        color: black;
+      }
+    }
+
+    .timestamp {
+      color: rgb(136, 153, 166); // From Twitter's tweet
+    }
+
+    .content {
+      font-weight: 400;
+    }
+
+    .image-block {
+      height: 350px; // 1 height for all resized image.
+      border-radius: 14px;
+      border: 1px solid #e8e8e8;
+      margin-top: 10px;
+
+      .button-wrapper {
+        opacity: 0;
+      }
+
+      &:hover {
+        .button-wrapper {
+          opacity: 1;
+          transform: scale(1.1);
+        }
+      }
+
+      .micropost-image {}
+    }
+
+    .micropost-image-cover {
+      background-size: cover;
+      background-position: center center;
+    }
   }
 }
 
