@@ -1088,6 +1088,19 @@ aside {
 /* Following/Followers page - END */
 
 /* Follow/Unfollow button - BEGIN */
+.follow-button,
+.unfollow-button {
+  // Layout
+  margin-left:   10px;
+
+  // Appearance
+  border-radius: 9999px;
+
+  // Font
+  font-weight:   700;
+  font-size:     15px;
+}
+
 .unfollow-button {
   // Replace 'Following' with 'Unfollow'
   &:hover {
