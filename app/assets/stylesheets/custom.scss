@@ -1086,3 +1086,18 @@ aside {
   }
 }
 /* Following/Followers page - END */
+
+/* Follow/Unfollow button - BEGIN */
+.unfollow-button {
+  // Replace 'Following' with 'Unfollow'
+  &:hover {
+    span {
+      display:        none;
+    }
+    &:before {
+      content:        "Unfollow";
+      display:        block;
+    }
+  }
+}
+/* Follow/Unfollow button - END */
