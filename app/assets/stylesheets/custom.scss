@@ -1127,6 +1127,13 @@ aside {
   font-weight:   700;
   font-size:     15px;
 
+  // Clear the outline box after click the button // WARNING: THIS WILL BREAK KEYBOARD NAVIGATION
+  &:focus,
+  &:focus:active { // Both Chrome and Firefox
+    outline:     none;
+  }
+}
+
 .follow-button {
   // Appearance
   color:              var(--followButton-textColor);
