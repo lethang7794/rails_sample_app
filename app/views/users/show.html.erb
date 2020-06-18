@@ -35,10 +35,17 @@
 						<!-- MODAL - END -->
 					</div>
 				</div>
-				<div class="info">
-					<h1>
-						<%= @user.name %>
-					</h1>
+				<div class="info flex flex-column flex-grow-1">
+					<div class="flex flew-row flex-align-items-center">
+						<div>
+							<h1>
+								<%= @user.name %>
+							</h1>
+						</div>
+						<div class="flex-grow-1 flex flew-row justify-content-flex-end">
+							<%= render partial: 'shared/follow_form', locals: { user: @user } if logged_in? %>
+						</div>
+					</div>
 					<section class="stats">
 						<%= render 'shared/stats' %>
 					</section>
@@ -47,8 +54,6 @@
 		</section>
 	</aside>
 	<div class="col-md-8">
-		<%= render partial: 'shared/follow_form', locals: { user: @user } if logged_in? %>
-
 		<% if @user.microposts.any? %>
 			<h3>
 				Microposts (<span><%= @user.microposts.count %></span>)
