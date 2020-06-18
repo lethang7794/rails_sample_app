@@ -1101,6 +1101,18 @@ aside {
 
   --followButton-active-bgColor:   rgba(29, 161, 242, 0.2);
   --followButton-active-border:    1px solid rgb(29, 161, 242);
+
+  // Unfollow button
+  --unfollowButton-textColor:      white;
+
+  --unfollowButton-bgColor:        rgba(29, 161, 242, 1);
+  --unfollowButton-border:         rgba(29, 161, 242, 1);
+
+  --unfollowButton-hover-bgColor:  rgb(202, 32, 85);
+  --unfollowButton-hover-border:   rgb(202, 32, 85);
+
+  --unfollowButton-active-bgColor: rgba(202, 32, 85, 0.8);
+  --unfollowButton-active-border:  rgba(202, 32, 85, 0.8);
 }
 
 .follow-button,
@@ -1152,5 +1164,25 @@ aside {
 
   // Appearance
   width: 100px; // Following/Unfollow need more space than Follow
+
+  color:              var(--unfollowButton-textColor);
+  background-color:   var(--unfollowButton-bgColor);
+  border:             var(--unfollowButton-border);
+
+  &:hover {
+    color:            var(--unfollowButton-textColor);
+    background-color: var(--unfollowButton-hover-bgColor);
+    border:           var(--unfollowButton-hover-border);
+
+  }
+
+  &:active {
+    background-color: var(--unfollowButton-active-bgColor);
+    border:           var(--unfollowButton-active-border);
+  }
+
+  &:focus {
+    color:            var(--unfollowButton-textColor);
+  }
 }
 /* Follow/Unfollow button - END */
