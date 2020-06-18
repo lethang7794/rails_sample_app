@@ -1148,17 +1148,25 @@ aside {
   &:focus {
     color:            var(--followButton-textColor);
   }
+
+  span {
+    display:   inline;
+  }
 }
 
 .unfollow-button {
+  span {
+    display:   inline;
+  }
+
   // Replace 'Following' with 'Unfollow'
   &:hover {
     span {
-      display:        none;
+      display: none;
     }
     &:before {
-      content:        "Unfollow";
-      display:        block;
+      content: "Unfollow";
+      display: inline;
     }
   }
 
