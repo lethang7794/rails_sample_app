@@ -1088,6 +1088,21 @@ aside {
 /* Following/Followers page - END */
 
 /* Follow/Unfollow button - BEGIN */
+// Some CSS custom properties
+:root {
+  // Follow button
+  --followButton-textColor:        rgb(29, 161, 242);
+
+  --followButton-bgColor:          white;
+  --followButton-border:           1px solid rgb(29, 161, 242);
+
+  --followButton-hover-bgColor:    rgba(29, 161, 242, 0.1);
+  --followButton-hover-border:     1px solid rgb(29, 161, 242);
+
+  --followButton-active-bgColor:   rgba(29, 161, 242, 0.2);
+  --followButton-active-border:    1px solid rgb(29, 161, 242);
+}
+
 .follow-button,
 .unfollow-button {
   // Layout
@@ -1099,6 +1114,28 @@ aside {
   // Font
   font-weight:   700;
   font-size:     15px;
+
+.follow-button {
+  // Appearance
+  color:              var(--followButton-textColor);
+  background-color:   var(--followButton-bgColor);
+  border:             var(--followButton-border);
+
+  &:hover {
+    color:            var(--followButton-textColor);
+    background-color: var(--followButton-hover-bgColor);
+    border:           var(--followButton-hover-border);
+  }
+
+  &:active {
+    color:            var(--followButton-textColor);
+    background-color: var(--followButton-active-bgColor);
+    border:           var(--followButton-active-border);
+  }
+
+  &:focus {
+    color:            var(--followButton-textColor);
+  }
 }
 
 .unfollow-button {
