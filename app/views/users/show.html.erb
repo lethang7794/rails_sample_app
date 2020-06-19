@@ -4,13 +4,17 @@
 <% if current_page?(controller: 'users', action: 'show') %>
   <div class="row">
     <div class="col-md-8 col-md-offset-4">
-      HELLO FROM USER SHOW
+      <div>BACK BUTTON</div>
+      <div><%= @user.name %></div>
+      <div><%= pluralize(@user.microposts.count, 'micropost') %></div>
     </div>
   </div>
 <% elsif current_page?(controller: 'users', action: 'media') %>
   <div class="row">
     <div class="col-md-8 col-md-offset-4">
-      HELLO FROM USER MEDIA
+      <div>BACK BUTTON</div>
+      <div><%= @user.name %></div>
+      <div><%= pluralize(@user.media.count, 'photo') %></div>
     </div>
   </div>
 <% end %>
