@@ -1,6 +1,17 @@
 <% provide :page_title, "Edit user" %>
 <% provide :button_text, 'Save changes' %>
 
+<!-- MINI NAVIGATION BAR - BEGIN -->
+<% if current_page?(controller: 'users', action: 'edit') %>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-4">
+      HELLO FROM USER EDIT
+    </div>
+  </div>
+<% end %>
+<!-- MINI NAVIGATION BAR - END -->
+
+<!-- PAGE CONTENT - BEGIN -->
 <h1>Update your profile</h1>
 
 <div class="row">
@@ -19,3 +30,4 @@
     <%= render 'form' %>
   </div>
 </div>
+<!-- PAGE CONTENT - END -->

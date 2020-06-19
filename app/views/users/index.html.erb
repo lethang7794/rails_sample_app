@@ -1,4 +1,16 @@
 <% provide :page_title, "All users" %>
+
+<!-- MINI NAVIGATION BAR - BEGIN -->
+<% if current_page?(controller: 'users', action: 'index') %>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-4">
+      HELLO FROM USER INDEX
+    </div>
+  </div>
+<% end %>
+<!-- MINI NAVIGATION BAR - END -->
+
+<!-- PAGE CONTENT - BEGIN -->
 <h1>All users</h1>
 <div class="flex-center">
   <%= will_paginate %>
@@ -15,3 +27,4 @@
 <div class="flex-center">
   <%= will_paginate %>
 </div>
+<!-- PAGE CONTENT - END -->

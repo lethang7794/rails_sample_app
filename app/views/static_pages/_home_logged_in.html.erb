@@ -1,3 +1,14 @@
+<!-- MINI NAVIGATION BAR - BEGIN -->
+<% if current_page?(controller: 'static_pages', action: 'home') %>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-4">
+      HELLO FROM HOME
+    </div>
+  </div>
+<% end %>
+<!-- MINI NAVIGATION BAR - END -->
+
+<!-- PAGE CONTENT - BEGIN -->
 <div class="row">
   <aside class="col-md-4 user-sidebar">
     <div class="affix">
@@ -16,3 +27,4 @@
     <%= render 'shared/feed' %>
   </div>
 </div>
+<!-- PAGE CONTENT - END -->

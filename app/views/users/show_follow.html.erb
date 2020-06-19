@@ -1,5 +1,22 @@
 <%= provide :page_title, @title %>
 
+<!-- MINI NAVIGATION BAR - BEGIN -->
+<% if current_page?(controller: 'users', action: 'following') %>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-4">
+      HELLO FROM USER FOLLOWING
+    </div>
+  </div>
+<% elsif current_page?(controller: 'users', action: 'followers') %>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-4">
+      HELLO FROM USER FOLLOWERS
+    </div>
+  </div>
+<% end %>
+<!-- MINI NAVIGATION BAR - END -->
+
+<!-- PAGE CONTENT - BEGIN -->
 <div class="row">
 	<!-- Following/Followers list - Begin -->
 	<div class="col-md-6 col-md-offset-3 follow-list">
@@ -45,3 +62,4 @@
 	</div>
 	<!-- Following/Followers list - End -->
 </div>
+<!-- PAGE CONTENT - END -->

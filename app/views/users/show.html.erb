@@ -1,4 +1,22 @@
 <%= provide :page_title, @user.name %>
+
+<!-- MINI NAVIGATION BAR - BEGIN -->
+<% if current_page?(controller: 'users', action: 'show') %>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-4">
+      HELLO FROM USER SHOW
+    </div>
+  </div>
+<% elsif current_page?(controller: 'users', action: 'media') %>
+  <div class="row">
+    <div class="col-md-8 col-md-offset-4">
+      HELLO FROM USER MEDIA
+    </div>
+  </div>
+<% end %>
+<!-- MINI NAVIGATION BAR - END -->
+
+<!-- PAGE CONTENT - BEGIN -->
 <div class="row">
 	<aside class="col-md-4">
 		<section class="user_info">
@@ -75,3 +93,4 @@
 		<% end %>
 	</div>
 </div>
+<!-- PAGE CONTENT - END -->
