@@ -1,15 +1,32 @@
 require 'test_helper'
 
 class StaticPagesControllerTest < ActionDispatch::IntegrationTest
-  test "should get root" do
+  def setup
+    @harry = users(:harry)
+  end
+
+  test "should get root when not logged in" do
     get root_path
     assert_response :success
   end
 
-  test "should get home" do
+  test "should redirect root when logged in" do
+    log_in_as @harry
+    get root_path
+    assert_redirected_to home_path
+  end
+
+  test "should redirect home when not logged in" do
+    get home_path
+    assert_not flash.empty?
+    assert_redirected_to login_path
+  end
+
+  test "should get home for logged user" do
+    log_in_as @harry
     get home_path
     assert_response :success
-    assert_select "title", "Sample App"
+    assert_select "title", "Home | Sample App"
   end
 
   test "should get help" do
