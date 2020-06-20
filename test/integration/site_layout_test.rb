@@ -21,7 +21,7 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
     assert_redirected_to root_path
     follow_redirect!
-    assert_select 'title', full_title
+    assert_select 'title', full_title('Home')
 
     assert_select "a[href=?]", users_path
     assert_select "a[href=?]", user_path(@user)
