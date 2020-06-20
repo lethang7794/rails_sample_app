@@ -1,7 +1,6 @@
-<%= provide :page_title, @user.name %>
-
 <!-- MINI NAVIGATION BAR - BEGIN -->
 <% if current_page?(controller: 'users', action: 'show') %>
+  <%= provide :page_title, @user.name %>
   <div class="row">
     <div class="col-md-8 col-md-offset-4">
       <div>BACK BUTTON</div>
@@ -10,6 +9,7 @@
     </div>
   </div>
 <% elsif current_page?(controller: 'users', action: 'media') %>
+  <%= provide :page_title, "Media microposts from #{@user.name}" %>
   <div class="row">
     <div class="col-md-8 col-md-offset-4">
       <div>BACK BUTTON</div>

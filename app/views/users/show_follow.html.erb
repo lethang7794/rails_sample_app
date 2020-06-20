@@ -1,7 +1,7 @@
-<%= provide :page_title, @title %>
-
 <!-- MINI NAVIGATION BAR - BEGIN -->
 <% if current_page?(controller: 'users', action: 'following') %>
+  <%= provide :page_title, "People following #{@user.name}" %>
+
   <div class="row">
     <div class="col-md-8 col-md-offset-4">
       <div>BACK BUTTON</div>
@@ -10,6 +10,8 @@
     </div>
   </div>
 <% elsif current_page?(controller: 'users', action: 'followers') %>
+  <%= provide :page_title, "People followed by #{@user.name}" %>
+
   <div class="row">
     <div class="col-md-8 col-md-offset-4">
       <div>BACK BUTTON</div>
