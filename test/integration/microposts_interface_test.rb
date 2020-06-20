@@ -33,7 +33,7 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
       post microposts_path, params: { micropost: { content: content, image: image }}
     end
     assert @harry.microposts.first.image.attached?
-    assert_redirected_to root_url
+    assert_redirected_to home_url
     follow_redirect!
     assert_match content, response.body
 
@@ -56,12 +56,12 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
     harry_initial_microposts = @harry.microposts.count
     assert_match "#{harry_initial_microposts} microposts", response.body
 
-    post microposts_path, params: {micropost: {content: "New Micrpost" } }
-    get root_url
+    post microposts_path, params: {micropost: {content: "New Micropost" } }
+    get home_url
     assert_match "#{harry_initial_microposts + 1} microposts", response.body
 
     delete micropost_path(@harry_micropost)
-    get root_url
+    get home_url
     assert_match "#{harry_initial_microposts} microposts", response.body
 
     # Brand new user
@@ -70,11 +70,11 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
     assert_match "0 microposts", response.body
 
     post microposts_path, params: { micropost: { content: "Another new micropost" } }
-    get root_url
+    get home_url
     assert_match "1 micropost", response.body
 
     post microposts_path, params: { micropost: { content: "Another new micropost" } }
-    get root_url
+    get home_url
     assert_match "2 microposts", response.body
   end
 end
