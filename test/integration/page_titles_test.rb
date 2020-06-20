@@ -10,7 +10,7 @@ class PageTitlesTest < ActionDispatch::IntegrationTest
     assert_select 'title', full_title
 
     log_in_as(@harry)
-    get root_path
+    get home_path
     assert_select 'title', full_title('Home')
   end
 

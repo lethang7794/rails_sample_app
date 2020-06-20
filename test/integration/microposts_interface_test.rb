@@ -11,7 +11,7 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
   test "microposts interface" do
     # log in
     log_in_as @harry
-    get root_url
+    get home_url
     assert_template 'static_pages/home'
     assert_select 'input[type="file"][name="micropost[image]"]'
 
@@ -52,7 +52,7 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
   test "sidebar micropost count" do
     # Old user
     log_in_as @harry
-    get root_url
+    get home_url
     harry_initial_microposts = @harry.microposts.count
     assert_match "#{harry_initial_microposts} microposts", response.body
 
@@ -66,7 +66,7 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
 
     # Brand new user
     log_in_as @draco
-    get root_url
+    get home_url
     assert_match "0 microposts", response.body
 
     post microposts_path, params: { micropost: { content: "Another new micropost" } }
