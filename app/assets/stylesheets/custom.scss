@@ -1199,3 +1199,38 @@ aside {
   }
 }
 /* Follow/Unfollow button - END */
+
+/* MINI NAVIGATION BAR - BEGIN */
+.mini-navbar-container {
+  border: 1px solid black;
+  min-height: 50px;
+
+  .left-side {
+    min-width: 60px;
+    margin-left: 10px;
+  }
+
+  .middle-side {
+    margin-left: 10px;
+    .detail {
+      color: rgb(101, 119, 134);
+    }
+  }
+
+  .left-side,
+  .middle-side {
+    h2 {
+      margin-top: 0px;
+      margin-bottom: 0px;
+
+      font-size: 25px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+  }
+
+  .right-side {
+    min-width: 50px;
+  }
+}
+/* MINI NAVIGATION BAR - END */
