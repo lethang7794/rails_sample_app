@@ -61,9 +61,6 @@
 	</aside>
 	<div class="col-md-8">
 		<% if @user.microposts.any? %>
-			<h3>
-				Microposts (<span><%= @user.microposts.count %></span>)
-			</h3>
 			<div class="flex flex-row">
 				<div class="flex-grow-1 flex-center tab-container">
 					<%= active_link_to 'Microposts', user_path(@user), class: "flex-grow-1 flex-center", active: [users: :show] %>
