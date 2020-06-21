@@ -5,4 +5,8 @@
     <%= render 'shared/mini_navbar_user_show' %>
   <% elsif current_page?(controller: 'users', action: 'media', id: @user.id) %>
     <%= render 'shared/mini_navbar_user_media' %>
+  <% elsif current_page?(controller: 'users', action: 'following', id: @user.id) %>
+    <%= render 'shared/mini_navbar_user_following' %>
+  <% elsif current_page?(controller: 'users', action: 'followers', id: @user.id) %>
+    <%= render 'shared/mini_navbar_user_followers' %>
 <% end %>
