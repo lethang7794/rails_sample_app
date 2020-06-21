@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
 class SessionsController < ApplicationController
-  def new; end
+  def new
+    if logged_in?
+      redirect_to home_path
+    end
+  end
 
   def create
     @user = User.find_by(email: params[:session][:email].downcase)
