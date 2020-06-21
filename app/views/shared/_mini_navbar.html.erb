@@ -1,0 +1,4 @@
+<% if @user&.id %>
+  <% if current_page?('/home') %>
+    <%= render 'shared/mini_navbar_home' %>
+<% end %>
