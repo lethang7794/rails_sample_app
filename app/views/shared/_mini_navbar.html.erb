@@ -9,4 +9,7 @@
     <%= render 'shared/mini_navbar_user_following' %>
   <% elsif current_page?(controller: 'users', action: 'followers', id: @user.id) %>
     <%= render 'shared/mini_navbar_user_followers' %>
+  <% elsif current_page?(controller: 'users', action: 'edit', id: @user.id) %>
+    <%= render 'shared/mini_navbar_user_edit' %>
+  <% end %>
 <% end %>
