@@ -1,4 +1,8 @@
 <% if @user&.id %>
   <% if current_page?('/home') %>
     <%= render 'shared/mini_navbar_home' %>
+  <% elsif current_page?(controller: 'users', action: 'show', id: @user.id) %>
+    <%= render 'shared/mini_navbar_user_show' %>
+  <% elsif current_page?(controller: 'users', action: 'media', id: @user.id) %>
+    <%= render 'shared/mini_navbar_user_media' %>
 <% end %>
