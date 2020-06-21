@@ -12,4 +12,8 @@
   <% elsif current_page?(controller: 'users', action: 'edit', id: @user.id) %>
     <%= render 'shared/mini_navbar_user_edit' %>
   <% end %>
+<% else %>
+  <% if current_page?(controller: 'users', action: 'index') %>
+    <%= render 'shared/mini_navbar_users_index' %>
+  <% end %>
 <% end %>
