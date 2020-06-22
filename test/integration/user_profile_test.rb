@@ -19,7 +19,7 @@ class UserProfileTest < ActionDispatch::IntegrationTest
     assert_select 'h1', text: @user.name
     assert_select '.user_avatar>img.gravatar'
 
-    assert_select 'h3>span', count: 1, text: @user.microposts.count.to_s
+    assert_select 'div.detail', text: "#{@user.microposts.count} microposts"
 
     assert_select 'div.pagination', count: 1
 
