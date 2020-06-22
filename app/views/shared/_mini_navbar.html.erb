@@ -1,19 +1,58 @@
 <% if @user&.id %>
   <% if current_page?('/home') %>
     <%= render 'shared/mini_navbar_home' %>
+
   <% elsif current_page?(controller: 'users', action: 'show', id: @user.id) %>
-    <%= render 'shared/mini_navbar_user_show' %>
+    <%= render  partial: 'shared/mini_navbar_partial',
+                locals: {
+                  heading: "#{@user.name}",
+                  detail: "#{pluralize(@user.microposts.count, 'micropost')}"
+                } %>
+
   <% elsif current_page?(controller: 'users', action: 'media', id: @user.id) %>
-    <%= render 'shared/mini_navbar_user_media' %>
+    <%= render  partial: 'shared/mini_navbar_partial',
+                locals: {
+                  heading: "#{@user.name}",
+                  detail: "#{pluralize(@user.media.count, 'photo')}"
+                } %>
+
   <% elsif current_page?(controller: 'users', action: 'following', id: @user.id) %>
-    <%= render 'shared/mini_navbar_user_following' %>
+    <%= render  partial: 'shared/mini_navbar_partial',
+                locals: {
+                  heading: "#{@user.name}",
+                  detail: "Following",
+                  col: 6,
+                  offset: 3
+                } %>
+
   <% elsif current_page?(controller: 'users', action: 'followers', id: @user.id) %>
-    <%= render 'shared/mini_navbar_user_followers' %>
+    <%= render  partial: 'shared/mini_navbar_partial',
+                locals: {
+                  heading: "#{@user.name}",
+                  detail: "Followers",
+                  col: 6,
+                  offset: 3
+                } %>
+
   <% elsif current_page?(controller: 'users', action: 'edit', id: @user.id) %>
-    <%= render 'shared/mini_navbar_user_edit' %>
+    <%= render  partial: 'shared/mini_navbar_partial',
+                locals: {
+                  heading: "#{@user.name}",
+                  detail: "Edit profile",
+                  col: 6,
+                  offset: 3
+                } %>
+
   <% end %>
 <% else %>
   <% if current_page?(controller: 'users', action: 'index') %>
-    <%= render 'shared/mini_navbar_users_index' %>
+    <%= render  partial: 'shared/mini_navbar_partial',
+                locals: {
+                  heading: "Explorer",
+                  detail: "Let's follow other people",
+                  col: 6,
+                  offset: 3
+                } %>
+
   <% end %>
 <% end %>

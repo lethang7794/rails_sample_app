@@ -1,15 +1,18 @@
+<% col ||= 8 %>
+<% offset ||= 4 %>
+
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
+  <div class="col-md-<%= col %> col-md-offset-<%= offset %>">
     <div class="flex flex-row mini-navbar-container">
       <div class="left-side flex-center">
         BACK
       </div>
       <div class="middle-side flex-grow-1">
         <h2 id="mini-bar-heading">
-          <%= @user.name %>
+          <%= heading %>
         </h2>
         <div class="detail">
-          Edit profile
+          <%= detail %>
         </div>
       </div>
       <div class="right-side"></div>
