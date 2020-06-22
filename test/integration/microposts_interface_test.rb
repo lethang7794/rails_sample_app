@@ -24,7 +24,7 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
     end
     assert_template 'static_pages/home'
     assert_select 'div#error_explanation'
-    assert_select 'a[href=?]', '/?page=2'
+    assert_select 'a[href=?]', '/home?page=2'
 
     # make a valid submission
     content = "An awesome new micropost"
