@@ -1,8 +1,5 @@
 <% if @user&.id %>
-  <% if current_page?('/home') %>
-    <%= render 'shared/mini_navbar_home' %>
-
-  <% elsif current_page?(controller: 'users', action: 'show', id: @user.id) %>
+  <% if current_page?(controller: 'users', action: 'show', id: @user.id) %>
     <%= render  partial: 'shared/mini_navbar_partial',
                 locals: {
                   heading: "#{@user.name}",
@@ -46,5 +43,7 @@
                   detail: "Let's follow other people"
                 } %>
 
+  <% elsif current_page?('/home') %>
+    <%= render 'shared/mini_navbar_home' %>
   <% end %>
 <% end %>
