@@ -321,8 +321,11 @@ a.dropdown-toggle[aria-expanded="true"] {
     -ms-flex-preferred-size: auto;
     flex-basis: auto;
 
-    span.my-arrow.home {
-      display: none;
+    .my-arrow {
+      &.home,
+      &.sign-up {
+        display: none;
+      }
     }
   }
 }
