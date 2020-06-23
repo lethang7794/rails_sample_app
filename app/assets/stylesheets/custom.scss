@@ -526,21 +526,6 @@ footer {
   }
 }
 
-/* User info - BEGIN */
-section.user_info {
-  margin-top: 20px;
-  margin-bottom: 10px;
-
-  .gravatar {
-    margin: 0;
-  }
-
-  .info {
-    margin-left: 10px;
-  }
-}
-/* User info - END */
-
 /* sidebar */
 section {
   padding: 10px 0;
@@ -619,6 +604,25 @@ section {
     }
   }
 }
+
+/* User info - BEGIN */
+section.user_info {
+  margin: 0;
+
+  .gravatar {
+    margin: 0;
+  }
+
+  .info {
+    margin-left: 10px;
+  }
+}
+
+.user-info-wrapper {
+  padding: 15px;
+  padding-bottom: 0;
+}
+/* User info - END */
 
 /* mixins, variables, etc. */
 @mixin box_sizing {
