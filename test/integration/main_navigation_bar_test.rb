@@ -10,9 +10,9 @@ class MainNavigationBarTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", root_path, count: 2
   end
 
-  test "brand logo and home nav-item should point to home when logged in" do
+  test "brand logo should point to home when logged in" do
     log_in_as @harry
     get home_url
-    assert_select "a[href=?]", home_path, count: 2
+    assert_select "a[href=?]", home_path, count: 1
   end
 end
