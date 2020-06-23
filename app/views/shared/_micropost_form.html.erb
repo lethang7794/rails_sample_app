@@ -1,12 +1,16 @@
 <%= form_with(model: @micropost, local: true) do |f| %>
-  <%= render 'shared/error_messages', object: f.object %>
-  <div class="field">
-    <%= f.text_area :content, placeholder: "Compose new micropost..." %>
+  <div class="flex flex-column">
+    <%= render 'shared/error_messages', object: f.object %>
+    <div class="field">
+      <%= f.text_area :content, placeholder: "Compose new micropost..." %>
+    </div>
+    <div>
+      <%= f.submit "Post", class: "btn btn-primary"%>
+    </div>
+    <div class="image">
+      <%= f.file_field :image, accept: "image/png, image/jpeg, image/gif" %>
+    </div>
   </div>
-  <%= f.submit "Post", class: "btn btn-primary"%>
-  <span class="image">
-    <%= f.file_field :image, accept: "image/png, image/jpeg, image/gif" %>
-  </span>
 <% end %>
 
 <script type="text/javascript">
