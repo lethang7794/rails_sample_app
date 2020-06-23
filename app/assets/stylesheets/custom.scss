@@ -243,16 +243,19 @@ div.collapse {
   transition-delay: 0s;
 }
 
-.navbar-collapse.collapse.in a {
-  &:active,
-  &:hover {
-    .my-arrow {
-      transform: translate(5px,0);
-    }
+.navbar-collapse.collapse,
+.navbar-collapse.collapse.in {
+  a {
+    &:active,
+    &:hover {
+      .my-arrow {
+        transform: translate(5px,0);
+      }
 
-    svg {
-      filter:
-        brightness(1);
+      svg {
+        filter:
+          brightness(1);
+      }
     }
   }
 }
@@ -318,8 +321,11 @@ a.dropdown-toggle[aria-expanded="true"] {
     -ms-flex-preferred-size: auto;
     flex-basis: auto;
 
-    span.my-arrow {
-      display: none;
+    .my-arrow {
+      &.home,
+      &.sign-up {
+        display: none;
+      }
     }
   }
 }
@@ -519,21 +525,23 @@ footer {
     }
   }
 }
-/* sidebar */
-aside {
-  .user_info {
-    margin-top: 20px;
 
-    .gravatar {
-      margin: 0;
-    }
+/* User info - BEGIN */
+section.user_info {
+  margin-top: 20px;
+  margin-bottom: 10px;
 
-    .info {
-      margin-left: 10px;
-    }
+  .gravatar {
+    margin: 0;
+  }
+
+  .info {
+    margin-left: 10px;
   }
 }
+/* User info - END */
 
+/* sidebar */
 section {
   padding: 10px 0;
   margin-top: 20px;
@@ -817,9 +825,9 @@ ul.users { // Users index
     }
 
     .image-block {
-      height: 350px; // 1 height for all resized image.
-      border-radius: 14px;
-      border: 1px solid #e8e8e8;
+      padding-bottom: 56.25%; //Maintain image block width/height ratio.
+      // border-radius: 14px; // TODO: when background image CSS loaded, the border will be blured
+      border: 1px solid rgb(204, 214, 221);
       margin-top: 10px;
 
       .button-wrapper {
@@ -903,13 +911,6 @@ article.micropost-container-wrapper {
 // Fix the user's new micropost sidebar
 
 aside {
-  div.field {
-    textarea {
-      height: 100px;
-      padding: 10px;
-    }
-  }
-
   span.image {
     margin-top: 10px;
 
@@ -918,6 +919,30 @@ aside {
     }
   }
 }
+
+
+
+/* New micrcpost */
+.micropost-container.new-micropost-container {
+  border-top: 1px solid #e8e8e8;
+  margin-top: 0;
+
+  .micropost_form {
+    margin-top: 0;
+    padding-bottom: 0;
+
+    textarea#micropost_content {
+      height: 100px;
+      padding: 10px;
+    }
+
+    input#micropost_image {
+      border: none;
+      margin-bottom: 0px;
+    }
+  }
+}
+
 
 /* MICROPOST IMAGE MODAL */
 // Modify Boostrap default's value
@@ -1045,24 +1070,6 @@ aside {
 /* FLEX - END */
 
 /* Following/Followers page - BEGIN */
-.follow-list {
-  .user_info {
-    margin-bottom: 10px;
-  }
-
-  h1 {
-    font-size: 2em;
-  }
-
-  .gravatar {
-    margin: 0;
-  }
-
-  .info {
-    margin-left: 10px;
-  }
-}
-
 .tab-container {
   a {
     color: rgb(136, 153, 166);

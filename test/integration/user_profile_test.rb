@@ -28,7 +28,7 @@ class UserProfileTest < ActionDispatch::IntegrationTest
     end
 
     log_in_as @user
-    get home_path
+    get user_path(@user)
     assert_select "#following_of_#{@user.id}"
     assert_select "#followers_of_#{@user.id}"
   end
