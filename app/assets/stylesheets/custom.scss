@@ -711,7 +711,9 @@ ul.users { // Users index
 /* New Users Index - BEGIN */
 .user-container {
   padding: 10px;
-  border-bottom: 1px solid $gray-lighter;
+  border-right: 1px solid #e8e8e8;
+  border-bottom: 1px solid #e8e8e8;
+  border-left: 1px solid #e8e8e8;
 
   .gravatar {
     margin: 0;
@@ -720,10 +722,6 @@ ul.users { // Users index
   .main-content {
     padding-left: 10px;
   }
-}
-
-.user-container:last-of-type {
-  border-bottom: none;
 }
 
 .flex-grow-1 {
@@ -928,7 +926,6 @@ aside {
 
 /* New micrcpost - BEGIN */
 .micropost-container.new-micropost-container {
-  border-top: 1px solid #e8e8e8;
   margin-top: 0;
 
   .micropost_form {
@@ -1078,6 +1075,17 @@ aside {
 
 /* FLEX - END */
 
+/* Border wrapper - For user show/media/following/followers  - BEGIN */
+.border-wrapper-rl {
+  border-right: 1px solid #e8e8e8;
+  border-left:  1px solid #e8e8e8;
+}
+
+.border-wrapper-b {
+  border-bottom:  1px solid #e8e8e8;
+}
+/* Tabs wrapper - For user show/media/following/followers  - END */
+
 /* Following/Followers page - BEGIN */
 .tab-container {
   a {
@@ -1218,7 +1226,7 @@ aside {
 
 /* MINI NAVIGATION BAR - BEGIN */
 .mini-navbar-container {
-  border: 1px solid black;
+  border: 1px solid #e8e8e8;
   min-height: 50px;
 
   .left-side {
