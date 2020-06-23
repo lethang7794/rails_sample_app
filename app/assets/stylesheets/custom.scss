@@ -525,21 +525,23 @@ footer {
     }
   }
 }
-/* sidebar */
-aside {
-  .user_info {
-    margin-top: 20px;
 
-    .gravatar {
-      margin: 0;
-    }
+/* User info - BEGIN */
+section.user_info {
+  margin-top: 20px;
+  margin-bottom: 10px;
 
-    .info {
-      margin-left: 10px;
-    }
+  .gravatar {
+    margin: 0;
+  }
+
+  .info {
+    margin-left: 10px;
   }
 }
+/* User info - END */
 
+/* sidebar */
 section {
   padding: 10px 0;
   margin-top: 20px;
@@ -1068,24 +1070,6 @@ aside {
 /* FLEX - END */
 
 /* Following/Followers page - BEGIN */
-.follow-list {
-  .user_info {
-    margin-bottom: 10px;
-  }
-
-  h1 {
-    font-size: 2em;
-  }
-
-  .gravatar {
-    margin: 0;
-  }
-
-  .info {
-    margin-left: 10px;
-  }
-}
-
 .tab-container {
   a {
     color: rgb(136, 153, 166);
