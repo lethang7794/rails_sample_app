@@ -20,38 +20,30 @@
     <%= render  partial: 'shared/mini_navbar_partial',
                 locals: {
                   heading: "#{@user.name}",
-                  detail: "Following",
-                  col: 6,
-                  offset: 3
+                  detail: "Following"
                 } %>
 
   <% elsif current_page?(controller: 'users', action: 'followers', id: @user.id) %>
     <%= render  partial: 'shared/mini_navbar_partial',
                 locals: {
                   heading: "#{@user.name}",
-                  detail: "Followers",
-                  col: 6,
-                  offset: 3
+                  detail: "Followers"
                 } %>
 
   <% elsif current_page?(controller: 'users', action: 'edit', id: @user.id) %>
     <%= render  partial: 'shared/mini_navbar_partial',
                 locals: {
                   heading: "#{@user.name}",
-                  detail: "Edit profile",
-                  col: 6,
-                  offset: 3
+                  detail: "Edit profile"
                 } %>
-
   <% end %>
+
 <% else %>
   <% if current_page?(controller: 'users', action: 'index') %>
     <%= render  partial: 'shared/mini_navbar_partial',
                 locals: {
                   heading: "Explorer",
-                  detail: "Let's follow other people",
-                  col: 6,
-                  offset: 3
+                  detail: "Let's follow other people"
                 } %>
 
   <% end %>
