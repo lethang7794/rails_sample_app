@@ -922,7 +922,7 @@ aside {
 
 
 
-/* New micrcpost */
+/* New micrcpost - BEGIN */
 .micropost-container.new-micropost-container {
   border-top: 1px solid #e8e8e8;
   margin-top: 0;
@@ -943,6 +943,11 @@ aside {
   }
 }
 
+.micropost-divider {
+  height: 10px;
+  background-color: rgb(230, 236, 240);
+}
+/* New micrcpost - END */
 
 /* MICROPOST IMAGE MODAL */
 // Modify Boostrap default's value
