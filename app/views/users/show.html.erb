@@ -1,9 +1,7 @@
 <%= provide :page_title, @user.name %>
 <div class="row">
-	<aside class="col-md-4">
+	<div class="col-md-6 col-md-offset-3">
 		<%= render 'shared/user_info' %>
-	</aside>
-	<div class="col-md-8">
 		<% if @user.microposts.any? %>
 			<h3>
 				Microposts (<span><%= @user.microposts.count %></span>)
