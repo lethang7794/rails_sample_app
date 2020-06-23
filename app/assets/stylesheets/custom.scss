@@ -243,16 +243,19 @@ div.collapse {
   transition-delay: 0s;
 }
 
-.navbar-collapse.collapse.in a {
-  &:active,
-  &:hover {
-    .my-arrow {
-      transform: translate(5px,0);
-    }
+.navbar-collapse.collapse,
+.navbar-collapse.collapse.in {
+  a {
+    &:active,
+    &:hover {
+      .my-arrow {
+        transform: translate(5px,0);
+      }
 
-    svg {
-      filter:
-        brightness(1);
+      svg {
+        filter:
+          brightness(1);
+      }
     }
   }
 }
@@ -818,8 +821,8 @@ ul.users { // Users index
 
     .image-block {
       padding-bottom: 56.25%; //Maintain image block width/height ratio.
-      border-radius: 14px;
-      border: 1px solid #e8e8e8;
+      // border-radius: 14px; // TODO: when background image CSS loaded, the border will be blured
+      border: 1px solid rgb(204, 214, 221);
       margin-top: 10px;
 
       .button-wrapper {
@@ -903,13 +906,6 @@ article.micropost-container-wrapper {
 // Fix the user's new micropost sidebar
 
 aside {
-  div.field {
-    textarea {
-      height: 100px;
-      padding: 10px;
-    }
-  }
-
   span.image {
     margin-top: 10px;
 
@@ -918,6 +914,30 @@ aside {
     }
   }
 }
+
+
+
+/* New micrcpost */
+.micropost-container.new-micropost-container {
+  border-top: 1px solid #e8e8e8;
+  margin-top: 0;
+
+  .micropost_form {
+    margin-top: 0;
+    padding-bottom: 0;
+
+    textarea#micropost_content {
+      height: 100px;
+      padding: 10px;
+    }
+
+    input#micropost_image {
+      border: none;
+      margin-bottom: 0px;
+    }
+  }
+}
+
 
 /* MICROPOST IMAGE MODAL */
 // Modify Boostrap default's value
