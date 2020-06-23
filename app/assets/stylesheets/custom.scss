@@ -817,7 +817,7 @@ ul.users { // Users index
     }
 
     .image-block {
-      height: 350px; // 1 height for all resized image.
+      padding-bottom: 56.25%; //Maintain image block width/height ratio.
       border-radius: 14px;
       border: 1px solid #e8e8e8;
       margin-top: 10px;
