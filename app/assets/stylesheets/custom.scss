@@ -1106,6 +1106,19 @@ aside {
     background-color: rgba(29, 161, 242, 0.2);
   }
 }
+
+.nothing-info {
+  padding: 20px;
+  min-height: 50vh;
+  border: 1px solid #e8e8e8;
+  justify-content: flex-start;
+
+  .heading {
+    font-size: 20px;
+    font-weight: 800;
+  }
+}
+
 /* Following/Followers page - END */
 
 /* Follow/Unfollow button - BEGIN */
