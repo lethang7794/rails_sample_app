@@ -1136,6 +1136,7 @@ aside {
   --unfollowButton-active-border:  rgba(202, 32, 85, 0.8);
 }
 
+.my-button,
 .follow-button,
 .unfollow-button {
   // Layout
@@ -1224,6 +1225,27 @@ aside {
 }
 /* Follow/Unfollow button - END */
 
+/* MY BUTTON - BEGIN */
+.my-button {
+  margin: 0;
+
+  color:              var(--unfollowButton-textColor);
+  background-color:   var(--unfollowButton-bgColor);
+  border:             var(--unfollowButton-border);
+
+  &:hover {
+    color:            var(--unfollowButton-textColor);
+    background-color: rgba(26, 145, 218, 0.9);
+    border:           rgba(26, 145, 218, 0.9);
+  }
+
+  &:active,
+  &:focus {
+    color: white;
+  }
+}
+/* MY BUTTON - END */
+
 /* MINI NAVIGATION BAR - BEGIN */
 .mini-navbar-container {
   border: 1px solid #e8e8e8;
@@ -1278,4 +1300,10 @@ aside {
     }
   }
 }
+
+
+.primary-color {
+  color: rgba(29, 161, 242, 1.00);
+}
+
 /* MINI NAVIGATION BAR - END */
