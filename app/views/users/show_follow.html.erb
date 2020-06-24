@@ -30,6 +30,8 @@
 			<div class="flex-center">
 				<%= will_paginate @microposts %>
 			</div>
+    <% else %>
+      <%= render 'shared/nothing' %>
 		<% end %>
 	</div>
 	<!-- Following/Followers list - End -->
