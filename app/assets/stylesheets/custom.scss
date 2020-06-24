@@ -1307,3 +1307,15 @@ aside {
 }
 
 /* MINI NAVIGATION BAR - END */
+
+/* SVG - BEGIN */
+.svg-inline {
+  display: inline-block;
+  height: 1.25em;
+  vertical-align: text-bottom;
+  margin-right: 2px;
+
+  color: rgb(101, 119, 134);
+  fill: currentcolor;
+}
+/* SVG - END */
