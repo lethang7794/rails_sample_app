@@ -617,7 +617,6 @@ section {
   font-weight: bold;
   color: rgb(20, 23, 26);
 
-  transition-duration: 0.3s;
   transition-property: all;
 }
 
@@ -931,6 +930,14 @@ article.micropost-container-wrapper {
 
 .transition-03s {
   transition-property: all;
+  transition-duration: 0.3s;
+}
+
+.tran-0s {
+  transition-duration: 0s;
+}
+
+.tran-03s {
   transition-duration: 0.3s;
 }
 

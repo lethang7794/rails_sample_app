@@ -4,7 +4,7 @@
   <div class="stat">
     <%= link_to following_user_path(@user) do %>
       <div id="following_of_<%= @user.id %>_wrapper" class="flex-inline following-wrapper">
-        <span id="following_of_<%= @user.id %>" class="following_of_<%= @user.id %> stats following">
+        <span id="following_of_<%= @user.id %>" class="following_of_<%= @user.id %> stats following tran-03s">
           <%= @user.following.count %>
         </span>
       </div>
@@ -14,7 +14,7 @@
   <div class="stat">
     <%= link_to followers_user_path(@user) do %>
       <div id="followers_of_<%= @user.id %>_wrapper" class="flex-inline followers-wrapper">
-        <span id="followers_of_<%= @user.id %>" class="followers_of_<%= @user.id %> stats followers">
+        <span id="followers_of_<%= @user.id %>" class="followers_of_<%= @user.id %> stats followers tran-03s">
           <%= @user.followers.count %>
         </span>
       </div>
