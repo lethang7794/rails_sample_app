@@ -1,6 +1,10 @@
 $("#follow_form_for_<%= @user.id %>").html("<%= escape_javascript(render partial: 'shared/unfollow', locals: { user: @user }) %>");
 $("#followers_of_<%= @user.id %>").html("<%= @user.followers.count %>");
 
+// Disable all follow/unfollow button
+$( ".follow-button" ).attr("disabled", true);
+$( ".unfollow-button" ).attr("disabled", true);
+
 // Add class to old stat
 $("#following_of_<%= current_user.id %>").addClass("old-stat");
 
@@ -19,4 +23,8 @@ $(".new-stat").on('transitionend webkitTransitionEnd oTransitionEnd otransitione
   function() {
   $( ".old-stat" ).remove();
   $( ".new-stat" ).removeClass( "new-stat pos-abs move-down" );
+
+  // Enable all follow/unfollow button
+  $( ".follow-button" ).attr("disabled", false);
+  $( ".unfollow-button" ).attr("disabled", false);
 });
