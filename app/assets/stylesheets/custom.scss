@@ -537,7 +537,6 @@ section {
   }
 
   span {
-    display: block;
     margin-bottom: 3px;
     line-height: 1;
   }
@@ -603,6 +602,16 @@ section {
       margin: 1px;
     }
   }
+}
+
+.following-wrapper {
+  overflow: hidden;
+  position: relative; // Wrapper needs to use relative position so inner absolute positon respect overlay hidden.
+}
+
+.stats.following {
+  font-weight: bold;
+  color: rgb(20, 23, 26);
 }
 
 /* User info - BEGIN */
@@ -771,6 +780,10 @@ ul.users { // Users index
 .my-flex-container,
 .flex {
   display: flex;
+}
+
+.flex-inline {
+  display: inline-flex;
 }
 
 .flex-row {
