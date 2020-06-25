@@ -30,6 +30,16 @@ $("#follow_form_for_<%= @user.id %>").html("<%= escape_javascript(render partial
 //   $( ".unfollow-button" ).attr("disabled", false);
 // });
 
+// Disable all follow/unfollow button
+$( ".follow-button" ).attr("disabled", true);
+$( ".unfollow-button" ).attr("disabled", true);
+
+// Re-enable all follow/unfollow button
+setTimeout(function () {
+  $( ".follow-button" ).attr("disabled", false);
+  $( ".unfollow-button" ).attr("disabled", false);
+}, 500);
+
 var $followers = $("#followers_of_<%= @user.id %>");
 var $following = $("#following_of_<%= @current_user.id %>");
 
