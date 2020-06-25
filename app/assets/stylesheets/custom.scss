@@ -612,6 +612,25 @@ section {
 .stats.following {
   font-weight: bold;
   color: rgb(20, 23, 26);
+
+  transition-duration: 0.3s;
+  transition-property: all;
+}
+
+.pos-abs {
+  position: absolute;
+}
+
+.move-up {
+  transform: translate3d(0px, -1.3125em, 0px);
+}
+
+.normal {
+  transform: translate3d(0px, 0px, 0px);
+}
+
+.move-down {
+  transform: translate3d(0px, 1.3125em, 0px);
 }
 
 /* User info - BEGIN */

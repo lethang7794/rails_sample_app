@@ -1,3 +1,22 @@
 $("#follow_form_for_<%= @user.id %>").html("<%= escape_javascript(render partial: 'shared/unfollow', locals: { user: @user }) %>");
 $("#followers_of_<%= @user.id %>").html("<%= @user.followers.count %>");
-$("#following_of_<%= current_user.id %>").html("<%= current_user.following.count %>");
+
+// Add class to old stat
+$("#following_of_<%= current_user.id %>").addClass("old-stat");
+
+// Add new stat (and move it down)
+$("#following_of_<%= current_user.id %>_wrapper").append( "<span id='following_of_<%= current_user.id %>' class='following_of_<%= current_user.id %> stats following new-stat pos-abs move-down'><%= current_user.following.count %></span>" );
+
+// Move both old and new stat up
+$( ".old-stat" ).addClass( "move-up" );
+
+setTimeout(function () {
+  $( ".new-stat" ).removeClass( "move-down" );
+}, 0); // Use delay to not override transform, and cause no transition
+
+// Wait for transition to finish and remove old stat
+$(".new-stat").on('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd',
+  function() {
+  $( ".old-stat" ).remove();
+  $( ".new-stat" ).removeClass( "new-stat pos-abs move-down" );
+});
