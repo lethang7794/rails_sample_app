@@ -606,11 +606,13 @@ section {
 
 /* Following stat transition - BEGIN */
 
+.followers-wrapper,
 .following-wrapper {
   overflow: hidden;
   position: relative; // Wrapper needs to use relative position so inner absolute positon respect overlay hidden.
 }
 
+.stats.followers,
 .stats.following {
   font-weight: bold;
   color: rgb(20, 23, 26);
