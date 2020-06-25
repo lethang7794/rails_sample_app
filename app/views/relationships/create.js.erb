@@ -48,8 +48,9 @@ if ($followers.length > 0) {
   setTimeout(function () {
     $followers_clone.remove();
   }, 500);
+}
 
-} else if ($following.length > 0) {
+if ($following.length > 0) {
   var $following_wrapper = $("#following_of_<%= current_user.id %>_wrapper");
   var $following_clone = $following.clone().addClass("pos-abs");
 
