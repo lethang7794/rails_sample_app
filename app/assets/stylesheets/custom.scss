@@ -709,6 +709,11 @@ ul.users { // Users index
 /* Old Users Index - END */
 
 /* New Users Index - BEGIN */
+
+.user-container:first-of-type {
+  border-top: 1px solid #e8e8e8;
+}
+
 .user-container {
   padding: 10px;
   border-right: 1px solid #e8e8e8;
@@ -727,6 +732,7 @@ ul.users { // Users index
 .flex-grow-1 {
   flex: 1;
 }
+
 /* New Users Index - END*/
 
 /* Microposts*/
