@@ -45,9 +45,9 @@ if ($followers.length > 0) {
     $followers.removeClass("move-up tran-0s").addClass("tran-03s");
   }, 1); // Use delay to not override transform, and cause no transition
 
-  $followers.on('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', function() {
+  setTimeout(function () {
     $followers_clone.remove();
-  });
+  }, 500);
 
 } else if ($following.length > 0) {
   var $following_wrapper = $("#following_of_<%= current_user.id %>_wrapper");
@@ -61,7 +61,7 @@ if ($followers.length > 0) {
     $following.removeClass("move-up tran-0s").addClass("tran-03s");
   }, 1); // Use delay to not override transform, and cause no transition
 
-  $following.on('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd', function() {
+  setTimeout(function () {
     $following_clone.remove();
-  });
+  }, 500);
 }
