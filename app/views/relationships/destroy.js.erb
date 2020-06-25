@@ -1,5 +1,4 @@
 $("#follow_form_for_<%= @user.id %>").html("<%= escape_javascript(render partial: 'shared/follow', locals: { user: @user }) %>");
-$("#followers_of_<%= @user.id %>").html("<%= @user.followers.count %>");
 
 // Disable all follow/unfollow button
 $( ".follow-button" ).attr("disabled", true);
@@ -7,9 +6,11 @@ $( ".unfollow-button" ).attr("disabled", true);
 
 // Add class to old stat
 $("#following_of_<%= current_user.id %>").addClass("old-stat pos-abs");
+$("#followers_of_<%= @user.id %>").addClass("old-stat pos-abs");
 
 // Add new stat (and move it up)
 $("#following_of_<%= current_user.id %>_wrapper").append( "<span id='following_of_<%= current_user.id %>' class='following_of_<%= current_user.id %> stats following new-stat move-up'><%= current_user.following.count %></span>" );
+$("#followers_of_<%= @user.id %>_wrapper").append( "<span id='followers_of_<%= @user.id %>' class='followers_of_<%= @user.id %> stats followers new-stat move-up'><%= @user.followers.count %></span>" );
 
 // Move both old and new stat down
 $( ".old-stat" ).addClass( "move-down" );
