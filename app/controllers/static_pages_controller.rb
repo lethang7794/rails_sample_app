@@ -12,6 +12,8 @@ class StaticPagesController < ApplicationController
         logged_in_user
       end
     end
+
+    @user = User.find_by(email: 'example@railstutorial.org')
   end
 
   def help
