@@ -96,11 +96,16 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "should redirect following when not logged in" do
     get following_user_path(@user)
-    assert_redirected_to login_url
+    assert_redirected_to @user
   end
 
   test "should redirect followers when not logged in" do
     get followers_user_path(@user)
-    assert_redirected_to login_url
+    assert_redirected_to @user
+  end
+
+  test "should redirect media when not logged in" do
+    get media_user_path(@user)
+    assert_redirected_to @user
   end
 end
