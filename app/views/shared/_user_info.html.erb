@@ -2,34 +2,23 @@
   <div class="flex flex-row">
     <div class="flex-80 flex flex-column">
       <div class="flex-80">
-        <div class="dimmer-wrapper" data-toggle="modal" data-target="#my-micropost-modal-<%= @user.id %>">
-          <div class="user_avatar">
-            <%= gravatar_for @user %>
-          </div>
-          <div class="dimmer transition-03s"></div>
-        </div>
-        <!-- MODAL - BEGIN -->
-        <div class="modal fade" id="my-micropost-modal-<%= @user.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-body">
-                <div class="flex-center max-dem no-scroll">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <div class="button-wrapper my-flex-container flex-center">
-                      <div class="button" aria-hidden="true">
-                        <svg viewBox="0 0 24 24"><g><path d="M13.414 12l5.793-5.793c.39-.39.39-1.023 0-1.414s-1.023-.39-1.414 0L12 10.586 6.207 4.793c-.39-.39-1.023-.39-1.414 0s-.39 1.023 0 1.414L10.586 12l-5.793 5.793c-.39.39-.39 1.023 0 1.414.195.195.45.293.707.293s.512-.098.707-.293L12 13.414l5.793 5.793c.195.195.45.293.707.293s.512-.098.707-.293c.39-.39.39-1.023 0-1.414L13.414 12z"></path></g></svg>
-                      </div>
-                    </div>
-                  </button>
-                  <div>
-                    <%= gravatar_for(@user, size: 2048)%>
-                  </div>
-                </div>
+        <!-- MODAL WRAPPER - BEGIN -->
+        <div class="modal-wrapper">
+          <!-- MODAL TOGGLE - BEGIN -->
+          <div class="modal-toggle" data-toggle="modal" data-target="#avatar-modal-<%= @user.id %>">
+            <div class="dimmer-wrapper">
+              <div class="user_avatar">
+                <%= gravatar_for @user %>
               </div>
+              <div class="dimmer transition-03s"></div>
             </div>
           </div>
+          <!-- MODAL TOGGLE - END -->
+          <!-- MODAL - BEGIN -->
+          <%= render partial: 'shared/modals/avatar', locals: { user: @user } %>
+          <!-- MODAL - END -->
         </div>
-        <!-- MODAL - END -->
+        <!-- MODAL WRAPPER - END -->
       </div>
     </div>
     <div class="info flex flex-column flex-grow-1">
@@ -44,19 +33,7 @@
         </div>
       </div>
       <section class="stats">
-        <svg viewbox="0 0 24 24" class="svg-inline">
-          <g>
-            <path d="M19.708 2H4.292C3.028 2 2 3.028 2 4.292v15.416C2 20.972 3.028 22 4.292 22h15.416C20.972 22 22 20.972 22 19.708V4.292C22 3.028 20.972 2 19.708 2zm.792 17.708c0 .437-.355.792-.792.792H4.292c-.437 0-.792-.355-.792-.792V6.418c0-.437.354-.79.79-.792h15.42c.436 0 .79.355.79.79V19.71z"></path>
-            <circle cx="7.032" cy="8.75" r="1.285"></circle>
-            <circle cx="7.032" cy="13.156" r="1.285"></circle>
-            <circle cx="16.968" cy="8.75" r="1.285"></circle>
-            <circle cx="16.968" cy="13.156" r="1.285"></circle>
-            <circle cx="12" cy="8.75" r="1.285"></circle>
-            <circle cx="12" cy="13.156" r="1.285"></circle>
-            <circle cx="7.032" cy="17.486" r="1.285"></circle>
-            <circle cx="12" cy="17.486" r="1.285"></circle>
-          </g>
-        </svg>
+        <%= render 'shared/svg/calendar' %>
         Joined <%= Date::MONTHNAMES[@user.created_at.month] %> <%= @user.created_at.year %>
         <%= render 'shared/stats' %>
       </section>
