@@ -1055,6 +1055,30 @@ aside {
   }
 }
 
+/* LOGIN MODAL - BEGIN */
+.login-modal {
+  .modal-dialog {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+  }
+}
+
+.pseudo-tab {
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  color: rgb(101, 119, 134);
+
+  &:hover {
+    color: #1da1f2;
+  }
+}
+/* LOGIN MODAL - END */
+
 /* Micropost - view large image */
 .button-wrapper {
   // border-radius: 9999px; // Twitter's way to make circle
