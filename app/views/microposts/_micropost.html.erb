@@ -37,7 +37,7 @@
 						<!-- MODAL WRAPPER - BEGIN -->
 						<div class="modal-wrapper">
 							<!-- MODAL TOGGLE - BEGIN -->
-							<div class="modal-toggle" data-toggle="modal" data-target="#micropost-<%= micropost.id %>-image-modal">
+							<div class="modal-toggle" data-toggle="modal" data-target="#image-modal-micropost-<%= micropost.id %>">
 								<div class="image-block micropost-image-cover" style="background-image: url('<%= micropost.image_url %>');">
 									<div class="flex flex-row flex-grow-1 justify-content-flex-end">
 										<div class="flex-center empty">
@@ -53,7 +53,7 @@
 							<!-- MODAL TOGGLE - END -->
 
 							<!-- MODAL - BEGIN -->
-							<%= render partial: 'shared/modals/micropost_image', locals: { micropost: micropost } %>
+							<%= render partial: 'shared/modals/image_micropost', locals: { micropost: micropost } %>
 							<!-- MODAL - END -->
 						</div>
 						<!-- MODAL WRAPPER - END -->
