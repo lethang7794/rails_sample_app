@@ -5,13 +5,41 @@
     <%= render 'shared/links/following' %>
   </div>
   <div class="stat">
-    <%= link_to followers_user_path(@user) do %>
-      <div id="followers_of_<%= @user.id %>_wrapper" class="flex-inline followers-wrapper">
-        <span id="followers_of_<%= @user.id %>" class="followers_of_<%= @user.id %> stats followers tran-03s">
-          <%= @user.followers.count %>
-        </span>
+    <% if logged_in? %>
+      <%= link_to followers_user_path(@user) do %>
+        <div id="followers_of_<%= @user.id %>_wrapper" class="flex-inline followers-wrapper">
+          <span id="followers_of_<%= @user.id %>" class="followers_of_<%= @user.id %> stats followers tran-03s">
+            <%= @user.followers.count %>
+          </span>
+        </div>
+        <span>Followers</span>
+      <% end %>
+
+    <% else %>
+      <!-- Button trigger modal -->
+      <div class="pseudo-link" data-toggle="modal" data-target="#login-modal-followers-user-<%= @user.id %>">
+        <div id="followers_of_<%= @user.id %>_wrapper" class="flex-inline followers-wrapper">
+          <span id="followers_of_<%= @user.id %>" class="followers_of_<%= @user.id %> stats followers tran-03s">
+            <%= @user.followers.count %>
+          </span>
+        </div>
+        <span>Followers</span>
       </div>
-      <span>Followers</span>
+
+      <!-- Modal -->
+      <div class="modal fade login-modal" id="login-modal-followers-user-<%= @user.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title" id="myModalLabel">Login to access that page</h4>
+            </div>
+            <div class="modal-body">
+              <%= render partial: 'shared/login_form_modal', locals: { forward_to: followers_user_path(@user) } %>
+            </div>
+          </div>
+        </div>
+      </div>
     <% end %>
   </div>
 </div>
