@@ -1066,6 +1066,8 @@ aside {
 
 /* LOGIN MODAL - BEGIN */
 .login-modal {
+  padding-left: 8px; // Make the login modal symmetric. Boostrap's Javascript will add padding-right: 8px when the modal is open.
+
   .modal-dialog {
     height: 100%;
     width: 100%;
