@@ -1074,6 +1074,12 @@ aside {
     justify-content: center;
     margin: 0;
   }
+
+  .modal-header {
+    svg {
+      font-size: 7em;
+    }
+  }
 }
 
 .pseudo-tab {
