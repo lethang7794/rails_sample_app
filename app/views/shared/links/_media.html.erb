@@ -12,7 +12,9 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Login to access that page</h4>
+          <h4 class="modal-title" id="myModalLabel">
+            Login to see photos posted by <strong><%= @user.name %></strong>.
+          </h4>
         </div>
         <div class="modal-body">
           <%= render partial: 'shared/login_form_modal', locals: { forward_to: media_user_path(user) } %>
