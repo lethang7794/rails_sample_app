@@ -602,6 +602,15 @@ section {
       margin: 1px;
     }
   }
+
+  .pseudo-link {
+    color: gray;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 /* Following stat transition - BEGIN */
