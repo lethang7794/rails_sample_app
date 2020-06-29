@@ -34,16 +34,15 @@
                   detail: "Edit profile"
                 } %>
   <% end %>
+<% end %>
 
-<% else %>
-  <% if current_page?(controller: 'users', action: 'index') %>
-    <%= render  partial: 'shared/mini_navbar_partial',
-                locals: {
-                  heading: "Explorer",
-                  detail: "Let's follow other people"
-                } %>
+<% if current_page?('/home') %>
+  <%= render 'shared/mini_navbar_home' %>
 
-  <% elsif current_page?('/home') %>
-    <%= render 'shared/mini_navbar_home' %>
-  <% end %>
+<% elsif current_page?(controller: 'users', action: 'index') %>
+  <%= render  partial: 'shared/mini_navbar_partial',
+              locals: {
+                heading: "Explorer",
+                detail: "Let's follow other people"
+              } %>
 <% end %>
