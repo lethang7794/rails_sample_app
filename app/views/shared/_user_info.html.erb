@@ -27,6 +27,7 @@
           <h1>
             <%= @user.name %>
           </h1>
+          <div>@<%= @user.username %></div>
         </div>
         <div class="flex-grow-1 flex flew-row justify-content-flex-end">
           <%= render partial: 'shared/follow_form', locals: { user: @user } %>

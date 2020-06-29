@@ -17,14 +17,14 @@
     <%= render  partial: 'shared/mini_navbar_partial',
                 locals: {
                   heading: "#{@user.name}",
-                  detail: "Following"
+                  detail:  "@#{@user.username}"
                 } %>
 
   <% elsif current_page?(controller: 'users', action: 'followers', id: @user.id) %>
     <%= render  partial: 'shared/mini_navbar_partial',
                 locals: {
                   heading: "#{@user.name}",
-                  detail: "Followers"
+                  detail: "@#{@user.username}"
                 } %>
 
   <% elsif current_page?(controller: 'users', action: 'edit', id: @user.id) %>
