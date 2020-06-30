@@ -24,11 +24,11 @@ class MiniNavbarTest < ActionDispatch::IntegrationTest
   test "should show correct content in user following/followers page" do
     get following_user_path(@user)
     assert_select '#mini-bar-heading', text: "#{@user.name}"
-    assert_select '.detail', text: "Following"
+    assert_select '.detail', text: "@#{@user.username}"
 
     get followers_user_path(@user)
     assert_select '#mini-bar-heading', text: "#{@user.name}"
-    assert_select '.detail', text: "Followers"
+    assert_select '.detail', text: "@#{@user.username}"
   end
 
   test "should show correct content in users index page" do
