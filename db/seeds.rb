@@ -6,6 +6,11 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# Generates user's bio.
+def generate_bio
+  "#{Faker::Job.title}\n@#{Faker::Company.name.delete(',').gsub(/(\s+)/, '_')}\n#{Faker::Company.catch_phrase}\n#{Faker::Hacker.say_something_smart}\n##{Faker::ProgrammingLanguage.name.gsub(/(\s+)/, '_')} ##{Faker::Job.key_skill.gsub(/(\s+)/, '_')} ##{Faker::Science.element.gsub(/(\s+)/, '_')} ##{Faker::Games::Pokemon.name.gsub(/(\s+)/, '_')} ##{Faker::Movies::StarWars.droid.gsub(/(\s+)/, '_')}"
+end
+
 # Creates a main sample user.
 User.create!(
     name:                  'Admin',
@@ -15,17 +20,19 @@ User.create!(
     password_confirmation: 'password',
     admin:                 true,
     activated:             true,
-    activated_at:          Time.zone.now
+    activated_at:          Time.zone.now,
+    bio:                   generate_bio
 )
 
 User.create!(
-    name:                  'Sample App',
-    username:              'SampleApp',
-    email:                 'hi@sampleapp.com',
+    name:                  'Demo User',
+    username:              'DemoUser',
+    email:                 'demouser@sampleapp.com',
     password:              'password',
     password_confirmation: 'password',
     activated:             true,
-    activated_at:          Time.zone.now
+    activated_at:          Time.zone.now,
+    bio:                   generate_bio
 )
 
 # Generates a bunch of additional users with Faker.
@@ -40,7 +47,8 @@ User.create!(
     password:              password,
     password_confirmation: password,
     activated:             true,
-    activated_at:          Time.zone.now
+    activated_at:          Time.zone.now,
+    bio:                   generate_bio
   )
 end
 
