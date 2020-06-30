@@ -19,6 +19,11 @@ class User < ApplicationRecord
   validates :name,  presence: true,
   									length: { maximum: 50 }
 
+  VALID_USERNAME_REGEX = /\A[a-zA-Z0-9]+\Z/
+	validates :username, 	uniqueness: true,
+												length: { maximum: 20 },
+												format: { with: VALID_USERNAME_REGEX, massage: "may only contain alphanumeric characters."}
+
 	VALID_EMAIL_REGEX = /\A[\w+-\.]+@[a-z\d-]+(\.[a-z\d-]+)*\.[a-z]+\z/i
   validates :email, presence: true,
   									length: { maximum: 255 },
