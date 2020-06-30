@@ -666,6 +666,7 @@ section.user_info {
     }
     div {
       margin-bottom: 10px;
+      color: rgb(101, 119, 134);
     }
   }
 
@@ -786,6 +787,21 @@ ul.users { // Users index
 
   .main-content {
     padding-left: 10px;
+
+    .name {
+      a {
+        font-weight: 600;
+        color: black;
+      }
+    }
+
+    .username {
+      a {
+        font-weight: 400;
+        color: rgb(101, 119, 134);
+        text-decoration: none;
+      }
+    }
   }
 }
 
