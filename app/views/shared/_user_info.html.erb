@@ -35,8 +35,8 @@
       </div>
       <div>
         <% if @user.bio %>
-          <span class="bio"><%= @user.bio_display.html_safe %></span>
-        <% end %>=
+          <span class="bio"><%= sanitize @user.bio_display.html_safe %></span>
+        <% end %>
       </div>
       <section class="stats">
         <%= render 'shared/svg/calendar' %>
