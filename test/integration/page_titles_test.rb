@@ -18,15 +18,15 @@ class PageTitlesTest < ActionDispatch::IntegrationTest
     log_in_as(@harry)
 
     get user_path(@harry)
-    assert_select 'title', full_title(@harry.name)
+    assert_select 'title', full_title("#{@harry.name} (@#{@harry.username})")
 
     get media_user_path(@harry)
-    assert_select 'title', full_title("Media microposts from #{@harry.name}")
+    assert_select 'title', full_title("Media microposts from #{@harry.name} (@#{@harry.username})")
 
     get following_user_path(@harry)
-    assert_select 'title', full_title("People followed by #{@harry.name}")
+    assert_select 'title', full_title("People followed by #{@harry.name} (@#{@harry.username})")
 
     get followers_user_path(@harry)
-    assert_select 'title', full_title("People following #{@harry.name}")
+    assert_select 'title', full_title("People following #{@harry.name} (@#{@harry.username})")
   end
 end

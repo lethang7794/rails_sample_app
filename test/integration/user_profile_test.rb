@@ -13,7 +13,7 @@ class UserProfileTest < ActionDispatch::IntegrationTest
 
     assert_select 'title', { count: 1},
                   "More than one title."
-    assert_select 'title', { text: full_title(@user.name)},
+    assert_select 'title', { text: full_title("#{@user.name} (@#{@user.username})")},
                   "Wrong title."
 
     assert_select 'h1', text: @user.name
