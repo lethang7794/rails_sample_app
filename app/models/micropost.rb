@@ -17,6 +17,11 @@ class Micropost < ApplicationRecord
     image.variant(resize_to_limit: [500, 500])
   end
 
+	# Replace words in content begin with @, # with hyperlink.
+  def content_display
+    self.content.gsub(/(?<hash>#\S+)/, '<a href="#">\k<hash></a>').gsub(/(?<at>@\S+)/, '<a href="#">\k<at></a>')
+  end
+
   # Returns url for resized image.
   def image_url
     Rails.application.routes.url_helpers.rails_representation_url(image.variant(resize_to_limit: [500, 500]).processed, only_path: true)
