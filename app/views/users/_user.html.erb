@@ -1,9 +1,11 @@
 <div class="user-container">
   <div class="flex flex-row">
     <div class="flex-50 flex flex-column">
-      <div class="flex-50 dimmer-wrapper">
-        <%= gravatar_for user, size: 50 %>
-        <div class="dimmer transition-03s"></div>
+      <div class="flex-50">
+        <%= link_to user, class: "dimmer-wrapper" do %>
+          <%= gravatar_for(user, size:50) %>
+          <div class="dimmer transition-03s"></div>
+        <% end %>
       </div>
     </div>
     <div class="main-content flex flex-row flex-grow-1 flex-center">
@@ -22,7 +24,7 @@
                                             data: { confirm: 'You sure?'} %>
         <% end %>
       </span>
-      <span>
+      <span class="flex-120 flex justify-content-flex-end">
         <%= render partial: 'shared/follow_form', locals: {user: user} %>
       </span>
     </div>
