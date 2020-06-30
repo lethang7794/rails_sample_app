@@ -11,6 +11,11 @@ def generate_bio
   "#{Faker::Job.title}\n@#{Faker::Company.name.delete(',').gsub(/(\s+)/, '_')}\n#{Faker::Company.catch_phrase}\n#{Faker::Hacker.say_something_smart}\n##{Faker::ProgrammingLanguage.name.gsub(/(\s+)/, '_')} ##{Faker::Job.key_skill.gsub(/(\s+)/, '_')} ##{Faker::Science.element.gsub(/(\s+)/, '_')} ##{Faker::Games::Pokemon.name.gsub(/(\s+)/, '_')} ##{Faker::Movies::StarWars.droid.gsub(/(\s+)/, '_')}"
 end
 
+# Generates micropost's content.
+def generate_content
+  "#{Faker::Hacker.say_something_smart}\n@#{Faker::Ancient.hero.gsub(/(\s+)/, '_')} @#{Faker::Ancient.god.gsub(/(\s+)/, '_')} @#{Faker::Ancient.titan.gsub(/(\s+)/, '_')}\n##{Faker::Hacker.abbreviation} ##{Faker::Hacker.noun.gsub(/(\s+)/, '_')} ##{Faker::Hacker.verb.gsub(/(\s+)/, '_')}"
+end
+
 # Creates a main sample user.
 User.create!(
     name:                  'Admin',
@@ -56,7 +61,7 @@ end
 users = User.order(:created_at).take(50)
 
 users.each do |user|
-  content = Faker::Lorem.sentence(word_count: 5)
+  content = generate_content
   user.microposts.create!(content: content)
 end
 
@@ -64,7 +69,7 @@ end
 users = User.order(:created_at).take(5)
 49.times do
   users.each do |user|
-    content = Faker::Lorem.sentence(word_count: 5)
+    content = generate_content
     user.microposts.create!(content: content)
   end
 end
@@ -72,19 +77,19 @@ end
 
 users = User.order(:created_at).take(6)
 users.each_with_index do |user, index|
-  content = Faker::Lorem.sentence(word_count: 5)
+  content = generate_content
   micropost = user.microposts.create!(content: content)
   micropost.image.attach(io: File.open("app/assets/images/#{12-index}.png"), filename: "#{12-index}.png", content_type: 'image/png')
 
-  content = Faker::Lorem.sentence(word_count: 5)
+  content = generate_content
   user.microposts.create!(content: content)
 end
 users.each_with_index do |user, index|
-  content = Faker::Lorem.sentence(word_count: 5)
+  content = generate_content
   micropost = user.microposts.create!(content: content)
   micropost.image.attach(io: File.open("app/assets/images/#{6-index}.png"), filename: "#{6-index}.png", content_type: 'image/png')
 
-  content = Faker::Lorem.sentence(word_count: 5)
+  content = generate_content
   user.microposts.create!(content: content)
 end
 
