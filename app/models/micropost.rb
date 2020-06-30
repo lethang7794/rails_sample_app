@@ -6,7 +6,7 @@ class Micropost < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
 
   validates :user_id, presence: true
-  validates :content, presence: true, length: { maximum: 140 }
+  validates :content, presence: true, length: { maximum: 280 }
 
   validates :image, content_type:
                             { in: %w[image/png image/jpeg image/gif], message: 'should be png/jpeg/gif.' },
