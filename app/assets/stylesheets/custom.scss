@@ -660,6 +660,15 @@ section {
 section.user_info {
   margin: 0;
 
+  .username {
+    h1 {
+      margin-bottom: 0;
+    }
+    div {
+      margin-bottom: 10px;
+    }
+  }
+
   .gravatar {
     margin: 0;
   }
