@@ -1361,7 +1361,7 @@ aside {
   }
 
   // Appearance
-  width: 100px; // Following/Unfollow need more space than Follow
+  min-width: 110px; // Following/Unfollow need more space than Follow
 
   color:              var(--unfollowButton-textColor);
   background-color:   var(--unfollowButton-bgColor);
