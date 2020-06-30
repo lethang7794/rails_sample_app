@@ -14,6 +14,7 @@ class User < ApplicationRecord
 	attr_accessor :remember_token, :activation_token, :reset_token
 	before_create :create_activation_digest
 	before_save 	:downcase_email
+	before_validation   :generate_username
 
   validates :name,  presence: true,
   									length: { maximum: 50 }
@@ -116,6 +117,15 @@ class User < ApplicationRecord
 		# Converts email to all in lower case
 		def downcase_email
 			email.downcase!
+		end
+
+		# Generates a random username for user
+		def generate_username
+			if self.username.blank?
+				num = rand 0..999999
+				firstname = self.name.split.first
+				self.username = firstname[0..13] + "#{num}"
+			end
 		end
 
 		# Creates and assigns activation token and digest
