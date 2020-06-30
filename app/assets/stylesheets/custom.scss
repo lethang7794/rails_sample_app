@@ -670,6 +670,10 @@ section.user_info {
     }
   }
 
+  .bio {
+    white-space: pre-wrap;
+  }
+
   .gravatar {
     margin: 0;
   }
@@ -922,6 +926,7 @@ ul.users { // Users index
 
     .content {
       font-weight: 400;
+      white-space: pre-wrap;
     }
 
     .image-block {

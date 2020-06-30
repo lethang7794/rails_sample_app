@@ -33,6 +33,11 @@
           <%= render partial: 'shared/follow_form', locals: { user: @user } %>
         </div>
       </div>
+      <div>
+        <% if @user.bio %>
+          <span class="bio"><%= @user.bio_display.html_safe %></span>
+        <% end %>=
+      </div>
       <section class="stats">
         <%= render 'shared/svg/calendar' %>
         Joined <%= Date::MONTHNAMES[@user.created_at.month] %> <%= @user.created_at.year %>

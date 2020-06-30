@@ -32,9 +32,9 @@
 				</div>
 				<div>
 					<div>
-						<span class="content">
-							<%= micropost.content %>
-						</span>
+						<% if micropost.content %>
+							<span class="content"><%= micropost.content_display.html_safe %></span>
+						<% end %>=
 					</div>
 					<% if micropost.image.attached? %>
 						<!-- MODAL WRAPPER - BEGIN -->
