@@ -879,6 +879,14 @@ ul.users { // Users index
       }
     }
 
+    .username {
+      a {
+        color: black;
+        text-decoration: none;
+        color: rgb(101, 119, 134);
+      }
+    }
+
     .timestamp {
       color: rgb(136, 153, 166); // From Twitter's tweet
     }

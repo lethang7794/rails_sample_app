@@ -16,8 +16,10 @@
 					<span class="user">
 						<%= link_to micropost.user.name, micropost.user %>
 					</span>
+					<span class="username">
+						<%= link_to "@#{micropost.user.username}", micropost.user %>
+					</span>
 					<span class="timestamp">
-						@<%= micropost.user.username %>
 						·
 						<%= time_ago_in_words(micropost.created_at) %>
 					</span>
