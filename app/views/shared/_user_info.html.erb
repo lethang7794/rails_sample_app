@@ -32,11 +32,11 @@
             <%= render partial: 'shared/follow_form', locals: {user: @user} %>
           </span>
         </div>
-        <div class="bio-wrapper">
-          <% if @user.bio %>
+        <% if @user.bio %>
+          <div class="bio-wrapper">
             <span class="bio"><%= sanitize @user.bio_display.html_safe %></span>
-          <% end %>
-        </div>
+          </div>
+        <% end %>
         <section class="stats">
           <div class="extra flex flex-row flex-wrap">
             <div class="location stat">

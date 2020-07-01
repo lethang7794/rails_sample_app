@@ -684,6 +684,16 @@ section.user_info {
     background-color: rgb(204, 214, 221);
   }
 
+  .info {
+    margin: 0 15px;
+
+    .content-wrapper {
+      .heading {
+        margin-bottom: 10px;
+      }
+    }
+  }
+
   .user_avatar {
     margin-top: -60px;
     margin-bottom: 10px;
@@ -714,10 +724,6 @@ section.user_info {
 
   .gravatar {
     margin: 0;
-  }
-
-  .info {
-    margin: 0 15px;
   }
 }
 
