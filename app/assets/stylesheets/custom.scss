@@ -668,6 +668,12 @@ section {
 section.user_info {
   margin: 0;
 
+  .user_avatar {
+    height: 80px;
+    width: 80px;
+    background-color: #e8e8e8;
+  }
+
   .username {
     h1 {
       margin-bottom: 0;

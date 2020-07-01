@@ -1,26 +1,20 @@
 <section class="user_info">
   <div class="flex flex-row">
-    <div class="flex-80 flex flex-column">
-      <div class="flex-80">
-        <!-- MODAL WRAPPER - BEGIN -->
-        <div class="modal-wrapper">
-          <!-- MODAL TOGGLE - BEGIN -->
-          <div class="modal-toggle" data-toggle="modal" data-target="#avatar-modal-<%= @user.id %>">
-            <div class="dimmer-wrapper">
-              <div class="user_avatar">
-                <%= gravatar_for @user %>
-              </div>
-              <div class="dimmer transition-03s"></div>
-            </div>
-          </div>
-          <!-- MODAL TOGGLE - END -->
-          <!-- MODAL - BEGIN -->
-          <%= render partial: 'shared/modals/avatar', locals: { user: @user } %>
-          <!-- MODAL - END -->
+    <!-- MODAL WRAPPER - BEGIN -->
+    <div class="user-avatar-wrapper modal-wrapper">
+      <!-- MODAL TOGGLE - BEGIN -->
+      <div class="modal-toggle" data-toggle="modal" data-target="#avatar-modal-<%= @user.id %>">
+        <div class="user_avatar rounded-circle overflow-hidden dimmer-wrapper">
+          <%= gravatar_for @user %>
+          <div class="dimmer transition-03s"></div>
         </div>
-        <!-- MODAL WRAPPER - END -->
       </div>
+      <!-- MODAL TOGGLE - END -->
+      <!-- MODAL - BEGIN -->
+      <%= render partial: 'shared/modals/avatar', locals: { user: @user } %>
+      <!-- MODAL - END -->
     </div>
+    <!-- MODAL WRAPPER - END -->
 
     <div class="info flex-grow-1 flex flex-row">
       <div class="content-wrapper flex-grow-1 flex flex-column">
