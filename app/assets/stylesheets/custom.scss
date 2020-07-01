@@ -802,6 +802,12 @@ ul.users { // Users index
   border-bottom: 1px solid #e8e8e8;
   border-left: 1px solid #e8e8e8;
 
+  .user-avatar {
+    height: 50px;
+    width: 50px;
+    background-color: #e8e8e8;
+  }
+
   .gravatar {
     margin: 0;
   }

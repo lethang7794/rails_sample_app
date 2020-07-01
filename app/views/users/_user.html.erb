@@ -1,12 +1,10 @@
 <div class="user-container">
   <div class="flex flex-row">
-    <div class="flex-50 flex flex-column">
-      <div class="flex-50">
-        <%= link_to user, class: "dimmer-wrapper" do %>
-          <%= gravatar_for(user, size:50) %>
-          <div class="dimmer transition-03s"></div>
-        <% end %>
-      </div>
+    <div class="user-avatar rounded-circle overflow-hidden">
+      <%= link_to user, class: "dimmer-wrapper" do %>
+        <%= gravatar_for(user, size:50) %>
+        <div class="dimmer transition-03s"></div>
+      <% end %>
     </div>
 
     <div class="main-content flex-grow-1 flex flex-row">
