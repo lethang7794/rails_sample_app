@@ -10,6 +10,9 @@
 def generate_bio
   "#{Faker::Job.title}\n@#{Faker::Company.name.delete(',').gsub(/(\s+)/, '_')}\n#{Faker::Company.catch_phrase}\n##{Faker::ProgrammingLanguage.name.gsub(/(\s+)/, '_')} ##{Faker::Job.key_skill.gsub(/(\s+)/, '_')} ##{Faker::Science.element.gsub(/(\s+)/, '_')}"
 end
+
+def generate_location
+  "#{Faker::Address.country}"
 end
 
 # Generates micropost's content.
@@ -27,7 +30,8 @@ User.create!(
     admin:                 true,
     activated:             true,
     activated_at:          Time.zone.now,
-    bio:                   generate_bio
+    bio:                   generate_bio,
+    location:              generate_location
 )
 
 User.create!(
@@ -38,7 +42,8 @@ User.create!(
     password_confirmation: 'password',
     activated:             true,
     activated_at:          Time.zone.now,
-    bio:                   generate_bio
+    bio:                   generate_bio,
+    location:              generate_location
 )
 
 # Generates a bunch of additional users with Faker.
@@ -54,7 +59,8 @@ User.create!(
     password_confirmation: password,
     activated:             true,
     activated_at:          Time.zone.now,
-    bio:                   generate_bio
+    bio:                   generate_bio,
+    location:              generate_location
   )
 end
 
