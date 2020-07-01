@@ -39,10 +39,12 @@
         <% end %>
         <section class="stats">
           <div class="extra flex flex-row flex-wrap">
+          <% if @user.location %>
             <div class="location stat">
               <%= render 'shared/svg/location' %>
               <span><%= @user.location %></span>
             </div>
+          <% end %>
             <div class="joined stat">
               <%= render 'shared/svg/calendar' %>
               <span>
