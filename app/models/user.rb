@@ -34,6 +34,8 @@ class User < ApplicationRecord
 	validates :password, presence: true,
 												length: { minimum: 6 }, allow_nil: true
 
+	validates :bio,       length: { maximum: 200 }
+
 	# Returns random token used for remember me, account activation, password reset.
 	def self.new_token
 		SecureRandom.urlsafe_base64
