@@ -1323,6 +1323,9 @@ aside {
 
   .my-button {
     margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
 
@@ -1364,7 +1367,7 @@ aside {
 
   // Appearance
   border-radius: 9999px;
-  height: 35px;
+  min-height: 35px;
 
   // Font
   font-weight:   700;
