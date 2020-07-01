@@ -139,6 +139,11 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
+  test "bio should not be too long" do
+    @user.bio = "a" * 201
+    assert_not @user.valid?
+  end
+
   test "authenticated should return false for a user with nil remember_digest" do
     assert_not @user.authenticated?(:remember, '')
   end
