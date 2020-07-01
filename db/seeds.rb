@@ -8,7 +8,8 @@
 
 # Generates user's bio.
 def generate_bio
-  "#{Faker::Job.title}\n@#{Faker::Company.name.delete(',').gsub(/(\s+)/, '_')}\n#{Faker::Company.catch_phrase}\n##{Faker::ProgrammingLanguage.name.gsub(/(\s+)/, '_')} ##{Faker::Job.key_skill.gsub(/(\s+)/, '_')} ##{Faker::Science.element.gsub(/(\s+)/, '_')} ##{Faker::Games::Pokemon.name.gsub(/(\s+)/, '_')} ##{Faker::Movies::StarWars.droid.gsub(/(\s+)/, '_')}"
+  "#{Faker::Job.title}\n@#{Faker::Company.name.delete(',').gsub(/(\s+)/, '_')}\n#{Faker::Company.catch_phrase}\n##{Faker::ProgrammingLanguage.name.gsub(/(\s+)/, '_')} ##{Faker::Job.key_skill.gsub(/(\s+)/, '_')} ##{Faker::Science.element.gsub(/(\s+)/, '_')}"
+end
 end
 
 # Generates micropost's content.
