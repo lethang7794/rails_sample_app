@@ -8,25 +8,30 @@
         <% end %>
       </div>
     </div>
-    <div class="main-content flex flex-row flex-grow-1 flex-center">
-      <div class="flex flex-column">
-        <span class="name">
-          <%= link_to user.name, user %>
-        </span>
-        <span class="username">
-          <%= link_to "@#{user.username}", user %>
-        </span>
+
+    <div class="main-content flex-grow-1 flex flex-row">
+      <div class="content-wrapper flex-grow-1 flex flex-column">
+        <div class="heading flex flex-row flex-center">
+          <div class="flex flex-column">
+            <span class="name">
+              <%= link_to user.name, user %>
+            </span>
+            <span class="username">
+              <%= link_to "@#{user.username}", user %>
+            </span>
+          </div>
+          <span class="flex-grow-1"></span>
+          <span class="delete-option">
+            <% if current_user && current_user.admin? && !current_user?(user) %>
+              <%= link_to '(delete)', user,   method: :delete,
+                                                data: { confirm: 'You sure?'} %>
+            <% end %>
+          </span>
+          <span class="flex-120 flex justify-content-flex-end">
+            <%= render partial: 'shared/follow_form', locals: {user: user} %>
+          </span>
+        </div>
       </div>
-      <span class="flex-grow-1"></span>
-      <span class="delete-option">
-        <% if current_user && current_user.admin? && !current_user?(user) %>
-          <%= link_to '(delete)', user,   method: :delete,
-                                            data: { confirm: 'You sure?'} %>
-        <% end %>
-      </span>
-      <span class="flex-120 flex justify-content-flex-end">
-        <%= render partial: 'shared/follow_form', locals: {user: user} %>
-      </span>
     </div>
   </div>
 </div>
