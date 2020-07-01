@@ -571,7 +571,10 @@ section {
 
 .stats {
   .stat {
-    margin-right: 10px;
+    margin-right: 15px;
+    span {
+      margin: 0;
+    }
   }
   overflow: visible;
 
@@ -1478,7 +1481,6 @@ aside {
   display: inline-block;
   height: 1.25em;
   vertical-align: text-bottom;
-  margin-right: 2px;
 
   color: rgb(101, 119, 134);
   fill: currentcolor;

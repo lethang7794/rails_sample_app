@@ -39,10 +39,16 @@
         <% end %>
       </div>
       <section class="stats">
-        <div class="extra">
-          <div class="joined">
+        <div class="extra flex flex-row flex-wrap">
+          <div class="location stat">
+            <%= render 'shared/svg/location' %>
+            <span><%= @user.location %></span>
+          </div>
+          <div class="joined stat">
             <%= render 'shared/svg/calendar' %>
-            Joined <%= Date::MONTHNAMES[@user.created_at.month] %> <%= @user.created_at.year %>
+            <span>
+              Joined <%= Date::MONTHNAMES[@user.created_at.month] %> <%= @user.created_at.year %>
+            </span>
           </div>
         </div>
         <%= render 'shared/stats' %>
