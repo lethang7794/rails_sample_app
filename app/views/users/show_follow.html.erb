@@ -8,12 +8,6 @@
 <div class="row">
 	<!-- Following/Followers list - Begin -->
 	<div class="col-md-6 col-md-offset-3 follow-list">
-		<!-- User overview - Begin -->
-    <div class="user-info-wrapper border-wrapper-rl">
-      <%= render 'shared/user_info' %>
-    </div>
-		<!-- User overview - End -->
-
 		<div class="flex flex-row border-wrapper-rl border-wrapper-b">
 			<div class="flex-grow-1 flex-center tab-container">
 				<%= active_link_to 'Following', following_user_path(@user), class: "flex-grow-1 flex-center" %>
