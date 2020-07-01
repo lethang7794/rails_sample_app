@@ -7,7 +7,7 @@
         <!-- MODAL TOGGLE - BEGIN -->
         <div class="modal-toggle" data-toggle="modal" data-target="#avatar-modal-<%= @user.id %>">
           <div class="user_avatar rounded-circle overflow-hidden dimmer-wrapper">
-            <%= gravatar_for @user %>
+            <%= gravatar_for @user, size: 120 %>
             <div class="dimmer transition-03s"></div>
           </div>
         </div>
