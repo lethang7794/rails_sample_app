@@ -39,8 +39,12 @@
         <% end %>
       </div>
       <section class="stats">
-        <%= render 'shared/svg/calendar' %>
-        Joined <%= Date::MONTHNAMES[@user.created_at.month] %> <%= @user.created_at.year %>
+        <div class="extra">
+          <div class="joined">
+            <%= render 'shared/svg/calendar' %>
+            Joined <%= Date::MONTHNAMES[@user.created_at.month] %> <%= @user.created_at.year %>
+          </div>
+        </div>
         <%= render 'shared/stats' %>
       </section>
     </div>
