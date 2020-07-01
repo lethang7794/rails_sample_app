@@ -21,38 +21,44 @@
         <!-- MODAL WRAPPER - END -->
       </div>
     </div>
-    <div class="info flex flex-column flex-grow-1">
-      <div class="flex flew-row flex-align-items-center">
-        <div class="user username">
-          <h1>
-            <%= @user.name %>
-          </h1>
-          <div>@<%= @user.username %></div>
-        </div>
-        <div class="flex-grow-1 flex flew-row justify-content-flex-end">
-          <%= render partial: 'shared/follow_form', locals: { user: @user } %>
-        </div>
-      </div>
-      <div>
-        <% if @user.bio %>
-          <span class="bio"><%= sanitize @user.bio_display.html_safe %></span>
-        <% end %>
-      </div>
-      <section class="stats">
-        <div class="extra flex flex-row flex-wrap">
-          <div class="location stat">
-            <%= render 'shared/svg/location' %>
-            <span><%= @user.location %></span>
+
+    <div class="info flex-grow-1 flex flex-row">
+      <div class="content-wrapper flex-grow-1 flex flex-column">
+        <div class="heading flex flex-row flex-center">
+          <div class="flex flex-column">
+            <div class="user username">
+              <h1>
+                <%= @user.name %>
+              </h1>
+              <div>@<%= @user.username %></div>
+            </div>
           </div>
-          <div class="joined stat">
-            <%= render 'shared/svg/calendar' %>
-            <span>
-              Joined <%= Date::MONTHNAMES[@user.created_at.month] %> <%= @user.created_at.year %>
-            </span>
-          </div>
+          <span class="flex-grow-1"></span>
+          <span class="flex-120 flex justify-content-flex-end">
+            <%= render partial: 'shared/follow_form', locals: {user: @user} %>
+          </span>
         </div>
-        <%= render 'shared/stats' %>
-      </section>
+        <div class="bio-wrapper">
+          <% if @user.bio %>
+            <span class="bio"><%= sanitize @user.bio_display.html_safe %></span>
+          <% end %>
+        </div>
+        <section class="stats">
+          <div class="extra flex flex-row flex-wrap">
+            <div class="location stat">
+              <%= render 'shared/svg/location' %>
+              <span><%= @user.location %></span>
+            </div>
+            <div class="joined stat">
+              <%= render 'shared/svg/calendar' %>
+              <span>
+                Joined <%= Date::MONTHNAMES[@user.created_at.month] %> <%= @user.created_at.year %>
+              </span>
+            </div>
+          </div>
+          <%= render 'shared/stats' %>
+        </section>
+      </div>
     </div>
   </div>
 </section>

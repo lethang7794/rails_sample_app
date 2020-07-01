@@ -570,16 +570,17 @@ section {
 }
 
 .stats {
+  overflow: visible;
+  margin: 0;
+  padding: 0;
+
+  
   .stat {
     margin-right: 15px;
     span {
       margin: 0;
     }
   }
-  overflow: visible;
-
-  margin-top: 0;
-  padding: 0;
 
   div.stats {
     a {
@@ -616,7 +617,7 @@ section {
   }
 
   .extra {
-    margin: 10px 0;
+    margin-bottom: 10px;
   }
 }
 
@@ -672,13 +673,16 @@ section.user_info {
       margin-bottom: 0;
     }
     div {
-      margin-bottom: 10px;
       color: rgb(101, 119, 134);
     }
   }
 
-  .bio {
-    white-space: pre-wrap;
+  .bio-wrapper {
+    margin: 10px 0;
+
+    span.bio {
+      white-space: pre-wrap;
+    }
   }
 
   .gravatar {
