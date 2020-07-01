@@ -38,6 +38,17 @@ section {
     top: 4px;
 }
 
+@keyframes animate-background {
+ 0% {
+  background-position:0% 50%
+ }
+ 50% {
+  background-position:100% 50%
+ }
+ 100% {
+  background-position:0% 50%
+ }
+}
 
 .pride-banner {
   position: fixed;
@@ -59,7 +70,7 @@ section {
 
   .pride-wrapper {
     background-image: inherit;
-    background-size: 100%;
+    background-size: 300%;
     display: -webkit-box;
     display: flex;
     -webkit-box-pack: center;
