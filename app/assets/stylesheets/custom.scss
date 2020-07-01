@@ -574,7 +574,7 @@ section {
   margin: 0;
   padding: 0;
 
-  
+
   .stat {
     margin-right: 15px;
     span {
@@ -905,7 +905,9 @@ ul.users { // Users index
   border-right: 1px solid #e8e8e8;
 
   .micropost-avatar {
-    flex: 0 0 50px; // Set width of flex item: Fixed width
+    height: 50px;
+    width: 50px;
+    background-color: #e8e8e8;
 
     .gravatar {
       margin: 0;
@@ -1538,4 +1540,12 @@ aside {
   75% {
     background-image: linear-gradient(115deg, #12bcfe, #4fcf70, #fad648, #a767e5)
   }
+}
+
+.rounded-circle {
+  border-radius: 50% !important;
+}
+
+.overflow-hidden {
+  overflow: hidden;
 }

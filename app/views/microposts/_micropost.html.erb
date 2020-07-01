@@ -1,15 +1,11 @@
 <article class="micropost-<%= micropost.id %> micropost-container-wrapper">
 	<div class="micropost-container">
 		<div class="my-flex-container flex-row micropost-flex-container">
-			<div class="micropost-avatar">
-				<div class="flex flex-column">
-					<div class="flex-50">
-						<%= link_to micropost.user, class: "dimmer-wrapper" do %>
-							<%= gravatar_for(micropost.user, size:50) %>
-							<div class="dimmer transition-03s"></div>
-						<% end %>
-					</div>
-				</div>
+			<div class="micropost-avatar rounded-circle overflow-hidden">
+				<%= link_to micropost.user, class: "dimmer-wrapper" do %>
+					<%= gravatar_for(micropost.user, size:50) %>
+					<div class="dimmer transition-03s"></div>
+				<% end %>
 			</div>
 			<div class="my-flex-container flex-column micropost-main">
 				<div>
