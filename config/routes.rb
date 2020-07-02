@@ -12,11 +12,16 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
-  resources :users do
-    member do
-      get 'following', 'followers', 'media'
-    end
-  end
+  resources :users,               only: [:index, :new, :create]
+
+  get    ':username'          , to: 'users#show'     , as: :user
+  get    ':username/edit'     , to: 'users#edit'     , as: :edit_user
+  patch  ':username'          , to: 'users#update'
+  put    ':username'          , to: 'users#update'
+  delete ':username'          , to: 'users#destroy'
+  get    ':username/media'    , to: 'users#media'    , as: :media_user
+  get    ':username/following', to: 'users#following', as: :following_user
+  get    ':username/followers', to: 'users#followers', as: :followers_user
 
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :edit, :create, :update]
