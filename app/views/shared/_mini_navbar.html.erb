@@ -1,33 +1,33 @@
-<% if @user&.id %>
-  <% if current_page?(controller: 'users', action: 'show', id: @user.id) %>
+<% if @user&.username %>
+  <% if current_page?(controller: 'users', action: 'show', username: @user.username) %>
     <%= render  partial: 'shared/mini_navbar_partial',
                 locals: {
                   heading: "#{@user.name}",
                   detail: "#{pluralize(@user.microposts.count, 'micropost')}"
                 } %>
 
-  <% elsif current_page?(controller: 'users', action: 'media', id: @user.id) %>
+  <% elsif current_page?(controller: 'users', action: 'media', username: @user.username) %>
     <%= render  partial: 'shared/mini_navbar_partial',
                 locals: {
                   heading: "#{@user.name}",
                   detail: "#{pluralize(@user.media.count, 'photo')}"
                 } %>
 
-  <% elsif current_page?(controller: 'users', action: 'following', id: @user.id) %>
+  <% elsif current_page?(controller: 'users', action: 'following', username: @user.username) %>
     <%= render  partial: 'shared/mini_navbar_partial',
                 locals: {
                   heading: "#{@user.name}",
                   detail:  "@#{@user.username}"
                 } %>
 
-  <% elsif current_page?(controller: 'users', action: 'followers', id: @user.id) %>
+  <% elsif current_page?(controller: 'users', action: 'followers', username: @user.username) %>
     <%= render  partial: 'shared/mini_navbar_partial',
                 locals: {
                   heading: "#{@user.name}",
                   detail: "@#{@user.username}"
                 } %>
 
-  <% elsif current_page?(controller: 'users', action: 'edit', id: @user.id) %>
+  <% elsif current_page?(controller: 'users', action: 'edit', username: @user.username) %>
     <%= render  partial: 'shared/mini_navbar_partial',
                 locals: {
                   heading: "#{@user.name}",

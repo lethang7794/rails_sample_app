@@ -1,5 +1,5 @@
-<% if @user&.id %>
-  <% if current_page?(controller: 'users', action: 'following', id: @user.id) %>
+<% if @user&.username %>
+  <% if current_page?(controller: 'users', action: 'following', username: @user.username) %>
     <% if current_user?(@user) %>
       <div class="flex flex-column flex-center text-center nothing-info">
         <div class="heading">
@@ -23,7 +23,7 @@
       </div>
     <% end %>
 
-  <% elsif current_page?(controller: 'users', action: 'followers', id: @user.id) %>
+  <% elsif current_page?(controller: 'users', action: 'followers', username: @user.username) %>
     <% if current_user?(@user) %>
       <div class="flex flex-column flex-center text-center nothing-info">
         <div class="heading">
@@ -44,7 +44,7 @@
       </div>
     <% end %>
 
-  <% elsif current_page?(controller: 'users', action: 'show', id: @user.id) %>
+  <% elsif current_page?(controller: 'users', action: 'show', username: @user.username) %>
     <% if current_user?(@user) %>
       <div class="flex flex-column flex-center text-center nothing-info">
         <div class="heading">
@@ -68,7 +68,7 @@
       </div>
     <% end %>
 
-  <% elsif current_page?(controller: 'users', action: 'media', id: @user.id) %>
+  <% elsif current_page?(controller: 'users', action: 'media', username: @user.username) %>
     <% if current_user?(@user) %>
       <div class="flex flex-column flex-center text-center nothing-info">
         <div class="heading">
