@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   end
 
   def show
-  	@user = User.find(params[:id])
+  	@user = User.find_by("lower(username) = ?", params[:username].downcase)
     @microposts = @user.microposts.paginate(page: params[:page])
   end
 
@@ -34,11 +34,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    @user = User.find_by("lower(username) = ?", params[:username].downcase)
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = User.find_by("lower(username) = ?", params[:username].downcase)
     if @user.update(user_params)
       flash[:success] = "Account updated"
       redirect_to @user
@@ -54,7 +54,7 @@ class UsersController < ApplicationController
   end
 
   def following
-    @user = User.find(params[:id])
+    @user = User.find_by("lower(username) = ?", params[:username].downcase)
     if logged_in?
       @title = "Following"
       @users = @user.following.paginate(page: params[:page])
@@ -65,7 +65,7 @@ class UsersController < ApplicationController
   end
 
   def followers
-    @user = User.find(params[:id])
+    @user = User.find_by("lower(username) = ?", params[:username].downcase)
     if logged_in?
       @title = "Followers"
       @users = @user.followers.paginate(page: params[:page])
@@ -76,7 +76,7 @@ class UsersController < ApplicationController
   end
 
   def media
-    @user = User.find(params[:id])
+    @user = User.find_by("lower(username) = ?", params[:username].downcase)
     if logged_in?
       @microposts = @user.media.paginate(page: params[:page])
       render 'show'
@@ -92,7 +92,7 @@ class UsersController < ApplicationController
 
     # Confirms the correct user is logged in.
     def correct_user
-      @user = User.find(params[:id])
+      @user = User.find_by("lower(username) = ?", params[:username].downcase)
       redirect_to root_path unless current_user?(@user)
     end
 
