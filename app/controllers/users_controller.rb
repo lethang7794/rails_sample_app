@@ -18,7 +18,11 @@ class UsersController < ApplicationController
 
   def show
   	@user = User.find_by("lower(username) = ?", params[:username].downcase)
-    @microposts = @user.microposts.paginate(page: params[:page])
+    if @user
+      @microposts = @user.microposts.paginate(page: params[:page])
+    else
+      raise ActionController::RoutingError.new('Not Found')
+    end
   end
 
   def create
