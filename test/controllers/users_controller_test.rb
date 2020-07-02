@@ -108,4 +108,33 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     get media_user_path(@user)
     assert_redirected_to @user
   end
+
+  test "param username should be case-insensitive for show" do
+    get "/#{@user.username.swapcase}"
+    assert_response :success
+  end
+
+  test "param username should be case-insensitive for media" do
+    log_in_as @user
+    get "/#{@user.username.swapcase}/media"
+    assert_response :success
+  end
+
+  test "param username should be case-insensitive for following" do
+    log_in_as @user
+    get "/#{@user.username.swapcase}/following"
+    assert_response :success
+  end
+
+  test "param username should be case-insensitive for followers" do
+    log_in_as @user
+    get "/#{@user.username.swapcase}/followers"
+    assert_response :success
+  end
+
+  test "param username should be case-insensitive for edit" do
+    log_in_as @user
+    get "/#{@user.username.swapcase}/edit"
+    assert_response :success
+  end
 end
