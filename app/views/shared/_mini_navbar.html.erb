@@ -1,33 +1,30 @@
-<% if @user&.username %>
-  <% if current_page?(controller: 'users', action: 'show', username: @user.username) %>
+<% if @user&.username %> <%# Need to be an old record with username, not a new one %>
+  <% case request.original_fullpath.downcase %>
+  <% when user_path(@user).downcase %>
     <%= render  partial: 'shared/mini_navbar_partial',
                 locals: {
                   heading: "#{@user.name}",
                   detail: "#{pluralize(@user.microposts.count, 'micropost')}"
                 } %>
-
-  <% elsif current_page?(controller: 'users', action: 'media', username: @user.username) %>
+  <% when media_user_path(@user).downcase %>
     <%= render  partial: 'shared/mini_navbar_partial',
                 locals: {
                   heading: "#{@user.name}",
                   detail: "#{pluralize(@user.media.count, 'photo')}"
                 } %>
-
-  <% elsif current_page?(controller: 'users', action: 'following', username: @user.username) %>
+  <% when following_user_path(@user).downcase %>
     <%= render  partial: 'shared/mini_navbar_partial',
                 locals: {
                   heading: "#{@user.name}",
                   detail:  "@#{@user.username}"
                 } %>
-
-  <% elsif current_page?(controller: 'users', action: 'followers', username: @user.username) %>
+  <% when followers_user_path(@user).downcase %>
     <%= render  partial: 'shared/mini_navbar_partial',
                 locals: {
                   heading: "#{@user.name}",
                   detail: "@#{@user.username}"
                 } %>
-
-  <% elsif current_page?(controller: 'users', action: 'edit', username: @user.username) %>
+  <% when edit_user_path(@user).downcase %>
     <%= render  partial: 'shared/mini_navbar_partial',
                 locals: {
                   heading: "#{@user.name}",
