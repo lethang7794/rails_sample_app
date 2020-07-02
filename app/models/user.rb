@@ -126,6 +126,10 @@ class User < ApplicationRecord
 		self.bio.gsub(/(?<hash>#\S+)/, '<a href="#">\k<hash></a>').gsub(/(?<at>@\S+)/, '<a href="#">\k<at></a>')
 	end
 
+	def to_param
+		username
+	end
+
 	private
 		# Converts email to all in lower case
 		def downcase_email
