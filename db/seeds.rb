@@ -48,7 +48,7 @@ User.create!(
 
 # Generates a bunch of additional users with Faker.
 98.times do |n|
-  name     = Faker::Name.unique.name
+  name     = Faker::FunnyName.unique.two_word_name
   email    = "example-#{n+1}@railstutorial.org"
   password = 'password'
 
