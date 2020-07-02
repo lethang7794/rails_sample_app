@@ -21,6 +21,20 @@ class MiniNavbarTest < ActionDispatch::IntegrationTest
     assert_select '.detail', text: "#{@user.media.count} photos"
   end
 
+  test "should show correct content in show page when params[:username] is not case-match" do
+    get user_path(@user).upcase
+    assert_select '#mini-bar-heading', text: "#{@user.name}"
+    assert_select '.detail', text: "#{@user.microposts.count} microposts"
+
+    get user_path(@user).downcase
+    assert_select '#mini-bar-heading', text: "#{@user.name}"
+    assert_select '.detail', text: "#{@user.microposts.count} microposts"
+
+    get user_path(@user).swapcase
+    assert_select '#mini-bar-heading', text: "#{@user.name}"
+    assert_select '.detail', text: "#{@user.microposts.count} microposts"
+  end
+
   test "should show correct content in user following/followers page" do
     get following_user_path(@user)
     assert_select '#mini-bar-heading', text: "#{@user.name}"
