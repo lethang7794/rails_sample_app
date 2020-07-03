@@ -1542,6 +1542,18 @@ aside {
   color: rgb(101, 119, 134);
   fill: currentcolor;
 }
+
+// Begin - Transition
+.tran-dur-1s {
+  transition-duration: 1s;
+}
+
+.tran-delay-1s {
+  transition-delay: 1s;
+}
+
+// End - Transition
+
 /* SVG - END */
 
 .btn-rainbow {
@@ -1550,16 +1562,53 @@ aside {
   border: none;
   border-radius: 8px;
 
-  span {
+  .wrapper {
     background: #000;
-
-    display: block;
+    // display: block; // Turn off still work
     padding: .875rem;
     margin: 4px;
     border-radius: 4px;
-
     color: white;
-    font-size: 1.5em;
+
+    span.text {
+      font-size: 1.5em;
+    }
+
+    .margin-tran {
+      margin-right: 0px;
+      transition-property: margin-right;
+      transition-duration: 0.3s;
+      transition-timing-function: ease-in-out;
+      transition-delay: 0s;
+
+      span.my-arrow.fade {
+        opacity: 1;
+
+        // float: right; // Turn off to debug, transtition still work
+        // margin-top: 5px; // Change to flex center, not needed anymore
+        margin-left: 5px;
+
+        transform: translate(0, 0);
+        transition-property: transform; // Transition from hover to not
+        transition-duration: 0.3s;
+        transition-delay: 0s;
+        transition-timing-function: ease-in-out;
+
+        svg {
+          transition-delay: 0.3s; // Wait for the arrow move back before transition width
+          transition-duration: 0.3s;
+          transition-timing-function: linear;
+
+          width: 1.5em;
+          width: 0em;
+
+          path {
+            color: white;
+            fill: currentColor;
+          }
+        }
+      }
+    }
   }
 
   &:active:focus,
@@ -1572,6 +1621,32 @@ aside {
 
   &:hover {
     animation: rainbowBorder .5s linear infinite;
+
+    .margin-tran {
+      transition-property: margin-right;
+      transition-duration: 0.3s;
+      transition-delay: 1s;
+      margin-right: 50px;
+      transition-timing-function: ease-in-out;
+
+      span.my-arrow.fade {
+        opacity: 1;
+
+        transition-property: transform;
+        transition-duration: 0.3s;
+        transition-delay: 1s;
+        transform: translate(50px, 0); // Turn off to debug
+        transition-timing-function: ease-in-out;
+
+        // margin-right: 10px; // Add some space for the arrow to move
+
+        svg {
+          transition-delay: 0s;
+          transition-duration: 0.3s;
+          width: 1.5em;
+        }
+      }
+    }
   }
 }
 
