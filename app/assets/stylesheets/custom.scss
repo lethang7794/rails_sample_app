@@ -1055,8 +1055,10 @@ article.micropost-container-wrapper {
     left: 0;
     right: 0;
 
+    transition: background-color 0.2s linear;
     &:hover {
       background-color: rgba(26, 26, 26, 0.15);
+      transition: background-color 0.2s linear;
     }
   }
 }
