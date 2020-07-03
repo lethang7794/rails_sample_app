@@ -1,11 +1,19 @@
 <% if @user&.username %> <%# Need to be an old record with username, not a new one %>
   <% case request.original_fullpath.downcase %>
   <% when user_path(@user).downcase %>
-    <%= render  partial: 'shared/mini_navbar_partial',
-                locals: {
-                  heading: "#{@user.name}",
-                  detail: "#{pluralize(@user.microposts.count, 'micropost')}"
-                } %>
+    <% if @user.name %>  <%# Real user, not user with username from the params %>
+      <%= render  partial: 'shared/mini_navbar_partial',
+                  locals: {
+                    heading: "#{@user.name}",
+                    detail: "#{pluralize(@user.microposts.count, 'micropost')}"
+                  } %>
+    <% else %>
+      <%= render  partial: 'shared/mini_navbar_partial',
+                  locals: {
+                    heading: "Profile",
+                    detail: nil
+                  } %>
+    <% end %>
   <% when media_user_path(@user).downcase %>
     <%= render  partial: 'shared/mini_navbar_partial',
                 locals: {
