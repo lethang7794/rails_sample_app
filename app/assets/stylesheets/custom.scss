@@ -1394,11 +1394,13 @@ aside {
   color:              var(--followButton-textColor);
   background-color:   var(--followButton-bgColor);
   border:             var(--followButton-border);
+  transition: background-color 0.2s linear, box-shadow 0.2s linear;
 
   &:hover {
     color:            var(--followButton-textColor);
     background-color: var(--followButton-hover-bgColor);
     border:           var(--followButton-hover-border);
+    transition: background-color 0.2s linear, box-shadow 0.2s linear;
   }
 
   &:active {
@@ -1438,12 +1440,13 @@ aside {
   color:              var(--unfollowButton-textColor);
   background-color:   var(--unfollowButton-bgColor);
   border:             var(--unfollowButton-border);
+  transition: background-color 0.2s linear;
 
   &:hover {
     color:            var(--unfollowButton-textColor);
     background-color: var(--unfollowButton-hover-bgColor);
     border:           var(--unfollowButton-hover-border);
-
+    transition: background-color 0.2s linear;
   }
 
   &:active {
