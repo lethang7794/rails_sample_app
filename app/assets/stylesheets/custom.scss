@@ -1564,7 +1564,6 @@ aside {
 
   .wrapper {
     background: #000;
-    // display: block; // Turn off still work
     padding: .875rem;
     margin: 4px;
     border-radius: 4px;
@@ -1576,31 +1575,17 @@ aside {
 
     .margin-tran {
       margin-right: 0px;
-      transition-property: margin-right;
-      transition-duration: 0.3s;
-      transition-timing-function: ease-in-out;
-      transition-delay: 0s;
+      transition: margin-right 0.3s ease-in-out 0s; // Shrink the space arrow
 
-      span.my-arrow.fade {
-        opacity: 1;
-
-        // float: right; // Turn off to debug, transtition still work
-        // margin-top: 5px; // Change to flex center, not needed anymore
-        margin-left: 5px;
+      span.my-arrow {
+        margin-left: 5px; // Space between arrow and text
 
         transform: translate(0, 0);
-        transition-property: transform; // Transition from hover to not
-        transition-duration: 0.3s;
-        transition-delay: 0s;
-        transition-timing-function: ease-in-out;
+        transition: transform 0.3s ease-in-out 0s; // Move the arrow back
 
         svg {
-          transition-delay: 0.3s; // Wait for the arrow move back before transition width
-          transition-duration: 0.3s;
-          transition-timing-function: linear;
-
-          width: 1.5em;
           width: 0em;
+          transition: width 0.3s linear 0.3s; // Wait for the arrow to move back before shrink and hide it
 
           path {
             color: white;
@@ -1623,27 +1608,16 @@ aside {
     animation: rainbowBorder .5s linear infinite;
 
     .margin-tran {
-      transition-property: margin-right;
-      transition-duration: 0.3s;
-      transition-delay: 1s;
       margin-right: 50px;
-      transition-timing-function: ease-in-out;
+      transition: margin-right 0.3s ease-in-out 1s; // Delay 1s before add space for the arrow
 
-      span.my-arrow.fade {
-        opacity: 1;
-
-        transition-property: transform;
-        transition-duration: 0.3s;
-        transition-delay: 1s;
-        transform: translate(50px, 0); // Turn off to debug
-        transition-timing-function: ease-in-out;
-
-        // margin-right: 10px; // Add some space for the arrow to move
+      span.my-arrow {
+        transform: translate(50px, 0);
+        transition: transform 0.3s ease-in-out 1s; // Delay 1s before move the arrow to the right
 
         svg {
-          transition-delay: 0s;
-          transition-duration: 0.3s;
           width: 1.5em;
+          transition: width 0.3s linear 0s; // Show the arrow
         }
       }
     }
