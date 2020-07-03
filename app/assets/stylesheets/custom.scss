@@ -1013,14 +1013,15 @@ ul.users { // Users index
 /* User and Micropost hover - BEGIN */
 .user-container,
 article.micropost-container-wrapper {
+  transition: background-color 0.2s linear;
   &:hover {
     background-color: rgba(0, 0, 0, 0.05);
-    transition: 0.2s;
+    transition: background-color 0.2s linear;
   }
 
   &:active:not(:has(:active)) {
     background-color: rgba(0, 0, 0, 0.1);
-    transition: 0.2s;
+    transition: background-color 0.2s linear;
   }
 }
 /* User and Micropost hover - END */
