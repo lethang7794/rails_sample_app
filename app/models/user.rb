@@ -121,9 +121,18 @@ class User < ApplicationRecord
 		following.include?(an_other_user)
 	end
 
-	# Replace words in bio begin with # by hyperlink, @ by link to user profile page 
+	# Replace words in bio begin with # by hyperlink, @ by link to user profile page
 	def bio_display
-		self.bio.gsub(/(?<hash>#\S+)/, '<a href="#">\k<hash></a>').gsub(/@(?<at>\S+)/, '<a href="\k<at>">\&</a>')
+		bio.gsub!(/(?<hash>#\S+)/, '<a href="#">\k<hash></a>')
+
+		bio.gsub(/@(?<username>\S+)/) { |match|
+			# debugger
+			if user = User.find_by("lower(username) = ?", $1.downcase)
+				"<a href='#{user.username}'>#{match}</a>"
+			else
+				match
+			end
+		}
 	end
 
 	def to_param

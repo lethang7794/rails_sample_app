@@ -17,9 +17,18 @@ class Micropost < ApplicationRecord
     image.variant(resize_to_limit: [500, 500])
   end
 
-	# Replace words in content begin with # by hyperlink, @ by link to user profile page 
+	# Replace words in content begin with # by hyperlink, @ by link to user profile page if the user exists
   def content_display
-    self.content.gsub(/(?<hash>#\S+)/, '<a href="#">\k<hash></a>').gsub(/@(?<at>\S+)/, '<a href="\k<at>">\&</a>')
+    content.gsub!(/(?<hash>#\S+)/, '<a href="#">\k<hash></a>')
+
+    content.gsub(/@(?<username>\S+)/) { |match|
+      # debugger
+      if user = User.find_by("lower(username) = ?", $1.downcase)
+        "<a href='#{user.username}'>#{match}</a>"
+      else
+        match
+      end
+    }
   end
 
   # Returns url for resized image.
