@@ -17,9 +17,9 @@ class Micropost < ApplicationRecord
     image.variant(resize_to_limit: [500, 500])
   end
 
-	# Replace words in content begin with @, # with hyperlink.
+	# Replace words in content begin with # by hyperlink, @ by link to user profile page 
   def content_display
-    self.content.gsub(/(?<hash>#\S+)/, '<a href="#">\k<hash></a>').gsub(/(?<at>@\S+)/, '<a href="#">\k<at></a>')
+    self.content.gsub(/(?<hash>#\S+)/, '<a href="#">\k<hash></a>').gsub(/@(?<at>\S+)/, '<a href="\k<at>">\&</a>')
   end
 
   # Returns url for resized image.
