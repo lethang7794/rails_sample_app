@@ -703,6 +703,10 @@ section.user_info {
     height: 120px;
     width: 120px;
     background-color: #e8e8e8;
+
+    img {
+      height: 100%;
+    }
   }
 
   .username {
@@ -946,6 +950,7 @@ ul.users { // Users index
   .micropost-avatar {
     height: 50px;
     width: 50px;
+    min-width: 50px;
     background-color: #e8e8e8;
 
     .gravatar {
