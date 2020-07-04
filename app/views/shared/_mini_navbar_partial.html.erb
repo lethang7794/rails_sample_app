@@ -13,13 +13,17 @@
           </div>
         <% end %>
       </div>
-      <div class="middle-side flex-grow-1">
-        <h2 id="mini-bar-heading">
-          <%= heading %>
-        </h2>
+      <div class="middle-side flex-grow-1 flex flex-column">
+        <div class="flex-grow-1 flex flex-row flex-align-items-center">
+          <h2 id="mini-bar-heading">
+            <%= heading %>
+          </h2>
+        </div>
+      <% if detail %>
         <div class="detail">
           <%= detail %>
         </div>
+      <% end %>
       </div>
       <div class="right-side"></div>
     </div>
