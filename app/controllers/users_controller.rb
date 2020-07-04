@@ -18,11 +18,8 @@ class UsersController < ApplicationController
 
   def show
   	@user = User.find_by("lower(username) = ?", params[:username].downcase)
-    if @user
-      @microposts = @user.microposts.paginate(page: params[:page])
-    else
-      raise ActionController::RoutingError.new('Not Found')
-    end
+    @user ||= User.new(username: params[:username])
+    @microposts = @user.microposts.paginate(page: params[:page])
   end
 
   def create
@@ -59,6 +56,12 @@ class UsersController < ApplicationController
 
   def following
     @user = User.find_by("lower(username) = ?", params[:username].downcase)
+
+    if @user.nil?
+      @user= User.new(username: params[:username])
+      render 'show' and return
+    end
+
     if logged_in?
       @title = "Following"
       @users = @user.following.paginate(page: params[:page])
@@ -70,6 +73,12 @@ class UsersController < ApplicationController
 
   def followers
     @user = User.find_by("lower(username) = ?", params[:username].downcase)
+
+    if @user.nil?
+      @user= User.new(username: params[:username])
+      render 'show' and return
+    end
+
     if logged_in?
       @title = "Followers"
       @users = @user.followers.paginate(page: params[:page])
@@ -81,6 +90,12 @@ class UsersController < ApplicationController
 
   def media
     @user = User.find_by("lower(username) = ?", params[:username].downcase)
+
+    if @user.nil?
+      @user= User.new(username: params[:username])
+      render 'show' and return
+    end
+
     if logged_in?
       @microposts = @user.media.paginate(page: params[:page])
       render 'show'
