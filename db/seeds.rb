@@ -8,16 +8,29 @@
 
 # Generates user's bio.
 def generate_bio
-  "#{Faker::Job.title}\n@#{Faker::Company.name.delete(',').gsub(/(\s+)/, '_')}\n#{Faker::Company.catch_phrase}\n##{Faker::ProgrammingLanguage.name.gsub(/(\s+)/, '_')} ##{Faker::Job.key_skill.gsub(/(\s+)/, '_')} ##{Faker::Science.element.gsub(/(\s+)/, '_')}"
+  "#{Faker::Job.title}" \
+  "\n@#{Faker::Company.name.delete(',').gsub(/(\s+)/, '_')}" \
+  "\n#{Faker::Company.catch_phrase}" \
+  "\n##{Faker::ProgrammingLanguage.name.gsub(/(\s+)/, '_')} ##{Faker::Job.key_skill.gsub(/(\s+)/, '_')} ##{Faker::Science.element.gsub(/(\s+)/, '_')}"
 end
 
 def generate_location
   "#{Faker::Address.country}"
 end
 
+# Return a random user in the database.
+def random_user
+  count = User.count
+  random_offset = rand(count)
+  random_user = User.offset(random_offset).first
+end
+
 # Generates micropost's content.
 def generate_content
-  "#{Faker::Hacker.say_something_smart}\n@#{Faker::Ancient.hero.gsub(/(\s+)/, '_')} @#{Faker::Ancient.god.gsub(/(\s+)/, '_')} @#{Faker::Ancient.titan.gsub(/(\s+)/, '_')}\n##{Faker::Hacker.abbreviation} ##{Faker::Hacker.noun.gsub(/(\s+)/, '_')} ##{Faker::Hacker.verb.gsub(/(\s+)/, '_')}"
+  "#{Faker::Hacker.say_something_smart}" \
+  "\n@#{random_user.username} @#{random_user.username}" \
+  "\n@#{Faker::Ancient.hero.gsub(/(\s+)/, '_')} @#{Faker::Ancient.god.gsub(/(\s+)/, '_')}" \
+  "\n##{Faker::Hacker.abbreviation} ##{Faker::Hacker.noun.gsub(/(\s+)/, '_')} ##{Faker::Hacker.verb.gsub(/(\s+)/, '_')}"
 end
 
 # Creates a main sample user.
