@@ -4,6 +4,7 @@
   <%= provide :page_title, "Media microposts from #{@user.name} (@#{@user.username})" %>
 <% end %>
 
+<% if @user.email %> <%# Existed user %>
 <!-- PAGE CONTENT - BEGIN -->
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
@@ -35,3 +36,6 @@
 	</div>
 </div>
 <!-- PAGE CONTENT - END -->
+<% else %> <%# Non Existed user %>
+  <%= render 'shared/non_existed_user' %>
+<% end %>
