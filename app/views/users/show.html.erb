@@ -1,5 +1,9 @@
 <% if current_page?(controller: 'users', action: 'show') %>
-  <%= provide :page_title, "#{@user.name} (@#{@user.username})" %>
+  <% if @user.email %>
+    <%= provide :page_title, "#{@user.name} (@#{@user.username})" %>
+  <% else %>
+    <%= provide :page_title, "Profile" %>
+  <% end %>
 <% elsif current_page?(controller: 'users', action: 'media') %>
   <%= provide :page_title, "Media microposts from #{@user.name} (@#{@user.username})" %>
 <% end %>
