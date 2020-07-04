@@ -35,6 +35,22 @@ class MiniNavbarTest < ActionDispatch::IntegrationTest
     assert_select '.detail', text: "#{@user.microposts.count} microposts"
   end
 
+  test "should show correct content when user doesn't exist" do
+    @user = User.new(username: "abc123xyz")
+
+    get user_path(@user)
+    assert_select '#mini-bar-heading', text: "Profile"
+
+    get media_user_path(@user)
+    assert_select '#mini-bar-heading', text: "Profile"
+
+    get following_user_path(@user)
+    assert_select '#mini-bar-heading', text: "Profile"
+
+    get followers_user_path(@user)
+    assert_select '#mini-bar-heading', text: "Profile"
+  end
+
   test "should show correct content in user following/followers page" do
     get following_user_path(@user)
     assert_select '#mini-bar-heading', text: "#{@user.name}"
