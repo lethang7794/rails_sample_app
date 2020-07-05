@@ -27,8 +27,8 @@
     </div>
     <%# USER TABS - END %>
 
-		<% if @user.microposts.any? %>
 			<ol class="microposts">
+		<% if @microposts.any? %>
 				<%= render @microposts %>
 			</ol>
 			<div class="flex-center">
