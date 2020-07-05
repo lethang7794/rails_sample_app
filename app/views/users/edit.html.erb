@@ -4,8 +4,8 @@
 <!-- PAGE CONTENT - BEGIN -->
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <div class="center">
-      <div class="gravatar_edit">
+    <div>
+      <div class="gravatar_edit center">
         <%= gravatar_for @user %>
         <div>
           <a href="https://gravatar.com/emails" target="_blank" rel=”noopener noreferrer>
@@ -14,8 +14,10 @@
           </a>
         </div>
       </div>
+      <div class="padding-10">
+        <%= render 'edit_form' %>
+      </div>
     </div>
-    <%= render 'edit_form' %>
   </div>
 </div>
 <!-- PAGE CONTENT - END -->
