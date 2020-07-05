@@ -12,12 +12,12 @@
 <!-- PAGE CONTENT - BEGIN -->
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
-    <div class="user-info-wrapper border-wrapper-rl">
+    <div class="user-info-wrapper border-right border-left border-top">
       <%= render 'shared/user_info' %>
     </div>
 
     <%# USER TABS - BEGIN %>
-    <div class="flex flex-row border-wrapper-rl">
+    <div class="flex flex-row border-right border-left border-bottom">
       <div class="flex-grow-1 flex-center tab-container">
         <%= active_link_to 'Microposts', user_path(@user), class: "flex-grow-1 flex-center", active: [users: :show] %>
       </div>
@@ -27,8 +27,8 @@
     </div>
     <%# USER TABS - END %>
 
-			<ol class="microposts">
 		<% if @microposts.any? %>
+			<ol class="microposts border-right border-left">
 				<%= render @microposts %>
 			</ol>
 			<div class="flex-center">
