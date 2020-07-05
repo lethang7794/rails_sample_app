@@ -1062,31 +1062,40 @@ ul.users { // Users index
       white-space: pre-wrap;
     }
 
-    .image-block {
-      padding-bottom: 56.25%; //Maintain image block width/height ratio.
-      // border-radius: 14px; // TODO: when background image CSS loaded, the border will be blured
-      border: 1px solid rgb(204, 214, 221);
+    .micropost-image-wrapper {
       margin-top: 10px;
 
-      .button-wrapper {
-        opacity: 0;
-      }
+      .image-block {
+        border: 1px solid rgb(204, 214, 221);
 
-      &:hover {
-        .button-wrapper {
-          opacity: 1;
-          transform: scale(1.1);
+        .image-background {
+          padding-bottom: 56.25%; //Maintain image block width/height ratio.
+
+          background-color: #e8e8e8; // Placeholder color
+
+          .button-wrapper {
+            opacity: 0;
+          }
+
+          &:hover {
+            .button-wrapper {
+              opacity: 1;
+              transform: scale(1.1);
+            }
+          }
+        }
+
+        .micropost-image-cover {
+          background-size: cover;
+          background-position: center center;
         }
       }
-
-      .micropost-image {}
-    }
-
-    .micropost-image-cover {
-      background-size: cover;
-      background-position: center center;
     }
   }
+}
+
+.rounded {
+  border-radius: 0.5em;
 }
 
 /* Microposts Flex - END */

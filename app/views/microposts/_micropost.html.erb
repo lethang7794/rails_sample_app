@@ -37,12 +37,16 @@
 						<div class="modal-wrapper">
 							<!-- MODAL TOGGLE - BEGIN -->
 							<div class="modal-toggle" data-toggle="modal" data-target="#image-modal-micropost-<%= micropost.id %>">
-								<div class="image-block micropost-image-cover" style="background-image: url('<%= micropost.image_url %>');">
-									<div class="flex flex-row flex-grow-1 justify-content-flex-end">
-										<div class="flex-center empty">
-											<div class="button-wrapper flex-center right-top-corner">
-												<div class="button flex-center" aria-hidden="true">
-													<%= render 'shared/svg/fullscreen' %>
+								<div class="micropost-image-wrapper">
+									<div class="image-block rounded overflow-hidden">
+										<div class="image-background micropost-image-cover" style="background-image: url('<%= micropost.image_url %>');">
+											<div class="flex flex-row flex-grow-1 justify-content-flex-end">
+												<div class="flex-center empty">
+													<div class="button-wrapper flex-center right-top-corner">
+														<div class="button flex-center" aria-hidden="true">
+															<%= render 'shared/svg/fullscreen' %>
+														</div>
+													</div>
 												</div>
 											</div>
 										</div>
