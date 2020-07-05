@@ -675,6 +675,71 @@ section {
 
 /* Following stat transition - END */
 
+// Begin - Rainbow
+.rainbow-outer {
+  position: relative;
+
+  .rainbow-inner {
+    // Position
+    position: absolute;
+    // top: -4px; // This will be the border width
+    // left: -4px;
+
+    // Shape
+    // height: 128px; // 120 + 4 * 2
+    // width: 128px;
+    border-radius: 50%;
+
+    // Rainbow background and animation.
+    background-image: linear-gradient(115deg, #4fcf70, #fad648, #a767e5, #12bcfe, #44ce7b);
+    &:hover {
+        animation: rainbowBorder .5s linear infinite;
+    }
+  }
+}
+
+.rainbow-hover {
+  &:hover {
+    .rainbow-inner {
+      animation: rainbowBorder .5s linear infinite;
+    }
+  }
+}
+
+.h-54 {
+  height: 54px;
+}
+
+.w-54 {
+  width: 54px;
+}
+
+.h-128 {
+  height: 128px;
+}
+
+.w-128 {
+  width: 128px;
+}
+
+.t--4 {
+  top: -4px;
+}
+
+.l--4 {
+  left: -4px;
+}
+
+.t--2 {
+  top: -2px;
+}
+
+.l--2 {
+  left: -2px;
+}
+
+// End - Rainbow
+
 /* User info - BEGIN */
 section.user_info {
   margin: 0;
@@ -694,18 +759,29 @@ section.user_info {
     }
   }
 
-  .user_avatar {
+  .user-avatar-wrapper {
+    margin-bottom: 10px;
+
+    // Hover content
+    height: 120px; // Avatar dimension
+    width: 120px;
+    border-radius: 50%;
+  }
+
+  .user_avatar_position {
     margin-top: -60px;
     margin-bottom: 10px;
 
-    border: 4px solid white;
+    .user_avatar {
+      border: 4px solid white;
 
-    height: 120px;
-    width: 120px;
-    background-color: #e8e8e8;
+      height: 120px;
+      width: 120px;
+      background-color: #e8e8e8; // Background placeholder
 
-    img {
-      height: 100%;
+      img {
+        height: 100%;
+      }
     }
   }
 

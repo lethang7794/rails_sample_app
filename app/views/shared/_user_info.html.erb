@@ -3,10 +3,13 @@
     <div class="header"></div>
     <div class="info">
       <!-- MODAL WRAPPER - BEGIN -->
-      <div class="user-avatar-wrapper modal-wrapper">
+      <div class="user-avatar-wrapper modal-wrapper rainbow-hover">
         <!-- MODAL TOGGLE - BEGIN -->
-        <div class="modal-toggle" data-toggle="modal" data-target="#avatar-modal-<%= @user.id %>">
-          <div class="user_avatar rounded-circle overflow-hidden dimmer-wrapper">
+        <div class="user_avatar_position">
+          <div class="rainbow-outer">
+            <div class="rainbow-inner h-128 w-128 t--4 l--4"></div>
+          </div>
+          <div class="user_avatar rounded-circle overflow-hidden dimmer-wrapper modal-toggle" data-toggle="modal" data-target="#avatar-modal-<%= @user.id %>">
             <%= gravatar_for @user, size: 120 %>
             <div class="dimmer"></div>
           </div>
