@@ -92,20 +92,20 @@
       </div>
     <% end %>
   <% end %>
-
-  <%# FEED - BEGIN %>
-  <% if current_page?('/home') %>
-    <div class="flex flex-column flex-center text-center nothing-info">
-      <div class="heading">
-        Welcome to Sample App!
-      </div>
-      <div>
-        This is the worst place to see what’s happening in the world. By the way, find some people to follow now.
-      </div>
-      <div>
-        <%= link_to 'Find people to follow', users_path, class: "btn my-button" %>
-      </div>
-    </div>
-  <% end %>
-  <%# FEED - BEGIN %>
 <% end %>
+
+<%# FEED - BEGIN %>
+<% if current_page?(controller: 'static_pages', action: 'home') %>
+  <div class="flex flex-column flex-center text-center nothing-info">
+    <div class="heading">
+      Welcome to Sample App!
+    </div>
+    <div>
+      This is the worst place to see what’s happening in the world. By the way, find some people to follow now.
+    </div>
+    <div>
+      <%= link_to 'Find people to follow', users_path, class: "btn my-button" %>
+    </div>
+  </div>
+<% end %>
+<%# FEED - BEGIN %>
