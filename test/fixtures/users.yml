@@ -31,6 +31,13 @@ draco:
   password_digest: <%= User.digest('password') %>
   activated:       true
 
+brand_new:
+  name:            Brand New
+  username:        BrandNew
+  email:           brand_new@example.com
+  password_digest: <%= User.digest('password') %>
+  activated:       false
+
 <% (1..30).each do |n| %>
 user_<%= n %>:
   name:            User <%= n %>
