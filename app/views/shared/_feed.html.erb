@@ -1,11 +1,12 @@
 <% if @feed_items.any? %>
-  <h3>Micropost Feed</h3>
   <!-- FLEX MICROPOSTS -->
-  <div class="my-flex-container flex-column microposts-flex-container">
+  <div class="my-flex-container flex-column microposts-flex-container border-right border-left">
     <%= render @feed_items %>
   </div>
   <!-- FLEX MICROPOSTS -->
   <div class="flex-center">
     <%= will_paginate @feed_items, params: { controller: 'static_pages', action: 'home' } %>
   </div>
+<% else %>
+  <%= render 'shared/nothing' %>
 <% end %>

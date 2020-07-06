@@ -14,9 +14,15 @@ class User < ApplicationRecord
 	attr_accessor :remember_token, :activation_token, :reset_token
 	before_create :create_activation_digest
 	before_save 	:downcase_email
+	before_validation   :generate_username
 
   validates :name,  presence: true,
   									length: { maximum: 50 }
+
+  VALID_USERNAME_REGEX = /\A[a-zA-Z0-9]+\Z/
+	validates :username, 	uniqueness: true,
+												length: { maximum: 20 },
+												format: { with: VALID_USERNAME_REGEX, massage: "may only contain alphanumeric characters."}
 
 	VALID_EMAIL_REGEX = /\A[\w+-\.]+@[a-z\d-]+(\.[a-z\d-]+)*\.[a-z]+\z/i
   validates :email, presence: true,
@@ -27,6 +33,9 @@ class User < ApplicationRecord
 	has_secure_password
 	validates :password, presence: true,
 												length: { minimum: 6 }, allow_nil: true
+
+	validates :bio,       length: { maximum: 200 }
+	validates :location,  length: { maximum: 30 }
 
 	# Returns random token used for remember me, account activation, password reset.
 	def self.new_token
@@ -112,10 +121,37 @@ class User < ApplicationRecord
 		following.include?(an_other_user)
 	end
 
+	# Replace words in bio begin with # by hyperlink, @ by link to user profile page
+	def bio_display
+		bio.gsub!(/(?<hash>#\S+)/, '<a href="#">\k<hash></a>')
+
+		bio.gsub(/@(?<username>\S+)/) { |match|
+			# debugger
+			if user = User.find_by("lower(username) = ?", $1.downcase)
+				"<a href='#{user.username}'>#{match}</a>"
+			else
+				match
+			end
+		}
+	end
+
+	def to_param
+		username
+	end
+
 	private
 		# Converts email to all in lower case
 		def downcase_email
 			email.downcase!
+		end
+
+		# Generates a random username for user
+		def generate_username
+			if self.username.blank?
+				num = rand 0..999999
+				firstname = self.name.split.first
+				self.username = firstname[0..13] + "#{num}"
+			end
 		end
 
 		# Creates and assigns activation token and digest

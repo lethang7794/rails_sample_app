@@ -1,0 +1,64 @@
+<% if @user&.username %> <%# User's page has an instance variable @user WITH username attribute %>
+  <% case current_path.downcase %>
+  <% when user_path(@user).downcase %>
+    <% if @user.email %> <%# Real user has an email address %>
+      <%= render  partial: 'shared/mini_navbar_partial',
+                  locals: {
+                    heading: "#{@user.name}",
+                    detail: "#{pluralize(@user.microposts.count, 'micropost')}" } %>
+    <% else %>
+      <%= render  partial: 'shared/mini_navbar_partial',
+                  locals: { heading: "Profile", detail: nil } %>
+    <% end %>
+  <% when media_user_path(@user).downcase %>
+    <% if @user.email %> <%# Real user has an email address %>
+      <%= render  partial: 'shared/mini_navbar_partial',
+                  locals: {
+                    heading: "#{@user.name}",
+                    detail: "#{pluralize(@user.media.count, 'photo')}" } %>
+    <% else %>
+      <%= render  partial: 'shared/mini_navbar_partial',
+                  locals: { heading: "Profile", detail: nil } %>
+    <% end %>
+
+  <% when following_user_path(@user).downcase %>
+    <% if @user.email %> <%# Real user has an email address %>
+      <%= render  partial: 'shared/mini_navbar_partial',
+                  locals: {
+                    heading: "#{@user.name}",
+                    detail:  "@#{@user.username}" } %>
+    <% else %>
+      <%= render  partial: 'shared/mini_navbar_partial',
+                  locals: { heading: "Profile", detail: nil } %>
+    <% end %>
+
+  <% when followers_user_path(@user).downcase %>
+    <% if @user.email %> <%# Real user has an email address %>
+      <%= render  partial: 'shared/mini_navbar_partial',
+                  locals: {
+                    heading: "#{@user.name}",
+                    detail: "@#{@user.username}" } %>
+    <% else %>
+      <%= render  partial: 'shared/mini_navbar_partial',
+                  locals: { heading: "Profile", detail: nil } %>
+    <% end %>
+
+  <% when edit_user_path(@user).downcase %>
+    <%= render  partial: 'shared/mini_navbar_partial',
+                locals: {
+                  heading: "#{@user.name}",
+                  detail: "Edit profile"
+                } %>
+  <% end %>
+<% end %>
+
+<% if current_page?('/home') %>
+  <%= render 'shared/mini_navbar_home' %>
+
+<% elsif current_page?(controller: 'users', action: 'index') %>
+  <%= render  partial: 'shared/mini_navbar_partial',
+              locals: {
+                heading: "Explorer",
+                detail: "Let's follow other people"
+              } %>
+<% end %>

@@ -1,25 +1,45 @@
-<%= provide :page_title, @user.name %>
+<% if current_page?(controller: 'users', action: 'show') %>
+  <% if @user.email %>
+    <%= provide :page_title, "#{@user.name} (@#{@user.username})" %>
+  <% else %>
+    <%= provide :page_title, "Profile" %>
+  <% end %>
+<% elsif current_page?(controller: 'users', action: 'media') %>
+  <%= provide :page_title, "Media microposts from #{@user.name} (@#{@user.username})" %>
+<% end %>
+
+<% if @user.email %> <%# Existed user %>
+<!-- PAGE CONTENT - BEGIN -->
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
-		<%= render 'shared/user_info' %>
-		<% if @user.microposts.any? %>
-			<h3>
-				Microposts (<span><%= @user.microposts.count %></span>)
-			</h3>
-			<div class="flex flex-row">
-				<div class="flex-grow-1 flex-center tab-container">
-					<%= active_link_to 'Microposts', user_path(@user), class: "flex-grow-1 flex-center", active: [users: :show] %>
-				</div>
-				<div class="flex-grow-1 flex-center tab-container">
-					<%= active_link_to 'Media', media_user_path(@user), class: "flex-grow-1 flex-center", active: [users: :media] %>
-				</div>
-			</div>
-			<ol class="microposts">
+    <div class="user-info-wrapper border-right border-left border-top">
+      <%= render 'shared/user_info' %>
+    </div>
+
+    <%# USER TABS - BEGIN %>
+    <div class="flex flex-row border-right border-left border-bottom">
+      <div class="flex-grow-1 flex-center tab-container">
+        <%= active_link_to 'Microposts', user_path(@user), class: "flex-grow-1 flex-center", active: [users: :show] %>
+      </div>
+      <div class="flex-grow-1 flex-center tab-container">
+        <%= render partial: 'shared/links/media', locals: { user: @user } %>
+      </div>
+    </div>
+    <%# USER TABS - END %>
+
+		<% if @microposts.any? %>
+			<ol class="microposts border-right border-left">
 				<%= render @microposts %>
 			</ol>
 			<div class="flex-center">
 				<%= will_paginate @microposts %>
 			</div>
-		<% end %>
+    <% else %>
+      <%= render 'shared/nothing' %>
+    <% end %>
 	</div>
 </div>
+<!-- PAGE CONTENT - END -->
+<% else %> <%# Non Existed user %>
+  <%= render 'shared/non_existed_user' %>
+<% end %>

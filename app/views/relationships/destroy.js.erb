@@ -1,3 +1,78 @@
 $("#follow_form_for_<%= @user.id %>").html("<%= escape_javascript(render partial: 'shared/follow', locals: { user: @user }) %>");
-$("#followers_of_<%= @user.id %>").html("<%= @user.followers.count %>");
-$("#following_of_<%= current_user.id %>").html("<%= current_user.following.count %>");
+
+// // Disable all follow/unfollow button
+// $( ".follow-button" ).attr("disabled", true);
+// $( ".unfollow-button" ).attr("disabled", true);
+//
+// // Add class to old stat
+// $("#following_of_<%= current_user.id %>").addClass("old-stat pos-abs");
+// $("#followers_of_<%= @user.id %>").addClass("old-stat pos-abs");
+//
+// // Add new stat (and move it up)
+// $("#following_of_<%= current_user.id %>_wrapper").append( "<span id='following_of_<%= current_user.id %>' class='following_of_<%= current_user.id %> stats following new-stat move-up'><%= current_user.following.count %></span>" );
+// $("#followers_of_<%= @user.id %>_wrapper").append( "<span id='followers_of_<%= @user.id %>' class='followers_of_<%= @user.id %> stats followers new-stat move-up'><%= @user.followers.count %></span>" );
+//
+// // Move both old and new stat down
+// $( ".old-stat" ).addClass( "move-down" );
+//
+// setTimeout(function () {
+//   $( ".new-stat" ).removeClass( "move-up" );
+// }, 0); // Use delay to not override transform, and cause no transition
+//
+// // Wait for transition to finish and remove old stat
+// $(".new-stat").on('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd',
+//   function() {
+//   $( ".old-stat" ).remove();
+//   $( ".new-stat" ).removeClass( "new-stat pos-abs move-up" );
+//
+//   // Enable all follow/unfollow button
+//   $( ".follow-button" ).attr("disabled", false);
+//   $( ".unfollow-button" ).attr("disabled", false);
+// });
+
+// Disable all follow/unfollow button
+$( ".follow-button" ).attr("disabled", true);
+$( ".unfollow-button" ).attr("disabled", true);
+
+// Re-enable all follow/unfollow button
+setTimeout(function () {
+  $( ".follow-button" ).attr("disabled", false);
+  $( ".unfollow-button" ).attr("disabled", false);
+}, 500);
+
+var $followers = $("#followers_of_<%= @user.id %>");
+var $following = $("#following_of_<%= @current_user.id %>");
+
+if ($followers.length > 0) {
+  var $followers_wrapper = $("#followers_of_<%= @user.id %>_wrapper");
+  var $followers_clone = $followers.clone().addClass("pos-abs");
+
+  $followers_clone.prependTo($followers_wrapper);
+  $followers.html("<%= @user.followers.count %>").removeClass("tran-03s").addClass("move-up tran-0s");
+
+  setTimeout(function () {
+    $followers_clone.addClass( "move-down" );
+    $followers.removeClass("move-up tran-0s").addClass("tran-03s");
+  }, 1); // Use delay to not override transform, and cause no transition
+
+  setTimeout(function () {
+    $followers_clone.remove();
+  }, 500);
+}
+
+if ($following.length > 0) {
+  var $following_wrapper = $("#following_of_<%= current_user.id %>_wrapper");
+  var $following_clone = $following.clone().addClass("pos-abs");
+
+  $following_clone.prependTo($following_wrapper);
+  $following.html("<%= current_user.following.count %>").removeClass("tran-03s").addClass("move-up tran-0s");
+
+  setTimeout(function () {
+    $following_clone.addClass( "move-down" );
+    $following.removeClass("move-up tran-0s").addClass("tran-03s");
+  }, 1); // Use delay to not override transform, and cause no transition
+
+  setTimeout(function () {
+    $following_clone.remove();
+  }, 500);
+}

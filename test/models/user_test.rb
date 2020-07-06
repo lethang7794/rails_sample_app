@@ -4,6 +4,7 @@ class UserTest < ActiveSupport::TestCase
   def setup
     @user = User.new(
       name: "Barack Obama",
+      username: "BarackObama",
       email: "barack@obama.com",
       password: "alpine",
       password_confirmation: "alpine"
@@ -39,6 +40,46 @@ class UserTest < ActiveSupport::TestCase
   test "name should not be too long" do
     @user.name = "a" * 51
     assert_not @user.valid?
+  end
+
+  test "username should be unique" do
+    duplicate_user = @user.dup
+    duplicate_user.email = "a_valid_email@example.com"
+    @user.save
+    assert_not duplicate_user.valid?
+  end
+
+  test "username should not be too long" do
+    @user.username = "a" * 21
+    assert_not @user.valid?
+  end
+
+  test "username validation should accept valid username" do
+    valid_usernames = %w[
+      user
+      user12345
+      123456789
+    ]
+
+    valid_usernames.each do |valid_username|
+      @user.username = valid_username
+      assert @user.valid?, "#{valid_username.inspect} should be valid"
+    end
+  end
+
+  test "username validation should not accept invalid username" do
+    invalid_usernames = %w[
+      user@12345
+      user.12345
+      user_12345
+      user-12345
+    ]
+    invalid_usernames += ["user 123"]
+
+    invalid_usernames.each do |invalid_username|
+      @user.username = invalid_username
+      assert @user.invalid?, "#{invalid_username.inspect} should be invalid"
+    end
   end
 
   test "email should not be too long" do
@@ -98,6 +139,16 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
+  test "bio should not be too long" do
+    @user.bio = "a" * 201
+    assert_not @user.valid?
+  end
+
+  test "location should not be too long" do
+    @user.location = "a" * 31
+    assert_not @user.valid?
+  end
+
   test "authenticated should return false for a user with nil remember_digest" do
     assert_not @user.authenticated?(:remember, '')
   end
@@ -112,7 +163,7 @@ class UserTest < ActiveSupport::TestCase
 
   test "should follow and unfollow" do
     Relationship.delete_all
-    
+
     harry = users(:harry)
     ron = users(:ron)
     assert_not harry.following?(ron)

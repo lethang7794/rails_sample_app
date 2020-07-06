@@ -58,7 +58,7 @@ class FollowingFollowersPagesTest < ActionDispatch::IntegrationTest
   end
 
   test "should show feed in homepage for logged in user" do
-    get root_path
+    get home_path
     @harry.feed.paginate(page: 1).each do |micropost|
       assert_match CGI.escapeHTML(micropost.content), response.body
     end

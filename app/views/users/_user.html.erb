@@ -1,25 +1,40 @@
-<div class="user-container">
+<div class="user-container border-bottom">
   <div class="flex flex-row">
-    <div class="flex-50 flex flex-column">
-      <div class="flex-50 dimmer-wrapper">
-        <%= gravatar_for user, size: 50 %>
-        <div class="dimmer transition-03s"></div>
-      </div>
+    <div class="user-avatar rounded-circle overflow-hidden">
+      <%= link_to user, class: "dimmer-wrapper" do %>
+        <%= gravatar_for(user, size:50) %>
+        <div class="dimmer"></div>
+      <% end %>
     </div>
-    <div class="main-content flex flex-row flex-grow-1 flex-center">
-      <span>
-        <%= link_to user.name, user %>
-      </span>
-      <span class="flex-grow-1"></span>
-      <span class="delete-option">
-        <% if current_user && current_user.admin? && !current_user?(user) %>
-          <%= link_to '(delete)', user,   method: :delete,
-                                            data: { confirm: 'You sure?'} %>
-        <% end %>
-      </span>
-      <span>
-        <%= render partial: 'shared/follow_form', locals: {user: user} %>
-      </span>
+
+    <div class="main-content flex-grow-1 flex flex-row">
+      <div class="content-wrapper flex-grow-1 flex flex-column">
+        <div class="heading flex flex-row flex-center">
+          <div class="flex flex-column">
+            <span class="name">
+              <%= link_to user.name, user %>
+            </span>
+            <span class="username">
+              <%= link_to "@#{user.username}", user %>
+            </span>
+          </div>
+          <span class="flex-grow-1"></span>
+          <span class="delete-option">
+            <% if current_user && current_user.admin? && !current_user?(user) %>
+              <%= link_to '(delete)', user,   method: :delete,
+                                                data: { confirm: 'You sure?'} %>
+            <% end %>
+          </span>
+          <span class="flex-120 flex justify-content-flex-end">
+            <%= render partial: 'shared/follow_form', locals: {user: user} %>
+          </span>
+        </div>
+        <div class="bio">
+          <% if user.bio %>
+            <span class="bio"><%= sanitize user.bio_display.html_safe %></span>
+          <% end %>
+        </div>
+      </div>
     </div>
   </div>
 </div>

@@ -38,6 +38,17 @@ section {
     top: 4px;
 }
 
+@keyframes animate-background {
+ 0% {
+  background-position:0% 50%
+ }
+ 50% {
+  background-position:100% 50%
+ }
+ 100% {
+  background-position:0% 50%
+ }
+}
 
 .pride-banner {
   position: fixed;
@@ -59,7 +70,7 @@ section {
 
   .pride-wrapper {
     background-image: inherit;
-    background-size: 100%;
+    background-size: 300%;
     display: -webkit-box;
     display: flex;
     -webkit-box-pack: center;
@@ -526,21 +537,6 @@ footer {
   }
 }
 
-/* User info - BEGIN */
-section.user_info {
-  margin-top: 20px;
-  margin-bottom: 10px;
-
-  .gravatar {
-    margin: 0;
-  }
-
-  .info {
-    margin-left: 10px;
-  }
-}
-/* User info - END */
-
 /* sidebar */
 section {
   padding: 10px 0;
@@ -552,7 +548,6 @@ section {
   }
 
   span {
-    display: block;
     margin-bottom: 3px;
     line-height: 1;
   }
@@ -586,13 +581,17 @@ section {
 }
 
 .stats {
-  .stat {
-    margin-right: 10px;
-  }
   overflow: visible;
-
-  margin-top: 0;
+  margin: 0;
   padding: 0;
+
+
+  .stat {
+    margin-right: 15px;
+    span {
+      margin: 0;
+    }
+  }
 
   div.stats {
     a {
@@ -618,7 +617,200 @@ section {
       margin: 1px;
     }
   }
+
+  .pseudo-link {
+    color: gray;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  .extra {
+    margin-bottom: 10px;
+  }
 }
+
+/* Following stat transition - BEGIN */
+
+.followers-wrapper,
+.following-wrapper {
+  overflow: hidden;
+  position: relative; // Wrapper needs to use relative position so inner absolute positon respect overlay hidden.
+}
+
+.stats.followers,
+.stats.following {
+  font-weight: bold;
+  color: rgb(20, 23, 26);
+
+  transition-property: all;
+}
+
+.pos-abs {
+  position: absolute;
+}
+
+.move-up {
+  transform: translate3d(0px, -1.3125em, 0px);
+}
+
+.normal {
+  transform: translate3d(0px, 0px, 0px);
+}
+
+.move-down {
+  transform: translate3d(0px, 1.3125em, 0px);
+}
+
+// Override Boostrap default value for disabled button.
+.btn.disabled, .btn[disabled], fieldset[disabled] .btn {
+    cursor: pointer;
+    filter: alpha(opacity=100);
+    opacity: 1;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+/* Following stat transition - END */
+
+// Begin - Rainbow
+.rainbow-outer {
+  position: relative;
+
+  .rainbow-inner {
+    // Position
+    position: absolute;
+    // top: -4px; // This will be the border width
+    // left: -4px;
+
+    // Shape
+    // height: 128px; // 120 + 4 * 2
+    // width: 128px;
+    border-radius: 50%;
+
+    // Rainbow background and animation.
+    background-image: linear-gradient(115deg, #4fcf70, #fad648, #a767e5, #12bcfe, #44ce7b);
+    &:hover {
+        animation: rainbowBorder .5s linear infinite;
+    }
+  }
+}
+
+.rainbow-hover {
+  &:hover {
+    .rainbow-inner {
+      animation: rainbowBorder .5s linear infinite;
+    }
+  }
+}
+
+.h-54 {
+  height: 54px;
+}
+
+.w-54 {
+  width: 54px;
+}
+
+.h-128 {
+  height: 128px;
+}
+
+.w-128 {
+  width: 128px;
+}
+
+.t--4 {
+  top: -4px;
+}
+
+.l--4 {
+  left: -4px;
+}
+
+.t--2 {
+  top: -2px;
+}
+
+.l--2 {
+  left: -2px;
+}
+
+// End - Rainbow
+
+/* User info - BEGIN */
+section.user_info {
+  margin: 0;
+
+  .header {
+    height: 200px;
+    background-color: rgb(204, 214, 221);
+  }
+
+  .info {
+    margin: 0 15px;
+
+    .content-wrapper {
+      .heading {
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  .user-avatar-wrapper {
+    margin-bottom: 10px;
+
+    // Hover content
+    height: 120px; // Avatar dimension
+    width: 120px;
+    border-radius: 50%;
+  }
+
+  .user_avatar_position {
+    margin-top: -60px;
+    margin-bottom: 10px;
+
+    .user_avatar {
+      border: 4px solid white;
+
+      height: 120px;
+      width: 120px;
+      background-color: #e8e8e8; // Background placeholder
+
+      img {
+        height: 100%;
+      }
+    }
+  }
+
+  .username {
+    h1 {
+      margin-bottom: 0;
+    }
+    div {
+      color: rgb(101, 119, 134);
+    }
+  }
+
+  .bio-wrapper {
+    margin-bottom: 10px;
+
+    span.bio {
+      white-space: pre-wrap;
+    }
+  }
+
+  .gravatar {
+    margin: 0;
+  }
+}
+
+.user-info-wrapper {
+  padding: 0;
+}
+/* User info - END */
 
 /* mixins, variables, etc. */
 @mixin box_sizing {
@@ -705,9 +897,16 @@ ul.users { // Users index
 /* Old Users Index - END */
 
 /* New Users Index - BEGIN */
+
 .user-container {
   padding: 10px;
-  border-bottom: 1px solid $gray-lighter;
+
+  .user-avatar {
+    height: 50px;
+    width: 50px;
+    min-width: 50px;
+    background-color: #e8e8e8;
+  }
 
   .gravatar {
     margin: 0;
@@ -715,16 +914,28 @@ ul.users { // Users index
 
   .main-content {
     padding-left: 10px;
-  }
-}
 
-.user-container:last-of-type {
-  border-bottom: none;
+    .name {
+      a {
+        font-weight: 600;
+        color: black;
+      }
+    }
+
+    .username {
+      a {
+        font-weight: 400;
+        color: rgb(101, 119, 134);
+        text-decoration: none;
+      }
+    }
+  }
 }
 
 .flex-grow-1 {
   flex: 1;
 }
+
 /* New Users Index - END*/
 
 /* Microposts*/
@@ -765,6 +976,10 @@ ul.users { // Users index
   display: flex;
 }
 
+.flex-inline {
+  display: inline-flex;
+}
+
 .flex-row {
   flex-direction: row;
 }
@@ -781,24 +996,19 @@ ul.users { // Users index
   flex: 0 0 80px;
 }
 
-// Add border: Only first micropost need top border.
-.microposts-flex-container,
-.microposts {
-  article:first-of-type > .micropost-container {
-    border-top: 1px solid #e8e8e8;
-  }
+.flex-120 {
+  flex: 0 0 120px;
 }
 
 .micropost-container {
   // Add some spacing to breath
   padding: 15px;
-  // Add border: Each micropost need border on three sides.
-  border-bottom: 1px solid #e8e8e8;
-  border-left: 1px solid #e8e8e8;
-  border-right: 1px solid #e8e8e8;
 
   .micropost-avatar {
-    flex: 0 0 50px; // Set width of flex item: Fixed width
+    height: 50px;
+    width: 50px;
+    min-width: 50px;
+    background-color: #e8e8e8;
 
     .gravatar {
       margin: 0;
@@ -816,39 +1026,94 @@ ul.users { // Users index
       }
     }
 
+    .username {
+      a {
+        color: black;
+        text-decoration: none;
+        color: rgb(101, 119, 134);
+      }
+    }
+
     .timestamp {
       color: rgb(136, 153, 166); // From Twitter's tweet
     }
 
     .content {
       font-weight: 400;
+      white-space: pre-wrap;
     }
 
-    .image-block {
-      padding-bottom: 56.25%; //Maintain image block width/height ratio.
-      // border-radius: 14px; // TODO: when background image CSS loaded, the border will be blured
-      border: 1px solid rgb(204, 214, 221);
+    .micropost-image-wrapper {
       margin-top: 10px;
 
-      .button-wrapper {
-        opacity: 0;
-      }
+      .image-placeholder {
+        border: 1px solid rgb(204, 214, 221);
+        padding-bottom: 56.25%; //Maintain image block width/height ratio.
 
-      &:hover {
+        // Image
+        .micropost-image-cover {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+
+          background-size: cover;
+          background-position: center center;
+        }
+
+        // Button
         .button-wrapper {
-          opacity: 1;
-          transform: scale(1.1);
+          opacity: 0;
+        }
+
+        &:hover {
+          .button-wrapper {
+            opacity: 1;
+            transform: scale(1.1);
+          }
         }
       }
 
-      .micropost-image {}
-    }
 
-    .micropost-image-cover {
-      background-size: cover;
-      background-position: center center;
     }
   }
+}
+
+.position-absolute {
+  position: absolute;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.loading-shimmer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+  background-size: 200%;
+
+  animation: 1.5s infinite linear;
+  animation-name: loadingShimmer;
+}
+
+
+@keyframes loadingShimmer {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.rounded {
+  border-radius: 0.5em;
 }
 
 /* Microposts Flex - END */
@@ -856,14 +1121,15 @@ ul.users { // Users index
 /* User and Micropost hover - BEGIN */
 .user-container,
 article.micropost-container-wrapper {
+  transition: background-color 0.2s linear;
   &:hover {
     background-color: rgba(0, 0, 0, 0.05);
-    transition: 0.2s;
+    transition: background-color 0.2s linear;
   }
 
   &:active:not(:has(:active)) {
     background-color: rgba(0, 0, 0, 0.1);
-    transition: 0.2s;
+    transition: background-color 0.2s linear;
   }
 }
 /* User and Micropost hover - END */
@@ -879,6 +1145,14 @@ article.micropost-container-wrapper {
   transition-duration: 0.3s;
 }
 
+.tran-0s {
+  transition-duration: 0s;
+}
+
+.tran-03s {
+  transition-duration: 0.3s;
+}
+
 .dimmer-wrapper {
   position: relative;
   display: flex;
@@ -890,8 +1164,10 @@ article.micropost-container-wrapper {
     left: 0;
     right: 0;
 
+    transition: background-color 0.2s linear;
     &:hover {
       background-color: rgba(26, 26, 26, 0.15);
+      transition: background-color 0.2s linear;
     }
   }
 }
@@ -922,9 +1198,8 @@ aside {
 
 
 
-/* New micrcpost */
+/* New micrcpost - BEGIN */
 .micropost-container.new-micropost-container {
-  border-top: 1px solid #e8e8e8;
   margin-top: 0;
 
   .micropost_form {
@@ -943,47 +1218,92 @@ aside {
   }
 }
 
+.micropost-divider {
+  height: 10px;
+  background-color: rgb(230, 236, 240);
+}
+/* New micrcpost - END */
 
 /* MICROPOST IMAGE MODAL */
 // Modify Boostrap default's value
-.modal-dialog {
-  height: 100vh;
-  width: 100vw;
-  margin: 0;
-  padding: 0;
+.image-modal,
+.avatar-modal {
+  .modal-dialog {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
 
-  .modal-content {
-    height: 100%;
-
-    background-color: rgba(13, 51, 64, 0.9);
-    transition-duration: 0.5s;
-    transition-property: background-color;
-
-    border: none;
-    border-radius: 0;
-
-    .modal-body {
+    .modal-content {
       height: 100%;
-      padding: 5px 0 0;
 
-      img {
-        height: 100vh;
-        width: 100%;
-        object-fit: contain;
-      }
+      background-color: rgba(13, 51, 64, 0.9);
+      transition-duration: 0.5s;
+      transition-property: background-color;
 
-      .close {
-        // Move the button to top right
-        position: absolute;
-        right: 20px;
-        top: 20px;
-        color: rgb(255, 255, 255);
-        opacity: 1; // Overwrite Bootstrap's default value
-        outline: none; // Hide the square outline when click (and after click) the close button
+      border: none;
+      border-radius: 0;
+
+      .modal-body {
+        height: 100%;
+        padding: 5px 0 0;
+
+        img {
+          height: 100vh;
+          width: 100%;
+          object-fit: contain;
+        }
+
+        .close {
+          // Move the button to top right
+          position: absolute;
+          right: 20px;
+          top: 20px;
+          color: rgb(255, 255, 255);
+          opacity: 1; // Overwrite Bootstrap's default value
+          outline: none; // Hide the square outline when click (and after click) the close button
+        }
       }
     }
   }
 }
+
+/* LOGIN MODAL - BEGIN */
+.login-modal {
+  padding-left: 8px; // Make the login modal symmetric. Boostrap's Javascript will add padding-right: 8px when the modal is open.
+
+  .modal-dialog {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
+
+    .modal-content {
+      width: 90vw;
+      max-width: 500px;
+    }
+  }
+
+  .modal-header {
+    svg {
+      font-size: 7em;
+    }
+  }
+}
+
+.pseudo-tab {
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  color: rgb(101, 119, 134);
+
+  &:hover {
+    color: #1da1f2;
+  }
+}
+/* LOGIN MODAL - END */
 
 /* Micropost - view large image */
 .button-wrapper {
@@ -1009,12 +1329,17 @@ aside {
     transform: scale(1);
   }
 
-  .close-button {
+  .button {
     height: 1em;
     width: 1em;
 
+    color: white;
+
     svg {
-      fill: white;
+      height: 100%;
+      width: 100%;
+
+      fill: currentcolor;
     }
   }
 }
@@ -1089,6 +1414,27 @@ aside {
     background-color: rgba(29, 161, 242, 0.2);
   }
 }
+
+.nothing-info {
+  padding: 20px;
+  min-height: 50vh;
+  border: 1px solid #e8e8e8;
+  border-top: none;
+  justify-content: flex-start;
+
+  .heading {
+    font-size: 20px;
+    font-weight: 800;
+  }
+
+  .my-button {
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
 /* Following/Followers page - END */
 
 /* Follow/Unfollow button - BEGIN */
@@ -1119,6 +1465,7 @@ aside {
   --unfollowButton-active-border:  rgba(202, 32, 85, 0.8);
 }
 
+.my-button,
 .follow-button,
 .unfollow-button {
   // Layout
@@ -1126,7 +1473,7 @@ aside {
 
   // Appearance
   border-radius: 9999px;
-  height: 35px;
+  min-height: 35px;
 
   // Font
   font-weight:   700;
@@ -1144,11 +1491,13 @@ aside {
   color:              var(--followButton-textColor);
   background-color:   var(--followButton-bgColor);
   border:             var(--followButton-border);
+  transition: background-color 0.2s linear, box-shadow 0.2s linear;
 
   &:hover {
     color:            var(--followButton-textColor);
     background-color: var(--followButton-hover-bgColor);
     border:           var(--followButton-hover-border);
+    transition: background-color 0.2s linear, box-shadow 0.2s linear;
   }
 
   &:active {
@@ -1183,17 +1532,18 @@ aside {
   }
 
   // Appearance
-  width: 100px; // Following/Unfollow need more space than Follow
+  min-width: 110px; // Following/Unfollow need more space than Follow
 
   color:              var(--unfollowButton-textColor);
   background-color:   var(--unfollowButton-bgColor);
   border:             var(--unfollowButton-border);
+  transition: background-color 0.2s linear;
 
   &:hover {
     color:            var(--unfollowButton-textColor);
     background-color: var(--unfollowButton-hover-bgColor);
     border:           var(--unfollowButton-hover-border);
-
+    transition: background-color 0.2s linear;
   }
 
   &:active {
@@ -1206,3 +1556,238 @@ aside {
   }
 }
 /* Follow/Unfollow button - END */
+
+/* MY BUTTON - BEGIN */
+.my-button {
+  margin: 0;
+
+  color:              var(--unfollowButton-textColor);
+  background-color:   var(--unfollowButton-bgColor);
+  border:             var(--unfollowButton-border);
+
+  &:hover {
+    color:            var(--unfollowButton-textColor);
+    background-color: rgba(26, 145, 218, 0.9);
+    border:           rgba(26, 145, 218, 0.9);
+  }
+
+  &:active,
+  &:focus {
+    color: white;
+  }
+}
+/* MY BUTTON - END */
+
+/* MINI NAVIGATION BAR - BEGIN */
+.mini-navbar-container {
+  min-height: 50px;
+
+  .left-side {
+    min-width: 60px;
+    margin-left: 10px;
+  }
+
+  .middle-side {
+    margin-left: 10px;
+    .detail {
+      color: rgb(101, 119, 134);
+    }
+  }
+
+  .left-side,
+  .middle-side {
+    h2 {
+      margin-top: 0px;
+      margin-bottom: 0px;
+
+      font-size: 25px;
+      font-weight: 800;
+      letter-spacing: -1px;
+    }
+  }
+
+  .right-side {
+    min-width: 50px;
+  }
+}
+
+// Back button
+.button-wrapper.back-button-wrapper {
+  background-color: white;
+  &:hover {
+    background-color: rgba(29, 161, 242, 0.1);
+  }
+  &:active {
+    background-color: rgba(29, 161, 242, 0.2);
+  }
+
+  .button {
+    height: 1.5em;
+    width: 1.5em;
+    color: rgba(29, 161, 242, 1.00);
+  }
+}
+
+
+.primary-color {
+  color: rgba(29, 161, 242, 1.00);
+}
+
+/* MINI NAVIGATION BAR - END */
+
+/* SVG - BEGIN */
+.svg-inline {
+  display: inline-block;
+  height: 1.25em;
+  vertical-align: text-bottom;
+
+  color: rgb(101, 119, 134);
+  fill: currentcolor;
+}
+
+// Begin - Transition
+.tran-dur-1s {
+  transition-duration: 1s;
+}
+
+.tran-delay-1s {
+  transition-delay: 1s;
+}
+
+// End - Transition
+
+/* SVG - END */
+
+.btn-rainbow {
+  background-image: linear-gradient(115deg,#4fcf70,#fad648,#a767e5,#12bcfe,#44ce7b);
+  padding: 0px;
+  border: none;
+  border-radius: 8px;
+
+  .wrapper {
+    background: #000;
+    padding: .875rem;
+    margin: 4px;
+    border-radius: 4px;
+    color: white;
+
+    span.text {
+      font-size: 1.5em;
+    }
+
+    .margin-tran {
+      margin-right: 0px;
+      transition: margin-right 0.3s ease-in-out 0s; // Shrink the space arrow
+
+      span.my-arrow {
+        margin-left: 5px; // Space between arrow and text
+
+        transform: translate(0, 0);
+        transition: transform 0.3s ease-in-out 0s; // Move the arrow back
+
+        svg {
+          width: 0em;
+          transition: width 0.3s linear 0.3s; // Wait for the arrow to move back before shrink and hide it
+
+          path {
+            color: white;
+            fill: currentColor;
+          }
+        }
+      }
+    }
+  }
+
+  &:active:focus,
+  &:focus,
+  &:active {
+    background-image: linear-gradient(115deg,#4fcf70,#fad648,#a767e5,#12bcfe,#44ce7b);
+    border: none;
+    outline: none;
+  }
+
+  &:hover {
+    animation: rainbowBorder .5s linear infinite;
+
+    .margin-tran {
+      margin-right: 50px;
+      transition: margin-right 0.3s ease-in-out 1s; // Delay 1s before add space for the arrow
+
+      span.my-arrow {
+        transform: translate(50px, 0);
+        transition: transform 0.3s ease-in-out 1s; // Delay 1s before move the arrow to the right
+
+        svg {
+          width: 1.5em;
+          transition: width 0.3s linear 0s; // Show the arrow
+        }
+      }
+    }
+  }
+}
+
+@keyframes rainbowBorder {
+  0%, to {
+    background-image: linear-gradient(115deg, #4fcf70, #fad648, #a767e5, #12bcfe)
+  }
+
+  25% {
+    background-image: linear-gradient(115deg, #fad648, #a767e5, #12bcfe, #4fcf70)
+  }
+
+  50% {
+    background-image: linear-gradient(115deg, #a767e5, #12bcfe, #4fcf70, #fad648)
+  }
+
+  75% {
+    background-image: linear-gradient(115deg, #12bcfe, #4fcf70, #fad648, #a767e5)
+  }
+}
+
+.rounded-circle {
+  border-radius: 50% !important;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.border {
+  border:        1px solid #e8e8e8;
+}
+.border-top {
+  border-top:    1px solid #e8e8e8;
+}
+.border-right {
+  border-right:  1px solid #e8e8e8;
+}
+.border-bottom {
+  border-bottom: 1px solid #e8e8e8;
+}
+.border-left {
+  border-left:   1px solid #e8e8e8;
+}
+
+.border-0 {
+  border:        0!important;
+}
+.border-top-0 {
+  border-top:    0!important;
+}
+.border-right-0 {
+  border-right:  0!important;
+}
+.border-bottom-0 {
+  border-bottom: 0!important;
+}
+.border-left-0 {
+  border-left:   0!important;
+}
+
+.padding-10 {
+  padding: 10px;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}

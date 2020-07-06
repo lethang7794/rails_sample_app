@@ -12,6 +12,12 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test "should redirect new when logged in" do
+    log_in_as @user
+    get signup_path
+    assert_redirected_to home_path
+  end
+
   test "should redirect edit when not logged in" do
     get edit_user_path(@user)
     assert_not flash.empty?
@@ -90,11 +96,45 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "should redirect following when not logged in" do
     get following_user_path(@user)
-    assert_redirected_to login_url
+    assert_redirected_to @user
   end
 
   test "should redirect followers when not logged in" do
     get followers_user_path(@user)
-    assert_redirected_to login_url
+    assert_redirected_to @user
+  end
+
+  test "should redirect media when not logged in" do
+    get media_user_path(@user)
+    assert_redirected_to @user
+  end
+
+  test "param username should be case-insensitive for show" do
+    get "/#{@user.username.swapcase}"
+    assert_response :success
+  end
+
+  test "param username should be case-insensitive for media" do
+    log_in_as @user
+    get "/#{@user.username.swapcase}/media"
+    assert_response :success
+  end
+
+  test "param username should be case-insensitive for following" do
+    log_in_as @user
+    get "/#{@user.username.swapcase}/following"
+    assert_response :success
+  end
+
+  test "param username should be case-insensitive for followers" do
+    log_in_as @user
+    get "/#{@user.username.swapcase}/followers"
+    assert_response :success
+  end
+
+  test "param username should be case-insensitive for edit" do
+    log_in_as @user
+    get "/#{@user.username.swapcase}/edit"
+    assert_response :success
   end
 end

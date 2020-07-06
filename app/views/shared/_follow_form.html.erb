@@ -1,9 +1,13 @@
-<% unless current_user?(user) %>
-  <div id="follow_form_for_<%= user.id %>">
-    <% if current_user.following?(user) %>
-      <%= render partial: 'shared/unfollow', locals: { user: user } %>
-    <% else %>
-      <%= render partial: 'shared/follow', locals: { user: user } %>
-    <% end %>
-  </div>
+<% if logged_in? %>
+  <% unless current_user?(user) %>
+    <div id="follow_form_for_<%= user.id %>">
+      <% if current_user.following?(user) %>
+        <%= render partial: 'shared/unfollow', locals: { user: user } %>
+      <% else %>
+        <%= render partial: 'shared/follow', locals: { user: user } %>
+      <% end %>
+    </div>
+  <% end %>
+<% else %>
+  <%= render 'shared/links/follow_button' %>
 <% end %>

@@ -3,7 +3,7 @@ class MicropostsController < ApplicationController
   before_action :correct_user  , only: :destroy
 
   def index
-    redirect_to root_url
+    redirect_to home_url
   end
 
   def create
@@ -11,7 +11,7 @@ class MicropostsController < ApplicationController
     @micropost.image.attach(params[:micropost][:image])
     if @micropost.save
       flash[:success] = "Micropost created."
-      redirect_to root_url
+      redirect_to home_url
     else
       @feed_items = current_user.feed.paginate(page: params[:page])
       render 'static_pages/home'

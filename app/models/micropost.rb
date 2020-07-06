@@ -6,7 +6,7 @@ class Micropost < ApplicationRecord
   default_scope -> { order(created_at: :desc) }
 
   validates :user_id, presence: true
-  validates :content, presence: true, length: { maximum: 140 }
+  validates :content, presence: true, length: { maximum: 280 }
 
   validates :image, content_type:
                             { in: %w[image/png image/jpeg image/gif], message: 'should be png/jpeg/gif.' },
@@ -15,6 +15,20 @@ class Micropost < ApplicationRecord
   # Returns a resized image for display.
   def display_image
     image.variant(resize_to_limit: [500, 500])
+  end
+
+	# Replace words in content begin with # by hyperlink, @ by link to user profile page if the user exists
+  def content_display
+    content.gsub!(/(?<hash>#\S+)/, '<a href="#">\k<hash></a>')
+
+    content.gsub(/@(?<username>\S+)/) { |match|
+      # debugger
+      if user = User.find_by("lower(username) = ?", $1.downcase)
+        "<a href='#{user.username}'>#{match}</a>"
+      else
+        match
+      end
+    }
   end
 
   # Returns url for resized image.

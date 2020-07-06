@@ -2,6 +2,7 @@
 
 harry:
   name:            Harry Potter
+  username:        HarryPotter
   email:           harry@potter.com
   password_digest: <%= User.digest("password") %>
   admin:           true
@@ -10,6 +11,7 @@ harry:
 
 ron:
   name:            Ron Weasley
+  username:        RonWeasley
   email:           ron@weasley.com
   password_digest: <%= User.digest('password') %>
   activated:       true
@@ -17,19 +19,29 @@ ron:
 
 hermione:
   name:            Hermione Ranger
+  username:        HermioneRanger
   email:           hermione@ranger.com
   password_digest: <%= User.digest('password') %>
   activated:       false
 
 draco:
   name:            Draco Malfoy
+  username:        DracoMalfoy
   email:           draco@malfoy.com
   password_digest: <%= User.digest('password') %>
   activated:       true
 
+brand_new:
+  name:            Brand New
+  username:        BrandNew
+  email:           brand_new@example.com
+  password_digest: <%= User.digest('password') %>
+  activated:       false
+
 <% (1..30).each do |n| %>
 user_<%= n %>:
-  name:            User-<%= n %>
+  name:            User <%= n %>
+  username:        User<%= n %>
   email:           <%= "user#{n}@railstutorial.org" %>
   password_digest: <%= User.digest('password') %>
   activated:       true

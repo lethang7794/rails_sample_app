@@ -1,51 +1,63 @@
 <section class="user_info">
-  <div class="flex flex-row">
-    <div class="flex-80 flex flex-column">
-      <div class="flex-80">
-        <div class="dimmer-wrapper" data-toggle="modal" data-target="#my-micropost-modal-<%= @user.id %>">
-          <div class="user_avatar">
-            <%= gravatar_for @user %>
+  <div class="flex flex-column">
+    <div class="header"></div>
+    <div class="info">
+      <!-- MODAL WRAPPER - BEGIN -->
+      <div class="user-avatar-wrapper modal-wrapper rainbow-hover">
+        <!-- MODAL TOGGLE - BEGIN -->
+        <div class="user_avatar_position">
+          <div class="rainbow-outer cursor-pointer">
+            <div class="rainbow-inner h-128 w-128 t--4 l--4"></div>
           </div>
-          <div class="dimmer transition-03s"></div>
+          <div class="user_avatar rounded-circle overflow-hidden dimmer-wrapper modal-toggle cursor-pointer" data-toggle="modal" data-target="#avatar-modal-<%= @user.id %>">
+            <%= gravatar_for @user, size: 120 %>
+            <div class="dimmer"></div>
+          </div>
         </div>
+        <!-- MODAL TOGGLE - END -->
         <!-- MODAL - BEGIN -->
-        <div class="modal fade" id="my-micropost-modal-<%= @user.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-body">
-                <div class="flex-center max-dem no-scroll">
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <div class="button-wrapper my-flex-container flex-center">
-                      <div class="close-button" aria-hidden="true">
-                        <svg viewBox="0 0 24 24" class="r-jwli3a r-4qtqp9 r-yyyyoo r-1q142lx r-50lct3 r-dnmrzs r-bnwqim r-1plcrui r-lrvibr"><g><path d="M13.414 12l5.793-5.793c.39-.39.39-1.023 0-1.414s-1.023-.39-1.414 0L12 10.586 6.207 4.793c-.39-.39-1.023-.39-1.414 0s-.39 1.023 0 1.414L10.586 12l-5.793 5.793c-.39.39-.39 1.023 0 1.414.195.195.45.293.707.293s.512-.098.707-.293L12 13.414l5.793 5.793c.195.195.45.293.707.293s.512-.098.707-.293c.39-.39.39-1.023 0-1.414L13.414 12z"></path></g></svg>
-                      </div>
-                    </div>
-                  </button>
-                  <div>
-                    <%= gravatar_for(@user, size: 2048)%>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+        <%= render partial: 'shared/modals/avatar', locals: { user: @user } %>
         <!-- MODAL - END -->
       </div>
-    </div>
-    <div class="info flex flex-column flex-grow-1">
-      <div class="flex flew-row flex-align-items-center">
-        <div>
-          <h1>
-            <%= @user.name %>
-          </h1>
+      <!-- MODAL WRAPPER - END -->
+      <div class="content-wrapper flex-grow-1 flex flex-column">
+        <div class="heading flex flex-row flex-center">
+          <div class="flex flex-column">
+            <div class="user username">
+              <h1>
+                <%= @user.name %>
+              </h1>
+              <div>@<%= @user.username %></div>
+            </div>
+          </div>
+          <span class="flex-grow-1"></span>
+          <span class="flex-120 flex justify-content-flex-end">
+            <%= render partial: 'shared/follow_form', locals: {user: @user} %>
+          </span>
         </div>
-        <div class="flex-grow-1 flex flew-row justify-content-flex-end">
-          <%= render partial: 'shared/follow_form', locals: { user: @user } if logged_in? %>
-        </div>
+        <% if @user.bio %>
+          <div class="bio-wrapper">
+            <span class="bio"><%= sanitize @user.bio_display.html_safe %></span>
+          </div>
+        <% end %>
+        <section class="stats">
+          <div class="extra flex flex-row flex-wrap">
+          <% if @user.location %>
+            <div class="location stat">
+              <%= render 'shared/svg/location' %>
+              <span><%= @user.location %></span>
+            </div>
+          <% end %>
+            <div class="joined stat">
+              <%= render 'shared/svg/calendar' %>
+              <span>
+                Joined <%= Date::MONTHNAMES[@user.created_at.month] %> <%= @user.created_at.year %>
+              </span>
+            </div>
+          </div>
+          <%= render 'shared/stats' %>
+        </section>
       </div>
-      <section class="stats">
-        <%= render 'shared/stats' %>
-      </section>
     </div>
   </div>
 </section>

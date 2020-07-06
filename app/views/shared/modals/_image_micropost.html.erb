@@ -1,0 +1,20 @@
+<div class="modal fade image-modal" id="image-modal-micropost-<%= micropost.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="flex-center max-dem no-scroll">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <div class="button-wrapper my-flex-container flex-center">
+              <div class="button flex-center" aria-hidden="true">
+                <%= render 'shared/svg/close' %>
+              </div>
+            </div>
+          </button>
+          <div>
+            <%= image_tag micropost.image %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

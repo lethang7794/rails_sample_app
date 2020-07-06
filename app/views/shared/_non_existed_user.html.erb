@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="user-info-wrapper border-wrapper-rl">
+      <section class="user_info">
+        <div class="flex flex-column">
+          <div class="header"></div>
+          <div class="info">
+            <div class="user_avatar rounded-circle overflow-hidden">
+              <%= gravatar_for @user, size: 120 %>
+            </div>
+            <div class="content-wrapper flex-grow-1 flex flex-column">
+              <div class="heading flex flex-row flex-center">
+                <div class="flex flex-column">
+                  <div class="user username">
+                    <h1>@<%= @user.username %></h1>
+                  </div>
+                </div>
+                <span class="flex-grow-1"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="flex flex-column flex-center text-center nothing-info">
+        <div class="heading">
+          This account doesn't exist.
+        </div>
+        <div>
+          Try searching for another.
+        </div>
+        <div>
+          <%= link_to 'Find people to follow', users_path, class: "btn my-button" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

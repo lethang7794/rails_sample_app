@@ -1,0 +1,26 @@
+<% if logged_in? %>
+  <%= active_link_to 'Media', media_user_path(user), class: "flex-grow-1 flex-center", active: [users: :media] %>
+<% else %>
+  <!-- Button trigger modal -->
+  <div class="pseudo-tab flex-center" data-toggle="modal" data-target="#login-modal-media-user-<%= user.id %>">
+    Media
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade login-modal" id="login-modal-media-user-<%= user.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header center">
+          <%= render 'shared/svg/images' %>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">
+            Login to see photos posted by <strong><%= @user.name %></strong>.
+          </h4>
+        </div>
+        <div class="modal-body">
+          <%= render partial: 'shared/login_form_modal', locals: { forward_to: media_user_path(user) } %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

@@ -19,13 +19,21 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_select 'title', full_title('Log in')
 
     log_in_as(@user)
-    assert_redirected_to root_path
+    assert_redirected_to home_path
     follow_redirect!
-    assert_select 'title', full_title
+    assert_select 'title', full_title('Home')
 
     assert_select "a[href=?]", users_path
     assert_select "a[href=?]", user_path(@user)
     assert_select "a[href=?]", login_path, count: 0
     assert_select "a[href=?]", logout_path
+  end
+
+  test "pagination in homepage should work" do
+    log_in_as @user
+    (1..10).each do |page|
+      get home_path, params: { page: page }
+      assert_response :success
+    end
   end
 end

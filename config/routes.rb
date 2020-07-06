@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
+  get    '/home',    to: 'static_pages#home' # In order for will_pagenite gem to generate pagination with /home URL, get '/home' need to be before root.
   root                   'static_pages#home'
 
-  get    '/home',    to: 'static_pages#home'
   get    '/help',    to: 'static_pages#help'
   get    '/about',   to: 'static_pages#about'
   get    '/contact', to: 'static_pages#contact#'
@@ -12,11 +12,16 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
-  resources :users do
-    member do
-      get 'following', 'followers', 'media'
-    end
-  end
+  resources :users,               only: [:index, :new, :create]
+
+  get    ':username'          , to: 'users#show'     , as: :user
+  get    ':username/edit'     , to: 'users#edit'     , as: :edit_user
+  patch  ':username'          , to: 'users#update'
+  put    ':username'          , to: 'users#update'
+  delete ':username'          , to: 'users#destroy'
+  get    ':username/media'    , to: 'users#media'    , as: :media_user
+  get    ':username/following', to: 'users#following', as: :following_user
+  get    ':username/followers', to: 'users#followers', as: :followers_user
 
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :edit, :create, :update]

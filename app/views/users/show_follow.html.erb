@@ -1,13 +1,14 @@
-<%= provide :page_title, @title %>
+<% if current_page?(controller: 'users', action: 'following') %>
+  <%= provide :page_title, "People followed by #{@user.name} (@#{@user.username})" %>
+<% elsif current_page?(controller: 'users', action: 'followers') %>
+  <%= provide :page_title, "People following #{@user.name} (@#{@user.username})" %>
+<% end %>
 
+<!-- PAGE CONTENT - BEGIN -->
 <div class="row">
 	<!-- Following/Followers list - Begin -->
 	<div class="col-md-6 col-md-offset-3 follow-list">
-		<!-- User overview - Begin -->
-		<%= render 'shared/user_info' %>
-		<!-- User overview - End -->
-
-		<div class="flex flex-row">
+		<div class="flex flex-row border-right border-bottom border-left">
 			<div class="flex-grow-1 flex-center tab-container">
 				<%= active_link_to 'Following', following_user_path(@user), class: "flex-grow-1 flex-center" %>
 			</div>
@@ -17,13 +18,16 @@
 		</div>
 
 		<% if @users.any? %>
-			<ol class="users follow">
+			<ol class="users follow border-right border-left">
 				<%= render @users %>
 			</ol>
 			<div class="flex-center">
 				<%= will_paginate @microposts %>
 			</div>
+    <% else %>
+      <%= render 'shared/nothing' %>
 		<% end %>
 	</div>
 	<!-- Following/Followers list - End -->
 </div>
+<!-- PAGE CONTENT - END -->

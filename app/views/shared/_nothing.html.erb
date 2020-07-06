@@ -1,0 +1,111 @@
+<% if @user&.username %>
+  <% if current_page?(controller: 'users', action: 'following', username: @user.username) %>
+    <% if current_user?(@user) %>
+      <div class="flex flex-column flex-center text-center nothing-info">
+        <div class="heading">
+          You don't following anyone yet
+        </div>
+        <div>
+          When you do, they’ll be listed here and you'll see their microposts in your timeline.
+        </div>
+        <div>
+          <%= link_to 'Find people to follow', users_path, class: "btn my-button" %>
+        </div>
+      </div>
+    <% else %>
+      <div class="flex flex-column flex-center text-center nothing-info">
+        <div class="heading">
+          <%= @user.name %> isn't following anyone yet
+        </div>
+        <div>
+          When they do, they’ll be listed here.
+        </div>
+      </div>
+    <% end %>
+
+  <% elsif current_page?(controller: 'users', action: 'followers', username: @user.username) %>
+    <% if current_user?(@user) %>
+      <div class="flex flex-column flex-center text-center nothing-info">
+        <div class="heading">
+          You don't have any followers yet
+        </div>
+        <div>
+          When someone follows you, you'll see them here.
+        </div>
+      </div>
+    <% else %>
+      <div class="flex flex-column flex-center text-center nothing-info">
+        <div class="heading">
+          <%= @user.name %> doesn't have any followers yet
+        </div>
+        <div>
+          When someone follows them, they’ll be listed here.
+        </div>
+      </div>
+    <% end %>
+
+  <% elsif current_page?(controller: 'users', action: 'show', username: @user.username) %>
+    <% if current_user?(@user) %>
+      <div class="flex flex-column flex-center text-center nothing-info">
+        <div class="heading">
+          You haven’t posted any micropost yet
+        </div>
+        <div>
+          When you post a micropost, it’ll show up here.
+        </div>
+        <div>
+          <%= link_to 'Post a micropost now', home_path, class: "btn my-button" %>
+        </div>
+      </div>
+    <% else %>
+      <div class="flex flex-column flex-center text-center nothing-info">
+        <div class="heading">
+          <%= @user.name %> hasn't posted any micropost yet
+        </div>
+        <div>
+          When they post a micropost, it’ll show up here.
+        </div>
+      </div>
+    <% end %>
+
+  <% elsif current_page?(controller: 'users', action: 'media', username: @user.username) %>
+    <% if current_user?(@user) %>
+      <div class="flex flex-column flex-center text-center nothing-info">
+        <div class="heading">
+          You haven’t posted any photos yet
+        </div>
+        <div>
+          When you post a micropost with photos, it’ll show up here.
+        </div>
+        <div>
+          <%= link_to 'Post a photo now', home_path, class: "btn my-button" %>
+        </div>
+      </div>
+    <% else %>
+      <div class="flex flex-column flex-center text-center nothing-info">
+        <div class="heading">
+          <%= @user.name %> hasn't posted any photos yet
+        </div>
+        <div>
+          When they post a micropost with photos, it’ll show up here.
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<%# FEED - BEGIN %>
+<% if current_page?(controller: 'static_pages', action: 'home') %>
+  <div class="flex flex-column flex-center text-center nothing-info">
+    <div class="heading">
+      Welcome to Sample App!
+    </div>
+    <div>
+      This is the worst place to see what’s happening in the world. By the way, find some people to follow now.
+    </div>
+    <div>
+      <%= link_to 'Find people to follow', users_path, class: "btn my-button" %>
+    </div>
+  </div>
+<% end %>
+<%# FEED - BEGIN %>

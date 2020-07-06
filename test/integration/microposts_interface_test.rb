@@ -11,7 +11,7 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
   test "microposts interface" do
     # log in
     log_in_as @harry
-    get root_url
+    get home_url
     assert_template 'static_pages/home'
     assert_select 'input[type="file"][name="micropost[image]"]'
 
@@ -24,7 +24,7 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
     end
     assert_template 'static_pages/home'
     assert_select 'div#error_explanation'
-    assert_select 'a[href=?]', '/?page=2'
+    assert_select 'a[href=?]', '/home?page=2'
 
     # make a valid submission
     content = "An awesome new micropost"
@@ -33,7 +33,7 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
       post microposts_path, params: { micropost: { content: content, image: image }}
     end
     assert @harry.microposts.first.image.attached?
-    assert_redirected_to root_url
+    assert_redirected_to home_url
     follow_redirect!
     assert_match content, response.body
 
