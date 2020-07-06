@@ -1046,32 +1046,69 @@ ul.users { // Users index
     .micropost-image-wrapper {
       margin-top: 10px;
 
-      .image-block {
+      .image-placeholder {
         border: 1px solid rgb(204, 214, 221);
+        padding-bottom: 56.25%; //Maintain image block width/height ratio.
 
-        .image-background {
-          padding-bottom: 56.25%; //Maintain image block width/height ratio.
-
-          background-color: #e8e8e8; // Placeholder color
-
-          .button-wrapper {
-            opacity: 0;
-          }
-
-          &:hover {
-            .button-wrapper {
-              opacity: 1;
-              transform: scale(1.1);
-            }
-          }
-        }
-
+        // Image
         .micropost-image-cover {
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+
           background-size: cover;
           background-position: center center;
         }
+
+        // Button
+        .button-wrapper {
+          opacity: 0;
+        }
+
+        &:hover {
+          .button-wrapper {
+            opacity: 1;
+            transform: scale(1.1);
+          }
+        }
       }
+
+
     }
+  }
+}
+
+.position-absolute {
+  position: absolute;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.loading-shimmer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+  background-size: 200%;
+
+  animation: 1.5s infinite linear;
+  animation-name: loadingShimmer;
+}
+
+
+@keyframes loadingShimmer {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -200% 0;
   }
 }
 
