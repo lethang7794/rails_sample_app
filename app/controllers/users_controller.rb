@@ -20,6 +20,11 @@ class UsersController < ApplicationController
   	@user = User.find_by("lower(username) = ?", params[:username].downcase)
     @user ||= User.new(username: params[:username])
     @microposts = @user.microposts.paginate(page: params[:page])
+
+    respond_to do |format|
+      format.html { render 'show' }
+      format.js
+    end
   end
 
   def create
@@ -98,7 +103,11 @@ class UsersController < ApplicationController
 
     if logged_in?
       @microposts = @user.media.paginate(page: params[:page])
-      render 'show'
+
+      respond_to do |format|
+        format.html { render 'show' }
+        format.js
+      end
     else
       redirect_to @user
     end
