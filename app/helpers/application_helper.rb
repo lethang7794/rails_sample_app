@@ -15,4 +15,9 @@ module ApplicationHelper
   def current_path
     request.original_fullpath.sub(/\/\z/, '')
   end
+
+  # Strips all query string and return only the path of the url.
+  def strip_query_string(url)
+    url.gsub(/\?[\S]+/, '')
+  end
 end

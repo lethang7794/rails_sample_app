@@ -1,5 +1,5 @@
 <% if @user&.username %> <%# User's page has an instance variable @user WITH username attribute %>
-  <% case current_path.downcase %>
+  <% case strip_query_string(current_path.downcase) %>
   <% when user_path(@user).downcase %>
     <% if @user.email %> <%# Real user has an email address %>
       <%= render  partial: 'shared/mini_navbar_partial',
