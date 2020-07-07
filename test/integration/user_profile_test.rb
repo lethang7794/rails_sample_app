@@ -4,32 +4,34 @@ class UserProfileTest < ActionDispatch::IntegrationTest
   include ApplicationHelper
 
   def setup
-    @user = users(:harry)
+    @harry = users(:harry)
+    @ron  = users(:ron)
   end
 
   test "user profile" do
-    get user_path(@user)
+    get user_path(@harry)
     assert_template 'users/show'
 
     assert_select 'title', { count: 1},
                   "More than one title."
-    assert_select 'title', { text: full_title("#{@user.name} (@#{@user.username})")},
+    assert_select 'title', { text: full_title("#{@harry.name} (@#{@harry.username})")},
                   "Wrong title."
 
-    assert_select 'h1', text: @user.name
+    assert_select 'h1', text: @harry.name
     assert_select '.user_avatar>img.gravatar'
 
-    assert_select 'div.detail', text: "#{@user.microposts.count} microposts"
+    assert_select 'div.detail', text: "#{@harry.microposts.count} microposts"
 
     assert_select 'div.pagination', count: 1
 
-    @user.microposts.paginate(page: 1).each do |micropost|
+    @harry.microposts.paginate(page: 1).each do |micropost|
       assert_match micropost.content, response.body
     end
 
-    log_in_as @user
-    get user_path(@user)
-    assert_select "#following_of_#{@user.id}"
-    assert_select "#followers_of_#{@user.id}"
+    log_in_as @harry
+    get user_path(@harry)
+    assert_select "#following_of_#{@harry.id}"
+    assert_select "#followers_of_#{@harry.id}"
+  end
   end
 end
