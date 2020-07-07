@@ -17,32 +17,32 @@ class MiniNavbarTest < ActionDispatch::IntegrationTest
 
     get user_path(@user) + "?page=2"
     assert_select '#mini-bar-heading', text: "#{@user.name}"
-    assert_select '.detail', text: "#{@user.microposts.count} microposts"
+    assert_select '#mini-bar-detail', text: "#{@user.microposts.count} microposts"
   end
 
   test "should show correct content in user show/media page" do
     get user_path(@user)
     assert_select '#mini-bar-heading', text: "#{@user.name}"
-    assert_select '.detail', text: "#{@user.microposts.count} microposts"
+    assert_select '#mini-bar-detail', text: "#{@user.microposts.count} microposts"
 
     get media_user_path(@user)
     assert_select '#mini-bar-heading', text: "#{@user.name}"
-    assert_select '.detail', text: "#{@user.media.count} photos"
+    assert_select '#mini-bar-detail', text: "#{@user.media.count} photos"
   end
 
 
   test "should show correct content in show page when params[:username] is not case-match" do
     get user_path(@user).upcase
     assert_select '#mini-bar-heading', text: "#{@user.name}"
-    assert_select '.detail', text: "#{@user.microposts.count} microposts"
+    assert_select '#mini-bar-detail', text: "#{@user.microposts.count} microposts"
 
     get user_path(@user).downcase
     assert_select '#mini-bar-heading', text: "#{@user.name}"
-    assert_select '.detail', text: "#{@user.microposts.count} microposts"
+    assert_select '#mini-bar-detail', text: "#{@user.microposts.count} microposts"
 
     get user_path(@user).swapcase
     assert_select '#mini-bar-heading', text: "#{@user.name}"
-    assert_select '.detail', text: "#{@user.microposts.count} microposts"
+    assert_select '#mini-bar-detail', text: "#{@user.microposts.count} microposts"
   end
 
   test "should show correct content when user doesn't exist" do
@@ -64,22 +64,22 @@ class MiniNavbarTest < ActionDispatch::IntegrationTest
   test "should show correct content in user following/followers page" do
     get following_user_path(@user)
     assert_select '#mini-bar-heading', text: "#{@user.name}"
-    assert_select '.detail', text: "@#{@user.username}"
+    assert_select '#mini-bar-detail', text: "@#{@user.username}"
 
     get followers_user_path(@user)
     assert_select '#mini-bar-heading', text: "#{@user.name}"
-    assert_select '.detail', text: "@#{@user.username}"
+    assert_select '#mini-bar-detail', text: "@#{@user.username}"
   end
 
   test "should show correct content in users index page" do
     get users_path
     assert_select '#mini-bar-heading', text: "Explorer"
-    assert_select '.detail', text: "Let's follow other people"
+    assert_select '#mini-bar-detail', text: "Let's follow other people"
   end
 
   test "should show correct content in user edit page" do
     get edit_user_path(@user)
     assert_select '#mini-bar-heading', text: "#{@user.name}"
-    assert_select '.detail', text: "Edit profile"
+    assert_select '#mini-bar-detail', text: "Edit profile"
   end
 end
