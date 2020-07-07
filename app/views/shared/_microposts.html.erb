@@ -1,0 +1,10 @@
+<% if microposts.any? %>
+  <ol class="microposts border-right border-left">
+    <%= render microposts %>
+  </ol>
+  <div class="flex-center">
+    <%= will_paginate microposts %>
+  </div>
+<% else %>
+  <%= render 'shared/nothing' %>
+<% end %>

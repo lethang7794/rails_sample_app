@@ -27,16 +27,10 @@
     </div>
     <%# USER TABS - END %>
 
-		<% if @microposts.any? %>
-			<ol class="microposts border-right border-left">
-				<%= render @microposts %>
-			</ol>
-			<div class="flex-center">
-				<%= will_paginate @microposts %>
-			</div>
-    <% else %>
-      <%= render 'shared/nothing' %>
-    <% end %>
+    <div id="tab-content">
+      <%= render partial: 'shared/microposts', locals: { microposts: @microposts } %>
+    </div>
+
 	</div>
 </div>
 <!-- PAGE CONTENT - END -->
