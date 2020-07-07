@@ -1298,6 +1298,7 @@ aside {
   width: 100%;
   cursor: pointer;
   color: rgb(101, 119, 134);
+  font-weight: 700;
 
   &:hover {
     color: #1da1f2;
@@ -1398,6 +1399,8 @@ aside {
 .tab-container {
   a {
     color: rgb(136, 153, 166);
+    font-weight: 700;
+    padding: 15px;
 
     &.active {
       border-bottom: 3px solid rgb(29, 161, 242);
@@ -1406,6 +1409,11 @@ aside {
     }
 
     &:hover {
+      text-decoration: none;
+      color: #1da1f2;
+    }
+
+    &:focus {
       text-decoration: none;
     }
   }
