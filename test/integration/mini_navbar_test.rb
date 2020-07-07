@@ -11,6 +11,15 @@ class MiniNavbarTest < ActionDispatch::IntegrationTest
     assert_select '#mini-bar-heading', text: "Home"
   end
 
+  test "should show in pages with query string" do
+    get home_url + "?page=2"
+    assert_select '#mini-bar-heading', text: "Home"
+
+    get user_path(@user) + "?page=2"
+    assert_select '#mini-bar-heading', text: "#{@user.name}"
+    assert_select '.detail', text: "#{@user.microposts.count} microposts"
+  end
+
   test "should show correct content in user show/media page" do
     get user_path(@user)
     assert_select '#mini-bar-heading', text: "#{@user.name}"
@@ -20,6 +29,7 @@ class MiniNavbarTest < ActionDispatch::IntegrationTest
     assert_select '#mini-bar-heading', text: "#{@user.name}"
     assert_select '.detail', text: "#{@user.media.count} photos"
   end
+
 
   test "should show correct content in show page when params[:username] is not case-match" do
     get user_path(@user).upcase
