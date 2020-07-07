@@ -128,7 +128,7 @@ class User < ApplicationRecord
 		bio.gsub(/@(?<username>\S+)/) { |match|
 			# debugger
 			if user = User.find_by("lower(username) = ?", $1.downcase)
-				"<a href='#{user.username}'>#{match}</a>"
+				"<a href='/#{user.username}'>#{match}</a>"
 			else
 				match
 			end
