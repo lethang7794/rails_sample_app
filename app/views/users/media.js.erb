@@ -1,0 +1,15 @@
+// Change page title
+document.title = "<%= full_title "Media microposts from #{@user.name} (@#{@user.username})" %>";
+
+// Change URL
+history.replaceState(null, null, "<%= media_user_path(@user) %>");
+
+// Change mini-navbar
+$("#mini-bar-detail").html("<%= escape_javascript("#{pluralize(@user.media.count, 'photo')}") %>");
+
+// Change active tab
+$(".tab-link").removeClass("active");
+$(".tab-link.media-link").addClass("active");
+
+// Change microposts
+$("#tab-content").html("<%= escape_javascript(render partial: 'shared/microposts', locals: { microposts: @microposts }) %>");
