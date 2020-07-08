@@ -10,10 +10,14 @@
 	<div class="col-md-6 col-md-offset-3 follow-list">
 		<div class="flex flex-row border-right border-bottom border-left">
 			<div class="flex-grow-1 flex-center tab-container">
-				<%= active_link_to 'Following', following_user_path(@user), class: "flex-grow-1 flex-center" %>
+				<%= active_link_to following_user_path(@user), class: "flex-grow-1 flex-center" do %>
+					<span>Following</span>
+				<% end %>
 			</div>
 			<div class="flex-grow-1 flex-center tab-container">
-				<%= active_link_to 'Followers', followers_user_path(@user), class: "flex-grow-1 flex-center" %>
+				<%= active_link_to followers_user_path(@user), class: "flex-grow-1 flex-center" do %>
+					<span>Followers</span>
+				<% end %>
 			</div>
 		</div>
 
