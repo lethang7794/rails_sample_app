@@ -17,9 +17,9 @@
     </div>
 
     <%# USER TABS - BEGIN %>
-    <div class="flex flex-row border-right border-left border-bottom">
+    <div class="tab-bar flex flex-row border-right border-left border-bottom">
       <div class="flex-grow-1 flex-center tab-container">
-        <%= active_link_to 'Microposts', user_path(@user), class: "flex-grow-1 flex-center", active: [users: :show] %>
+        <%= active_link_to 'Microposts', user_path(@user), class: "tab-link show-link flex-grow-1 flex-center", active: [users: :show] %>
       </div>
       <div class="flex-grow-1 flex-center tab-container">
         <%= render partial: 'shared/links/media', locals: { user: @user } %>
