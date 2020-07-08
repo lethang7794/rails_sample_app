@@ -33,5 +33,62 @@ class UserProfileTest < ActionDispatch::IntegrationTest
     assert_select "#following_of_#{@harry.id}"
     assert_select "#followers_of_#{@harry.id}"
   end
+
+  test "should have enoung tab link" do
+    log_in_as @harry
+    get user_path(@ron)
+    assert_select ".tab-link", count: 2
+  end
+
+  test "should have tab link for show and media" do
+    log_in_as @harry
+    get user_path(@ron)
+    assert_select ".show-link[href= ?]",  user_path(@ron),        count: 1, text: "Microposts"
+    assert_select ".media-link[href= ?]", media_user_path(@ron),  count: 1, text: "Media"
+  end
+
+  test "media link should respond to Ajax request correctly" do
+    log_in_as @harry
+    get user_path(@ron)
+    assert_select '#mini-bar-heading', text: "#{@ron.name}"
+    assert_select '#mini-bar-detail', text: "1 micropost"
+
+    get media_user_path(@ron), xhr: true
+    get media_user_path(@ron), xhr: true # 2 times to prevent error in second times.
+
+    # Page title
+    assert_match full_title("Media microposts from #{@ron.name} (@#{@ron.username})"), @response.body
+
+    # Page url
+    assert_match media_user_path(@ron), @response.body
+
+    # Mini-navbar
+    assert_match "0 photo", @response.body
+
+    # Microposts
+    assert_match "#{@ron.name} hasn\\'t posted any photos yet", @response.body
+    assert_match "When they post a micropost with photos, it’ll show up here.", @response.body
+  end
+
+   test "show link should respond to Ajax request correctly" do
+    log_in_as @harry
+    get media_user_path(@ron)
+    assert_select '#mini-bar-heading', text: "#{@ron.name}"
+    assert_select '#mini-bar-detail', text: "0 photos"
+
+    get user_path(@ron), xhr: true
+    get user_path(@ron), xhr: true # 2 times to prevent error in second times.
+
+    # Page title
+    assert_match full_title("#{@ron.name} (@#{@ron.username})"), @response.body
+
+    # Page url
+    assert_match user_path(@ron), @response.body
+
+    # Mini-navbar
+    assert_match "1 micropost", @response.body
+
+    # Microposts
+    assert_match @ron.microposts.first.content, @response.body
   end
 end
