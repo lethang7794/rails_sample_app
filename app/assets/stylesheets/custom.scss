@@ -1495,6 +1495,8 @@ aside {
 }
 
 .follow-button {
+  // width: 90px; // Consistent width when change to disabled state.
+
   // Appearance
   color:              var(--followButton-textColor);
   background-color:   var(--followButton-bgColor);
@@ -1524,6 +1526,8 @@ aside {
 }
 
 .unfollow-button {
+  width: 115px; // Consistent width when change from "Following" to "Unfollow"
+
   span {
     display:   inline;
   }

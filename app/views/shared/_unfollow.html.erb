@@ -1,6 +1,6 @@
 <%= form_with(model: current_user.active_relationships.find_by(followed_id: user.id),
                 html: {method: :delete}, remote: true) do |f| %>
-  <%= button_tag class: "btn unfollow-button" do %>
+  <%= button_tag class: "btn unfollow-button", data: { disable_with: "" } do %>
     <span>Following</span>
   <% end %>
 <% end %>
