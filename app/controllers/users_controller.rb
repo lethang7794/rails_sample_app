@@ -70,7 +70,11 @@ class UsersController < ApplicationController
     if logged_in?
       @title = "Following"
       @users = @user.following.paginate(page: params[:page])
-      render 'show_follow'
+
+      respond_to do |format|
+        format.html { render 'show_follow' }
+        format.js
+      end
     else
       redirect_to @user
     end
@@ -87,7 +91,11 @@ class UsersController < ApplicationController
     if logged_in?
       @title = "Followers"
       @users = @user.followers.paginate(page: params[:page])
-      render 'show_follow'
+
+      respond_to do |format|
+        format.html { render 'show_follow' }
+        format.js
+      end
     else
       redirect_to @user
     end
