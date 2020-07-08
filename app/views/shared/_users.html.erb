@@ -1,0 +1,10 @@
+<% if @users.any? %>
+  <ol class="users follow border-right border-left">
+    <%= render @users %>
+  </ol>
+  <div class="flex-center">
+    <%= will_paginate @users %>
+  </div>
+<% else %>
+  <%= render 'shared/nothing' %>
+<% end %>
