@@ -13,6 +13,10 @@ Rails.application.routes.draw do
   delete '/logout',  to: 'sessions#destroy'
 
   resources :users,               only: [:index, :new, :create]
+  resources :account_activations, only: [:edit]
+  resources :password_resets,     only: [:new, :edit, :create, :update]
+  resources :microposts,          only: [:index, :create, :destroy]
+  resources :relationships,       only: [:create, :destroy]
 
   get    ':username'          , to: 'users#show'     , as: :user
   get    ':username/edit'     , to: 'users#edit'     , as: :edit_user
@@ -22,11 +26,6 @@ Rails.application.routes.draw do
   get    ':username/media'    , to: 'users#media'    , as: :media_user
   get    ':username/following', to: 'users#following', as: :following_user
   get    ':username/followers', to: 'users#followers', as: :followers_user
-
-  resources :account_activations, only: [:edit]
-  resources :password_resets,     only: [:new, :edit, :create, :update]
-  resources :microposts,          only: [:index, :create, :destroy]
-  resources :relationships,       only: [:create, :destroy]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
