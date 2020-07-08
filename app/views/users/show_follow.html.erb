@@ -31,3 +31,10 @@
 	<!-- Following/Followers list - End -->
 </div>
 <!-- PAGE CONTENT - END -->
+
+<%# Replace tab content with loading spinner before make Ajax request %>
+<script type="text/javascript">
+  $('.tab-link').bind('ajax:beforeSend', function(){
+    $("#tab-content").html("<%= escape_javascript(render partial: 'shared/svg/loading_top') %>");
+  });
+</script>
