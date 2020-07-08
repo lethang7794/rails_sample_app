@@ -1803,3 +1803,36 @@ aside {
 .cursor-pointer {
   cursor: pointer;
 }
+
+// Begin - Loading
+.loading-spinner {
+  animation: 0.75s linear rotateAnimation;
+  animation-iteration-count: infinite;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.h-100vh {
+  height: 100vh;
+}
+
+.h-80vh {
+  height: 80vh;
+}
+
+.h-20vh {
+  height: 20vh;
+}
+
+@keyframes rotateAnimation {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+// End - Loading
