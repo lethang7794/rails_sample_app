@@ -68,7 +68,7 @@ class UsersController < ApplicationController
     end
 
     if logged_in?
-      @title = "Following"
+      @title = "People followed by #{@user.name} (@#{@user.username})"
       @users = @user.following.paginate(page: params[:page])
 
       respond_to do |format|
@@ -89,7 +89,7 @@ class UsersController < ApplicationController
     end
 
     if logged_in?
-      @title = "Followers"
+      @title = "People following #{@user.name} (@#{@user.username})"
       @users = @user.followers.paginate(page: params[:page])
 
       respond_to do |format|

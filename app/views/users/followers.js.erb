@@ -1,0 +1,14 @@
+// Change page title
+document.title = "<%= @title %>";
+
+// Change URL
+history.replaceState(null, null, "<%= followers_user_path(@user) %>");
+
+// Change active tab
+$(".tab-link").removeClass("active");
+$(".tab-link.followers-link").addClass("active");
+// Remove following count
+$("#following_of_<%= @user.id %>").remove();
+
+// Change tab content - users
+$("#tab-content").html("<%= escape_javascript(render partial: 'shared/users', locals: { users: @users }) %>");
