@@ -2,7 +2,7 @@
 document.title = "<%= @title %>";
 
 // Change URL
-history.replaceState(null, null, "<%= following_user_path(@user) %>");
+history.replaceState( history.state, "", "<%= following_user_path(@user) %>" );
 
 // Change active tab
 $(".tab-link").removeClass("active");
