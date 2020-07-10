@@ -2,7 +2,7 @@ module UsersHelper
 
 	# Return the Gravatar for the given user (expanded to Rohohash avatar).
 	# More info about Rohohash can be found at https://robohash.org/
-	def gravatar_for(user, size: 80, site: 'gravatar', set: 'set5', bgset: 'bg1')
+	def gravatar_for(user, size: 80, site: 'robohash', set: 'set5', bgset: 'bg1')
 		return nil unless user.email
 
 		gravatar_id  = Digest::MD5::hexdigest(user.email.downcase)
