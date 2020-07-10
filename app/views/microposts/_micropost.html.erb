@@ -1,8 +1,8 @@
 <article class="micropost-<%= micropost.id %> micropost-container-wrapper border-bottom">
 	<div class="micropost-container">
 		<div class="my-flex-container flex-row micropost-flex-container">
-			<div class="micropost-avatar rounded-circle overflow-hidden">
-				<%= link_to micropost.user, class: "dimmer-wrapper" do %>
+			<div class="micropost-avatar rounded-circle overflow-hidden dimmer-wrapper loading-shimmer">
+				<%= link_to micropost.user do %>
 					<%= gravatar_for(micropost.user, size:50) %>
 					<div class="dimmer"></div>
 				<% end %>

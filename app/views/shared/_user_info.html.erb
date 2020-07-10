@@ -9,7 +9,7 @@
           <div class="rainbow-outer cursor-pointer">
             <div class="rainbow-inner h-128 w-128 t--4 l--4"></div>
           </div>
-          <div class="user_avatar rounded-circle overflow-hidden dimmer-wrapper modal-toggle cursor-pointer" data-toggle="modal" data-target="#avatar-modal-<%= @user.id %>">
+          <div class="user_avatar rounded-circle overflow-hidden dimmer-wrapper modal-toggle cursor-pointer loading-shimmer" data-toggle="modal" data-target="#avatar-modal-<%= @user.id %>">
             <%= gravatar_for @user, size: 120 %>
             <div class="dimmer"></div>
           </div>
