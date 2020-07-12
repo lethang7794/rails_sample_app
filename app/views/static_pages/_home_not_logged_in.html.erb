@@ -1,37 +1,32 @@
-<div class="center jumbotron">
-  <h1>Welcome to the Sample App</h1>
-  <p>
-      This is the homepage for the <a href="#">Ruby on Rails Tutorials</a> Sample App
+<div class="jumbotron">
+  <h1>Sample App</h1>
+  <p>A Twitter clone app built <i>"from scratch"</i> with Ruby on Rails</p>
+  <p>Source code of this app can be access at <a href="https://github.com/lethang7794/rails_sample_app">Github</a>.
   </p>
 
-  <h1>
-    How to try this app:
-  </h1>
+  <h2>
+    Let's take a look at it
+  </h2>
 
-  <h2>Visit some user profile</h2>
+  <p>First, visit some user profile at Sample App:</p>
   <div>
     <ul>
-      <%= link_to 'Just created user', '/users/10' %>
+      <%= link_to 'Barack Obama', '/BarackObama' %>
     </ul>
     <ul>
-      <%= link_to '"Active" user', '/users/1' %>
+      <%= link_to 'Newest user', user_path(@newest_user)  %>
+    </ul>
+    <ul>
+      <%= link_to 'Demo user', user_path(@demo_user) %>
     </ul>
   </div>
 
-  <h2>Create an account to try its awesome feature.</h2>
-  <div>
-    <ul>Go to <%= link_to 'signup page', signup_path %>. BLA-BLA-BLA</ul>
-    <ul>Check activation email. BLA-BLA-BLA</ul>
-    <ul>Go to the login page. BLA-BLA-BLA</ul>
-  </div>
+  <p>Next, create an account to try its awesome features.</p>
 
-  <h2>Just kidding.</h2>
-  <ul>You don't have to go through all of that to try this stupid app.</ul>
-
-  <h2>Just click the button below.</h2>
+  <p>Just kidding. This is an awesome app. Just click the button below.</p>
 
   <div class="center">
-    <%= form_with(url: '/login', model: @user, scope: 'session', local: true, method: :post) do |f| %>
+    <%= form_with(url: '/login', model: @demo_user, scope: 'session', local: true, method: :post) do |f| %>
       <%= f.hidden_field :email %>
       <%= hidden_field_tag 'session[password]', 'password' %>
       <%= hidden_field_tag 'session[remember_me]', '1' %>

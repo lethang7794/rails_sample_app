@@ -4,7 +4,9 @@ class StaticPagesController < ApplicationController
       if logged_in?
         redirect_to '/home'
       else
-        @user = User.find_by(email: 'example@railstutorial.org')
+        # @admin = User.find_by(email: 'example@railstutorial.org')
+        @demo_user = User.find_by(email: 'demo_user@example.com')
+        @newest_user = User.last
       end
     elsif (controller_name == 'static_pages' and action_name == 'home')
       if logged_in?
