@@ -479,7 +479,7 @@ h3,
 h4,
 h5,
 h6 {
-  line-height: 1;
+  line-height: 1.25;
 }
 
 h1 {
@@ -489,9 +489,51 @@ h1 {
   text-align: center;
 }
 
+
+
+h2 {
+  font-weight: bold;
+}
+
 p {
   font-size: 1.1em;
   line-height: 1.7em;
+}
+
+.jumbotron {
+  h1, h2 {
+    padding-bottom: .3em;
+    border-bottom: 1px solid black;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-bottom: 16px;
+  }
+
+  h1 {
+    font-size: 2.5em;
+    margin-top: 0;
+  }
+  
+  h1,
+  h2 {
+    font-weight: 600;
+  }
+
+  h3 {
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 16px;
+    font-weight: normal;
+    margin-bottom: 16px;
+  }
 }
 /* footer */
 footer {
