@@ -38,6 +38,13 @@ brand_new:
   password_digest: <%= User.digest('password') %>
   activated:       false
 
+demo_user:
+  name:            Demo User
+  username:        DemoUser
+  email:           demo_user@example.com
+  password_digest: <%= User.digest('password') %>
+  activated:       true
+
 <% (1..30).each do |n| %>
 user_<%= n %>:
   name:            User <%= n %>

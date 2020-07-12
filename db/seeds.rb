@@ -50,7 +50,7 @@ User.create!(
 User.create!(
     name:                  'Demo User',
     username:              'DemoUser',
-    email:                 'demouser@sampleapp.com',
+    email:                 'demo_user@example.com',
     password:              'password',
     password_confirmation: 'password',
     activated:             true,
