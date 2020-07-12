@@ -5,6 +5,7 @@
 body {
   padding-top: 70px;
   font-size: 16px;
+  font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
 }
 
 section {
@@ -347,6 +348,13 @@ a.dropdown-toggle[aria-expanded="true"] {
     margin-right: auto!important;
   }
 }
+
+
+// Override Bootstrap's navbar-brand's height
+.navbar-brand {
+  height: auto;
+}
+
 // Move the site logo to center absolutely position
 // by changing the hamburger bar to absolute position
 // and give the flex item with logo inside the whole flex container
