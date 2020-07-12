@@ -11,9 +11,6 @@
 		<div class="tab-bar flex flex-row border-right border-bottom border-left">
 			<div class="tab-container flex-grow-1 flex-center">
 				<%= active_link_to following_user_path(@user), remote: true, class: "tab-link following-link flex-grow-1 flex-center" do %>
-					<% if current_page?(controller: 'users', action: 'following') and current_user?(@user) %>
-						<%= render partial: 'shared/following_count', locals: { user: @user } %>
-          <% end %>
 					<span>Following</span>
 				<% end %>
 			</div>

@@ -7,8 +7,6 @@ history.replaceState( history.state, "", "<%= following_user_path(@user) %>" );
 // Change active tab
 $(".tab-link").removeClass("active");
 $(".tab-link.following-link").addClass("active");
-// Add following count
-$(".tab-link.following-link").prepend( "<%= escape_javascript( render partial: 'shared/following_count', locals: { user: @user } ) %>" );
 
 // Change tab content - users
 $("#tab-content").html("<%= escape_javascript(render partial: 'shared/users', locals: { users: @users }) %>");
