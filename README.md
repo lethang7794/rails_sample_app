@@ -5,13 +5,17 @@ Learn Web Development with Rails*](https://www.railstutorial.org/)
 (6th Edition)
 by [Michael Hartl](https://www.michaelhartl.com/).
 
+Basically, this is a Twitter clone app built "from scratch" with Ruby on Rails.
+
+[Demo app can be access here](https://rails-sample-app-7794.herokuapp.com/).
+
 ## Prerequisite
 * Ruby 2.7.1
 * NodeJS
 * Yarn
 
 ## Getting started
-To get started with the app, clone the repo and then install the needed gems:
+To get started with the app, clone the repo and install the needed gems:
 ```
 $ bundle install --without production
 ```
