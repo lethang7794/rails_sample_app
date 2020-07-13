@@ -542,7 +542,7 @@ p {
     font-size: 2.5em;
     margin-top: 0;
   }
-  
+
   h1,
   h2 {
     font-weight: 600;
@@ -1172,8 +1172,8 @@ ul.users { // Users index
   top: 4px;
 }
 
-.top-70 {
-  top: 70px;
+.top-64 {
+  top: 64px;
 }
 
 .bg-white {
@@ -1689,7 +1689,7 @@ aside {
 
 /* MINI NAVIGATION BAR - BEGIN */
 .mini-navbar-container {
-  min-height: 60px;
+  height: 60px;
 
   .left-side {
     min-width: 60px;
@@ -1700,6 +1700,7 @@ aside {
     margin-left: 10px;
     .detail {
       color: rgb(101, 119, 134);
+      font-size: 14px;
     }
   }
 
@@ -1709,7 +1710,8 @@ aside {
       margin-top: 0px;
       margin-bottom: 0px;
 
-      font-size: 25px;
+      font-size: 20px;
+
       font-weight: 800;
       letter-spacing: -1px;
     }
