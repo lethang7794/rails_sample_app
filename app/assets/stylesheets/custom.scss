@@ -339,13 +339,13 @@ a.dropdown-toggle[aria-expanded="true"] {
 
 // Make the hamburger menu fullscreen
 #bs-navbar-collapse-1 {
-  overflow-y: hidden;
-  height: 100vh;
-  max-height: none;
-  -webkit-transition-duration: 0.7s;
-  transition-duration: 0.7s;
-  -webkit-transition-timing-function: ease;
-  transition-timing-function: ease;
+  // overflow-y: hidden;
+  // height: 100vh; // Turn off the fullscreen hamburger menu
+  // max-height: none;
+  // -webkit-transition-duration: 0.7s;
+  // transition-duration: 0.7s;
+  // -webkit-transition-timing-function: ease;
+  // transition-timing-function: ease;
 }
 
 // Change the layout for PC layout
