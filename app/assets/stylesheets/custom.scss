@@ -134,19 +134,19 @@ section {
     margin-bottom: 0; // Remove space above minibar
   }
 
-  .container {
-    .mini-navbar-container,
-    .micropost-container,
-    .micropost-divider,
-    .microposts-flex-container,
-    .user-info-wrapper,
-    .tab-bar,
-    .microposts,
-    .users {
-      border-right: 0; // Remove main content border to look more spacious.
-      border-left: 0;
-    }
-  }
+  // .container {
+  //   .mini-navbar-container,
+  //   .micropost-container,
+  //   .micropost-divider,
+  //   .microposts-flex-container,
+  //   .user-info-wrapper,
+  //   .tab-bar,
+  //   .microposts,
+  //   .users {
+  //     border-right: 0; // Remove main content border to look more spacious.
+  //     border-left: 0;
+  //   }
+  // }
 }
 
 // Change to flexbox to move the site logo to the center in mobile layout
