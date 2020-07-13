@@ -1,9 +1,16 @@
 <% col ||= 6 %>
 <% offset ||= 3 %>
 
+<% no_border_bottom ||= false %>
+<% if no_border_bottom %>
+  <% no_border_bottom = "border-bottom-0" %>
+<% else %>
+  <% no_border_bottom = nil %> <%# Default value %>
+<% end %>
+
 <div class="row position-sticky top-4 bg-white">
   <div class="col-md-<%= col %> col-md-offset-<%= offset %>">
-    <div class="flex flex-row mini-navbar-container border border-bottom-0">
+    <div class="flex flex-row mini-navbar-container border <%= no_border_bottom %>">
       <div class="left-side flex-center">
         <div id= 'back-button'>
           <div class="button-wrapper flex-center mini-navbar-button-wrapper">
