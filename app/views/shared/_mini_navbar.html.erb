@@ -26,7 +26,8 @@
       <%= render  partial: 'shared/mini_navbar_partial',
                   locals: {
                     heading: "#{@user.name}",
-                    detail:  "@#{@user.username}" } %>
+                    detail:  "@#{@user.username}",
+                    no_border_bottom: true } %>
     <% else %>
       <%= render  partial: 'shared/mini_navbar_partial',
                   locals: { heading: "Profile", detail: nil } %>
@@ -37,7 +38,8 @@
       <%= render  partial: 'shared/mini_navbar_partial',
                   locals: {
                     heading: "#{@user.name}",
-                    detail: "@#{@user.username}" } %>
+                    detail:  "@#{@user.username}",
+                    no_border_bottom: true } %>
     <% else %>
       <%= render  partial: 'shared/mini_navbar_partial',
                   locals: { heading: "Profile", detail: nil } %>
