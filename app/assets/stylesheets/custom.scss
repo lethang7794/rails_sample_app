@@ -3,7 +3,7 @@
 @import "bootstrap";
 /* universal */
 body {
-  padding-top: 70px;
+  padding-top: 4px;
   font-size: 16px;
   font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji;
 }
@@ -93,7 +93,7 @@ section {
   &:active,
   &:focus,
   &:hover {
-    height: 60px;
+    height: 66px;
     box-shadow: 0 0 0 1px rgba(89,105,128,0.1),0 1px 3px 0 rgba(89,105,128,0.1),0 1px 2px 0 rgba(0,0,0,0.05);
 
     .pride-wrapper {
@@ -119,7 +119,7 @@ section {
 }
 @media (max-width: 768px) {
   .pride-banner {
-    font-size: 1.4em;
+    font-size: 1.1em;
     p {
       line-height: normal;
     }
