@@ -12,7 +12,7 @@
   <div class="col-md-<%= col %> col-md-offset-<%= offset %>">
     <div class="flex flex-row mini-navbar-container border <%= no_border_bottom %> bg-white">
       <div class="left-side flex-center">
-        <div id= 'back-button'>
+        <div id='back-button' style="display: none;">
           <div class="button-wrapper flex-center mini-navbar-button-wrapper">
             <div class="button flex-center" aria-hidden="true">
               <%= render 'shared/svg/back' %>
@@ -32,6 +32,7 @@
         <script>
           if (history.length > 2) {
             $( "#home-button" ).remove();
+            $( "#back-button" ).show();
           } else {
             $( "#back-button" ).remove();
           }
