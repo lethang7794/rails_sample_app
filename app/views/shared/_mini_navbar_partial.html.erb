@@ -5,13 +5,31 @@
   <div class="col-md-<%= col %> col-md-offset-<%= offset %>">
     <div class="flex flex-row mini-navbar-container border border-bottom-0">
       <div class="left-side flex-center">
-        <%= link_to 'javascript:history.back()' do %>
-          <div class="button-wrapper flex-center back-button-wrapper">
+        <%= link_to 'javascript:history.back()', id: 'back-button' do %>
+          <div class="button-wrapper flex-center mini-navbar-button-wrapper">
             <div class="button flex-center" aria-hidden="true">
               <%= render 'shared/svg/back' %>
             </div>
           </div>
         <% end %>
+
+        <%= link_to root_path, id: 'home-button' do %>
+          <div class="button-wrapper flex-center mini-navbar-button-wrapper">
+            <div class="button flex-center" aria-hidden="true">
+              <%= render 'shared/svg/home' %>
+            </div>
+          </div>
+        <% end %>
+
+        <%# Begin - Remove unnecessary button %>
+        <script>
+          if (history.length > 2) {
+            $( "#home-button" ).remove();
+          } else {
+            $( "#back-button" ).remove();
+          }
+        </script>
+        <%# End - Remove unnecessary button %>
       </div>
       <div class="middle-side flex-grow-1 flex flex-column">
         <div class="flex-grow-1 flex flex-row flex-align-items-center">
