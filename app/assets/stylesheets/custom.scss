@@ -1138,6 +1138,25 @@ ul.users { // Users index
   position: relative;
 }
 
+.position-sticky {
+  position: -webkit-sticky;
+  position: sticky;
+
+  z-index: 1020; // Bootstrap z-index for sticky
+}
+
+.top-4 {
+  top: 4px;
+}
+
+.top-70 {
+  top: 70px;
+}
+
+.bg-white {
+  background-color: white;
+}
+
 .loading-shimmer {
   position: absolute;
   top: 0;
