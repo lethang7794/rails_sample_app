@@ -31,8 +31,9 @@ class Micropost < ApplicationRecord
     }
   end
 
-  # Returns url for resized image.
+  # Returns url for resized image without transparency.
   def image_url
-    Rails.application.routes.url_helpers.rails_representation_url(image.variant(resize_to_limit: [500, 500]).processed, only_path: true)
+    variant = image.variant(resize_to_limit: [500, 500], background: "white", alpha: "remove")
+    Rails.application.routes.url_helpers.rails_representation_url(variant.processed, only_path: true)
   end
 end
