@@ -5,17 +5,22 @@ module UsersHelper
 	def gravatar_for(user, size: 80, site: 'robohash', set: 'set5', bgset: 'bg1')
 		return nil unless user.email
 
+		image_tag avatar_url(user, size: size, site: site, set: set, bgset: bgset), alt: user.name, class: "gravatar"
+	end
+
+	# Return url for user's avatar using Gravatar/Robohash services.
+	def avatar_url(user, size: 80, site: 'robohash', set: 'set5', bgset: 'bg1')
 		gravatar_id  = Digest::MD5::hexdigest(user.email.downcase)
 		gravatar_url = "https://www.gravatar.com/avatar/#{gravatar_id}?d=mp&s=#{size}"
 		gratavar_robohash_url  = "https://robohash.org/#{gravatar_id}?gravatar=hashed&size=#{size}x#{size}&set=#{set}&bgset=#{bgset}"
 		# robohash_url = "https://robohash.org/#{user.email.downcase}?size=#{size}x#{size}&set=#{set}&bgset=#{bgset}"
 		robohash_url = "https://robohash.org/set_#{set}/bgset_#{bgset}/#{user.email.downcase}?size=#{size}x#{size}"
 		if site == 'gravatar_robohash'
-			image_tag gratavar_robohash_url, 	alt: user.name, class: "gravatar"
+			gratavar_robohash_url
 		elsif site == 'gravatar'
-			image_tag gravatar_url, 					alt: user.name, class: "gravatar"
+			gravatar_url
 		elsif site == 'robohash'
-			image_tag robohash_url,						alt: user.name, class: "gravatar"
+			robohash_url
 		end
 	end
 end
