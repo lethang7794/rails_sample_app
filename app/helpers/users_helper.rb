@@ -23,4 +23,12 @@ module UsersHelper
 			robohash_url
 		end
 	end
+
+	# Returns RGBA color values of dominant color of users's avatar.
+	def avatar_dominant_color(user, alpha = 0.9)
+		url = avatar_url(user, size: 1)
+    image = MiniMagick::Image.open(url)
+    red, blue, green = image.get_pixels[0][0]
+    "rgba(#{red}, #{blue}, #{green}, #{alpha})"
+  end
 end
