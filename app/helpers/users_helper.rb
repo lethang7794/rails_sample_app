@@ -2,10 +2,10 @@ module UsersHelper
 
 	# Return the Gravatar for the given user (expanded to Rohohash avatar).
 	# More info about Rohohash can be found at https://robohash.org/
-	def gravatar_for(user, size: 80, site: 'robohash', set: 'set5', bgset: 'bg1')
+	def gravatar_for(user, size: 80, site: 'robohash', set: 'set5', bgset: 'bg1', klass: "")
 		return nil unless user.email
 
-		image_tag avatar_url(user, size: size, site: site, set: set, bgset: bgset), alt: user.name, class: "gravatar"
+		image_tag avatar_url(user, size: size, site: site, set: set, bgset: bgset), alt: user.name, class: "gravatar #{klass}"
 	end
 
 	# Return url for user's avatar using Gravatar/Robohash services.
