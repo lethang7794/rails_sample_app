@@ -1338,11 +1338,11 @@ aside {
 
       .modal-body {
         height: 100%;
-        padding: 5px 0 0;
+        padding: 4px 0 0;
 
         img {
           height: 100vh;
-          width: 100%;
+          width: 100vw;
           object-fit: contain;
         }
 
@@ -1354,6 +1354,22 @@ aside {
           color: rgb(255, 255, 255);
           opacity: 1; // Overwrite Bootstrap's default value
           outline: none; // Hide the square outline when click (and after click) the close button
+        }
+      }
+    }
+  }
+}
+
+.avatar-modal {
+  .modal-dialog {
+    .modal-content {
+      .modal-body {
+        img {
+          height: auto; // Override micropost's image modal
+          max-height: 100vh;
+          width: auto; // Override micropost's image modal
+          max-width: 100%;
+          object-fit: contain;
         }
       }
     }
@@ -1939,4 +1955,20 @@ aside {
 //Turbolinks progress bar
 .turbolinks-progress-bar {
   height: 4px; // Match with pride bar
+}
+
+.z-index--1 {
+  z-index: -1;
+}
+
+.z-index-1 {
+  z-index: 1;
+}
+
+.opacity-0 {
+  opacity: 0;
+}
+
+.opacity-05 {
+  opacity: 0.5;
 }
