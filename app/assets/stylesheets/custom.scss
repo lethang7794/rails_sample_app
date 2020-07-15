@@ -429,7 +429,7 @@ a.dropdown-toggle[aria-expanded="true"] {
 
   &:hover,
   &:focus {
-    background-color: transparent; // Overwrite Bootstrap's default value
+    background-color: transparent; // Override Bootstrap's default value
     background-image: $hover-box-gradient;
   }
 }
@@ -737,7 +737,7 @@ section {
   transform: translate3d(0px, 1.3125em, 0px);
 }
 
-// Override Boostrap default value for disabled button.
+// Override Bootstrap default value for disabled button.
 .btn.disabled, .btn[disabled], fieldset[disabled] .btn {
     cursor: pointer;
     filter: alpha(opacity=100);
@@ -1168,6 +1168,10 @@ ul.users { // Users index
   z-index: 1020; // Bootstrap z-index for sticky
 }
 
+.navbar {
+  z-index: 1021; // Override Bootstrap's z-index for dropdown (1000).
+}
+
 .top-4 {
   top: 4px;
 }
@@ -1317,7 +1321,7 @@ aside {
 /* New micrcpost - END */
 
 /* MICROPOST IMAGE MODAL */
-// Modify Boostrap default's value
+// Modify Bootstrap default's value
 .image-modal,
 .avatar-modal {
   .modal-dialog {
@@ -1352,7 +1356,7 @@ aside {
           right: 20px;
           top: 20px;
           color: rgb(255, 255, 255);
-          opacity: 1; // Overwrite Bootstrap's default value
+          opacity: 1; // Override Bootstrap's default value
           outline: none; // Hide the square outline when click (and after click) the close button
         }
       }
@@ -1378,7 +1382,7 @@ aside {
 
 /* LOGIN MODAL - BEGIN */
 .login-modal {
-  padding-left: 8px; // Make the login modal symmetric. Boostrap's Javascript will add padding-right: 8px when the modal is open.
+  padding-left: 8px; // Make the login modal symmetric. Bootstrap's Javascript will add padding-right: 8px when the modal is open.
 
   .modal-dialog {
     height: 100%;
