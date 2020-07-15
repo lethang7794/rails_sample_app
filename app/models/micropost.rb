@@ -31,8 +31,17 @@ class Micropost < ApplicationRecord
     }
   end
 
-  # Returns url for resized image.
+  # Returns url for resized image without transparency.
   def image_url
-    Rails.application.routes.url_helpers.rails_representation_url(image.variant(resize_to_limit: [500, 500]).processed, only_path: true)
+    variant = image.variant(resize_to_limit: [500, 500], background: "white", alpha: "remove")
+    Rails.application.routes.url_helpers.rails_representation_url(variant.processed, only_path: true)
+  end
+
+  # Returns RGBA color values of dominant color of micropost's image.
+  def image_dominant_color(alpha = 0.9)
+    image = MiniMagick::Image.open(self.image)
+    image.resize("1x1")
+    red, blue, green = image.get_pixels[0][0]
+    "rgba(#{red}, #{blue}, #{green}, #{alpha})"
   end
 end
