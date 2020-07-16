@@ -1974,3 +1974,18 @@ aside {
 .opacity-05 {
   opacity: 0.5;
 }
+
+.background-color {
+  background-color: #DAE0E6;
+}
+
+.new-micropost-container,
+.micropost-container-wrapper,
+.user-info-wrapper,
+.tab-bar,
+.loading-spinner-wrapper, .h-80vh,
+.user-container,
+.user-edit-wrapper,
+.nothing-info {
+  background-color: white;
+}
