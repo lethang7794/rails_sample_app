@@ -525,7 +525,7 @@ p {
 
 .jumbotron {
   h1, h2 {
-    padding-bottom: .3em;
+    margin-bottom: .3em;
     border-bottom: 1px solid black;
   }
 
@@ -548,6 +548,10 @@ p {
     font-weight: 600;
   }
 
+  h2 {
+    margin-top: 0px;
+  }
+
   h3 {
     font-size: 20px;
   }
@@ -558,6 +562,12 @@ p {
     margin-bottom: 16px;
   }
 }
+
+.homepage-heading {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
 /* footer */
 footer {
   margin-top: 45px;

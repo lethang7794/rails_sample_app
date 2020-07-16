@@ -1,66 +1,72 @@
-<div class="center">
-  <h1>
-    Sample App
-  </h1>
+<!-- PAGE CONTENT - BEGIN -->
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <div class="center homepage-heading">
+      <h1>
+        Sample App
+      </h1>
 
-  <p>A Twitter clone app <i>"built almost from scratch"</i>.</p>
+      <p>A Twitter clone app <i>"built almost from scratch"</i>.</p>
 
-  <p>
-    <button class="btn btn-default">Rails 6</button>
-    <button class="btn btn-default">Bootstrap 3</button>
-  </p>
+      <p>
+        <button class="btn btn-default">Rails 6</button>
+        <button class="btn btn-default">Bootstrap 3</button>
+      </p>
 
-  <p>
-    <a class="github-button" href="https://github.com/lethang7794/rails_sample_app" data-size="large" aria-label="Star lethang7794/rails_sample_app on GitHub">Star</a>
-  </p>
-</div>
+      <p>
+        <a class="github-button" href="https://github.com/lethang7794/rails_sample_app" data-size="large" aria-label="Star lethang7794/rails_sample_app on GitHub">Star</a>
+      </p>
+    </div>
 
-<div class="jumbotron">
-  <h2>
-    Let's take a look at it
-  </h2>
+    <div class="jumbotron">
+      <h2>
+        Let's take a look at it
+      </h2>
 
-  <p>First, visit some user profile at Sample App:</p>
-  <div>
-    <ul>
-      <%= link_to 'Barack Obama', '/BarackObama' %>
-    </ul>
-    <ul>
-      <%= link_to 'Newest user', user_path(@newest_user), target: :_blank, rel: "noopener noreferrer" %>
-    </ul>
-    <ul>
-      <%= link_to 'Demo user', user_path(@demo_user) %>
-    </ul>
-  </div>
+      <p>First, visit some user profile at Sample App:</p>
+      <div>
+        <ul>
+          <%= link_to 'Barack Obama', '/BarackObama' %>
+        </ul>
+        <ul>
+          <%= link_to 'Newest user', user_path(@newest_user), target: :_blank, rel: "noopener noreferrer" %>
+        </ul>
+        <ul>
+          <%= link_to 'Demo user', user_path(@demo_user) %>
+        </ul>
+      </div>
 
-  <p>Next, create an account to try its awesome features.</p>
+      <p>Next, create an account to try its awesome features.</p>
 
-  <p>Just kidding. This is an awesome app. Just click the button below.</p>
+      <p>Just kidding. This is an awesome app. Just click the button below.</p>
 
-  <div class="center">
-    <%= form_with(url: '/login', model: @demo_user, scope: 'session', local: true, method: :post) do |f| %>
-      <%= f.hidden_field :email %>
-      <%= hidden_field_tag 'session[password]', 'password' %>
-      <%= hidden_field_tag 'session[remember_me]', '1' %>
-      <%= f.button class: "btn btn-rainbow" do %>
-        <div class="flex flex-row flex-center">
-          <div class="wrapper flex flex-row">
-            <span class="text">Try this app</span>
-            <span class="flex-center">
-              <span class="margin-tran">
-                <span class="my-arrow flex-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 16">
-                    <path d="M12.58,0a1.19,1.19,0,0,0-1,.89,1.53,1.53,0,0,0,.29,1.42l3.71,4.53H1c-.63,0-1,.48-1,1.22a1.09,1.09,0,0,0,1.2,1.1H15.61l-3.73,4.52a1.52,1.52,0,0,0,0,1.91,1,1,0,0,0,1.63,0L19.18,9,20,8l-.82-.94L13.51.41A1,1,0,0,0,12.58,0Z"></path>
-                  </svg>
+      <div class="center">
+        <%= form_with(url: '/login', model: @demo_user, scope: 'session', local: true, method: :post) do |f| %>
+          <%= f.hidden_field :email %>
+          <%= hidden_field_tag 'session[password]', 'password' %>
+          <%= hidden_field_tag 'session[remember_me]', '1' %>
+          <%= f.button class: "btn btn-rainbow" do %>
+            <div class="flex flex-row flex-center">
+              <div class="wrapper flex flex-row">
+                <span class="text">Try this app</span>
+                <span class="flex-center">
+                  <span class="margin-tran">
+                    <span class="my-arrow flex-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 16">
+                        <path d="M12.58,0a1.19,1.19,0,0,0-1,.89,1.53,1.53,0,0,0,.29,1.42l3.71,4.53H1c-.63,0-1,.48-1,1.22a1.09,1.09,0,0,0,1.2,1.1H15.61l-3.73,4.52a1.52,1.52,0,0,0,0,1.91,1,1,0,0,0,1.63,0L19.18,9,20,8l-.82-.94L13.51.41A1,1,0,0,0,12.58,0Z"></path>
+                      </svg>
+                    </span>
+                  </span>
                 </span>
-              </span>
-            </span>
-          </div>
-        </div>
-      <% end %>
-    <% end %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
   </div>
 </div>
+<!-- PAGE CONTENT - END -->
 
 <%# Github button's script %>
 <%# https://buttons.github.io/ %>
