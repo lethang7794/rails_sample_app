@@ -11,7 +11,10 @@
             </div>
           </button>
           <div class="flex-center" style="width: 500px; max-width: 100vh">
-            <div class="rounded-circle overflow-hidden" style="width:100%; padding-bottom: 100%; background-image: url('<%= avatar_url(user, size: 500) %>'); background-position: center; background-size:cover">
+            <div class="rounded-circle overflow-hidden position-relative" style="width:100%;">
+              <div class="loading-shimmer position-absolute"></div>
+              <div class="position-relative" style="width:100%; padding-bottom: 100%; background-image: url('<%= avatar_url(user, size: 500) %>'); background-position: center; background-size:cover">
+            </div>
             </div>
             <%= gravatar_for(user, size: 500, klass: "position-absolute opacity-0") %>
           </div>
