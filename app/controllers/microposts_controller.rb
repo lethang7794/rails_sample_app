@@ -14,6 +14,7 @@ class MicropostsController < ApplicationController
       redirect_to home_url
     else
       @feed_items = current_user.feed.paginate(page: params[:page])
+      @partial = 'home'
       render 'static_pages/home'
     end
   end

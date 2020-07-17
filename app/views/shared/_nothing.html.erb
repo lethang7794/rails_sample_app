@@ -95,7 +95,7 @@
 <% end %>
 
 <%# FEED - BEGIN %>
-<% if current_page?(controller: 'static_pages', action: 'home') %>
+<% if current_page?(controller: 'static_pages', action: 'home') or @partial == 'home' %>
   <div class="flex flex-column flex-center text-center nothing-info">
     <div class="heading">
       Welcome to Sample App!
