@@ -140,6 +140,10 @@ section {
   }
 
   .container {
+    .alert {
+      margin-top: 20px;
+    }
+
     .jumbotron {
       border-radius: 0px;
       margin-left: -15px;
@@ -589,6 +593,11 @@ p {
 .homepage-heading {
   margin-top: 30px;
   margin-bottom: 30px;
+
+  button a {
+    color: black;
+    text-decoration: none;
+  }
 }
 
 /* footer */
@@ -2025,4 +2034,8 @@ aside {
 .user-edit-wrapper,
 .nothing-info {
   background-color: white;
+}
+
+.color-black {
+  color: black;
 }
