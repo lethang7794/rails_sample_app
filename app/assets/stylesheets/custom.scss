@@ -2025,6 +2025,13 @@ aside {
   background-color: #DAE0E6;
 }
 
+// Extra small devices (portrait phones, less than 576px)
+@media (max-width: 575.98px) {
+  .background-color {
+    background-color: white;
+  }
+}
+
 .new-micropost-container,
 .micropost-container-wrapper,
 .user-info-wrapper,
