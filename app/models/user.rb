@@ -149,7 +149,13 @@ class User < ApplicationRecord
 		def generate_username
 			if self.username.blank?
 				num = rand 0..999999
-				firstname = self.name.split.first
+
+				if self.name.blank?
+					firstname = "User"
+				else
+					firstname = self.name.split.first
+				end
+
 				self.username = firstname[0..13] + "#{num}"
 			end
 		end
