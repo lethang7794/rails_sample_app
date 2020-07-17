@@ -134,6 +134,29 @@ section {
     margin-bottom: 0; // Remove space above minibar
   }
 
+  .mini-navbar-container {
+    margin-right: -15px;
+    margin-left: -15px;
+  }
+
+  .container {
+    .jumbotron {
+      border-radius: 0px;
+      margin-left: -15px;
+      margin-right: -15px;
+    }
+
+    .page-main-content {
+      margin-left: -15px;
+      margin-right: -15px;
+    }
+
+    .pagination {
+      margin-left: 15px;
+      margin-right: 15px;
+    }
+  }
+
   // .container {
   //   .mini-navbar-container,
   //   .micropost-container,
