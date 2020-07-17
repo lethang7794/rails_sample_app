@@ -12,26 +12,27 @@
 <!-- PAGE CONTENT - BEGIN -->
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
-    <div class="user-info-wrapper border-right border-left">
-      <%= render 'shared/user_info' %>
-    </div>
-
-    <%# USER TABS - BEGIN %>
-    <div class="tab-bar flex flex-row border-right border-left border-bottom">
-      <div class="flex-grow-1 flex-center tab-container">
-        <%= active_link_to 'Microposts', user_path(@user), remote: true, class: "tab-link show-link flex-grow-1 flex-center", active: [users: :show] %>
+    <div class="page-main-content">
+      <div class="user-info-wrapper border-right border-left">
+        <%= render 'shared/user_info' %>
       </div>
-      <div class="flex-grow-1 flex-center tab-container">
-        <%= render partial: 'shared/links/media', locals: { user: @user } %>
+
+      <%# USER TABS - BEGIN %>
+      <div class="tab-bar flex flex-row border-right border-left border-bottom">
+        <div class="flex-grow-1 flex-center tab-container">
+          <%= active_link_to 'Microposts', user_path(@user), remote: true, class: "tab-link show-link flex-grow-1 flex-center", active: [users: :show] %>
+        </div>
+        <div class="flex-grow-1 flex-center tab-container">
+          <%= render partial: 'shared/links/media', locals: { user: @user } %>
+        </div>
+      </div>
+      <%# USER TABS - END %>
+
+      <div id="tab-content">
+        <%= render partial: 'shared/microposts', locals: { microposts: @microposts } %>
       </div>
     </div>
-    <%# USER TABS - END %>
-
-    <div id="tab-content">
-      <%= render partial: 'shared/microposts', locals: { microposts: @microposts } %>
-    </div>
-
-	</div>
+  </div>
 </div>
 <!-- PAGE CONTENT - END -->
 <% else %> <%# Non Existed user %>
