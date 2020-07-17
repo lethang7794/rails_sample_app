@@ -2046,3 +2046,10 @@ aside {
 .color-black {
   color: black;
 }
+
+.rainbow-text {
+  background: linear-gradient(90deg, #4fcf70, #fad648, #a767e5, #12bcfe);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
