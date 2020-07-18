@@ -52,6 +52,7 @@
       <div class="center">
         <%= form_with(url: '/login', model: @demo_user, scope: 'session', local: true, method: :post) do |f| %>
           <%= f.hidden_field :email %>
+          <%= hidden_field_tag 'session[forwarding_url]', "/home" %>
           <%= hidden_field_tag 'session[password]', 'password' %>
           <%= hidden_field_tag 'session[remember_me]', '1' %>
           <%= f.button class: "btn btn-rainbow" do %>
