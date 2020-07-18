@@ -5,9 +5,9 @@ class MainNavigationBarTest < ActionDispatch::IntegrationTest
     @harry = users(:harry)
   end
 
-  test "brand logo and home nav-item should point to root when not logged in" do
+  test "brand logo should point to root when not logged in" do
     get root_url
-    assert_select "a[href=?]", root_path, count: 2
+    assert_select "a[href=?]", root_path, count: 1
   end
 
   test "brand logo should point to home when logged in" do
