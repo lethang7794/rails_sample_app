@@ -384,8 +384,7 @@ a.dropdown-toggle[aria-expanded="true"] {
     flex-basis: auto;
 
     .my-arrow {
-      &.home,
-      &.sign-up {
+      &.hide-for-large-device {
         display: none;
       }
     }
