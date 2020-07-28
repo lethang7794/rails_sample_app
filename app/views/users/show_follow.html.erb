@@ -31,9 +31,16 @@
 </div>
 <!-- PAGE CONTENT - END -->
 
-<%# Replace tab content with loading spinner before make Ajax request %>
 <script type="text/javascript">
+  <%# Replace tab content with loading spinner before make Ajax request %>
   $('.tab-link').bind('ajax:beforeSend', function(){
     $("#tab-content").html("<%= escape_javascript(render partial: 'shared/svg/loading_top') %>");
+  });
+
+  <%# Force reload when navigate with browser's back, forward button to load latest follow/unfollow button data -%>
+  $(document).ready(function( $ ) {
+     $(window).on('popstate', function() {
+        location.reload(true);
+     });
   });
 </script>
