@@ -18,4 +18,14 @@
   <% end %>
 <% else %> <%# Enter link to address bar, then Enter, or Reload page with Ctrl + R, F5 %>
   <%= render partial: 'shared/buttons/home' %>
+  <script type="text/javascript">
+    var previousURL = localStorage.getItem("previousURL");
+    if (previousURL == window.location.href && history.length > 1) {
+      $( "#mini-navbar-button" ).html("<%= escape_javascript(render partial: 'shared/buttons/back' ) %>");
+
+      document.getElementById('back-button').onclick = function goBack() {
+        history.back();
+      }
+    }
+  </script>
 <% end %>
