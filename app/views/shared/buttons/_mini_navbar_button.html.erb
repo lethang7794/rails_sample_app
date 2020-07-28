@@ -1,0 +1,21 @@
+<% if request.referrer %> <%# Request made by clicking a hyperlink %>
+  <% referrer = URI.parse(request.referrer) %>
+  <% if referrer.host == request.host %>
+    <%= render partial: 'shared/buttons/back' %>
+    <%# Begin - Replace unusable back button (in new tab and when reload page) with home button %>
+    <script type="text/javascript">
+      document.getElementById('back-button').onclick = function goBack() {
+        history.back();
+      }
+      <%# Open in new tab: Ctrl + Left Click %>
+      if (history.length < 2) {
+        $( "#mini-navbar-button" ).html("<%= escape_javascript(render partial: 'shared/buttons/home' ) %>");
+      }
+    </script>
+    <%# End - Replace unusable back button (in new tab and when reload page) with home button %>
+  <% else %>
+    <%= render partial: 'shared/buttons/home' %>
+  <% end %>
+<% else %> <%# Enter link to address bar, then Enter, or Reload page with Ctrl + R, F5 %>
+  <%= render partial: 'shared/buttons/home' %>
+<% end %>

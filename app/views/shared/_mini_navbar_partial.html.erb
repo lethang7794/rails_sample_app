@@ -12,36 +12,9 @@
   <div class="col-md-<%= col %> col-md-offset-<%= offset %>">
     <div class="flex flex-row mini-navbar-container border <%= no_border_bottom %> bg-white">
       <div class="left-side flex-center">
-        <div id='back-button' style="display: none;">
-          <div class="button-wrapper flex-center mini-navbar-button-wrapper">
-            <div class="button flex-center" aria-hidden="true">
-              <%= render 'shared/svg/back' %>
-            </div>
-          </div>
+        <div id="mini-navbar-button">
+          <%= render 'shared/buttons/mini_navbar_button' %>
         </div>
-
-        <%= link_to root_path, id: 'home-button' do %>
-          <div class="button-wrapper flex-center mini-navbar-button-wrapper">
-            <div class="button flex-center" aria-hidden="true">
-              <%= render 'shared/svg/home' %>
-            </div>
-          </div>
-        <% end %>
-
-        <%# Begin - Remove unnecessary button %>
-        <script>
-          if (history.length > 2) {
-            $( "#home-button" ).remove();
-            $( "#back-button" ).show();
-          } else {
-            $( "#back-button" ).remove();
-          }
-
-          document.getElementById('back-button').onclick = function goBack() {
-            history.back();
-          }
-        </script>
-        <%# End - Remove unnecessary button %>
       </div>
       <div class="middle-side flex-grow-1 flex flex-column">
         <div class="flex-grow-1 flex flex-row flex-align-items-center">
