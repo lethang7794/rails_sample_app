@@ -1,5 +1,6 @@
 class Micropost < ApplicationRecord
   belongs_to :user
+  acts_as_commontable
 
   has_one_attached :image
 
