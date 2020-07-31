@@ -13,6 +13,10 @@
 
   .commontator-hidden {
     display: none;
+
+    a {
+      display: none !important;
+    }
   }
 
   .header {
@@ -104,5 +108,13 @@
 
   .submit {
     margin: 10px 0;
+  }
+
+  &.thread > a,
+  .status,
+  .page-entries-info,
+  .will-paginate,
+  .new-comment {
+    padding-left: 60px;
   }
 }
