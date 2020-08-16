@@ -1,5 +1,5 @@
 // Change page title
-document.title = "<%= full_title "#{@user.name} (@#{@user.username})" %>";
+document.title = "<%= full_title "#{@user.name} (@#{@user.username})".html_safe %>";
 
 // Change URL
 history.replaceState( history.state, "", "<%= user_path(@user) %>" );
