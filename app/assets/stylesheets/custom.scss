@@ -1195,6 +1195,13 @@ ul.users { // Users index
   }
 }
 
+// Comment's avatar - BEGIN
+.comment-avatar {
+  height: 50px; // Ensure comment fixed ratio to comment avatar when avatar cannot loaded.
+  width: 50px;
+}
+// Comment's avatar - END
+
 // Always show micropost large picture view indicator for mobile devices.
 // Small devices (landscape phones, less than 768px)
 @media (max-width: 767.98px) {
