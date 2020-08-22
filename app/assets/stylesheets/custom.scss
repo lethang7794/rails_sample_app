@@ -1284,8 +1284,9 @@ ul.users { // Users index
 article.micropost-container-wrapper {
   transition: background-color 0.2s linear;
   &:hover {
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: rgba(245, 248, 250, 1);
     transition: background-color 0.2s linear;
+    cursor: pointer;
   }
 
   &:active:not(:has(:active)) {
