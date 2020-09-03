@@ -1195,12 +1195,64 @@ ul.users { // Users index
   }
 }
 
-// Comment's avatar - BEGIN
-.comment-avatar {
-  height: 50px; // Ensure comment fixed ratio to comment avatar when avatar cannot loaded.
-  width: 50px;
+// Micropost show page - BEGIN
+.micropost-show-page {
+  .micropost-container {
+    .micropost-header {
+      margin-left: 10px;
+
+      .user {
+        font-weight: 700;
+        a {
+          color: black;
+        }
+      }
+
+      .username {
+        a {
+          color: black;
+          text-decoration: none;
+          color: rgb(101, 119, 134);
+        }
+      }
+    }
+
+    .micropost-main {
+      padding-top: 10px;
+      padding-left: 0px;
+
+      .micropost-content {
+        font-size: 23px;
+      }
+    }
+
+    .comment-container {
+      .micropost-main {
+        padding-top: 0px;
+        margin-left: 10px;
+      }
+    }
+  }
 }
-// Comment's avatar - END
+// Micropost show page - END
+
+// Commontator - BEGIN
+.comment-container {
+  .comment-avatar {
+    height: 50px; // Ensure comment fixed ratio to comment avatar when avatar cannot loaded.
+    width: 50px;
+  }
+
+  .micropost-show-page {
+    .micropost-container {
+      .micropost-main {
+        padding-top: 0px;
+        padding-left: 0px;
+      }
+    }
+  }
+}
+// Commontator - END
 
 // Always show micropost large picture view indicator for mobile devices.
 // Small devices (landscape phones, less than 768px)
