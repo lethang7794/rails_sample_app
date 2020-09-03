@@ -56,9 +56,6 @@
 							</div>
 							<!-- MODAL TOGGLE - END -->
 
-							<!-- MODAL - BEGIN -->
-							<%= render partial: 'shared/modals/image_micropost', locals: { micropost: micropost } %>
-							<!-- MODAL - END -->
 						</div>
 						<!-- MODAL WRAPPER - END -->
 					<% end %>
@@ -68,3 +65,25 @@
 		<%= commontator_thread(micropost) %>
 	</div>
 </article>
+
+<% if micropost.image.attached? %>
+	<!-- MODAL - BEGIN -->
+	<%= render partial: 'shared/modals/image_micropost', locals: { micropost: micropost } %>
+	<!-- MODAL - END -->
+<% end %>
+
+<script type="text/javascript">
+	$("article.micropost-<%= micropost.id %>").click(function() {
+	  // alert( "Handler for micropost-<%= micropost.id %>.click() called." );
+		window.location.href = "<%= url_for micropost %>";
+	});
+
+	$("article.micropost-<%= micropost.id %> a").click(function(e) {
+   e.stopPropagation();
+	});
+
+	$("article.micropost-<%= micropost.id %> .modal-toggle").click(function(e) {
+	 $("#image-modal-micropost-<%= micropost.id %>").modal('show');
+	 e.stopPropagation();
+	});
+</script>
