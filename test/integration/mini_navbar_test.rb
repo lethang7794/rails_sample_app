@@ -82,4 +82,9 @@ class MiniNavbarTest < ActionDispatch::IntegrationTest
     assert_select '#mini-bar-heading', text: "#{@user.name}"
     assert_select '#mini-bar-detail', text: "Edit profile"
   end
+
+  test "should show correct content in micropost show page" do
+    get micropost_path(@user.microposts.first)
+    assert_select '#mini-bar-heading', text: "Micropost"
+  end
 end
