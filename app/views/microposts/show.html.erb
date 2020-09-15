@@ -68,6 +68,11 @@
 			        <% end %>
 			      </div>
 			    </div>
+					<div class="micropost-info-bar">
+						<span class="timestamp">
+							<%= @micropost.created_at.strftime("%l:%M %p · %b %e, %Y") %>
+						</span>
+					</div>
 				</div>
 			</article>
 			<div class="border border-top-0">
