@@ -3,7 +3,7 @@
 	<div class="col-md-6 col-md-offset-3">
     <div class="page-main-content micropost-show-page">
 			<article class="micropost-<%= @micropost.id %> micropost-container-wrapper border-bottom">
-				<div class="micropost-container">
+				<div class="micropost-container border-right border-left">
 			    <div class="flex flex-column micropost-flex-container">
 			      <div class="my-flex-container flex-row ">
 			  			<div class="micropost-avatar rounded-circle overflow-hidden dimmer-wrapper loading-shimmer">
@@ -70,7 +70,9 @@
 			    </div>
 				</div>
 			</article>
-			<%= commontator_thread(@micropost) %>
+			<div class="border border-top-0">
+				<%= commontator_thread(@micropost) %>
+			</div>
     </div>
   </div>
 </div>
