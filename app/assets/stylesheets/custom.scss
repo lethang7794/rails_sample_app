@@ -1348,6 +1348,17 @@ article.micropost-container-wrapper {
 }
 /* User and Micropost hover - END */
 
+/* Micropost show page hover - BEGIN */
+.micropost-show-page {
+  article.micropost-container-wrapper {
+    &:hover {
+      background-color: white;
+      cursor: auto;
+    }
+  }
+}
+/* Micropost show page hover - END */
+
 /* DIMMER - BEGIN */
 .transition-1s {
   transition-property: all;
