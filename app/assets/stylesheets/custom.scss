@@ -1828,8 +1828,8 @@ aside {
   height: 60px;
 
   .left-side {
-    min-width: 60px;
-    margin-left: 10px;
+    min-width: 50px;
+    margin-left: 15px;
   }
 
   .middle-side {
@@ -1860,6 +1860,9 @@ aside {
 
 // Mini-navbar button
 .button-wrapper.mini-navbar-button-wrapper {
+  height: 50px;
+  width: 50px;
+
   background-color: white;
   &:hover {
     background-color: rgba(29, 161, 242, 0.1);
@@ -1869,8 +1872,8 @@ aside {
   }
 
   .button {
-    height: 1.5em;
-    width: 1.5em;
+    height: 2em;
+    width: 2em;
     color: rgba(29, 161, 242, 1.00);
   }
 }
