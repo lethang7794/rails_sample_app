@@ -18,5 +18,8 @@ module RailsSampleApp
     # Application configuration can go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded after loading
     # the framework and any gems in your application.
+
+    # Load locales in subfolders of config/locales
+    config.i18n.load_path += Dir[root.join('config', 'locales', '**', '*.yml')]
   end
 end
