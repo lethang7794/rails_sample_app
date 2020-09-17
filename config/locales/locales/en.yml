@@ -72,7 +72,7 @@ en:
         new: New Comment
         undelete: Undelete
         update: Modify Comment
-        reply: Reply to Comment.
+        reply: Reply
       errors:
         already_deleted: This comment has already been deleted.
         create: "This comment could not be posted because:"
