@@ -1013,7 +1013,7 @@ ul.users { // Users index
 /* New Users Index - BEGIN */
 
 .user-container {
-  padding: 10px;
+  padding: 15px;
 
   .user-avatar {
     height: 50px;
@@ -1027,7 +1027,7 @@ ul.users { // Users index
   }
 
   .main-content {
-    padding-left: 10px;
+    padding-left: 15px;
 
     .name {
       a {
@@ -1131,7 +1131,7 @@ ul.users { // Users index
 
   .micropost-main {
     flex: 1; //Set width of flex item: Fill up remaining spacing
-    padding-left: 10px;
+    padding-left: 15px;
 
     .user {
       font-weight: 700;
@@ -1199,7 +1199,7 @@ ul.users { // Users index
 .micropost-show-page {
   .micropost-container {
     .micropost-header {
-      margin-left: 10px;
+      margin-left: 15px;
 
       .user {
         font-weight: 700;
@@ -1236,7 +1236,7 @@ ul.users { // Users index
   .comment-container {
     .micropost-main {
       padding-top: 0px;
-      margin-left: 10px;
+      margin-left: 15px;
     }
   }
 }
@@ -1850,7 +1850,7 @@ aside {
   }
 
   .middle-side {
-    margin-left: 10px;
+    margin-left: 15px;
     .detail {
       color: rgb(101, 119, 134);
       font-size: 14px;
