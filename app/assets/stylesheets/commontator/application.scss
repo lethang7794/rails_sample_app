@@ -26,9 +26,9 @@
   }
 
   .actions {
-    float: right;
+    // float: right;
 
-    margin-left: 10px;
+    // margin-left: 10px;
   }
 
   .status {
@@ -38,11 +38,13 @@
   }
 
   .comment-list {
-    // background-color: #FFF;
+    // background-color: #000;
+    padding-right: 15px;
+    margin-left: 0px;
   }
 
   .children {
-    padding-left: 15px;
+    padding-left: 0px;
   }
 
   /* Modified from: https://www.strangerstudios.com/sandbox/pagination/diggstyle.php */
@@ -51,6 +53,9 @@
   }
 
   .pagination {
+    margin: 0 0 !important;
+    display: block;
+
     a {
     	margin-right: 4px;
     	padding: 2px 5px 2px 5px;
@@ -102,19 +107,23 @@
     width: 100%;
 
     padding: 0;
+    margin-bottom: 0;
 
     overflow: auto;
   }
 
   .submit {
-    margin: 10px 0;
+    margin: 0px 0;
   }
 
   &.thread > a,
-  .status,
+  .status, {
+    margin-left: 65px;
+  }
+
   .page-entries-info,
   .will-paginate,
   .new-comment {
-    margin-left: 60px;
+    margin-left: 75px;
   }
 }

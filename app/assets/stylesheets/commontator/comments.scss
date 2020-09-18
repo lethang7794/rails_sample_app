@@ -11,17 +11,34 @@
   & {
     clear: both;
 
-    margin: 15px 0;
+    margin: 15px 0px 15px 15px;
     border-color: #DDD;
     padding: 0;
 
     font-style: normal;
   }
 
+  .thread {
+    margin: 15px 15px;
+  }
+
   .section {
   	clear: both;
 
     // margin: 5px 7px;
+
+    &.bottom {
+      margin-left: 15px;
+
+      a {
+        color: #8e8e8e;
+        text-decoration: none !important;
+
+        &:active {
+          opacity: 0.7;
+        }
+      }
+    }
   }
 
   .author {
@@ -105,8 +122,48 @@
     margin: 10px 7px;
   }
 
+  .reply-indicator {
+    border-bottom: 1px solid #8e8e8e;
+    border-bottom: 1px solid rgba(var(--f52,142,142,142),1);
+    display: inline-block;
+    height: 0;
+    margin-right: 5px;
+    vertical-align: middle;
+    width: 15px;
+  }
 }
+
 .commontator.thread > .content {
+  > .header .status,
+  > .reply .new-comment {
+    margin-left: 80px;
+  }
+
+  > .reply .new-comment {
+    margin-right: 15px;
+  }
+
+  > .reply {
+    margin-top: 5px;
+  }
+
+  .comment-list .comment .children .reply .new_comment {
+    margin-left: 80px;
+
+    .replying {
+      color: #8e8e8e;
+      margin-left: -25px;
+
+      .reply-indicator {}
+    }
+  }
+
+  .comment-list .comment .micropost-main .section.middle .edit_comment {
+    .replying {
+      color: #8e8e8e;
+    }
+  }
+
   .reply .new-comment .new_comment,
   .comment-list .comment .micropost-main .section.middle .edit_comment,
   .comment-list .comment .children .reply .new_comment {
@@ -115,5 +172,44 @@
         padding: 10px;
       }
     }
+
+    .submit {
+      display: flex;
+      flex-direction: row-reverse;
+      flex-wrap: wrap;
+
+      font-size: 0; // Remove white-space between input elements.
+
+      input {
+        font-size: 15px;
+        width: auto;
+        min-width: 50%;
+
+        margin-left: 10px;
+        margin-top: 10px;
+      }
+    }
   }
+}
+
+.cancel-btn {
+  min-width: unset !important;
+
+  background-color: white !important;
+  border: 2px solid gray !important;
+  color: gray !important;
+
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.bubble {
+  background-color: #eff1f3;
+  padding: 10px 15px !important;
+  border-radius: 13px;
+}
+
+.comment-list .comment .children {
+  border-left: 2px solid #EDEFF1;
 }
