@@ -1698,29 +1698,33 @@ aside {
 /* Follow/Unfollow button - BEGIN */
 // Some CSS custom properties
 :root {
+  --buttonBorderWidth:             2px;
+
   // Follow button
   --followButton-textColor:        rgb(29, 161, 242);
 
   --followButton-bgColor:          white;
-  --followButton-border:           1px solid rgb(29, 161, 242);
+  --followButton-borderColor:      rgb(29, 161, 242);
+  --followButton-border:           var(--buttonBorderWidth) solid var(--followButton-borderColor);
 
   --followButton-hover-bgColor:    rgba(29, 161, 242, 0.1);
-  --followButton-hover-border:     1px solid rgb(29, 161, 242);
+  --followButton-hover-border:     var(--buttonBorderWidth) solid var(--followButton-borderColor);
 
   --followButton-active-bgColor:   rgba(29, 161, 242, 0.2);
-  --followButton-active-border:    1px solid rgb(29, 161, 242);
+  --followButton-active-border:    var(--buttonBorderWidth) solid var(--followButton-borderColor);
 
   // Unfollow button
   --unfollowButton-textColor:      white;
 
   --unfollowButton-bgColor:        rgba(29, 161, 242, 1);
-  --unfollowButton-border:         rgba(29, 161, 242, 1);
+  --unfollowButton-borderColor:    rgba(29, 161, 242, 1);
+  --unfollowButton-border:         var(--buttonBorderWidth) solid var(--unfollowButton-borderColor);
 
   --unfollowButton-hover-bgColor:  rgb(202, 32, 85);
-  --unfollowButton-hover-border:   rgb(202, 32, 85);
+  --unfollowButton-hover-border:   var(--buttonBorderWidth) solid rgb(202, 32, 85);
 
   --unfollowButton-active-bgColor: rgba(202, 32, 85, 0.8);
-  --unfollowButton-active-border:  rgba(202, 32, 85, 0.8);
+  --unfollowButton-active-border:  var(--buttonBorderWidth) solid rgba(202, 32, 85, 0.8);
 }
 
 .my-button,
@@ -1751,13 +1755,13 @@ aside {
   color:              var(--followButton-textColor);
   background-color:   var(--followButton-bgColor);
   border:             var(--followButton-border);
-  transition: background-color 0.2s linear, box-shadow 0.2s linear;
+  transition: background-color 0.2s linear, border 0.2s linear, box-shadow 0.2s linear;
 
   &:hover {
     color:            var(--followButton-textColor);
     background-color: var(--followButton-hover-bgColor);
     border:           var(--followButton-hover-border);
-    transition: background-color 0.2s linear, box-shadow 0.2s linear;
+    transition: background-color 0.2s linear, border 0.2s linear, box-shadow 0.2s linear;
   }
 
   &:active {
@@ -1799,13 +1803,13 @@ aside {
   color:              var(--unfollowButton-textColor);
   background-color:   var(--unfollowButton-bgColor);
   border:             var(--unfollowButton-border);
-  transition: background-color 0.2s linear;
+  transition: background-color 0.2s linear, border 0.2s linear, box-shadow 0.2s linear;
 
   &:hover {
     color:            var(--unfollowButton-textColor);
     background-color: var(--unfollowButton-hover-bgColor);
     border:           var(--unfollowButton-hover-border);
-    transition: background-color 0.2s linear;
+    transition: background-color 0.2s linear, border 0.2s linear, box-shadow 0.2s linear;
   }
 
   &:active {
@@ -1830,7 +1834,8 @@ aside {
   &:hover {
     color:            var(--unfollowButton-textColor);
     background-color: rgba(26, 145, 218, 0.9);
-    border:           rgba(26, 145, 218, 0.9);
+    border:           var(--buttonBorderWidth) solid rgba(26, 145, 218, 0.9);
+    transition: background-color 0.2s linear, border 0.2s linear, box-shadow 0.2s linear;
   }
 
   &:active,
