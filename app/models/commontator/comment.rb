@@ -7,9 +7,9 @@ class Commontator::Comment < ActiveRecord::Base
   has_many :children, class_name: name, foreign_key: :parent_id, inverse_of: :parent
 
   validates :editor, presence: true, on: :update
-  validates :body, presence: true, uniqueness: {
-    scope: [ :creator_type, :creator_id, :thread_id, :deleted_at ], message: :double_posted
-  }
+  # validates :body, presence: true, uniqueness: {
+  #   scope: [ :creator_type, :creator_id, :thread_id, :deleted_at ], message: :double_posted
+  # }
   validate :parent_is_not_self, :parent_belongs_to_the_same_thread, if: :parent
 
   cattr_accessor :is_votable
