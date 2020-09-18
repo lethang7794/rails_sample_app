@@ -104,4 +104,16 @@
   .pagination {
     margin: 10px 7px;
   }
+
+}
+.commontator.thread > .content {
+  .reply .new-comment .new_comment,
+  .comment-list .comment .micropost-main .section.middle .edit_comment,
+  .comment-list .comment .children .reply .new_comment {
+    .field {
+      textarea {
+        padding: 10px;
+      }
+    }
+  }
 }
