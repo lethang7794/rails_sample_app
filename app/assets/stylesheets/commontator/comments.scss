@@ -43,6 +43,23 @@
 
   .author {
     font-size: 110%;
+
+    .user {
+      color: black;
+      font-weight: 700;
+    }
+
+    .username {
+      color: #657786;
+    }
+
+    a:hover {
+      text-decoration: none;
+
+      .user {
+        text-decoration: underline;
+      }
+    }
   }
 
   .actions {
@@ -104,6 +121,7 @@
 
   .timestamp {
     color: #666;
+    margin-left: 5px;
   }
 
   .error-explanation {

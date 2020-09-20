@@ -14,6 +14,7 @@
   creator = comment.creator
   link = Commontator.commontator_link(creator, main_app)
   name = Commontator.commontator_name(creator) || ''
+  username = creator.username
 %>
 
 <div class="comment-container">
@@ -31,22 +32,38 @@
       <div class="bubble">
         <div id="commontator-comment-<%= comment.id %>-section-top" class="section top">
           <span id="commontator-comment-<%= comment.id %>-author" class="author">
-            <%= link.blank? ? name : link_to(name, link) %>
+            <div class="flex flex-row flex-wrap"> <%# FLEX - BEGIN %>
+              <%# USER - USERNAME - BEGIN %>
+              <% if link.blank? %>
+                name
+              <% else %>
+                <%= link_to link do %>
+                  <div>
+                    <span class="user"><%= name %></span>
+                    <span class="username">@<%= username %></span>
+                  </div>
+                <% end %>
+              <% end %>
+              <%# USER - USERNAME - END %>
+              <%# timestamp - BEGIN %>
+              <div>
+                <% if comment.is_modified? %>
+                  <span id="commontator-comment-<%= comment.id %>-updated-timestamp" class="timestamp">
+                    <%# comment.updated_timestamp %>
+                    ·
+                    <%= time_ago_in_words(comment.updated_at) %>
+                  </span>
+                <% else %>
+                  <span id="commontator-comment-<%= comment.id %>-created-timestamp" class="timestamp">
+                    <%# comment.created_timestamp %>
+                    ·
+                    <%= time_ago_in_words(comment.created_at) %>
+                  </span>
+                <% end %>
+              </div>
+              <%# timestamp - END %>
+            </div> <%# FLEX - END %>
           </span>
-
-          <% if comment.is_modified? %>
-            <span id="commontator-comment-<%= comment.id %>-updated-timestamp" class="timestamp">
-              <%# comment.updated_timestamp %>
-              ·
-              <%= time_ago_in_words(comment.updated_at) %>
-            </span>
-          <% else %>
-            <span id="commontator-comment-<%= comment.id %>-created-timestamp" class="timestamp">
-              <%# comment.created_timestamp %>
-              ·
-              <%= time_ago_in_words(comment.created_at) %>
-            </span>
-          <% end %>
 
           <span id="commontator-comment-<%= comment.id %>-actions" class="actions">
             <%=
