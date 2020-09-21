@@ -1181,7 +1181,7 @@ ul.users { // Users index
           opacity: 0;
 
           &:hover {
-            transform: scale(1.1);
+            // transform: scale(1.1); // Scale transition is not smooth enough --> Turn off
           }
         }
 
@@ -1565,21 +1565,24 @@ aside {
   height: 40px;
   width: 40px;
 
-  transition-duration: 0.3s;
-  transition-property: all;
+  cursor: pointer;
+
+  transition: background-color 0.3s ease-in-out;
+
   background-color: rgba(13, 51, 64, 0.77);
   &:hover {
     background-color: rgba(83, 74, 43, 0.77);
-    transform: scale(1.1);
+    // transform: scale(1.1); // Scale transition is not smooth enough --> Turn off
   }
   &:active {
     background-color: rgba(102, 94, 66, 0.77);
-    transform: scale(1);
+    // transform: scale(1);
   }
 
+
   .button {
-    height: 1em;
-    width: 1em;
+    height: 50%;
+    width: 50%;
 
     color: white;
 
@@ -1890,17 +1893,19 @@ aside {
   }
 }
 
-// Mini-navbar button
-.button-wrapper.mini-navbar-button-wrapper {
+// Mini-navbar button + Comment expand button
+.button-wrapper.mini-navbar-button-wrapper,
+.comment-expand.button-wrapper
+ {
   height: 50px;
   width: 50px;
 
   background-color: white;
   &:hover {
-    background-color: rgba(29, 161, 242, 0.1);
+    background-color: rgba(29, 161, 242, 0.2);
   }
   &:active {
-    background-color: rgba(29, 161, 242, 0.2);
+    background-color: rgba(29, 161, 242, 0.3);
   }
 
   .button {
@@ -2128,6 +2133,9 @@ aside {
   opacity: 0.5;
 }
 
+.opacity-1 {
+  opacity: 1;
+}
 
 .hover-opacity-1 {
   &:hover {
