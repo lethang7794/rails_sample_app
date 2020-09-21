@@ -28,13 +28,13 @@
       </div>
       <% if nested_children.any? %>
         <div class="flex-center-x" style="height: 100%">
-          <div id="commontator-comment-<%= comment.id %>-threadline-container" class="threadline-container">
+          <div id="commontator-comment-<%= comment.id %>-threadline-container" class="threadline-container threadline-container-parent">
             <div class="threadline"></div>
           </div>
         </div>
       <% else %>
         <div class="flex-center-x" style="height: 100%">
-          <div class="threadline-container no-child commontator-comment-<%= comment.id %>-threadline-container">
+          <div id="commontator-comment-<%= comment.id %>-threadline-container-no-child" class="threadline-container threadline-container-parent no-child commontator-comment-<%= comment.id %>-threadline-container">
             <div class="threadline"></div>
           </div>
         </div>
@@ -134,13 +134,13 @@
 
   <% if nested_children.any? %>
     <div class="flex-center-x" style="min-width: 50px; height: auto">
-      <div id="commontator-comment-<%= comment.id %>-children-threadline-container" class="threadline-container-children">
+      <div id="commontator-comment-<%= comment.id %>-threadline-container-children" class="threadline-container threadline-container-children">
         <div class="threadline"></div>
       </div>
     </div>
   <% else %>
     <div class="flex-center-x" style="min-width: 50px; height: auto">
-      <div id="commontator-comment-<%= comment.id %>-children-threadline-container" class="threadline-container-children no-child">
+      <div id="commontator-comment-<%= comment.id %>-threadline-container-children" class="threadline-container threadline-container-children">
         <div class="threadline"></div>
       </div>
     </div>
@@ -174,15 +174,17 @@
 </div>
 
 <script type="text/javascript">
+  <%# THREADLINE HOVER HANDLER - BEGIN %>
   $('#commontator-comment-<%= comment.id %>-threadline-container').hover(function() {
-    $('#commontator-comment-<%= comment.id %>-children-threadline-container').addClass('threadline-hover');
+    $('#commontator-comment-<%= comment.id %>-threadline-container-children').addClass('threadline-hover');
   }, function() {
-    $('#commontator-comment-<%= comment.id %>-children-threadline-container').removeClass('threadline-hover');
+    $('#commontator-comment-<%= comment.id %>-threadline-container-children').removeClass('threadline-hover');
   });
 
-  $('#commontator-comment-<%= comment.id %>-children-threadline-container').hover(function() {
+  $('#commontator-comment-<%= comment.id %>-threadline-container-children').hover(function() {
     $('#commontator-comment-<%= comment.id %>-threadline-container').addClass('threadline-hover');
   }, function() {
     $('#commontator-comment-<%= comment.id %>-threadline-container').removeClass('threadline-hover');
   });
+  <%# THREADLINE HOVER HANDLER - END %>
 </script>

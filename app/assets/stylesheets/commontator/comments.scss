@@ -70,33 +70,6 @@
     float: left;
 
     // margin-right: 7px;
-
-    .threadline-container {
-      height: 100%;
-      width: 20px;
-      // margin-left: 15px;
-
-      height: calc(100% - 35px); // half of avatar's height + 10 ???
-      &.no-child {
-        height: calc(100% - 50px); // avatar's height
-      }
-
-      display: flex;
-      justify-content: center;
-
-      &:hover {
-        cursor: pointer;
-
-        .threadline {
-          background-color: #003f6d;
-        }
-      }
-
-      .threadline {
-        width: 2px;
-      	background-color: #EDEFF1;
-      }
-    }
   }
 
   .votes {
@@ -259,11 +232,16 @@
   margin-left: -25px;
 }
 
-.threadline-container-children {
-  width: 20px;
-
+.threadline-container {
   display: flex;
   justify-content: center;
+
+  width: 20px;
+
+  .threadline {
+    width: 2px;
+    background-color: #EDEFF1;
+  }
 
   &:hover {
     cursor: pointer;
@@ -272,15 +250,18 @@
       background-color: #003f6d;
     }
   }
+}
 
+.threadline-container-parent {
+  height: calc(100% - 35px); // half of avatar's height + 10 ???
+  &.no-child {
+    height: calc(100% - 50px); // avatar's height
+  }
+}
+
+.threadline-container-children {
   .threadline {
     height: calc(100%);
-    &.no-child {
-      // height: calc(100% - 50px); // avatar's height
-    }
-
-    width: 2px;
-    background-color: #EDEFF1;
   }
 }
 
