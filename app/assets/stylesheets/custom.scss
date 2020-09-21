@@ -2128,6 +2128,13 @@ aside {
   opacity: 0.5;
 }
 
+
+.hover-opacity-1 {
+  &:hover {
+    opacity: 1;
+  }
+}
+
 .page-min-height {
   min-height: 75vh;
 }

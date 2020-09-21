@@ -226,6 +226,8 @@
   background-color: #eff1f3;
   padding: 10px 15px !important;
   border-radius: 13px;
+
+  min-height: 50px; // Avatar's height
 }
 
 .comment-list .comment .children {
