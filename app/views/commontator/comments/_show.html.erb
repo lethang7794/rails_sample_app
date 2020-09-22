@@ -32,14 +32,14 @@
         </div>
       </div>
       <% if nested_children.any? %>
-        <div class="flex-center-x" style="height: 100%">
-          <div id="commontator-comment-<%= comment.id %>-threadline-container" class="threadline-container threadline-container-parent">
+        <div id="commontator-comment-<%= comment.id %>-threadline-container-parent-wrapper" class="flex-center-x" style="height: 100%">
+          <div id="commontator-comment-<%= comment.id %>-threadline-container-parent" class="threadline-container threadline-container-parent">
             <div class="threadline"></div>
           </div>
         </div>
       <% else %>
-        <div class="flex-center-x" style="height: 100%">
-          <div id="commontator-comment-<%= comment.id %>-threadline-container-no-child" class="threadline-container threadline-container-parent no-child commontator-comment-<%= comment.id %>-threadline-container">
+        <div id="commontator-comment-<%= comment.id %>-threadline-container-parent-no-child-wrapper" class="flex-center-x" style="height: 100%">
+          <div id="commontator-comment-<%= comment.id %>-threadline-container-parent-no-child" class="threadline-container threadline-container-parent no-child">
             <div class="threadline"></div>
           </div>
         </div>
@@ -183,47 +183,46 @@
 
 <script type="text/javascript">
   <%# THREADLINE HOVER HANDLER - BEGIN %>
-  $('#commontator-comment-<%= comment.id %>-threadline-container, #commontator-comment-<%= comment.id %>-threadline-container-no-child').hover(function() {
+  $('#commontator-comment-<%= comment.id %>-threadline-container-parent, #commontator-comment-<%= comment.id %>-threadline-container-parent-no-child').hover(function() {
     $('#commontator-comment-<%= comment.id %>-threadline-container-children').addClass('threadline-hover');
   }, function() {
     $('#commontator-comment-<%= comment.id %>-threadline-container-children').removeClass('threadline-hover');
   });
 
   $('#commontator-comment-<%= comment.id %>-threadline-container-children').hover(function() {
-    $('#commontator-comment-<%= comment.id %>-threadline-container').addClass('threadline-hover');
-    $('#commontator-comment-<%= comment.id %>-threadline-container-no-child').addClass('threadline-hover');
+    $('#commontator-comment-<%= comment.id %>-threadline-container-parent').addClass('threadline-hover');
+    $('#commontator-comment-<%= comment.id %>-threadline-container--parent-no-child').addClass('threadline-hover');
   }, function() {
-    $('#commontator-comment-<%= comment.id %>-threadline-container').removeClass('threadline-hover');
-    $('#commontator-comment-<%= comment.id %>-threadline-container-no-child').removeClass('threadline-hover');
+    $('#commontator-comment-<%= comment.id %>-threadline-container-parent').removeClass('threadline-hover');
+    $('#commontator-comment-<%= comment.id %>-threadline-container--parent-no-child').removeClass('threadline-hover');
   });
   <%# THREADLINE HOVER HANDLER - END %>
 
   <%# THREADLINE CLICK HANDLER - BEGIN %>
-  $('#commontator-comment-<%= comment.id %>-threadline-container, #commontator-comment-<%= comment.id %>-threadline-container-children').click(function() {
-    $('#commontator-comment-<%= comment.id %>-threadline-container').hide();
-    $('#commontator-comment-<%= comment.id %>-actions').hide();
-    $('#commontator-comment-<%= comment.id %>-section-middle').hide();
-    $('#commontator-comment-<%= comment.id %>-reply-link').hide();
-    $('#commontator-comment-<%= comment.id %>-pagination').hide();
-
+  $('#commontator-comment-<%= comment.id %>-threadline-container-parent, #commontator-comment-<%= comment.id %>-threadline-container-parent-no-child, #commontator-comment-<%= comment.id %>-threadline-container-children').click(function() {
     $('#commontator-comment-<%= comment.id %>-children').hide();
 
-    $('#commontator-comment-<%= comment.id %> .bubble').addClass('opacity-05 hover-opacity-1');
+    $('#commontator-comment-<%= comment.id %>-threadline-container-parent').hide();
+    $('#commontator-comment-<%= comment.id %>-threadline-container-parent-no-child').hide();
+    $('#commontator-comment-<%= comment.id %>-threadline-container-parent-wrapper').hide();
+    $('#commontator-comment-<%= comment.id %>-threadline-container-parent-no-child-wrapper').hide();
 
-    // alert( "Handler for .click() called." );
-  });
-
-  $('#commontator-comment-<%= comment.id %>-threadline-container-no-child').click(function() {
-    $('.commontator-comment-<%= comment.id %>-threadline-container').hide();
     $('#commontator-comment-<%= comment.id %>-actions').hide();
     $('#commontator-comment-<%= comment.id %>-section-middle').hide();
     $('#commontator-comment-<%= comment.id %>-reply-link').hide();
     $('#commontator-comment-<%= comment.id %>-pagination').hide();
+    $('#commontator-comment-<%= comment.id %>-bubble').addClass('opacity-05 hover-opacity-1');
 
-    $('#commontator-comment-<%= comment.id %> .bubble').addClass('opacity-05 hover-opacity-1');
+    $('#commontator-comment-<%= comment.id %>-avatar > .comment-avatar').hide();
+
 
     // alert( "Handler for .click() called." );
   });
+  <%# THREADLINE CLICK HANDLER - END %>
+
+
+
+
 
 
 
