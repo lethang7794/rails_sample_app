@@ -178,7 +178,7 @@
 
 <script type="text/javascript">
   <%# THREADLINE HOVER HANDLER - BEGIN %>
-  $('#commontator-comment-<%= comment.id %>-threadline-container').hover(function() {
+  $('#commontator-comment-<%= comment.id %>-threadline-container, #commontator-comment-<%= comment.id %>-threadline-container-no-child').hover(function() {
     $('#commontator-comment-<%= comment.id %>-threadline-container-children').addClass('threadline-hover');
   }, function() {
     $('#commontator-comment-<%= comment.id %>-threadline-container-children').removeClass('threadline-hover');
@@ -186,8 +186,10 @@
 
   $('#commontator-comment-<%= comment.id %>-threadline-container-children').hover(function() {
     $('#commontator-comment-<%= comment.id %>-threadline-container').addClass('threadline-hover');
+    $('#commontator-comment-<%= comment.id %>-threadline-container-no-child').addClass('threadline-hover');
   }, function() {
     $('#commontator-comment-<%= comment.id %>-threadline-container').removeClass('threadline-hover');
+    $('#commontator-comment-<%= comment.id %>-threadline-container-no-child').removeClass('threadline-hover');
   });
   <%# THREADLINE HOVER HANDLER - END %>
 
