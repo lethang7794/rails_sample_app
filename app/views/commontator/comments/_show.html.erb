@@ -17,7 +17,7 @@
   username = creator.username
 %>
 
-<div class="comment-container">
+<div id="commontator-comment-<%= comment.id %>-container" class="comment-container">
   <div class="my-flex-container flex-row comment-flex-container">
     <div id="commontator-comment-<%= comment.id %>-avatar" class="avatar">
       <div class="comment-avatar rounded-circle overflow-hidden dimmer-wrapper loading-shimmer">
@@ -215,8 +215,15 @@
 
     $('#commontator-comment-<%= comment.id %>-avatar > .comment-avatar').hide();
 
-
     $('#commontator-comment-<%= comment.id %>-expand').show(); <%# Show the expand button %>
+
+    <%# EXPAND BUTTON HOVER HANDLER - BEGIN %>
+    $('#commontator-comment-<%= comment.id %>-container').hover(function() {
+      $('#commontator-comment-<%= comment.id %>-bubble').addClass('opacity-1');
+    }, function() {
+      $('#commontator-comment-<%= comment.id %>-bubble').removeClass('opacity-1');
+    });
+    <%# EXPAND BUTTON HOVER HANDLER - END %>
 
     // alert( "Handler for .click() called." );
   });
