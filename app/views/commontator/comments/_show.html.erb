@@ -26,6 +26,11 @@
           <div class="dimmer"></div>
         <% end %>
       </div>
+      <div id="commontator-comment-<%= comment.id %>-expand" class="comment-expand button-wrapper flex-center" style="width: 50px; height: 50px; display: none">
+        <div class="button flex-center" aria-hidden="true">
+          <%= render 'shared/svg/plus_sign' %>
+        </div>
+      </div>
       <% if nested_children.any? %>
         <div class="flex-center-x" style="height: 100%">
           <div id="commontator-comment-<%= comment.id %>-threadline-container" class="threadline-container threadline-container-parent">
