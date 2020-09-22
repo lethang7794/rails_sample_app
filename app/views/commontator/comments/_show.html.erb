@@ -42,40 +42,43 @@
     </div>
     <div class="my-flex-container flex-column micropost-main" style="width: 100%;">
 
-      <div class="bubble">
+      <div id="commontator-comment-<%= comment.id %>-bubble" class="bubble">
         <div id="commontator-comment-<%= comment.id %>-section-top" class="section top">
           <span id="commontator-comment-<%= comment.id %>-author" class="author">
-            <div class="flex flex-row flex-wrap"> <%# FLEX - BEGIN %>
-              <%# USER - USERNAME - BEGIN %>
-              <% if link.blank? %>
-                name
-              <% else %>
-                <%= link_to link do %>
-                  <div>
-                    <span class="user"><%= name %></span>
-                    <span class="username">@<%= username %></span>
-                  </div>
-                <% end %>
-              <% end %>
-              <%# USER - USERNAME - END %>
-              <%# timestamp - BEGIN %>
-              <div>
-                <% if comment.is_modified? %>
-                  <span id="commontator-comment-<%= comment.id %>-updated-timestamp" class="timestamp">
-                    <%# comment.updated_timestamp %>
-                    ·
-                    <%= time_ago_in_words(comment.updated_at) %>
-                  </span>
+            <div class="flex flex-row" style="min-height: 30px;">
+              <div class="flex flex-row flex-wrap flex-center-y"> <%# FLEX - BEGIN %>
+                <%# USER - USERNAME - BEGIN %>
+                <% if link.blank? %>
+                  name
                 <% else %>
-                  <span id="commontator-comment-<%= comment.id %>-created-timestamp" class="timestamp">
-                    <%# comment.created_timestamp %>
-                    ·
-                    <%= time_ago_in_words(comment.created_at) %>
-                  </span>
+                  <%= link_to link do %>
+                    <div>
+                      <span class="user"><%= name %></span>
+                      <span class="username">@<%= username %></span>
+                    </div>
+                  <% end %>
                 <% end %>
-              </div>
-              <%# timestamp - END %>
-            </div> <%# FLEX - END %>
+                <%# USER - USERNAME - END %>
+                <%# timestamp - BEGIN %>
+                <div>
+                  <% if comment.is_modified? %>
+                    <span id="commontator-comment-<%= comment.id %>-updated-timestamp" class="timestamp">
+                      <%# comment.updated_timestamp %>
+                      ·
+                      <%= time_ago_in_words(comment.updated_at) %>
+                    </span>
+                  <% else %>
+                    <span id="commontator-comment-<%= comment.id %>-created-timestamp" class="timestamp">
+                      <%# comment.created_timestamp %>
+                      ·
+                      <%= time_ago_in_words(comment.created_at) %>
+                    </span>
+                  <% end %>
+                </div>
+                <%# timestamp - END %>
+
+              </div> <%# FLEX - END %>
+            </div>
           </span>
 
           <span id="commontator-comment-<%= comment.id %>-actions" class="actions">
