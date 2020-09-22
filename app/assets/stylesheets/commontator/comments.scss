@@ -153,7 +153,8 @@
 
 .commontator.thread > .content {
   > .header .status,
-  > .reply .new-comment {
+  > .reply .new-comment,
+  > .reply > p {
     margin-left: 80px;
   }
 
