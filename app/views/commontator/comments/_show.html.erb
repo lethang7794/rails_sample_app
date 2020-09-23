@@ -230,14 +230,33 @@
   });
   <%# THREADLINE CLICK HANDLER - END %>
 
+  <%# EXPAND CLICK HANDLER - BEGIN %>
+  $('#commontator-comment-<%= comment.id %>-expand').click(function() {
+    $('#commontator-comment-<%= comment.id %>-children').show();
 
+    $('#commontator-comment-<%= comment.id %>-threadline-container-parent').show();
+    $('#commontator-comment-<%= comment.id %>-threadline-container-parent-no-child').show();
+    $('#commontator-comment-<%= comment.id %>-threadline-container-parent-wrapper').show();
+    $('#commontator-comment-<%= comment.id %>-threadline-container-parent-no-child-wrapper').show();
 
+    $('#commontator-comment-<%= comment.id %>-actions').show();
+    $('#commontator-comment-<%= comment.id %>-section-middle').show();
 
+    if ( $("#commontator-comment-<%= comment.id %>-reply form").length === 0 || $("#commontator-comment-<%= comment.id %>-reply").css('display') == 'none') {
+      $('#commontator-comment-<%= comment.id %>-reply-link').show();
+    };
 
+    $('#commontator-comment-<%= comment.id %>-pagination').show();
 
+    $('#commontator-comment-<%= comment.id %>-bubble').removeClass('opacity-05 hover-opacity-1');
 
-  $( "#target" ).click(function() {
-  alert( "Handler for .click() called." );
+    $('#commontator-comment-<%= comment.id %>-avatar > .comment-avatar').show();
+
+    $('#commontator-comment-<%= comment.id %>-expand').hide();
+    $('#commontator-comment-<%= comment.id %>-expand').removeClass('button-wrapper-hover');
+    $('#commontator-comment-<%= comment.id %>-container').unbind();
+
+    // alert( "Handler for .click() called." );
   });
-  <%# THREADLINE CLICK HANDLER - END %>
+  <%# EXPAND CLICK HANDLER - END %>
 </script>
