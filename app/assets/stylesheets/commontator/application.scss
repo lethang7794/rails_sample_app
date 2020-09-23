@@ -23,6 +23,8 @@
     display: block;
 
     overflow: hidden;
+
+    padding-top: 10px;
   }
 
   .actions {
@@ -39,8 +41,7 @@
 
   .comment-list {
     // background-color: #000;
-    padding-right: 15px;
-    margin-left: 0px;
+    margin: 35px 15px;
   }
 
   .children {
@@ -48,12 +49,13 @@
   }
 
   /* Modified from: https://www.strangerstudios.com/sandbox/pagination/diggstyle.php */
-  .page-entries-info, .will-paginate {
+  // .will-paginate,
+  .page-entries-info, {
   	margin: 10px 0;
   }
 
   .pagination {
-    margin: 0 0 !important;
+    // margin: 0 0 !important;
     display: block;
 
     a {
@@ -121,8 +123,8 @@
     margin-left: 65px;
   }
 
+  // .will-paginate,
   .page-entries-info,
-  .will-paginate,
   .new-comment {
     margin-left: 75px;
   }

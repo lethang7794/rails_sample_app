@@ -18,7 +18,7 @@
 %>
 
 <div id="commontator-comment-<%= comment.id %>-container" class="comment-container">
-  <div class="my-flex-container flex-row comment-flex-container">
+  <div class="my-flex-container flex-row comment-flex-container" style="margin-top: 16px; padding-top: 8px;">
     <div id="commontator-comment-<%= comment.id %>-avatar" class="avatar">
       <div class="comment-avatar rounded-circle overflow-hidden dimmer-wrapper loading-shimmer">
         <%= link_to link do %>
@@ -124,7 +124,7 @@
 
       <div id="commontator-comment-<%= comment.id %>-section-bottom" class="section bottom" style="display: flex;">
         <% unless comment.is_deleted? %>
-          <span id="commontator-comment-<%= comment.id %>-reply-link" class="reply">
+          <span id="commontator-comment-<%= comment.id %>-reply-link" class="reply reply-link">
             <% if thread.config.comment_reply_style != :n && !thread.is_closed? %>
               <%= link_to commontator.new_thread_comment_path(thread, comment: { parent_id: comment.id }), remote: true do %>
                 <div class="reply-indicator"></div>
