@@ -1116,7 +1116,7 @@ ul.users { // Users index
 
 .micropost-container {
   // Add some spacing to breath
-  padding: 15px;
+  padding: 10px 15px 0px 15px;
 
   .micropost-avatar {
     height: 50px;
@@ -1228,6 +1228,7 @@ ul.users { // Users index
 
     .micropost-info-bar {
       margin-top: 15px;
+      padding-bottom: 10px;
 
       color: rgb(101, 119, 134);
     }
@@ -1444,7 +1445,7 @@ aside {
 
     input#micropost_image {
       border: none;
-      margin-bottom: 0px;
+      margin-bottom: 10px;
     }
   }
 }
@@ -2182,4 +2183,60 @@ aside {
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
+}
+
+
+.micropost-stats {
+  margin: 2px 0px;
+
+
+  .stat {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    > .button {
+      .button-wrapper {
+        background-color: white;
+        transition: none;
+
+        .button {
+          color: rgb(101, 119, 134);
+
+          height: 60%;
+          width: 60%;
+
+          .svg {
+            fill: currentColor;
+          }
+        }
+      }
+    }
+
+    .value {
+      padding: 0px 2px;
+
+      a {
+        color: rgb(101, 119, 134);
+        text-decoration: none;
+        outline: none;
+      }
+    }
+
+    &:hover {
+      > .button {
+        .button-wrapper {
+          background-color: rgba(29, 161, 242, 0.1);
+
+          .button {
+            color: rgba(29, 161, 242, 1);
+          }
+        }
+      }
+
+      .value a {
+        color: rgba(29, 161, 242, 1);
+      }
+    }
+  }
 }

@@ -60,9 +60,24 @@
 						<!-- MODAL WRAPPER - END -->
 					<% end %>
 				</div>
+
+				<div class="micropost-stats">
+					<div class="comment stat flex flex-row flex-center-y">
+						<div class="button">
+							<div class="button-wrapper flex-center">
+								<div class="button flex-center" aria-hidden="true">
+									<%= render 'shared/svg/chat_right' %>
+								</div>
+							</div>
+						</div>
+						<div class="value">
+							<%= commontator_thread(micropost) %>
+						</div>
+					</div>
+					<div class="like"></div>
+				</div>
 			</div>
 		</div>
-		<%= commontator_thread(micropost) %>
 	</div>
 </article>
 
