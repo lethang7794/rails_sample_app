@@ -1,5 +1,5 @@
 // Change page title
-document.title = "<%= full_title "Media microposts from #{@user.name} (@#{@user.username})" %>";
+document.title = "<%= full_title "Media microposts from #{@user.name} (@#{@user.username})".html_safe %>";
 
 // Change URL
 history.replaceState( history.state, "", "<%= media_user_path(@user) %>" );

@@ -1,0 +1,21 @@
+<%
+  id = @comment.parent.nil? ? "commontator-thread-#{@commontator_thread.id}-new-comment" :
+                              "commontator-comment-#{@comment.parent.id}-reply"
+%>
+
+var commontatorForm = $("#<%= id %>").html("<%= escape_javascript(
+  render partial: 'form', locals: { comment: @comment, thread: @commontator_thread }
+) %>").hide().fadeIn();
+
+// Get comment link's position in the viewport
+var rect = document.getElementById("<%= id %>-link").getBoundingClientRect();
+
+if (rect.bottom > window.innerHeight*4/5) {
+  $('html, body').animate({ scrollTop: commontatorForm.offset().top - window.innerHeight/2 }, '500');
+};
+
+$("#<%= id %>-link").hide();
+
+$('#<%= id %>-body').focus();
+
+<%= javascript_proc %>

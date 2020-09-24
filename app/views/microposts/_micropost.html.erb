@@ -29,7 +29,7 @@
 				<div>
 					<div>
 						<% if micropost.content %>
-							<span class="content"><%= sanitize micropost.content_display.html_safe %></span>
+							<span class="micropost-content"><%= sanitize micropost.content_display.html_safe %></span>
 						<% end %>
 					</div>
 					<% if micropost.image.attached? %>
@@ -56,14 +56,49 @@
 							</div>
 							<!-- MODAL TOGGLE - END -->
 
-							<!-- MODAL - BEGIN -->
-							<%= render partial: 'shared/modals/image_micropost', locals: { micropost: micropost } %>
-							<!-- MODAL - END -->
 						</div>
 						<!-- MODAL WRAPPER - END -->
 					<% end %>
+				</div>
+
+				<div class="micropost-stats">
+					<div class="comment stat flex flex-row flex-center-y">
+						<div class="button">
+							<div class="button-wrapper flex-center">
+								<div class="button flex-center" aria-hidden="true">
+									<%= render 'shared/svg/chat_right' %>
+								</div>
+							</div>
+						</div>
+						<div class="value">
+							<%= commontator_thread(micropost) %>
+						</div>
+					</div>
+					<div class="like"></div>
 				</div>
 			</div>
 		</div>
 	</div>
 </article>
+
+<% if micropost.image.attached? %>
+	<!-- MODAL - BEGIN -->
+	<%= render partial: 'shared/modals/image_micropost', locals: { micropost: micropost } %>
+	<!-- MODAL - END -->
+<% end %>
+
+<script type="text/javascript">
+	$("article.micropost-<%= micropost.id %>").click(function() {
+	  // alert( "Handler for micropost-<%= micropost.id %>.click() called." );
+		window.location.href = "<%= url_for micropost %>";
+	});
+
+	$("article.micropost-<%= micropost.id %> a").click(function(e) {
+   e.stopPropagation();
+	});
+
+	$("article.micropost-<%= micropost.id %> .modal-toggle").click(function(e) {
+	 $("#image-modal-micropost-<%= micropost.id %>").modal('show');
+	 e.stopPropagation();
+	});
+</script>

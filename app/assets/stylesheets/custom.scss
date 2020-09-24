@@ -1013,7 +1013,7 @@ ul.users { // Users index
 /* New Users Index - BEGIN */
 
 .user-container {
-  padding: 10px;
+  padding: 15px;
 
   .user-avatar {
     height: 50px;
@@ -1027,7 +1027,7 @@ ul.users { // Users index
   }
 
   .main-content {
-    padding-left: 10px;
+    padding-left: 15px;
 
     .name {
       a {
@@ -1116,7 +1116,7 @@ ul.users { // Users index
 
 .micropost-container {
   // Add some spacing to breath
-  padding: 15px;
+  padding: 10px 15px 0px 15px;
 
   .micropost-avatar {
     height: 50px;
@@ -1131,7 +1131,7 @@ ul.users { // Users index
 
   .micropost-main {
     flex: 1; //Set width of flex item: Fill up remaining spacing
-    padding-left: 10px;
+    padding-left: 15px;
 
     .user {
       font-weight: 700;
@@ -1152,7 +1152,7 @@ ul.users { // Users index
       color: rgb(136, 153, 166); // From Twitter's tweet
     }
 
-    .content {
+    .micropost-content {
       font-weight: 400;
       white-space: pre-wrap;
     }
@@ -1181,7 +1181,7 @@ ul.users { // Users index
           opacity: 0;
 
           &:hover {
-            transform: scale(1.1);
+            transform: scale(1.06);
           }
         }
 
@@ -1194,6 +1194,72 @@ ul.users { // Users index
     }
   }
 }
+
+// Micropost show page - BEGIN
+.micropost-show-page {
+  .micropost-container {
+    .micropost-header {
+      margin-left: 15px;
+
+      .user {
+        font-weight: 700;
+        a {
+          color: black;
+        }
+      }
+
+      .username {
+        a {
+          color: black;
+          text-decoration: none;
+          color: rgb(101, 119, 134);
+        }
+      }
+    }
+
+    .micropost-main {
+      padding-top: 10px;
+      padding-left: 0px;
+
+      .micropost-content {
+        font-size: 23px;
+      }
+    }
+
+    .micropost-info-bar {
+      margin-top: 15px;
+      padding-bottom: 10px;
+
+      color: rgb(101, 119, 134);
+    }
+  }
+
+  .comment-container {
+    .micropost-main {
+      padding-top: 0px;
+      margin-left: 15px;
+    }
+  }
+}
+// Micropost show page - END
+
+// Commontator - BEGIN
+.comment-container {
+  .comment-avatar {
+    height: 50px; // Ensure comment fixed ratio to comment avatar when avatar cannot loaded.
+    width: 50px;
+  }
+
+  .micropost-show-page {
+    .micropost-container {
+      .micropost-main {
+        padding-top: 0px;
+        padding-left: 0px;
+      }
+    }
+  }
+}
+// Commontator - END
 
 // Always show micropost large picture view indicator for mobile devices.
 // Small devices (landscape phones, less than 768px)
@@ -1277,8 +1343,9 @@ ul.users { // Users index
 article.micropost-container-wrapper {
   transition: background-color 0.2s linear;
   &:hover {
-    background-color: rgba(0, 0, 0, 0.05);
+    background-color: rgba(245, 248, 250, 1);
     transition: background-color 0.2s linear;
+    cursor: pointer;
   }
 
   &:active:not(:has(:active)) {
@@ -1287,6 +1354,17 @@ article.micropost-container-wrapper {
   }
 }
 /* User and Micropost hover - END */
+
+/* Micropost show page hover - BEGIN */
+.micropost-show-page {
+  article.micropost-container-wrapper {
+    &:hover {
+      background-color: white;
+      cursor: auto;
+    }
+  }
+}
+/* Micropost show page hover - END */
 
 /* DIMMER - BEGIN */
 .transition-1s {
@@ -1367,7 +1445,7 @@ aside {
 
     input#micropost_image {
       border: none;
-      margin-bottom: 0px;
+      margin-bottom: 10px;
     }
   }
 }
@@ -1488,21 +1566,24 @@ aside {
   height: 40px;
   width: 40px;
 
-  transition-duration: 0.3s;
-  transition-property: all;
+  cursor: pointer;
+
+  transition: background-color 0.3s ease-in-out;
+
   background-color: rgba(13, 51, 64, 0.77);
   &:hover {
-    background-color: rgba(64, 35, 33, 0.77);
-    transform: scale(1.1);
+    background-color: rgba(83, 74, 43, 0.77);
+    transform: scale(1.06);
   }
   &:active {
-    background-color: rgba(61, 92, 102, 0.77);
+    background-color: rgba(102, 94, 66, 0.77);
     transform: scale(1);
   }
 
+
   .button {
-    height: 1em;
-    width: 1em;
+    height: 50%;
+    width: 50%;
 
     color: white;
 
@@ -1518,6 +1599,16 @@ aside {
 .flex-center {
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+
+.flex-center-x {
+  display: flex;
+  justify-content: center;
+}
+
+.flex-center-y {
+  display: flex;
   align-items: center;
 }
 
@@ -1551,6 +1642,10 @@ aside {
 
 .justify-content-flex-end {
   justify-content: flex-end;
+}
+
+.justify-content-space-between {
+  justify-content: space-between;
 }
 
 .flex-align-items-center {
@@ -1621,29 +1716,33 @@ aside {
 /* Follow/Unfollow button - BEGIN */
 // Some CSS custom properties
 :root {
+  --buttonBorderWidth:             2px;
+
   // Follow button
   --followButton-textColor:        rgb(29, 161, 242);
 
   --followButton-bgColor:          white;
-  --followButton-border:           1px solid rgb(29, 161, 242);
+  --followButton-borderColor:      rgb(29, 161, 242);
+  --followButton-border:           var(--buttonBorderWidth) solid var(--followButton-borderColor);
 
   --followButton-hover-bgColor:    rgba(29, 161, 242, 0.1);
-  --followButton-hover-border:     1px solid rgb(29, 161, 242);
+  --followButton-hover-border:     var(--buttonBorderWidth) solid var(--followButton-borderColor);
 
   --followButton-active-bgColor:   rgba(29, 161, 242, 0.2);
-  --followButton-active-border:    1px solid rgb(29, 161, 242);
+  --followButton-active-border:    var(--buttonBorderWidth) solid var(--followButton-borderColor);
 
   // Unfollow button
   --unfollowButton-textColor:      white;
 
   --unfollowButton-bgColor:        rgba(29, 161, 242, 1);
-  --unfollowButton-border:         rgba(29, 161, 242, 1);
+  --unfollowButton-borderColor:    rgba(29, 161, 242, 1);
+  --unfollowButton-border:         var(--buttonBorderWidth) solid var(--unfollowButton-borderColor);
 
   --unfollowButton-hover-bgColor:  rgb(202, 32, 85);
-  --unfollowButton-hover-border:   rgb(202, 32, 85);
+  --unfollowButton-hover-border:   var(--buttonBorderWidth) solid rgb(202, 32, 85);
 
   --unfollowButton-active-bgColor: rgba(202, 32, 85, 0.8);
-  --unfollowButton-active-border:  rgba(202, 32, 85, 0.8);
+  --unfollowButton-active-border:  var(--buttonBorderWidth) solid rgba(202, 32, 85, 0.8);
 }
 
 .my-button,
@@ -1674,13 +1773,13 @@ aside {
   color:              var(--followButton-textColor);
   background-color:   var(--followButton-bgColor);
   border:             var(--followButton-border);
-  transition: background-color 0.2s linear, box-shadow 0.2s linear;
+  transition: background-color 0.2s linear, border 0.2s linear, box-shadow 0.2s linear;
 
   &:hover {
     color:            var(--followButton-textColor);
     background-color: var(--followButton-hover-bgColor);
     border:           var(--followButton-hover-border);
-    transition: background-color 0.2s linear, box-shadow 0.2s linear;
+    transition: background-color 0.2s linear, border 0.2s linear, box-shadow 0.2s linear;
   }
 
   &:active {
@@ -1722,13 +1821,13 @@ aside {
   color:              var(--unfollowButton-textColor);
   background-color:   var(--unfollowButton-bgColor);
   border:             var(--unfollowButton-border);
-  transition: background-color 0.2s linear;
+  transition: background-color 0.2s linear, border 0.2s linear, box-shadow 0.2s linear;
 
   &:hover {
     color:            var(--unfollowButton-textColor);
     background-color: var(--unfollowButton-hover-bgColor);
     border:           var(--unfollowButton-hover-border);
-    transition: background-color 0.2s linear;
+    transition: background-color 0.2s linear, border 0.2s linear, box-shadow 0.2s linear;
   }
 
   &:active {
@@ -1753,7 +1852,8 @@ aside {
   &:hover {
     color:            var(--unfollowButton-textColor);
     background-color: rgba(26, 145, 218, 0.9);
-    border:           rgba(26, 145, 218, 0.9);
+    border:           var(--buttonBorderWidth) solid rgba(26, 145, 218, 0.9);
+    transition: background-color 0.2s linear, border 0.2s linear, box-shadow 0.2s linear;
   }
 
   &:active,
@@ -1768,12 +1868,12 @@ aside {
   height: 60px;
 
   .left-side {
-    min-width: 60px;
-    margin-left: 10px;
+    min-width: 50px;
+    margin-left: 15px;
   }
 
   .middle-side {
-    margin-left: 10px;
+    margin-left: 15px;
     .detail {
       color: rgb(101, 119, 134);
       font-size: 14px;
@@ -1798,19 +1898,24 @@ aside {
   }
 }
 
-// Mini-navbar button
-.button-wrapper.mini-navbar-button-wrapper {
+// Mini-navbar button + Comment expand button
+.button-wrapper.mini-navbar-button-wrapper,
+.comment-expand.button-wrapper
+ {
+  height: 50px;
+  width: 50px;
+
   background-color: white;
   &:hover {
-    background-color: rgba(29, 161, 242, 0.1);
+    background-color: rgba(29, 161, 242, 0.2);
   }
   &:active {
-    background-color: rgba(29, 161, 242, 0.2);
+    background-color: rgba(29, 161, 242, 0.3);
   }
 
   .button {
-    height: 1.5em;
-    width: 1.5em;
+    height: 2em;
+    width: 2em;
     color: rgba(29, 161, 242, 1.00);
   }
 }
@@ -2033,18 +2138,28 @@ aside {
   opacity: 0.5;
 }
 
+.opacity-1 {
+  opacity: 1;
+}
+
+.hover-opacity-1 {
+  &:hover {
+    opacity: 1;
+  }
+}
+
 .page-min-height {
   min-height: 75vh;
 }
 
 .background-color {
-  background-color: #DAE0E6;
+  // background-color: #DAE0E6;
 }
 
 // Extra small devices (portrait phones, less than 576px)
 @media (max-width: 575.98px) {
   .background-color {
-    background-color: white;
+    // background-color: white;
   }
 }
 
@@ -2068,4 +2183,60 @@ aside {
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
+}
+
+
+.micropost-stats {
+  margin: 2px 0px;
+
+
+  .stat {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    > .button {
+      .button-wrapper {
+        background-color: white;
+        transition: none;
+
+        .button {
+          color: rgb(101, 119, 134);
+
+          height: 60%;
+          width: 60%;
+
+          .svg {
+            fill: currentColor;
+          }
+        }
+      }
+    }
+
+    .value {
+      padding: 0px 2px;
+
+      a {
+        color: rgb(101, 119, 134);
+        text-decoration: none;
+        outline: none;
+      }
+    }
+
+    &:hover {
+      > .button {
+        .button-wrapper {
+          background-color: rgba(29, 161, 242, 0.1);
+
+          .button {
+            color: rgba(29, 161, 242, 1);
+          }
+        }
+      }
+
+      .value a {
+        color: rgba(29, 161, 242, 1);
+      }
+    }
+  }
 }

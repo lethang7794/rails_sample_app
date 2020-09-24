@@ -1,0 +1,262 @@
+<%
+  # Controllers that use this partial must supply the following variables:
+  # user
+  # comment
+  # nested_children or page
+  # show_all
+
+  thread = comment.thread
+  nested_children ||= begin
+    children = thread.paginated_comments(page, comment.id, show_all)
+    thread.nested_comments_for(user, children, show_all)
+  end
+
+  creator = comment.creator
+  link = Commontator.commontator_link(creator, main_app)
+  name = Commontator.commontator_name(creator) || ''
+  username = creator.username
+%>
+
+<div id="commontator-comment-<%= comment.id %>-container" class="comment-container">
+  <div class="my-flex-container flex-row comment-flex-container" style="margin-top: 16px; padding-top: 8px;">
+    <div id="commontator-comment-<%= comment.id %>-avatar" class="avatar">
+      <div class="comment-avatar rounded-circle overflow-hidden dimmer-wrapper loading-shimmer">
+        <%= link_to link do %>
+          <%= Commontator.commontator_avatar(creator, self) %>
+          <div class="dimmer"></div>
+        <% end %>
+      </div>
+      <div id="commontator-comment-<%= comment.id %>-expand" class="comment-expand button-wrapper flex-center" style="width: 50px; height: 50px; display: none">
+        <div class="button flex-center" aria-hidden="true">
+          <%= render 'shared/svg/plus_sign' %>
+        </div>
+      </div>
+      <% if nested_children.any? %>
+        <div id="commontator-comment-<%= comment.id %>-threadline-container-parent-wrapper" class="flex-center-x" style="height: 100%">
+          <div id="commontator-comment-<%= comment.id %>-threadline-container-parent" class="threadline-container threadline-container-parent">
+            <div class="threadline"></div>
+          </div>
+        </div>
+      <% else %>
+        <div id="commontator-comment-<%= comment.id %>-threadline-container-parent-no-child-wrapper" class="flex-center-x" style="height: 100%">
+          <div id="commontator-comment-<%= comment.id %>-threadline-container-parent-no-child" class="threadline-container threadline-container-parent no-child">
+            <div class="threadline"></div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+    <div class="my-flex-container flex-column micropost-main" style="width: 100%;">
+
+      <div id="commontator-comment-<%= comment.id %>-bubble" class="bubble">
+        <div id="commontator-comment-<%= comment.id %>-section-top" class="section top flex flex-row justify-content-space-between">
+          <span id="commontator-comment-<%= comment.id %>-author" class="author">
+            <div class="flex flex-row" style="min-height: 30px;">
+              <div class="flex flex-row flex-wrap flex-center-y"> <%# FLEX - BEGIN %>
+                <%# USER - USERNAME - BEGIN %>
+                <% if link.blank? %>
+                  name
+                <% else %>
+                  <%= link_to link do %>
+                    <div>
+                      <span class="user"><%= name %></span>
+                      <span class="username">@<%= username %></span>
+                    </div>
+                  <% end %>
+                <% end %>
+                <%# USER - USERNAME - END %>
+                <%# timestamp - BEGIN %>
+                <div>
+                  <% if comment.is_modified? %>
+                    <span id="commontator-comment-<%= comment.id %>-updated-timestamp" class="timestamp">
+                      <%# comment.updated_timestamp %>
+                      ·
+                      <%= time_ago_in_words(comment.updated_at) %>
+                    </span>
+                  <% else %>
+                    <span id="commontator-comment-<%= comment.id %>-created-timestamp" class="timestamp">
+                      <%# comment.created_timestamp %>
+                      ·
+                      <%= time_ago_in_words(comment.created_at) %>
+                    </span>
+                  <% end %>
+                </div>
+                <%# timestamp - END %>
+
+              </div> <%# FLEX - END %>
+            </div>
+          </span>
+
+          <span id="commontator-comment-<%= comment.id %>-actions" class="actions flex-center-y">
+            <%=
+              link_to(
+                t('commontator.comment.actions.edit'),
+                commontator.edit_comment_path(comment),
+                id: "commontator-comment-#{comment.id}-edit",
+                class: 'edit',
+                remote: true
+              ) if comment.can_be_edited_by?(user)
+            %>
+
+            <% if comment.can_be_deleted_by?(user) %>
+              <% is_deleted = comment.is_deleted? %>
+              <% del_string = is_deleted ? 'undelete' : 'delete' %>
+              <%= link_to t("commontator.comment.actions.#{del_string}"),
+                          commontator.polymorphic_path([del_string, comment]),
+                          data: is_deleted ? {} : { confirm: t('commontator.comment.actions.confirm_delete') },
+                          method: :put,
+                          id: "commontator-comment-#{comment.id}-#{del_string}",
+                          class: del_string,
+                          remote: true %>
+            <% end %>
+          </span>
+        </div>
+
+        <div id="commontator-comment-<%= comment.id %>-section-middle" class="section middle">
+          <span id="commontator-comment-<%= comment.id %>-votes" class="votes">
+            <%= render partial: 'commontator/comments/votes', locals: { comment: comment, user: user } %>
+          </span>
+
+          <div id="commontator-comment-<%= comment.id %>-body" class="body">
+            <%= render partial: 'commontator/comments/body', locals: { comment: comment } %>
+          </div>
+        </div>
+      </div>
+
+      <div id="commontator-comment-<%= comment.id %>-section-bottom" class="section bottom" style="display: flex;">
+        <% unless comment.is_deleted? %>
+          <span id="commontator-comment-<%= comment.id %>-reply-link" class="reply reply-link">
+            <% if thread.config.comment_reply_style != :n && !thread.is_closed? %>
+              <%= link_to commontator.new_thread_comment_path(thread, comment: { parent_id: comment.id }), remote: true do %>
+                <div class="reply-indicator"></div>
+                <%= t('commontator.comment.actions.reply') %>
+              <% end %>
+            <% end %>
+          </span>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="commontator-comment-children-container flex flex-row">
+  <% if nested_children.any? %>
+    <div class="threadline-container-children-wrapper flex-center-x" style="min-width: 50px; height: auto">
+      <div id="commontator-comment-<%= comment.id %>-threadline-container-children" class="threadline-container threadline-container-children">
+        <div class="threadline"></div>
+      </div>
+    </div>
+  <% else %>
+    <div class="threadline-container-reply-wrapper flex-center-x" style="min-width: 50px; height: auto">
+      <div id="commontator-comment-<%= comment.id %>-threadline-container-reply" class="threadline-container threadline-container-reply">
+        <div class="threadline"></div>
+      </div>
+    </div>
+  <% end %>
+
+
+  <div id="commontator-comment-<%= comment.id %>-children" class="children flex-grow-1">
+    <% if thread.config.comment_order == :l %>
+      <div id="commontator-comment-<%= comment.id %>-reply" class="reply"></div>
+    <% end %>
+
+    <%= render partial: 'commontator/comments/list',
+               locals: { user: user, nested_comments: nested_children } %>
+
+    <% if thread.config.comment_order != :l %>
+      <div id="commontator-comment-<%= comment.id %>-reply" class="reply"></div>
+    <% end %>
+
+    <div id="commontator-comment-<%= comment.id %>-pagination" class="pagination">
+      <div id="commontator-comment-<%= comment.id %>-will-paginate" class="will-paginate">
+        <%= will_paginate nested_children,
+                          renderer: Commontator::LinkRenderer,
+                          name: t('commontator.comment.status.reply_pages'),
+                          remote: true,
+                          params: { controller: 'commontator/comments',
+                                    action: 'show',
+                                    id: comment.id } %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  <%# THREADLINE HOVER HANDLER - BEGIN %>
+  $('#commontator-comment-<%= comment.id %>-threadline-container-parent, #commontator-comment-<%= comment.id %>-threadline-container-parent-no-child').hover(function() {
+    $('#commontator-comment-<%= comment.id %>-threadline-container-children').addClass('threadline-hover');
+    $('#commontator-comment-<%= comment.id %>-threadline-container-reply').addClass('threadline-hover');
+  }, function() {
+    $('#commontator-comment-<%= comment.id %>-threadline-container-children').removeClass('threadline-hover');
+    $('#commontator-comment-<%= comment.id %>-threadline-container-reply').removeClass('threadline-hover');
+  });
+
+  $('#commontator-comment-<%= comment.id %>-threadline-container-children, #commontator-comment-<%= comment.id %>-threadline-container-reply').hover(function() {
+    $('#commontator-comment-<%= comment.id %>-threadline-container-parent').addClass('threadline-hover');
+    $('#commontator-comment-<%= comment.id %>-threadline-container-parent-no-child').addClass('threadline-hover');
+  }, function() {
+    $('#commontator-comment-<%= comment.id %>-threadline-container-parent').removeClass('threadline-hover');
+    $('#commontator-comment-<%= comment.id %>-threadline-container-parent-no-child').removeClass('threadline-hover');
+  });
+  <%# THREADLINE HOVER HANDLER - END %>
+
+  <%# THREADLINE CLICK HANDLER - BEGIN %>
+  $('#commontator-comment-<%= comment.id %>-threadline-container-parent, #commontator-comment-<%= comment.id %>-threadline-container-parent-no-child, #commontator-comment-<%= comment.id %>-threadline-container-children, #commontator-comment-<%= comment.id %>-threadline-container-reply').click(function() {
+    $('#commontator-comment-<%= comment.id %>-children').hide();
+
+    $('#commontator-comment-<%= comment.id %>-threadline-container-parent').hide();
+    $('#commontator-comment-<%= comment.id %>-threadline-container-parent-no-child').hide();
+    $('#commontator-comment-<%= comment.id %>-threadline-container-parent-wrapper').hide();
+    $('#commontator-comment-<%= comment.id %>-threadline-container-parent-no-child-wrapper').hide();
+
+    $('#commontator-comment-<%= comment.id %>-actions').hide();
+    $('#commontator-comment-<%= comment.id %>-section-middle').hide();
+    $('#commontator-comment-<%= comment.id %>-reply-link').hide();
+    $('#commontator-comment-<%= comment.id %>-pagination').hide();
+    $('#commontator-comment-<%= comment.id %>-bubble').addClass('opacity-05 hover-opacity-1');
+
+    $('#commontator-comment-<%= comment.id %>-avatar > .comment-avatar').hide();
+
+    $('#commontator-comment-<%= comment.id %>-expand').show(); <%# Show the expand button %>
+
+    <%# EXPAND BUTTON HOVER HANDLER - BEGIN %>
+    $('#commontator-comment-<%= comment.id %>-container').hover(function() {
+      $('#commontator-comment-<%= comment.id %>-bubble').addClass('opacity-1');
+    }, function() {
+      $('#commontator-comment-<%= comment.id %>-bubble').removeClass('opacity-1');
+    });
+    <%# EXPAND BUTTON HOVER HANDLER - END %>
+
+    // alert( "Handler for .click() called." );
+  });
+  <%# THREADLINE CLICK HANDLER - END %>
+
+  <%# EXPAND CLICK HANDLER - BEGIN %>
+  $('#commontator-comment-<%= comment.id %>-expand').click(function() {
+    $('#commontator-comment-<%= comment.id %>-children').show();
+
+    $('#commontator-comment-<%= comment.id %>-threadline-container-parent').show();
+    $('#commontator-comment-<%= comment.id %>-threadline-container-parent-no-child').show();
+    $('#commontator-comment-<%= comment.id %>-threadline-container-parent-wrapper').show();
+    $('#commontator-comment-<%= comment.id %>-threadline-container-parent-no-child-wrapper').show();
+
+    $('#commontator-comment-<%= comment.id %>-actions').show();
+    $('#commontator-comment-<%= comment.id %>-section-middle').show();
+
+    if ( $("#commontator-comment-<%= comment.id %>-reply form").length === 0 || $("#commontator-comment-<%= comment.id %>-reply").css('display') == 'none') {
+      $('#commontator-comment-<%= comment.id %>-reply-link').show();
+    };
+
+    $('#commontator-comment-<%= comment.id %>-pagination').show();
+
+    $('#commontator-comment-<%= comment.id %>-bubble').removeClass('opacity-05 hover-opacity-1');
+
+    $('#commontator-comment-<%= comment.id %>-avatar > .comment-avatar').show();
+
+    $('#commontator-comment-<%= comment.id %>-expand').hide();
+    $('#commontator-comment-<%= comment.id %>-expand').removeClass('button-wrapper-hover');
+    $('#commontator-comment-<%= comment.id %>-container').unbind();
+
+    // alert( "Handler for .click() called." );
+  });
+  <%# EXPAND CLICK HANDLER - END %>
+</script>

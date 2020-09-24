@@ -12,10 +12,12 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
+  mount Commontator::Engine => '/commontator'
+
   resources :users,               only: [:index, :new, :create]
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :edit, :create, :update]
-  resources :microposts,          only: [:index, :create, :destroy]
+  resources :microposts,          only: [:index, :create, :show, :destroy]
   resources :relationships,       only: [:create, :destroy]
 
   get    ':username'          , to: 'users#show'     , as: :user

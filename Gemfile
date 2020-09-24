@@ -8,11 +8,13 @@ gem 'rails', '~> 6.0', '>= 6.0.3.2'
 
 # Use Puma as the app server
 gem 'puma', '~> 4.3'
+
 # Use SCSS for stylesheets
 gem 'sassc-rails', '>= 2.1.0'
 
 # Use Bootstrap 3
 gem 'bootstrap-sass', '~> 3.4.1'
+
 # Used to easily generate fake data: names, addresses, phone numbers, etc.
 gem 'faker', '~> 2.11'
 
@@ -22,12 +24,9 @@ gem 'bootstrap-will_paginate', '~> 1.0'
 
 # Figure the active in navbar
 gem 'active_link_to', '~> 1.0', '>= 1.0.5'
-# Add validation to Active Storage
-gem 'active_storage_validations', '~> 0.1'
 
-# Use ImageMagick to change image size
-gem 'image_processing', '~> 1.11'
-gem 'mini_magick', '~> 4.10', '>= 4.10.1'
+# Use Commontator for comments feature
+gem 'commontator'
 
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 4.0'
@@ -40,8 +39,13 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+# Add validation to Active Storage
+gem 'active_storage_validations', '~> 0.1'
+
 # Use Active Storage variant
-# gem 'image_processing', '~> 1.2'
+gem 'image_processing', '~> 1.11'
+# Use ImageMagick to change image size, user
+gem 'mini_magick', '~> 4.10', '>= 4.10.1'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
@@ -73,7 +77,6 @@ group :test do
   gem 'webdrivers'
 
   gem 'minitest-reporters', '~> 1.1', '>= 1.1.11'
-
   gem 'rails-controller-testing', '~> 1.0', '>= 1.0.4'
 
   # Use Guard to handle events on file system modifications
