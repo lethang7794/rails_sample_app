@@ -1181,7 +1181,7 @@ ul.users { // Users index
           opacity: 0;
 
           &:hover {
-            // transform: scale(1.1); // Scale transition is not smooth enough --> Turn off
+            transform: scale(1.06);
           }
         }
 
@@ -1573,11 +1573,11 @@ aside {
   background-color: rgba(13, 51, 64, 0.77);
   &:hover {
     background-color: rgba(83, 74, 43, 0.77);
-    // transform: scale(1.1); // Scale transition is not smooth enough --> Turn off
+    transform: scale(1.06);
   }
   &:active {
     background-color: rgba(102, 94, 66, 0.77);
-    // transform: scale(1);
+    transform: scale(1);
   }
 
 

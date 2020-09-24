@@ -298,14 +298,13 @@
 
   &:hover {
     background-color: rgba(29, 161, 242, 0.2) !important;
+    transform: none !important;
   }
   &:active {
     background-color: rgba(29, 161, 242, 0.3) !important;
   }
 
   .button {
-    height: 1.5em !important;
-    width: 1.5em !important;
     color: rgba(29, 161, 242, 1.00);
   }
 }
