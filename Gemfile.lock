@@ -61,6 +61,7 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
       zeitwerk (~> 2.2, >= 2.2.2)
+    acts_as_votable (0.10.0)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
     ansi (1.5.0)
@@ -282,6 +283,7 @@ PLATFORMS
 DEPENDENCIES
   active_link_to (~> 1.0, >= 1.0.5)
   active_storage_validations (~> 0.1)
+  acts_as_votable (~> 0.10.0)
   aws-sdk-s3 (~> 1.67)
   bcrypt (~> 3.1.7)
   bootsnap (>= 1.4.2)
@@ -289,7 +291,7 @@ DEPENDENCIES
   bootstrap-will_paginate (~> 1.0)
   byebug
   capybara (>= 2.15)
-  commontator
+  commontator (~> 6.3)
   faker (~> 2.11)
   guard (~> 2.16, >= 2.16.2)
   guard-minitest (~> 2.4, >= 2.4.6)

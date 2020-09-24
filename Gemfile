@@ -26,7 +26,9 @@ gem 'bootstrap-will_paginate', '~> 1.0'
 gem 'active_link_to', '~> 1.0', '>= 1.0.5'
 
 # Use Commontator for comments feature
-gem 'commontator'
+gem 'commontator', '~> 6.3'
+# Use Acts As Votable for like feature
+gem 'acts_as_votable', '~> 0.10.0'
 
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 4.0'
