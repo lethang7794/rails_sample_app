@@ -2259,6 +2259,22 @@ aside {
         }
       }
 
+      &.upvote {
+        &:hover {
+          > .button {
+            .button-wrapper {
+              background-color: rgba(224, 36, 94, 0.1);
+
+              .button {
+                color: rgba(224, 36, 94, 1);
+              }
+            }
+          }
+
+          .value, .value a {
+            color: rgba(224, 36, 94, 1);
+          }
+        }
       }
     }
   }
