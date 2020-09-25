@@ -53,7 +53,7 @@ if ($followers.length > 0) {
   setTimeout(function () {
     $followers_clone.addClass( "move-up" );
     $followers.removeClass("move-down tran-0s").addClass("tran-03s");
-  }, 1); // Use delay to not override transform, and cause no transition
+  }, 100); // Use delay to not override transform, and cause no transition
 
   setTimeout(function () {
     $followers_clone.remove();
