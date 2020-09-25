@@ -39,6 +39,15 @@ class MicropostsController < ApplicationController
     end
   end
 
+  def unvote
+    @micropost = Micropost.find_by(id: params[:id])
+    @micropost.unliked_by current_user
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
     def micropost_param
       params.require(:micropost).permit(:content, :image)
