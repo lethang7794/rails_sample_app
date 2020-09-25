@@ -37,20 +37,11 @@
 					<% end %>
 				</div>
 
-				<div class="micropost-stats">
-					<div class="comment stat flex flex-row flex-center-y">
-						<div class="button">
-							<div class="button-wrapper flex-center">
-								<div class="button flex-center" aria-hidden="true">
-									<%= render 'shared/svg/chat_right' %>
-								</div>
-							</div>
-						</div>
-						<div class="value">
-							<%= commontator_thread(micropost) %>
-						</div>
+				<div class="micropost-stats flex flex-row">
+					<div class="stat-container">
+						<%= render partial: 'shared/micropost/info_bar/comment', locals: { micropost: micropost } %>
 					</div>
-					<div class="like"></div>
+					</div>
 				</div>
 			</div>
 		</div>
