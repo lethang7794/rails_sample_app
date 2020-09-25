@@ -30,6 +30,15 @@ class MicropostsController < ApplicationController
     redirect_back fallback_location: root_url
   end
 
+  def upvote
+    @micropost = Micropost.find_by(id: params[:id])
+    @micropost.liked_by current_user
+
+    respond_to do |format|
+      format.js
+    end
+  end
+
   private
     def micropost_param
       params.require(:micropost).permit(:content, :image)
