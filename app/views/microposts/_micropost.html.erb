@@ -69,4 +69,8 @@
 	 $("#image-modal-micropost-<%= micropost.id %>").modal('show');
 	 e.stopPropagation();
 	});
+
+	$("article.micropost-<%= micropost.id %> div.stat-container").click(function(e) {
+	 e.stopPropagation();
+	});
 </script>
