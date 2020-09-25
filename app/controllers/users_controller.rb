@@ -20,6 +20,7 @@ class UsersController < ApplicationController
   	@user = User.find_by("lower(username) = ?", params[:username].downcase)
     @user ||= User.new(username: params[:username])
     @microposts = @user.microposts.paginate(page: params[:page])
+    @current_user = current_user
 
     respond_to do |format|
       format.html { render 'show' }

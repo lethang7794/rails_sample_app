@@ -14,6 +14,7 @@ module SessionsHelper
 
 	# Returns the user corresponding to the remember token cookie
 	def current_user
+		return @current_user if @current_user
 		if (user_id = session[:user_id])
 			@current_user ||= User.find_by(id: user_id)
 		elsif (user_id = cookies.encrypted[:user_id])

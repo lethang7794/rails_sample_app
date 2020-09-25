@@ -43,8 +43,8 @@
 					</div>
 
 					<div id="micropost-<%= micropost.id %>-vote-container" class="stat-container">
-						<% if current_user.voted_for? micropost %>
 							<%= render partial: 'shared/micropost/info_bar/unvote_form', locals: { micropost: micropost } %>
+					<div id="micropost-<%= micropost.id %>-vote-container" class="stat-container vote-container">
 						<% else %>
 							<%= render partial: 'shared/micropost/info_bar/upvote_form', locals: { micropost: micropost } %>
 						<% end %>

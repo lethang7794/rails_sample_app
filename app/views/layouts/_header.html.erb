@@ -48,12 +48,12 @@
           </a>
           <ul class="dropdown-menu">
             <li>
-              <%= link_to current_user do %>
+              <%= link_to @current_user do %>
                 <span class="my-label">Profile</span>
               <% end %>
             </li>
             <li>
-              <%= link_to edit_user_path(current_user) do %>
+              <%= link_to edit_user_path(@current_user) do %>
                 <span class="my-label">Settings</span>
               <% end %>
             </li>
