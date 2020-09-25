@@ -1,0 +1,16 @@
+<%= form_tag(unvote_micropost_path(micropost), method: :put, remote: true) do %>
+  <button>
+    <div class="unvote stat flex flex-row flex-center-y">
+      <div class="button">
+        <div class="button-wrapper flex-center">
+          <div class="button flex-center" aria-hidden="true">
+            <%= render 'shared/svg/heart_fill' %>
+          </div>
+        </div>
+      </div>
+      <div class="value">
+        <%= micropost.get_upvotes.size %>
+      </div>
+    </div>
+  </button>
+<% end %>
