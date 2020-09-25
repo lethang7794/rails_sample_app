@@ -8,6 +8,9 @@ history.replaceState( history.state, "", "<%= followers_user_path(@user) %>" );
 $(".tab-link").removeClass("active");
 $(".tab-link.followers-link").addClass("active");
 
+// See new content from top
+$(window).scrollTop(60);
+
 // Change tab content - users
 $("#tab-content").html("<%= escape_javascript(render partial: 'shared/users', locals: { users: @users }) %>");
 
