@@ -33,31 +33,7 @@
 						<% end %>
 					</div>
 					<% if micropost.image.attached? %>
-						<!-- MODAL WRAPPER - BEGIN -->
-						<div class="modal-wrapper">
-							<!-- MODAL TOGGLE - BEGIN -->
-							<div class="modal-toggle" data-toggle="modal" data-target="#image-modal-micropost-<%= micropost.id %>">
-								<div class="micropost-image-wrapper cursor-pointer">
-									<div class="image-placeholder rounded overflow-hidden position-relative">
-										<div class="loading-shimmer position-absolute"></div>
-										<div class="micropost-image-cover position-absolute" style="background-image: url('<%= micropost.image_url %>');">
-											<div class="button-position flex flex-row flex-grow-1 justify-content-flex-end">
-												<div class="flex-center empty">
-													<div class="button-wrapper flex-center right-top-corner">
-														<div class="button flex-center" aria-hidden="true">
-															<%= render 'shared/svg/fullscreen' %>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!-- MODAL TOGGLE - END -->
-
-						</div>
-						<!-- MODAL WRAPPER - END -->
+						<%= render partial: 'shared/modals/image_micropost_toggle', locals: { micropost: micropost } %>
 					<% end %>
 				</div>
 
@@ -82,9 +58,7 @@
 </article>
 
 <% if micropost.image.attached? %>
-	<!-- MODAL - BEGIN -->
 	<%= render partial: 'shared/modals/image_micropost', locals: { micropost: micropost } %>
-	<!-- MODAL - END -->
 <% end %>
 
 <script type="text/javascript">
