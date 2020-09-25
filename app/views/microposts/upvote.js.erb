@@ -1,0 +1,1 @@
+$("#micropost-<%= @micropost.id %>-vote-container").html("<%= escape_javascript(render partial: 'shared/micropost/info_bar/unvote_form', locals: { micropost: @micropost }) %>");
