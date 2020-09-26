@@ -1,0 +1,14 @@
+<button>
+  <div class="upvote stat flex flex-row flex-center-y">
+    <div class="button">
+      <div class="button-wrapper flex-center">
+        <div class="button flex-center" aria-hidden="true">
+          <%= render 'shared/svg/heart' %>
+        </div>
+      </div>
+    </div>
+    <div class="value">
+      <%= micropost.get_upvotes.size %>
+    </div>
+  </div>
+</button>

@@ -50,6 +50,11 @@
 								<%= render partial: 'shared/micropost/info_bar/upvote_form', locals: { micropost: micropost } %>
 							<% end %>
 						</div>
+					<% else %>
+						<!-- Button trigger modal -->
+						<div class="pseudo-vote-container flex-center" data-toggle="modal" data-target="#login-modal-upvote-micropost">
+							<%= render partial: 'shared/micropost/info_bar/pseudo_upvote_form', locals: { micropost: micropost } %>
+						</div>
 					<% end %>
 				</div>
 			</div>
