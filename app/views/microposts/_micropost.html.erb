@@ -1,4 +1,4 @@
-<article class="micropost-<%= micropost.id %> micropost-container-wrapper border-bottom">
+<article id="micropost-<%= micropost.id %>-container-wrapper" class="micropost-container-wrapper border-bottom">
 	<div class="micropost-container">
 		<div class="my-flex-container flex-row micropost-flex-container">
 
@@ -35,7 +35,7 @@
 				</div>
 
 				<div class="micropost-stats flex flex-row justify-content-space-between" style="max-width: 200px;">
-					<div class="stat-container">
+					<div class="stat-container comment-stat-container">
 						<%= render partial: 'shared/micropost/info_bar/comment', locals: { micropost: micropost } %>
 					</div>
 
@@ -64,22 +64,16 @@
 <% end %>
 
 <script type="text/javascript">
-	$("article.micropost-<%= micropost.id %>").click(function() {
-	  // alert( "Handler for micropost-<%= micropost.id %>.click() called." );
+	$("#micropost-<%= micropost.id %>-container-wrapper").click(function() {
 		window.location.href = "<%= url_for micropost %>";
 	});
 
-	$("article.micropost-<%= micropost.id %> a").click(function(e) {
-   e.stopPropagation();
-	});
-
-	$("article.micropost-<%= micropost.id %> .modal-toggle").click(function(e) {
-	 $("#image-modal-micropost-<%= micropost.id %>").modal('show');
+	$("#micropost-<%= micropost.id %>-container-wrapper a, #micropost-<%= micropost.id %>-container-wrapper .vote-container").click(function(e) {
 	 e.stopPropagation();
 	});
 
-	$("article.micropost-<%= micropost.id %> div.vote-container, article.micropost-<%= micropost.id %> div.pseudo-vote-container").click(function(e) {
-		$("#login-modal-upvote-micropost").modal('show');
-		e.stopPropagation();
+	$("#micropost-<%= micropost.id %>-container-wrapper .image-micropost-modal-toggle").click(function(e) {
+	 $("#image-modal-micropost-<%= micropost.id %>").modal('show');
+	 e.stopPropagation();
 	});
 </script>

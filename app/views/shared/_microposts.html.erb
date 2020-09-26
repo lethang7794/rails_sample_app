@@ -24,8 +24,26 @@
         </div>
       </div>
     </div><!-- MODAL - End -->
+
+    <script type="text/javascript">
+    	$(".micropost-container-wrapper .pseudo-vote-container").click(function(e) {
+    		$("#login-modal-upvote-micropost").modal('show');
+    		e.stopPropagation();
+    	});
+    </script>
   <% end %>
 
 <% else %>
   <%= render 'shared/nothing' %>
 <% end %>
+
+<script type="text/javascript">
+	$(".micropost-container-wrapper a, .micropost-container-wrapper .vote-container").click(function(e) {
+	 e.stopPropagation();
+	});
+
+	$(".micropost-container-wrapper .pseudo-vote-container").click(function(e) {
+		$("#login-modal-upvote-micropost").modal('show');
+		e.stopPropagation();
+	});
+</script>
