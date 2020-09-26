@@ -750,10 +750,11 @@ section {
   }
 }
 
-/* Following stat transition - BEGIN */
+/* Following + Vote stat transition - BEGIN */
 
 .followers-wrapper,
-.following-wrapper {
+.following-wrapper,
+.vote-value-wrapper {
   overflow: hidden;
   position: relative; // Wrapper needs to use relative position so inner absolute positon respect overlay hidden.
 }
@@ -763,6 +764,10 @@ section {
   font-weight: bold;
   color: rgb(20, 23, 26);
 
+  transition-property: all;
+}
+
+.stats.vote-value {
   transition-property: all;
 }
 
@@ -791,7 +796,7 @@ section {
     box-shadow: none;
 }
 
-/* Following stat transition - END */
+/* Following + Vote stat transition - END */
 
 // Begin - Rainbow
 .rainbow-outer {

@@ -1,1 +1,29 @@
+var $old_vote_value = $("#micropost-<%= @micropost.id %>-vote-value").html();
+
 $("#micropost-<%= @micropost.id %>-vote-container").html("<%= escape_javascript(render partial: 'shared/micropost/info_bar/upvote_form', locals: { micropost: @micropost }) %>");
+
+// Disable all stat container buttons
+$( ".stat-container" ).attr("disabled", true);
+
+// Re-enable all stat container buttons
+setTimeout(function () {
+  $( ".stat-container" ).attr("disabled", false);
+}, 500);
+
+var $vote_value = $("#micropost-<%= @micropost.id %>-vote-value");
+
+var $vote_value_wrapper = $("#micropost-<%= @micropost.id %>-vote-value-wrapper");
+var $vote_value_clone = $vote_value.clone().addClass("pos-abs");
+
+$vote_value_clone.html($old_vote_value)
+$vote_value_clone.prependTo($vote_value_wrapper);
+$vote_value.html("<%= @micropost.get_upvotes.size %>").removeClass("tran-03s").addClass("move-up tran-0s");
+
+setTimeout(function () {
+  $vote_value_clone.addClass( "move-down" );
+  $vote_value.removeClass("move-up tran-0s").addClass("tran-03s");
+}, 100); // Use delay to not override transform, and cause no transition
+
+setTimeout(function () {
+  $vote_value_clone.remove();
+}, 500);

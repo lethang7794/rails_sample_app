@@ -9,7 +9,11 @@
         </div>
       </div>
       <div class="value">
-        <%= micropost.get_upvotes.size %>
+        <div id="micropost-<%= micropost.id %>-vote-value-wrapper" class="flex-inline vote-value-wrapper">
+          <span id="micropost-<%= micropost.id %>-vote-value" class="stats vote-value tran-03s">
+            <%= micropost.get_upvotes.size %>
+          </span>
+        </div>
       </div>
     </div>
   </button>
