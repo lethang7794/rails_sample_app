@@ -16,3 +16,10 @@
   <%= will_paginate %>
 </div>
 <!-- PAGE CONTENT - END -->
+
+<script type="text/javascript">
+  // Prevent fire handler in background after clicked links and follow buttons.
+  $(".user-container a, .user-container .follow-form").click(function(e) {
+   e.stopPropagation();
+  });
+</script>

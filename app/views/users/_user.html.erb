@@ -1,4 +1,4 @@
-<div class="user-container border-bottom">
+<div id="user-<%= user.id %>-container" class="user-container border-bottom">
   <div class="flex flex-row">
 
     <%= render partial: 'shared/avatar', locals: { user: user } %>
@@ -34,3 +34,9 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+	$("#user-<%= user.id %>-container").click(function() {
+		window.location.href = "<%= url_for user %>";
+	});
+</script>
