@@ -81,7 +81,8 @@
 	 e.stopPropagation();
 	});
 
-	$("article.micropost-<%= micropost.id %> div.stat-container").click(function(e) {
-	 e.stopPropagation();
+	$("article.micropost-<%= micropost.id %> div.vote-container, article.micropost-<%= micropost.id %> div.pseudo-vote-container").click(function(e) {
+		$("#login-modal-upvote-micropost").modal('show');
+		e.stopPropagation();
 	});
 </script>

@@ -5,6 +5,27 @@
   <div class="flex-center">
     <%= will_paginate microposts %>
   </div>
+
+  <% if !logged_in? %>
+    <!-- MODAL - Begin -->
+    <div class="modal fade login-modal upvote-login-modal" id="login-modal-upvote-micropost" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header center ">
+            <%= render 'shared/svg/heart_fill_login_modal' %>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">
+              Login to like micropost of <strong><%= @user.name %></strong>.
+            </h4>
+          </div>
+          <div class="modal-body">
+            <%= render partial: 'shared/login_form_modal', locals: { forward_to: user_path(@user) } %>
+          </div>
+        </div>
+      </div>
+    </div><!-- MODAL - End -->
+  <% end %>
+
 <% else %>
   <%= render 'shared/nothing' %>
 <% end %>
