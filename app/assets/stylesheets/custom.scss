@@ -1019,21 +1019,23 @@ ul.users { // Users index
 }
 /* Old Users Index - END */
 
+/* User avatar used with avatar partial - BEGIN */
+.user-avatar {
+  height: 50px;
+  width: 50px;
+  min-width: 50px;
+  background-color: #e8e8e8;
+}
+
+.gravatar {
+  margin: 0;
+}
+/* User avatar used with avatar partial - END */
+
 /* New Users Index - BEGIN */
 
 .user-container {
   padding: 15px;
-
-  .user-avatar {
-    height: 50px;
-    width: 50px;
-    min-width: 50px;
-    background-color: #e8e8e8;
-  }
-
-  .gravatar {
-    margin: 0;
-  }
 
   .main-content {
     padding-left: 15px;
@@ -1126,17 +1128,6 @@ ul.users { // Users index
 .micropost-container {
   // Add some spacing to breath
   padding: 10px 15px 0px 15px;
-
-  .micropost-avatar {
-    height: 50px;
-    width: 50px;
-    min-width: 50px;
-    background-color: #e8e8e8;
-
-    .gravatar {
-      margin: 0;
-    }
-  }
 
   .micropost-main {
     flex: 1; //Set width of flex item: Fill up remaining spacing

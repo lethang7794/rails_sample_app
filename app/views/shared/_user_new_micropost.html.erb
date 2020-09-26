@@ -1,11 +1,8 @@
 <div class="micropost-container new-micropost-container border border-top-0">
   <div class="my-flex-container flex-row micropost-flex-container">
-    <div class="micropost-avatar rounded-circle overflow-hidden dimmer-wrapper loading-shimmer">
-      <%= link_to current_user do %>
-        <%= gravatar_for(current_user, size:50) %>
-        <div class="dimmer transition-03s"></div>
-      <% end %>
-    </div>
+
+    <%= render partial: 'shared/avatar', locals: { user: @current_user } %>
+
     <div class="my-flex-container flex-column micropost-main new-micropost-main">
       <section class="micropost_form">
         <%= render 'shared/micropost_form' %>

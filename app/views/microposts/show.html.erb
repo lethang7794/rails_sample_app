@@ -6,12 +6,9 @@
 				<div class="micropost-container border-right border-left">
 			    <div class="flex flex-column micropost-flex-container">
 			      <div class="my-flex-container flex-row ">
-			  			<div class="micropost-avatar rounded-circle overflow-hidden dimmer-wrapper loading-shimmer">
-			  				<%= link_to @micropost.user do %>
-			  					<%= gravatar_for(@micropost.user, size:50) %>
-			  					<div class="dimmer"></div>
-			  				<% end %>
-			  			</div>
+
+			  			<%= render partial: 'shared/avatar', locals: { user: @micropost.user } %>
+
 			  			<div class="my-flex-container flex-column micropost-header">
 			  				<div class="my-flex-container flex-column">
 			  					<span class="user">
