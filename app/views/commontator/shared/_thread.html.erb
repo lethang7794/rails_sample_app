@@ -18,11 +18,8 @@
       %>
     <% else %>
       <% subscription = thread.subscription_for(user) %>
-      <%= link_to "#{
-                    (subscription.unread_comments(show_all).count.to_s + '/') if subscription
-                  }#{thread.filtered_comments(show_all).count.to_s}",
-                  commontator.thread_path(thread),
-                  remote: true %>
+      <%= "#{(subscription.unread_comments(show_all).count.to_s + '/') if subscription
+                  }#{thread.filtered_comments(show_all).count.to_s}"%>
     <% end %>
   </div>
 <% end %>
