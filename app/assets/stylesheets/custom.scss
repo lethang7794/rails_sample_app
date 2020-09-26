@@ -337,8 +337,13 @@ a.dropdown-toggle[aria-expanded="true"] {
   font-size: 1.7rem; // Increase navbar-links' font-size
 }
 
-.active .my-label {
-  font-weight: bold;
+a.active {
+  pointer-events: none;
+
+  .my-label {
+    font-weight: bold;
+    color: white;
+  }
 }
 
 .dropdown-menu {
