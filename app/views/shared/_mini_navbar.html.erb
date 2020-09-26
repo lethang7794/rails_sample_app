@@ -61,7 +61,8 @@
   <%= render  partial: 'shared/mini_navbar_partial',
               locals: {
                 heading: "Explorer",
-                detail: "Let's follow other people"
+                detail: "Let's follow other people",
+                no_border_bottom: true
               } %>
 
 <% elsif @micropost && current_page?(controller: 'microposts', action: 'show') %>
