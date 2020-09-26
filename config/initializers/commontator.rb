@@ -151,7 +151,7 @@ Commontator.configure do |config|
   #   :n (never)
   # Note: For moderators, see the next option
   # Default: :l
-  config.comment_deletion = :l
+  config.comment_deletion = :a
 
   # moderator_permissions
   # Type: Symbol
