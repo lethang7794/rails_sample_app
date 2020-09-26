@@ -28,7 +28,7 @@
       <li>
         <%= active_link_to root_path, active: [static_pages: :home] do %>
           <span class="my-label">Home</span>
-          <span class="my-arrow home">
+          <span class="my-arrow home hide-for-large-device">
             <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 16">
               <path d="M12.58,0a1.19,1.19,0,0,0-1,.89,1.53,1.53,0,0,0,.29,1.42l3.71,4.53H1c-.63,0-1,.48-1,1.22a1.09,1.09,0,0,0,1.2,1.1H15.61l-3.73,4.52a1.52,1.52,0,0,0,0,1.91,1,1,0,0,0,1.63,0L19.18,9,20,8l-.82-.94L13.51.41A1,1,0,0,0,12.58,0Z"></path>
             </svg>
@@ -39,11 +39,13 @@
         <li>
           <%= active_link_to users_path, active: [users: :index] do %>
             <span class="my-label">Explore</span>
-            <span class="my-arrow">
-              <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 16">
-                <path d="M12.58,0a1.19,1.19,0,0,0-1,.89,1.53,1.53,0,0,0,.29,1.42l3.71,4.53H1c-.63,0-1,.48-1,1.22a1.09,1.09,0,0,0,1.2,1.1H15.61l-3.73,4.52a1.52,1.52,0,0,0,0,1.91,1,1,0,0,0,1.63,0L19.18,9,20,8l-.82-.94L13.51.41A1,1,0,0,0,12.58,0Z"></path>
-              </svg>
-            </span>
+            <% unless current_page?(users_path) %>
+              <span class="my-arrow">
+                <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 16">
+                  <path d="M12.58,0a1.19,1.19,0,0,0-1,.89,1.53,1.53,0,0,0,.29,1.42l3.71,4.53H1c-.63,0-1,.48-1,1.22a1.09,1.09,0,0,0,1.2,1.1H15.61l-3.73,4.52a1.52,1.52,0,0,0,0,1.91,1,1,0,0,0,1.63,0L19.18,9,20,8l-.82-.94L13.51.41A1,1,0,0,0,12.58,0Z"></path>
+                </svg>
+              </span>
+            <% end %>
           <% end %>
         </li>
         <li class="dropdown">
@@ -89,11 +91,13 @@
         <li>
           <%= active_link_to signup_path, active: [users: :new] do %>
             <span class="my-label">Sign up</span>
-            <span class="my-arrow">
-              <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 16">
-                <path d="M12.58,0a1.19,1.19,0,0,0-1,.89,1.53,1.53,0,0,0,.29,1.42l3.71,4.53H1c-.63,0-1,.48-1,1.22a1.09,1.09,0,0,0,1.2,1.1H15.61l-3.73,4.52a1.52,1.52,0,0,0,0,1.91,1,1,0,0,0,1.63,0L19.18,9,20,8l-.82-.94L13.51.41A1,1,0,0,0,12.58,0Z"></path>
-              </svg>
-            </span>
+            <% unless current_page?(signup_path) %>
+              <span class="my-arrow">
+                <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 16">
+                  <path d="M12.58,0a1.19,1.19,0,0,0-1,.89,1.53,1.53,0,0,0,.29,1.42l3.71,4.53H1c-.63,0-1,.48-1,1.22a1.09,1.09,0,0,0,1.2,1.1H15.61l-3.73,4.52a1.52,1.52,0,0,0,0,1.91,1,1,0,0,0,1.63,0L19.18,9,20,8l-.82-.94L13.51.41A1,1,0,0,0,12.58,0Z"></path>
+                </svg>
+              </span>
+            <% end %>
           <% end %>
         </li>
       <% end %>
