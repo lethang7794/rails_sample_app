@@ -1,6 +1,8 @@
 var $old_vote_value = $("#micropost-<%= @micropost.id %>-vote-value").html();
 
-$("#micropost-<%= @micropost.id %>-vote-container").html("<%= escape_javascript(render partial: 'shared/micropost/info_bar/unvote_form', locals: { micropost: @micropost }) %>");
+$("#micropost-<%= @micropost.id %>-vote-container").html("<%= escape_javascript(
+  render partial: 'shared/micropost/info_bar/unvote_form', locals: { micropost: @micropost }
+) %>");
 
 // Disable all stat container buttons
 $( ".stat-container" ).attr("disabled", true);

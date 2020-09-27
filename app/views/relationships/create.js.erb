@@ -1,34 +1,6 @@
-$("#follow_form_for_<%= @user.id %>").html("<%= escape_javascript(render partial: 'shared/unfollow', locals: { user: @user }) %>");
-
-// // Disable all follow/unfollow button
-// $( ".follow-button" ).attr("disabled", true);
-// $( ".unfollow-button" ).attr("disabled", true);
-//
-// // Add class to old stat
-// $("#following_of_<%= current_user.id %>").addClass("old-stat pos-abs");
-// $("#followers_of_<%= @user.id %>").addClass("old-stat pos-abs");
-//
-// // Add new stat (and move it down)
-// $("#following_of_<%= current_user.id %>_wrapper").append( "<span id='following_of_<%= current_user.id %>' class='following_of_<%= current_user.id %> stats following new-stat move-down'><%= current_user.following.count %></span>" );
-// $("#followers_of_<%= @user.id %>_wrapper").append( "<span id='followers_of_<%= @user.id %>' class='followers_of_<%= @user.id %> stats followers new-stat move-down'><%= @user.followers.count %></span>" );
-//
-// // Move both old and new stat up
-// $( ".old-stat" ).addClass( "move-up" );
-//
-// setTimeout(function () {
-//   $( ".new-stat" ).removeClass( "move-down" );
-// }, 0); // Use delay to not override transform, and cause no transition
-//
-// // Wait for transition to finish and remove old stat
-// $(".new-stat").on('transitionend webkitTransitionEnd oTransitionEnd otransitionend MSTransitionEnd',
-//   function() {
-//   $( ".old-stat" ).remove();
-//   $( ".new-stat" ).removeClass( "new-stat move-down pos-abs" );
-//
-//   // Enable all follow/unfollow button
-//   $( ".follow-button" ).attr("disabled", false);
-//   $( ".unfollow-button" ).attr("disabled", false);
-// });
+$("#follow_form_for_<%= @user.id %>").html("<%= escape_javascript(
+  render partial: 'shared/unfollow', locals: { user: @user }
+) %>");
 
 // Disable all follow/unfollow button
 $( ".follow-button" ).attr("disabled", true);

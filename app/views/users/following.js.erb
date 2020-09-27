@@ -12,7 +12,9 @@ $(".tab-link.following-link").addClass("active");
 $(window).scrollTop(60);
 
 // Change tab content - users
-$("#tab-content").html("<%= escape_javascript(render partial: 'shared/users', locals: { users: @users }) %>");
+$("#tab-content").html("<%= escape_javascript(
+  render partial: 'shared/users', locals: { users: @users }
+) %>");
 
 // Store previous URL (used in mini-navbar for replace home button with back button when reload page)
 localStorage.setItem("previousURL", "<%= request.original_url %>");
