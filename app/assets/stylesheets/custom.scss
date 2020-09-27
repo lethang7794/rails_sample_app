@@ -1343,6 +1343,13 @@ ul.users { // Users index
 
 /* Microposts Flex - END */
 
+/* Micropost/User container - BEGIN */
+.micropost-container-wrapper,
+.user-container {
+  margin-bottom: -1px; // Hide duplicate border
+}
+/* Micropost/User container - END */
+
 /* User and Micropost hover - BEGIN */
 .user-container,
 article.micropost-container-wrapper {
@@ -1351,6 +1358,11 @@ article.micropost-container-wrapper {
     background-color: rgba(245, 248, 250, 1);
     transition: background-color 0.2s linear;
     cursor: pointer;
+
+    border: 1px solid #898989;
+
+    z-index: 1;
+    position: relative; // z-index needs element's position not be static.
   }
 
   &:active:not(:has(:active)) {
@@ -1366,6 +1378,8 @@ article.micropost-container-wrapper {
     &:hover {
       background-color: white;
       cursor: auto;
+
+      border: none;
     }
   }
 }

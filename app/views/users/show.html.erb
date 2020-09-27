@@ -18,7 +18,7 @@
       </div>
 
       <%# USER TABS - BEGIN %>
-      <div class="tab-bar flex flex-row border-right border-left border-bottom">
+      <div class="tab-bar flex flex-row border-right border-left">
         <div class="flex-grow-1 flex-center tab-container">
           <%= active_link_to 'Microposts', user_path(@user), remote: true, class: "tab-link show-link flex-grow-1 flex-center", active: [users: :show] %>
         </div>
