@@ -2006,7 +2006,10 @@ aside {
     outline: none;
   }
 
-  &:hover {
+  &:hover,
+  &:active:focus,
+  &:focus,
+  &:active {
     animation: rainbowBorder .5s linear infinite;
 
     .margin-tran {
