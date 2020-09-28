@@ -373,6 +373,14 @@ a.active {
   }
 }
 
+@media (min-width: 768px) {
+  a.active {
+    .my-arrow {
+      display: none;
+    }
+  }
+}
+
 .dropdown-menu {
   border: 1px solid white;
   min-width: auto; // Reduce the dropdown menu width
