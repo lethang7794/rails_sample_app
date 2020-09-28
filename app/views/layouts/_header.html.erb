@@ -7,7 +7,7 @@
 <nav class="navbar navbar-inverse navbar-static-top">
 
   <!-- Brand and toggle get grouped for better mobile display -->
-  <div class="navbar-brand">
+  <div class="navbar-brand navbar-item">
     <% if logged_in? %>
       <%= link_to 'Sample App', home_path , id: 'logo' %>
     <% else %>
@@ -27,29 +27,32 @@
     <ul class="nav navbar-nav navbar-right">
       <li>
         <%= active_link_to root_path, active: [static_pages: :home] do %>
-          <span class="my-label">Home</span>
-          <span class="my-arrow home hide-for-large-device">
-            <%= render 'shared/svg/arrow' %>
-          </span>
+          <div class="flex flex-center-y h-100 justify-content-space-between">
+            <span class="my-label">Home</span>
+            <span class="my-arrow home hide-for-large-device">
+              <%= render 'shared/svg/arrow' %>
+            </span>
+          </div>
         <% end %>
       </li>
       <% if logged_in? %>
         <li>
           <%= active_link_to users_path, active: [users: :index] do %>
-            <span class="my-label">Explore</span>
-            <% unless current_page?(users_path) %>
+            <div class="flex flex-center-y h-100 justify-content-space-between">
+              <span class="my-label">Explore</span>
               <span class="my-arrow">
                 <%= render 'shared/svg/arrow' %>
               </span>
-            <% end %>
+            </div>
           <% end %>
         </li>
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <span class="my-label">Account</span>
-            <span class="my-caret">
-              <%= render 'shared/svg/caret' %>
-            </span>
+            <div class="flex flex-center-y h-100 justify-content-space-between">
+              <span class="my-caret">
+                <%= render 'shared/svg/caret' %>
+              </span>
+            </div>
           </a>
           <ul class="dropdown-menu">
             <li>
@@ -73,20 +76,24 @@
       <% else %>
         <li>
           <%= active_link_to login_path, active: [sessions: :new] do %>
-            <span class="my-label">Log in</span>
-            <span class="my-arrow hide-for-large-device">
-              <%= render 'shared/svg/arrow' %>
-            </span>
+            <div class="flex flex-center-y h-100 justify-content-space-between">
+              <span class="my-label">Log in</span>
+              <span class="my-arrow hide-for-large-device">
+                <%= render 'shared/svg/arrow' %>
+              </span>
+            </div>
           <% end %>
         </li>
         <li>
           <%= active_link_to signup_path, active: [users: :new] do %>
-            <span class="my-label">Sign up</span>
-            <% unless current_page?(signup_path) %>
-              <span class="my-arrow">
-                <%= render 'shared/svg/arrow' %>
-              </span>
-            <% end %>
+            <div class="flex flex-center-y h-100 justify-content-space-between">
+              <span class="my-label">Sign up</span>
+              <% unless current_page?(signup_path) %>
+                <span class="my-arrow">
+                  <%= render 'shared/svg/arrow' %>
+                </span>
+              <% end %>
+            </div>
           <% end %>
         </li>
       <% end %>

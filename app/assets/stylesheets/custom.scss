@@ -278,6 +278,33 @@ div.collapse {
   }
 }
 
+// Center the items in navbar - BEGIN
+@media (min-width: 768px) {
+  .navbar-inverse .navbar-nav {
+    height: 100%;
+
+    > li {
+      height: 100%;
+
+      > a {
+        height: 100%;
+      }
+    }
+  }
+}
+
+.h-100 {
+  height: 100%;
+}
+// Center the items in navbar - END
+
+// Navbar-items layout - BEGIN
+.navbar-item,
+.navbar-inverse .navbar-nav li a {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
 // Change Bootstrap's default divider color
 .navbar-inverse .navbar-nav .open .dropdown-menu .divider {
 	background-color: rgba(255, 255, 255, 0.3);
@@ -404,13 +431,16 @@ a.active {
   .navbar-brand {
     margin-left: auto!important;
     margin-right: auto!important;
+
+    padding: 5px 15px;
   }
 }
 
 
 // Override Bootstrap's navbar-brand's height
 .navbar-brand {
-  height: 55px;
+  height: unset;
+  line-height: unset;
 }
 
 // Move the site logo to center absolutely position
