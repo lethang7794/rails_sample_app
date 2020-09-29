@@ -210,6 +210,7 @@ $hover-box-gradient: transparent;
 
 .nav > li {
   display: flex;
+  min-height: 40px;
 }
 
 div.collapse {
@@ -265,9 +266,10 @@ div.collapse {
 .navbar-inverse .navbar-nav > .open > a,
 .navbar-inverse .navbar-nav > li > a {
   color: rgba(255, 255, 255, 0.7);
+  background-color: #232f3e ;
 
   &:focus {
-    background: transparent;
+    background-color: #232f3e;
   }
 
   &:hover {
