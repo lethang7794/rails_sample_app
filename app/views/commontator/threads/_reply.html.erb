@@ -8,7 +8,24 @@
   <% if thread.is_closed? %>
     <p><%= t 'commontator.thread.status.cannot_post' %></p>
   <% elsif !user %>
-    <p><%= t 'commontator.require_login' %></p>
+    <div class="new-comment-reply-wrapper flex flex-row flex-center">
+      <div>
+        Log in or sign up to leave a comment
+      </div>
+      <div class="new-comment-reply flex">
+        <%= link_to login_path_with_dest, class: "login-signup-anchor" do %>
+          <button class="btn btn-primary follow-button login flex flex-center" style="
+          ">
+            <span class="my-label">Log in</span>
+          </button>
+        <% end %>
+        <%= link_to signup_path_with_dest do %>
+          <button class="btn btn-primary my-button signup flex flex-center">
+            <span class="my-label">Sign up</span>
+          </button>
+        <% end %>
+      </div>
+    </div>
   <% else %>
     <% if @commontator_new_comment.nil? %>
       <div id="commontator-thread-<%= thread.id %>-new-comment-link" class="new-comment">

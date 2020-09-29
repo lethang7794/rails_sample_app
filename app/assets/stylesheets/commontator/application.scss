@@ -7,8 +7,8 @@
 .commontator {
   *:not(input):not(textarea) {
     margin: 0;
-    border: none;
-    padding: 0;
+    // border: none;
+    // padding: 0;
   }
 
   .commontator-hidden {
@@ -24,7 +24,7 @@
 
     overflow: hidden;
 
-    padding-top: 10px;
+    // padding-top: 10px;
   }
 
   .actions {
@@ -41,7 +41,7 @@
 
   .comment-list {
     // background-color: #000;
-    margin: 35px 15px;
+    margin: 0px 15px 24px 15px;
   }
 
   .children {
@@ -120,12 +120,50 @@
 
   // &.thread > a,
   .status, {
-    margin-left: 65px;
+    // margin-left: 65px;
   }
 
   // .will-paginate,
-  .page-entries-info,
-  .new-comment {
+  //.new-comment,
+  .page-entries-info {
     margin-left: 75px;
+  }
+}
+
+.new-comment-reply-wrapper {
+  padding: 15px !important;
+  border-bottom: 1px solid #e8e8e8;
+
+  .new-comment-reply {
+    a {
+      text-decoration: none !important;
+
+      button {
+        padding: 6px 12px;
+        margin: 5px 5px 5px 10px;
+
+        width: 90px;
+
+        &.login {
+          &:active,
+          &:focus,
+          &:active:focus {
+            background-color: rgba(29, 161, 242, 0.2);
+            color: rgba(29, 161, 242, 1);
+            border-color: rgba(29, 161, 242, 1);
+          }
+        }
+
+        &.signup {
+          &:active,
+          &:focus,
+          &:active:focus {
+            background-color: rgba(26, 145, 218, 0.9);
+            color: white;
+            border-color: rgba(26, 145, 218, 0.9);
+          }
+        }
+      }
+    }
   }
 }

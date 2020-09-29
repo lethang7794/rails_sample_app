@@ -65,7 +65,7 @@
     </span>
 
     <span id="commontator-thread-<%= thread.id %>-status" class="status">
-      <%= t "commontator.thread.status.#{thread.is_closed? ? 'closed' : 'open'}",
+      <%# t "commontator.thread.status.#{thread.is_closed? ? 'closed' : 'open'}",
             closer_name: (thread.is_closed? ? Commontator.commontator_name(thread.closer) : '') %>
     </span>
   </div>

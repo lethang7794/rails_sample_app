@@ -154,18 +154,17 @@
 }
 
 .commontator.thread > .content {
-  > .header .status,
-  > .reply .new-comment,
   > .reply > p {
     margin-left: 80px;
   }
 
   > .reply .new-comment {
-    margin-right: 15px;
+    padding: 15px 15px 15px 80px;
+    border-bottom: 1px solid #e8e8e8;
   }
 
   > .reply {
-    margin-top: 5px;
+    // margin-top: 5px;
   }
 
   .comment-list .comment .children .reply .new_comment {
@@ -212,6 +211,12 @@
         margin-left: 10px;
         margin-top: 10px;
       }
+    }
+  }
+
+  .reply .new-comment .new_comment {
+    .field {
+      margin-top: 0px;
     }
   }
 }
