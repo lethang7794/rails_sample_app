@@ -72,6 +72,8 @@
           </div>
         </button>
 
+        <div id="logging-in-text-wrapper" style="height: 0px;"></div>
+
         <script type="text/javascript">
           var $button = $("#demo-user-login-button .text");
           var $button_text = $button.html();
@@ -79,11 +81,14 @@
 
           $("#demo-user-login-button").click(function() {
             setTimeout(function () {
-              $(".jumbotron").append("<%= escape_javascript(render partial: 'logging_in') %>");
+              $("#logging-in-text-wrapper").append("<%= escape_javascript(render partial: 'logging_in') %>");
             }, 500);
             setTimeout(function () {
+              $("#logging-in-text").removeClass("opacity-0 translateX--30px");
+            }, 550);
+            setTimeout(function () {
               $("#demo-user-login-form").submit();
-            }, 2000);
+            }, 1500);
           });
         </script>
       </div>

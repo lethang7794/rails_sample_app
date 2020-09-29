@@ -624,6 +624,8 @@ p {
 }
 
 .jumbotron {
+  padding-bottom: 48px;
+
   h1, h2 {
     margin-bottom: .3em;
     border-bottom: 1px solid black;
@@ -2449,4 +2451,8 @@ aside {
 
 .active.hide-if-active {
   display: none;
+}
+
+.translateX--30px {
+  transform: translateX(-30px);
 }
