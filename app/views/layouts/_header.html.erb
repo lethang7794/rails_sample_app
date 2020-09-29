@@ -54,12 +54,12 @@
             </div>
           <% end %>
         </li>
-        <li class="dropdown">
+        <li class="dropdown flex flex-column">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <div class="flex flex-center-y h-100 justify-content-space-between">
               <div class="flex flex-center-y">
                 <span class="my-label"><%= @current_user.name %></span>
-                <div class="rounded-circle overflow-hidden">
+                <div class="rounded-circle overflow-hidden" style="margin-left: 7.5px;">
                   <%= gravatar_for(@current_user, size: 30) %>
                 </div>
               </div>
@@ -88,26 +88,22 @@
           </ul>
         </li>
       <% else %>
-        <li>
-          <%= active_link_to login_path, active: [sessions: :new] do %>
-            <div class="flex flex-center-y h-100 justify-content-space-between">
+        <li class="login-signup-wrapper">
+          <%= active_link_to login_path, active: [sessions: :new], class: "hide-if-active" do %>
+            <button class="btn btn-primary follow-button login-button flex flex-center-y h-100 justify-content-space-between" style="
+            ">
               <span class="my-label">Log in</span>
-              <span class="my-arrow hide-for-large-device">
-                <%= render 'shared/svg/arrow' %>
-              </span>
-            </div>
+            </button>
           <% end %>
-        </li>
-        <li>
-          <%= active_link_to signup_path, active: [users: :new] do %>
-            <div class="flex flex-center-y h-100 justify-content-space-between">
+          <%= active_link_to signup_path, active: [users: :new], class: "hide-if-active" do %>
+            <button class="btn btn-primary my-button signup-button flex flex-center-y h-100 justify-content-space-between">
               <span class="my-label">Sign up</span>
               <% unless current_page?(signup_path) %>
                 <span class="my-arrow">
                   <%= render 'shared/svg/arrow' %>
                 </span>
               <% end %>
-            </div>
+            </button>
           <% end %>
         </li>
       <% end %>
