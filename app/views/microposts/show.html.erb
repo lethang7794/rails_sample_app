@@ -34,10 +34,7 @@
 			          <% end %>
 			        </div>
 			        <% if @micropost.image.attached? %>
-			          <div class="modal-wrapper">
-			          	<%= render partial: 'shared/modals/image_micropost_toggle', locals: { micropost: @micropost } %>
-			            <%= render partial: 'shared/modals/image_micropost'				, locals: { micropost: @micropost } %>
-			          </div>
+		          	<%= render partial: 'shared/modals/image_micropost_toggle', locals: { micropost: @micropost } %>
 			        <% end %>
 			      </div>
 			    </div>
@@ -54,4 +51,7 @@
     </div>
   </div>
 </div>
+<% if @micropost.image.attached? %>
+	<%= render partial: 'shared/modals/image_micropost'				, locals: { micropost: @micropost } %>
+<% end %>
 <!-- PAGE CONTENT - END -->
