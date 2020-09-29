@@ -1269,40 +1269,46 @@ ul.users { // Users index
 
 // Micropost show page - BEGIN
 .micropost-show-page {
-  .micropost-container {
-    .micropost-header {
-      margin-left: 15px;
+  .micropost-container-wrapper {
+    &:hover {
+      border-bottom: 1px solid #e8e8e8 !important;
+    }
 
-      .user {
-        font-weight: 700;
-        a {
-          color: black;
+    .micropost-container {
+      .micropost-header {
+        margin-left: 15px;
+
+        .user {
+          font-weight: 700;
+          a {
+            color: black;
+          }
+        }
+
+        .username {
+          a {
+            color: black;
+            text-decoration: none;
+            color: rgb(101, 119, 134);
+          }
         }
       }
 
-      .username {
-        a {
-          color: black;
-          text-decoration: none;
-          color: rgb(101, 119, 134);
+      .micropost-main {
+        padding-top: 10px;
+        padding-left: 0px;
+
+        .micropost-content {
+          font-size: 23px;
         }
       }
-    }
 
-    .micropost-main {
-      padding-top: 10px;
-      padding-left: 0px;
+      .micropost-info-bar {
+        margin-top: 15px;
+        padding-bottom: 10px;
 
-      .micropost-content {
-        font-size: 23px;
+        color: rgb(101, 119, 134);
       }
-    }
-
-    .micropost-info-bar {
-      margin-top: 15px;
-      padding-bottom: 10px;
-
-      color: rgb(101, 119, 134);
     }
   }
 
