@@ -89,13 +89,13 @@
         </li>
       <% else %>
         <li class="login-signup-wrapper">
-          <%= active_link_to login_path, active: [sessions: :new], class: "hide-if-active" do %>
+          <%= active_link_to login_path_with_dest, active: [sessions: :new], class: "hide-if-active" do %>
             <button class="btn btn-primary follow-button login-button flex flex-center-y h-100 justify-content-space-between" style="
             ">
               <span class="my-label">Log in</span>
             </button>
           <% end %>
-          <%= active_link_to signup_path, active: [users: :new], class: "hide-if-active" do %>
+          <%= active_link_to signup_path_with_dest, active: [users: :new], class: "hide-if-active" do %>
             <button class="btn btn-primary my-button signup-button flex flex-center-y h-100 justify-content-space-between">
               <span class="my-label">Sign up</span>
               <% unless current_page?(signup_path) %>

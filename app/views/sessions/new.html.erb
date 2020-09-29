@@ -5,7 +5,7 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_with(scope: 'session', local: true) do |f| %>
-
+      <%= hidden_field_tag 'session[forwarding_url]', params[:dest] %>
       <%= f.label :email %>
       <%= f.email_field :email, class: "form-control" %>
 

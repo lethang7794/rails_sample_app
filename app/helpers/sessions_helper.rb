@@ -60,4 +60,22 @@ module SessionsHelper
     redirect_to( session[:forwarding_url] || params[:session][:forwarding_url] || default )
     session.delete(:forwarding_url)
   end
+
+	# Return login path with redirect address as params[:dest]
+	def login_path_with_dest
+		if request.original_fullpath == '/'
+			"#{login_path}"
+		else
+			"#{login_path}?dest=#{request.original_fullpath}"
+		end
+	end
+
+	# Return sign up path with redirect address as params[:dest]
+	def signup_path_with_dest
+		if request.original_fullpath == '/'
+			"#{signup_path}"
+		else
+			"#{signup_path}?dest=#{request.original_fullpath}"
+		end
+	end
 end
