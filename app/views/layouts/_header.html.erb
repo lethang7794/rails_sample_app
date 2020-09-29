@@ -9,9 +9,17 @@
   <!-- Brand and toggle get grouped for better mobile display -->
   <div class="navbar-brand navbar-item">
     <% if logged_in? %>
-      <%= link_to 'Sample App', home_path , id: 'logo' %>
+      <%= link_to home_path , id: 'logo' do %>
+        <span style="vertical-align: text-bottom;">
+          Sample App
+        </span>
+      <% end %>
     <% else %>
-      <%= link_to 'Sample App', root_path , id: 'logo' %>
+      <%= link_to root_path , id: 'logo' do %>
+        <span style="vertical-align: text-bottom;">
+          Sample App
+        </span>
+      <% end %>
     <% end %>
   </div>
 
