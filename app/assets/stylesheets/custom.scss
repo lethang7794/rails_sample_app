@@ -2464,3 +2464,22 @@ aside {
 .translateX--30px {
   transform: translateX(-30px);
 }
+
+#new-micropost-form {
+  textarea {
+    margin-bottom: 0px;
+  }
+
+  .submit {
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    &.disabled {
+      background-color: white;
+      color: rgba(29, 161, 242, 1);
+
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+  }
+}
