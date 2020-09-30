@@ -26,8 +26,14 @@ class MicropostsController < ApplicationController
 
   def destroy
     @micropost.destroy
-    flash[:success] = "Micropost deleted."
-    redirect_back fallback_location: root_url
+
+    respond_to do |format|
+      format.js
+      format.html {
+        flash[:success] = "Micropost deleted."
+        redirect_to root_url
+      }
+    end
   end
 
   def upvote
