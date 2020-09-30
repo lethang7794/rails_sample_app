@@ -5,7 +5,7 @@
       <%= f.text_area :content, class: "content", placeholder: "Compose new micropost..." %>
     </div>
     <div>
-      <%= f.submit "Post", class: "btn my-button submit disabled", data: { "disable-with": "Posting ..." }  %>
+      <%= f.submit "Post", class: "btn my-button submit disabled-appearance", data: { "disable-with": "Posting ..." }  %>
     </div>
     <div class="image">
       <%= f.file_field :image, accept: "image/png, image/jpeg, image/gif" %>
@@ -23,15 +23,20 @@
   });
 
   $(document).ready(function(){
-    $('#new-micropost-form .submit').attr('disabled', true);
-    $('#new-micropost-form .content').keyup(function(){
+    var $submit_button = $('#new-micropost-form input[type="submit"][name="commit"]');
+    var $form_content = $('#new-micropost-form textarea');
+
+    $submit_button.attr('disabled', true);
+    $submit_button.addClass("disabled-function");
+
+    $form_content.keyup(function(){
       if($(this).val().length !=0) {
-        $('#new-micropost-form .submit').removeClass("disabled");
-        $('#new-micropost-form .submit').attr('disabled', false);
+        $submit_button.removeClass("disabled-appearance disabled-function");
+        $submit_button.attr('disabled', false);
       }
       else {
-        $('#new-micropost-form .submit').addClass("disabled");
-        $('#new-micropost-form .submit').attr('disabled', true);
+        $submit_button.addClass("disabled-appearance disabled-function");
+        $submit_button.attr('disabled', true);
       }
     })
   });
