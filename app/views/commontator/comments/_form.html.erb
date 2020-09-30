@@ -29,22 +29,13 @@
 
   <% unless comment.parent.nil? %>
     <% unless config.new_comment_style == :t && new_record && comment.parent.nil? %>
-      <%=
-        form.button(
-          name: 'cancel',
-          value: 'Cancel',
-          class: "",
-          style: "background-color: unset; border: none;"
-        ) do
-      %>
-        <div>
-          <div class="replying">
-            <div class="reply-indicator"></div>
-            <%= t('commontator.comment.status.replying',
-                  creator_name: Commontator.commontator_name(comment.parent.creator)) %>
-          </div>
+      <div class="cancel-btn" style="background-color: unset !important; border: none !important; outline: none; cursor: pointer;">
+        <div class="replying">
+          <div class="reply-indicator"></div>
+          <%= t('commontator.comment.status.replying',
+                creator_name: Commontator.commontator_name(comment.parent.creator)) %>
         </div>
-      <% end %>
+      </div>
     <% end %>
   <% end %>
 
@@ -59,10 +50,10 @@
   </div>
 
   <div class="submit">
-    <%= form.submit t("commontator.comment.actions.#{new_record ? 'create' : 'update'}"), class: "btn my-button disabled-appearance" %>
+    <%= form.submit t("commontator.comment.actions.#{new_record ? 'create' : 'update'}"), class: "btn my-button submit-btn disabled-appearance" %>
     <%=
       form.submit(
-        t('commontator.comment.actions.cancel'), name: 'cancel',
+        t('commontator.comment.actions.cancel'), name: 'hide',
         class: "btn my-button cancel-btn"
       ) unless config.new_comment_style == :t && new_record && comment.parent.nil?
     %>
@@ -72,11 +63,36 @@
 <script type="text/javascript">
   $(document).ready(function(){
     <% if comment.parent.nil? %>
-      var $submit_button = $('#commontator-thread-<%= "#{@commontator_thread.id}" %>-new-comment form input[type="submit"][name="commit"]');
+      var $submit_button = $('#commontator-thread-<%= "#{@commontator_thread.id}" %>-new-comment form input.submit-btn');
       var $form_content = $('#commontator-thread-<%= "#{@commontator_thread.id}" %>-new-comment form textarea');
     <% else %>
-      var $submit_button = $('#commontator-comment-<%= "#{comment.parent.id}" %>-reply form input[type="submit"][name="commit"]');
+      var $submit_button = $('#commontator-comment-<%= "#{comment.parent.id}" %>-reply form input.submit-btn');
       var $form_content = $('#commontator-comment-<%= "#{comment.parent.id}" %>-reply form textarea');
+
+      var $cancel_button = $('#commontator-comment-<%= "#{comment.parent.id}" %>-reply form input.cancel-btn');
+      var $cancel_link = $('#commontator-comment-<%= "#{comment.parent.id}" %>-reply form div.cancel-btn');
+      var $pseudo_reply_link_wrapper = $("#commontator-comment-<%= "#{comment.parent.id}" %>-pseudo-reply-link-wrapper");
+
+      $cancel_button.add($cancel_link).click(function() {
+        $("#commontator-comment-<%= "#{comment.parent.id}" %>-reply").hide();
+
+        var $pseudo_reply_link = $("#commontator-comment-<%= "#{comment.parent.id}" %>-pseudo-reply-link");
+        if ($pseudo_reply_link.length > 0) {
+          $pseudo_reply_link_wrapper.fadeIn();
+        } else {
+          $("#commontator-comment-<%= "#{comment.parent.id}" %>-reply-link").hide();
+          $pseudo_reply_link_wrapper.html("<%= escape_javascript(
+            render partial: 'commontator/shared/pseudo_reply_link', locals: { comment: comment }
+          ) %>");
+        }
+
+        event.preventDefault();
+    	});
+
+      $pseudo_reply_link_wrapper.click(function() {
+        $("#commontator-comment-<%= "#{comment.parent.id}" %>-reply").fadeIn();
+        $pseudo_reply_link_wrapper.hide();
+      });
     <% end %>
 
     $submit_button.attr('disabled', true);

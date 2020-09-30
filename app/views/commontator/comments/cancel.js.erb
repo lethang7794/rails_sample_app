@@ -7,7 +7,7 @@
 
   $("#<%= id %>").hide();
 
-  $("#<%= id %>-link").fadeIn();
+  // $("#<%= id %>-link").fadeIn();
 <% else %>
   $("#commontator-comment-<%= @comment.id %>-body").html("<%= escape_javascript(
     render partial: 'body', locals: { comment: @comment }
