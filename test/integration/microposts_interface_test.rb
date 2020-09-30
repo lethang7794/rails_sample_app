@@ -39,7 +39,7 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
 
 
     # delete a post
-    assert_select 'span.delete>a', text: 'delete'
+    # assert_select 'span.delete>a', text: 'delete'
     assert_difference 'Micropost.count', -1 do
       delete micropost_path(@harry_micropost)
     end

@@ -9,22 +9,25 @@
 
 			  			<%= render partial: 'shared/avatar', locals: { user: @micropost.user } %>
 
-			  			<div class="my-flex-container flex-column micropost-header">
-			  				<div class="my-flex-container flex-column">
-			  					<span class="user">
-			  						<%= link_to @micropost.user.name, @micropost.user %>
-			  					</span>
-			  					<span class="username">
-			  						<%= link_to "@#{@micropost.user.username}", @micropost.user %>
-			  					</span>
-			  					<% if current_user?(@micropost.user) %>
-			  						<span class="delete">
-			  							·
-			  							<%= link_to 'delete', @micropost, method: :delete, data: { confirm: 'Are you sure?'} %>
-			  						</span>
-			  					<% end %>
-			  				</div>
+			  			<div class="flex-grow-1 my-flex-container flex-column micropost-header">
+								<div class="flex flex-row justify-content-space-between">
+									<div class="my-flex-container flex-column">
+				  					<span class="user">
+				  						<%= link_to @micropost.user.name, @micropost.user %>
+				  					</span>
+				  					<span class="username">
+				  						<%= link_to "@#{@micropost.user.username}", @micropost.user %>
+				  					</span>
+				  				</div>
 
+									<% if current_user?(@micropost.user) %>
+										<div class="flex flex-center-y">
+											<span class="delete">
+												<%= link_to 'delete', @micropost, method: :delete, data: { confirm: 'Are you sure?'} %>
+											</span>
+										</div>
+									<% end %>
+								</div>
 			  			</div>
 			  		</div>
 			      <div class="my-flex-container flex-column micropost-main">
