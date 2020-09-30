@@ -59,7 +59,7 @@
   </div>
 
   <div class="submit">
-    <%= form.submit t("commontator.comment.actions.#{new_record ? 'create' : 'update'}"), class: "btn my-button" %>
+    <%= form.submit t("commontator.comment.actions.#{new_record ? 'create' : 'update'}"), class: "btn my-button disabled-appearance" %>
     <%=
       form.submit(
         t('commontator.comment.actions.cancel'), name: 'cancel',
@@ -68,3 +68,29 @@
     %>
   </div>
 <% end %>
+
+<script type="text/javascript">
+  $(document).ready(function(){
+    <% if comment.parent.nil? %>
+      var $submit_button = $('#commontator-thread-<%= "#{@commontator_thread.id}" %>-new-comment form input[type="submit"][name="commit"]');
+      var $form_content = $('#commontator-thread-<%= "#{@commontator_thread.id}" %>-new-comment form textarea');
+    <% else %>
+      var $submit_button = $('#commontator-comment-<%= "#{comment.parent.id}" %>-reply form input[type="submit"][name="commit"]');
+      var $form_content = $('#commontator-comment-<%= "#{comment.parent.id}" %>-reply form textarea');
+    <% end %>
+
+    $submit_button.attr('disabled', true);
+    $submit_button.addClass("disabled-function");
+
+    $form_content.keyup(function(){
+      if($(this).val().length !=0) {
+        $submit_button.removeClass("disabled-appearance disabled-function");
+        $submit_button.attr('disabled', false);
+      }
+      else {
+        $submit_button.addClass("disabled-appearance disabled-function");
+        $submit_button.attr('disabled', true);
+      }
+    })
+  });
+</script>

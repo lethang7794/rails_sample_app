@@ -2483,3 +2483,21 @@ aside {
     }
   }
 }
+
+.new-comment,
+.reply {
+  form {
+    input[type="submit"][name="commit"] {
+
+      &.disabled-appearance {
+        background-color: white;
+        color: rgba(29, 161, 242, 1);
+      }
+
+      &.disabled-function {
+        cursor: not-allowed;
+        pointer-events: none;
+      }
+    }
+  }
+}
