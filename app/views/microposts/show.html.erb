@@ -46,6 +46,23 @@
 							<%= @micropost.created_at.strftime("%l:%M %p · %b %e, %Y") %>
 						</span>
 					</div>
+					<div class="micropost-stats flex flex-row justify-content-space-between border-top">
+						<% if logged_in? %>
+							<div id="micropost-<%= @micropost.id %>-vote-container" class="stat-container vote-container">
+								<% if @current_user.voted_for? @micropost %>
+									<%= render partial: 'shared/micropost/info_bar/unvote_form', locals: { micropost: @micropost } %>
+								<% else %>
+									<%= render partial: 'shared/micropost/info_bar/upvote_form', locals: { micropost: @micropost } %>
+								<% end %>
+							</div>
+						<% else %>
+							<!-- Button trigger modal -->
+							<div class="pseudo-vote-container flex-center" data-toggle="modal" data-target="#login-modal-upvote-micropost">
+								<%= render partial: 'shared/micropost/info_bar/pseudo_upvote_form', locals: { micropost: @micropost } %>
+							</div>
+
+						<% end %>
+					</div>
 				</div>
 			</article>
 			<div class="border border-top-0">
@@ -57,4 +74,25 @@
 <% if @micropost.image.attached? %>
 	<%= render partial: 'shared/modals/image_micropost'				, locals: { micropost: @micropost } %>
 <% end %>
+
+<% if !logged_in? %>
+	<!-- MODAL - Begin -->
+	<div class="modal fade login-modal upvote-login-modal" id="login-modal-upvote-micropost" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header center ">
+					<%= render 'shared/svg/heart_fill_login_modal' %>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="myModalLabel">
+						Login to like micropost of <strong><%= @micropost.user.name %></strong>.
+					</h4>
+				</div>
+				<div class="modal-body">
+					<%= render partial: 'shared/login_form_modal', locals: { forward_to: micropost_path(@micropost) } %>
+				</div>
+			</div>
+		</div>
+	</div><!-- MODAL - End -->
+<% end %>
+
 <!-- PAGE CONTENT - END -->
