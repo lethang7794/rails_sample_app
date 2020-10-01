@@ -41,7 +41,7 @@
 
   .comment-list {
     // background-color: #000;
-    margin: 0px 15px 24px 15px;
+    padding: 0px 15px 0px 15px;
   }
 
   .children {
@@ -51,7 +51,7 @@
   /* Modified from: https://www.strangerstudios.com/sandbox/pagination/diggstyle.php */
   // .will-paginate,
   .page-entries-info, {
-  	margin: 10px 0;
+  	// margin: 10px 0;
   }
 
   .pagination {
@@ -126,7 +126,7 @@
   // .will-paginate,
   //.new-comment,
   .page-entries-info {
-    margin-left: 75px;
+    // margin-left: 75px;
   }
 }
 

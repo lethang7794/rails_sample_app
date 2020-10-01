@@ -74,13 +74,17 @@
     <%= render partial: 'commontator/threads/reply', locals: { thread: thread, user: user } %>
   <% end %>
 
-  <div id="commontator-thread-<%= thread.id %>-comment-list" class="comment-list">
-    <%=
-      render partial: 'commontator/comments/list', locals: {
-        user: user, nested_comments: nested_comments
-      }
-    %>
-  </div>
+  <% if nested_comments.any? %>
+    <div id="commontator-thread-<%= thread.id %>-comment-list" class="comment-list" style="padding-bottom: 24px; border-top: 1px solid #e8e8e8;">
+  <% else %>
+    <div id="commontator-thread-<%= thread.id %>-comment-list" class="comment-list">
+  <% end %>
+      <%=
+        render partial: 'commontator/comments/list', locals: {
+          user: user, nested_comments: nested_comments
+        }
+      %>
+    </div>
 
   <div id="commontator-thread-<%= thread.id %>-pagination" class="pagination">
     <div id="commontator-thread-<%= thread.id %>-page-entries-info" class="page-entries-info">
