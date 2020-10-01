@@ -1716,6 +1716,70 @@ aside {
   }
 }
 
+/* SVG BUTTON - BEGIN */
+.button-container-wrapper {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: rgba(29, 161, 242, 1);
+
+  .button-container {
+    border-radius: 9999px; // Twitter's way to make circle
+    // Facebook's way to make circle
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+
+    height: 40px;
+    width: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    transform: scale(1);
+    background-color: rgba(29, 161, 242, 0.2);
+    transition: background-color 0.2s linear, transform 0.05s linear;
+
+    &:hover {
+      transform: scale(1.1);
+      background-color: rgba(29, 161, 242, 0.3);
+      transition: background-color 0.2s linear, transform 0.05s linear;
+    }
+
+    &:active,
+    &:focus,
+    &:active:focus {
+      transform: scale(1);
+      background-color: rgba(29, 161, 242, 0.2);
+      transition: background-color 0.2s linear, transform 0.05s linear;
+    }
+
+
+    .button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      height: 50%;
+      width: 50%;
+
+      color: rgba(29, 161, 242, 1);
+
+      svg {
+        height: 100%;
+        width: 100%;
+
+        fill: currentcolor;
+      }
+    }
+  }
+}
+/* SVG BUTTON - END */
+
 .flex-center {
   display: flex;
   justify-content: center;
