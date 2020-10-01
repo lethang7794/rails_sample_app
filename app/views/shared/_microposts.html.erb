@@ -14,9 +14,12 @@
           <div class="modal-header center ">
             <%= render 'shared/svg/heart_fill_login_modal' %>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">
-              Login to like micropost of <strong><%= @user.name %></strong>.
-            </h4>
+            <h3 class="modal-title" id="myModalLabel">
+              Like a Micropost to share the love.
+            </h3>
+            <p>
+              Join Sample App now to let Gymlish know you like their Microposts.
+            </p>
           </div>
           <div class="modal-body">
             <%= render partial: 'shared/login_form_modal', locals: { forward_to: user_path(@user) } %>
