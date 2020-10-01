@@ -1633,6 +1633,19 @@ aside {
       font-size: 7em;
     }
   }
+
+  .modal-body {
+    .login-signup-anchor {
+      width: 80%;
+      text-decoration: none;
+      padding: 0px;
+
+      button {
+        width: 100%;
+        margin: 5px;
+      }
+    }
+  }
 }
 
 .pseudo-tab {
