@@ -1625,10 +1625,23 @@ aside {
     .modal-content {
       width: 90vw;
       max-width: 500px;
+
+      border-radius: 15px;
     }
   }
 
   .modal-header {
+    border-bottom: none;
+
+    button {
+      opacity: 1;
+      outline: none;
+
+      span {
+        color: rgba(26, 145, 218, 0.9);
+      }
+    }
+
     svg {
       font-size: 7em;
     }
@@ -2417,7 +2430,7 @@ aside {
 .login-modal {
   .modal-header {
     svg {
-      color: #286090;
+      color: rgba(26, 145, 218, 0.9);
     }
   }
 }
