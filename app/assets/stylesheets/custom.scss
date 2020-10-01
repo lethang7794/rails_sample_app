@@ -1879,14 +1879,12 @@ aside {
     transition: background-color 0.2s linear, border 0.2s linear, box-shadow 0.2s linear;
   }
 
-  &:active {
+  &:active,
+  &:focus,
+  &:active:focus {
     color:            var(--followButton-textColor);
     background-color: var(--followButton-active-bgColor);
     border:           var(--followButton-active-border);
-  }
-
-  &:focus {
-    color:            var(--followButton-textColor);
   }
 
   span {
@@ -1927,13 +1925,11 @@ aside {
     transition: background-color 0.2s linear, border 0.2s linear, box-shadow 0.2s linear;
   }
 
-  &:active {
+  &:active,
+  &:focus,
+  &:active:focus {
     background-color: var(--unfollowButton-active-bgColor);
     border:           var(--unfollowButton-active-border);
-  }
-
-  &:focus {
-    color:            var(--unfollowButton-textColor);
   }
 }
 /* Follow/Unfollow button - END */
