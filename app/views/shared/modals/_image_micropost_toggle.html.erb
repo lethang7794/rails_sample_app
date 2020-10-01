@@ -4,15 +4,9 @@
       <div class="image-placeholder rounded overflow-hidden position-relative">
         <div class="loading-shimmer position-absolute"></div>
         <div class="micropost-image-cover position-absolute" style="background-image: url('<%= micropost.image_url %>');">
-          <div class="button-position flex flex-row flex-grow-1 justify-content-flex-end">
-            <div class="flex-center empty">
-              <div class="button-wrapper flex-center right-top-corner">
-                <div class="button flex-center" aria-hidden="true">
-                  <%= render 'shared/svg/fullscreen' %>
-                </div>
-              </div>
-            </div>
-          </div>
+          <button type="button">
+            <%= render partial: 'shared/svg/button', locals: { svg: "fullscreen" } %>
+          </button>
         </div>
       </div>
     </div>
