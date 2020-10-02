@@ -144,6 +144,13 @@
   <script type="text/javascript">
     $( document ).ready(function() {
       $('.pseudo-upvote-comment-button').on('click', function (e) {
+        var $button = $(this);
+        var user_name = $button.find(".comment-username").html();
+
+        <%# Change user name in modal %>
+        $( '#login-modal-upvote-comment .username' ).html(user_name);
+
+        <%# Show modal %>
         $( '#login-modal-upvote-comment' ).modal('show');
       });
     });
