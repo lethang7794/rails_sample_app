@@ -39,9 +39,32 @@
   <%= render 'shared/non_existed_user' %>
 <% end %>
 
-<%# Replace tab content with loading spinner before make Ajax request %>
-<script type="text/javascript">
-  $('.tab-link').bind('ajax:beforeSend', function(){
-    $("#tab-content").html("<%= escape_javascript(render partial: 'shared/svg/loading_top') %>");
-  });
-</script>
+<% if logged_in? %>
+  <%# Replace tab content with loading spinner before make Ajax request %>
+  <script type="text/javascript">
+    $('.tab-link').bind('ajax:beforeSend', function(){
+      $("#tab-content").html("<%= escape_javascript(render partial: 'shared/svg/loading_top') %>");
+    });
+  </script>
+<% else %>
+  <script type="text/javascript">
+    $( document ).ready(function() {
+      $('.login-modal').on('shown.bs.modal', function (e) {
+        var $modal = $(e.target);
+        var $modal_content = $modal.find(".modal-content");
+        var container = $modal_content;
+
+        var $modal_media_height_check = $modal.find(".media-height-check");
+        $( window ).resize(function() {
+          $modal_media_height_check = $modal.find(".media-height-check");
+        });
+
+        $(document).mouseup(function (e) {
+          if ($modal_media_height_check.css("height") == "0px" && !container.is(e.target) && container.has(e.target).length === 0) {
+            $modal.modal('hide');
+          }
+        });
+      });
+    });
+  </script>
+<% end %>
