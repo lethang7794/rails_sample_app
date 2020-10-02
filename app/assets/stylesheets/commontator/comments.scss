@@ -81,6 +81,9 @@
 
     text-align: center;
 
+    display: flex;
+    align-items: center;
+
     input, img {
       background-color: transparent;
       margin-bottom: 0px;
@@ -88,11 +91,9 @@
   }
 
   .upvote, .downvote {
-    display: block;
-
-    height: 18px;
-
-    margin: 5px 0;
+    // display: block;
+    // height: 18px;
+    // margin: 5px 0;
   }
 
   .like {
@@ -313,4 +314,9 @@
   .button {
     color: rgba(29, 161, 242, 1.00);
   }
+}
+
+.commontator .comment .votes .like form button {
+  border: none;
+  outline: none;
 }
