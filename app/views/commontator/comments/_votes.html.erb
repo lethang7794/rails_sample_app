@@ -47,7 +47,7 @@
         </button>
       <% end %>
     <% else %>
-      <button>
+      <button class="pseudo-upvote-comment-button">
         <div class="upvote stat flex flex-row flex-center-y">
           <div class="button">
             <div class="button-wrapper flex-center">
@@ -56,6 +56,9 @@
               </div>
             </div>
           </div>
+        </div>
+        <div class="comment-username" style="display: none">
+          <%= comment.creator.name %>
         </div>
       </button>
     <% end %>

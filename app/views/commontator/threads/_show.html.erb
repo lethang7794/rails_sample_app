@@ -116,3 +116,36 @@
 <script type="text/javascript">
   <%= render partial: 'commontator/threads/hide_show_links.js', locals: { thread: thread } %>
 </script>
+
+<% if !logged_in? && nested_comments.any? %>
+  <!-- COMMENT VOTE LOGIN MODAL - Begin -->
+	<div class="modal fade login-modal upvote-login-modal" id="login-modal-upvote-comment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header center ">
+					<%= render 'shared/svg/heart_fill_login_modal' %>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <%= render partial: 'shared/svg/button', locals: { svg: "close" } %>
+          </button>
+					<h3 class="modal-title" id="myModalLabel">
+						Like a Comment to share the love.
+					</h3>
+					<p>
+						Join Sample App now to let <span class="username">people</span> know you like their comments.
+					</p>
+				</div>
+				<div class="modal-body">
+					<%= render partial: 'shared/login_form_modal', locals: { forward_to: micropost_path(@micropost) } %>
+				</div>
+			</div>
+		</div>
+	</div><!-- COMMENT VOTE LOGIN MODAL - End -->
+
+  <script type="text/javascript">
+    $( document ).ready(function() {
+      $('.pseudo-upvote-comment-button').on('click', function (e) {
+        $( '#login-modal-upvote-comment' ).modal('show');
+      });
+    });
+  </script>
+<% end %>
