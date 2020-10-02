@@ -65,10 +65,17 @@
   </span>
   <% end %>
 
-  <span id="commontator-comment-<%= comment.id %>-vote-count" class="vote-count">
-    <% config = thread.config %>
-    <%= config.vote_count_proc.call(thread, comment.cached_votes_up, comment.cached_votes_down) %>
-  </span>
+<%
+  config = thread.config
+  vote_count = config.vote_count_proc.call(thread, comment.cached_votes_up, comment.cached_votes_down)
+%>
+  <% if vote_count != '0' %>
+    <span id="commontator-comment-<%= comment.id %>-vote-count" class="vote-count">
+  <% else %>
+    <span id="commontator-comment-<%= comment.id %>-vote-count" class="vote-count" style="visibility: hidden">
+  <% end %>
+      <%= vote_count %>
+    </span>
 
   <% if comment_voting == :ld %>
   <span id="commontator-comment-<%= comment.id %>-downvote" class="downvote">

@@ -8,7 +8,15 @@
       </div>
     </div>
     <div class="value">
-      <%= micropost.get_upvotes.size %>
+      <div id="micropost-<%= micropost.id %>-vote-value-wrapper" class="flex-inline vote-value-wrapper">
+      <% if micropost.get_upvotes.size > 0 %>
+        <span id="micropost-<%= micropost.id %>-vote-value" class="stats vote-value tran-03s">
+      <% else %>
+        <span id="micropost-<%= micropost.id %>-vote-value" class="stats vote-value tran-03s" style="visibility: hidden">
+      <% end %>
+          <%= micropost.get_upvotes.size %>
+        </span>
+      </div>
     </div>
   </div>
 </button>
