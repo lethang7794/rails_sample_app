@@ -22,7 +22,7 @@
             </div>
           </div>
         </section>
-        <div class="flex flex-column flex-center text-center nothing-info">
+        <div class="flex flex-column flex-center text-center nothing-info border-0">
           <div class="heading">
             This account doesn't exist.
           </div>
@@ -30,7 +30,7 @@
             Try searching for another.
           </div>
           <div>
-            <%= link_to 'Find people to follow', users_path, class: "btn my-button" %>
+            <%= render partial: 'shared/links/users' %>
           </div>
         </div>
       </div>

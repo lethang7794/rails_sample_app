@@ -1,11 +1,7 @@
-<div class="user-container border-bottom">
+<div id="user-<%= user.id %>-container" class="user-container border">
   <div class="flex flex-row">
-    <div class="user-avatar rounded-circle overflow-hidden dimmer-wrapper loading-shimmer">
-      <%= link_to user do %>
-        <%= gravatar_for(user, size:50) %>
-        <div class="dimmer"></div>
-      <% end %>
-    </div>
+
+    <%= render partial: 'shared/avatar', locals: { user: user } %>
 
     <div class="main-content flex-grow-1 flex flex-row">
       <div class="content-wrapper flex-grow-1 flex flex-column">
@@ -38,3 +34,9 @@
     </div>
   </div>
 </div>
+
+<script type="text/javascript">
+	$("#user-<%= user.id %>-container").click(function() {
+		window.location.href = "<%= url_for user %>";
+	});
+</script>

@@ -7,11 +7,19 @@
 <nav class="navbar navbar-inverse navbar-static-top">
 
   <!-- Brand and toggle get grouped for better mobile display -->
-  <div class="navbar-brand">
+  <div class="navbar-brand navbar-item">
     <% if logged_in? %>
-      <%= link_to 'Sample App', home_path , id: 'logo' %>
+      <%= link_to home_path , id: 'logo' do %>
+        <span style="vertical-align: text-bottom;">
+          Sample App
+        </span>
+      <% end %>
     <% else %>
-      <%= link_to 'Sample App', root_path , id: 'logo' %>
+      <%= link_to root_path , id: 'logo' do %>
+        <span style="vertical-align: text-bottom;">
+          Sample App
+        </span>
+      <% end %>
     <% end %>
   </div>
 
@@ -25,35 +33,49 @@
   <!-- Collect the nav links, forms, and other content for toggling -->
   <div class="collapse navbar-collapse my-navbar-collapse" id="bs-navbar-collapse-1">
     <ul class="nav navbar-nav navbar-right">
+      <li>
+        <%= active_link_to root_path, active: [static_pages: :home] do %>
+          <div class="flex flex-center-y h-100 justify-content-space-between">
+            <span class="my-label">Home</span>
+            <span class="my-arrow home hide-for-large-device">
+              <%= render 'shared/svg/arrow' %>
+            </span>
+          </div>
+        <% end %>
+      </li>
       <% if logged_in? %>
         <li>
           <%= active_link_to users_path, active: [users: :index] do %>
-            <span class="my-label">Explore</span>
-            <span class="my-arrow">
-              <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 16">
-                <path d="M12.58,0a1.19,1.19,0,0,0-1,.89,1.53,1.53,0,0,0,.29,1.42l3.71,4.53H1c-.63,0-1,.48-1,1.22a1.09,1.09,0,0,0,1.2,1.1H15.61l-3.73,4.52a1.52,1.52,0,0,0,0,1.91,1,1,0,0,0,1.63,0L19.18,9,20,8l-.82-.94L13.51.41A1,1,0,0,0,12.58,0Z"></path>
-              </svg>
-            </span>
+            <div class="flex flex-center-y h-100 justify-content-space-between">
+              <span class="my-label">Explore</span>
+              <span class="my-arrow">
+                <%= render 'shared/svg/arrow' %>
+              </span>
+            </div>
           <% end %>
         </li>
-        <li class="dropdown">
+        <li class="dropdown flex flex-column">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-            <span class="my-label">Account</span>
-            <span class="my-caret">
-              <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24">
-                <title>dropdown-caret</title>
-                <path d="M20,7a1,1,0,0,0-.7.31L12,14.59,4.72,7.31A1,1,0,0,0,4,7a1,1,0,0,0-.7,1.71l8,8a1,1,0,0,0,1.41,0l8-8a1,1,0,0,0,.23-1.1A1,1,0,0,0,20,7Z"></path>
-              </svg>
-            </span>
+            <div class="flex flex-center-y h-100 justify-content-space-between">
+              <div class="flex flex-center-y">
+                <span class="my-label"><%= @current_user.name %></span>
+                <div class="rounded-circle overflow-hidden" style="margin-left: 7.5px;">
+                  <%= gravatar_for(@current_user, size: 30) %>
+                </div>
+              </div>
+              <span class="my-caret" style="margin-left: 5px;">
+                <%= render 'shared/svg/caret' %>
+              </span>
+            </div>
           </a>
           <ul class="dropdown-menu">
             <li>
-              <%= link_to current_user do %>
+              <%= link_to @current_user do %>
                 <span class="my-label">Profile</span>
               <% end %>
             </li>
             <li>
-              <%= link_to edit_user_path(current_user) do %>
+              <%= link_to edit_user_path(@current_user) do %>
                 <span class="my-label">Settings</span>
               <% end %>
             </li>
@@ -66,24 +88,22 @@
           </ul>
         </li>
       <% else %>
-        <li>
-          <%= active_link_to login_path, active: [sessions: :new] do %>
-            <span class="my-label">Log in</span>
-            <span class="my-arrow hide-for-large-device">
-              <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 16">
-                <path d="M12.58,0a1.19,1.19,0,0,0-1,.89,1.53,1.53,0,0,0,.29,1.42l3.71,4.53H1c-.63,0-1,.48-1,1.22a1.09,1.09,0,0,0,1.2,1.1H15.61l-3.73,4.52a1.52,1.52,0,0,0,0,1.91,1,1,0,0,0,1.63,0L19.18,9,20,8l-.82-.94L13.51.41A1,1,0,0,0,12.58,0Z"></path>
-              </svg>
-            </span>
+        <li class="login-signup-wrapper">
+          <%= active_link_to login_path_with_dest, active: [sessions: :new], class: "hide-if-active" do %>
+            <button class="btn btn-primary follow-button login-button flex flex-center-y h-100 justify-content-space-between" style="
+            ">
+              <span class="my-label">Log in</span>
+            </button>
           <% end %>
-        </li>
-        <li>
-          <%= active_link_to signup_path, active: [users: :new] do %>
-            <span class="my-label">Sign up</span>
-            <span class="my-arrow">
-              <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 20 16">
-                <path d="M12.58,0a1.19,1.19,0,0,0-1,.89,1.53,1.53,0,0,0,.29,1.42l3.71,4.53H1c-.63,0-1,.48-1,1.22a1.09,1.09,0,0,0,1.2,1.1H15.61l-3.73,4.52a1.52,1.52,0,0,0,0,1.91,1,1,0,0,0,1.63,0L19.18,9,20,8l-.82-.94L13.51.41A1,1,0,0,0,12.58,0Z"></path>
-              </svg>
-            </span>
+          <%= active_link_to signup_path_with_dest, active: [users: :new], class: "hide-if-active" do %>
+            <button class="btn btn-primary my-button signup-button flex flex-center-y h-100 justify-content-space-between">
+              <span class="my-label">Sign up</span>
+              <% unless current_page?(signup_path) %>
+                <span class="my-arrow">
+                  <%= render 'shared/svg/arrow' %>
+                </span>
+              <% end %>
+            </button>
           <% end %>
         </li>
       <% end %>

@@ -122,7 +122,11 @@
         </div>
       </div>
 
+    <% if logged_in? %>
       <div id="commontator-comment-<%= comment.id %>-section-bottom" class="section bottom" style="display: flex;">
+    <% else %>
+      <div id="commontator-comment-<%= comment.id %>-section-bottom" class="section bottom" style="display: none;">
+    <% end %>
         <% unless comment.is_deleted? %>
           <span id="commontator-comment-<%= comment.id %>-reply-link" class="reply reply-link">
             <% if thread.config.comment_reply_style != :n && !thread.is_closed? %>
@@ -155,6 +159,8 @@
 
 
   <div id="commontator-comment-<%= comment.id %>-children" class="children flex-grow-1">
+    <div id="commontator-comment-<%= comment.id %>-pseudo-reply-link-wrapper"></div>
+
     <% if thread.config.comment_order == :l %>
       <div id="commontator-comment-<%= comment.id %>-reply" class="reply"></div>
     <% end %>

@@ -1,11 +1,15 @@
-<%= form_with(url: '/login', scope: 'session', local: true) do |f| %>
-  <%= hidden_field_tag 'session[forwarding_url]', "#{forward_to}" %>
+<div class="flex flex-center flex-wrap">
+  <%= link_to login_path_with_dest, class: "login-signup-anchor" do %>
+    <button class="btn btn-primary follow-button login flex flex-center" style="
+    ">
+      <span class="my-label">Log in</span>
+    </button>
+  <% end %>
+  <%= link_to signup_path_with_dest, class: "login-signup-anchor" do %>
+    <button class="btn btn-primary my-button signup flex flex-center">
+      <span class="my-label">Sign up</span>
+    </button>
+  <% end %>
+</div>
 
-  <%= f.label :email %>
-  <%= f.email_field :email, class: "form-control" %>
-
-  <%= f.label :password %>
-  <%= f.password_field :password, class: "form-control" %>
-
-  <%= f.submit "Log in", class: "btn btn-primary"%>
-<% end %>
+<div class="media-height-check"></div> <%# Used for jQuery to check if @media query is fired %>

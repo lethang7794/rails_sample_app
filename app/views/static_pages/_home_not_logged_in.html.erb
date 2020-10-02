@@ -50,28 +50,47 @@
       <p>Just kidding. This is an awesome app. Just click the button below.</p>
 
       <div class="center">
-        <%= form_with(url: '/login', model: @demo_user, scope: 'session', local: true, method: :post) do |f| %>
+        <%= form_with(url: '/login', model: @demo_user, scope: 'session', local: true, method: :post, id: "demo-user-login-form") do |f| %>
           <%= f.hidden_field :email %>
           <%= hidden_field_tag 'session[forwarding_url]', "/home" %>
           <%= hidden_field_tag 'session[password]', 'password' %>
           <%= hidden_field_tag 'session[remember_me]', '1' %>
-          <%= f.button class: "btn btn-rainbow" do %>
-            <div class="flex flex-row flex-center">
-              <div class="wrapper flex flex-row">
-                <span class="text">Try this app</span>
-                <span class="flex-center">
-                  <span class="margin-tran">
-                    <span class="my-arrow flex-center">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 16">
-                        <path d="M12.58,0a1.19,1.19,0,0,0-1,.89,1.53,1.53,0,0,0,.29,1.42l3.71,4.53H1c-.63,0-1,.48-1,1.22a1.09,1.09,0,0,0,1.2,1.1H15.61l-3.73,4.52a1.52,1.52,0,0,0,0,1.91,1,1,0,0,0,1.63,0L19.18,9,20,8l-.82-.94L13.51.41A1,1,0,0,0,12.58,0Z"></path>
-                      </svg>
-                    </span>
+        <% end %>
+
+        <button id="demo-user-login-button" class="btn btn-rainbow">
+          <div class="flex flex-row flex-center">
+            <div class="wrapper flex flex-row">
+              <span class="text" style="min-width: 110px;">Try this app</span>
+              <span class="flex-center">
+                <span class="margin-tran">
+                  <span class="my-arrow flex-center">
+                    <%= render 'shared/svg/arrow' %>
                   </span>
                 </span>
-              </div>
+              </span>
             </div>
-          <% end %>
-        <% end %>
+          </div>
+        </button>
+
+        <div id="logging-in-text-wrapper" style="height: 0px;"></div>
+
+        <script type="text/javascript">
+          var $button = $("#demo-user-login-button .text");
+          var $button_text = $button.html();
+          console.log($button_text);
+
+          $("#demo-user-login-button").click(function() {
+            setTimeout(function () {
+              $("#logging-in-text-wrapper").append("<%= escape_javascript(render partial: 'logging_in') %>");
+            }, 500);
+            setTimeout(function () {
+              $("#logging-in-text").removeClass("opacity-0 translateX--30px");
+            }, 550);
+            setTimeout(function () {
+              $("#demo-user-login-form").submit();
+            }, 1500);
+          });
+        </script>
       </div>
     </div>
   </div>

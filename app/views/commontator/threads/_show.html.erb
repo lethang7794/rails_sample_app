@@ -65,7 +65,7 @@
     </span>
 
     <span id="commontator-thread-<%= thread.id %>-status" class="status">
-      <%= t "commontator.thread.status.#{thread.is_closed? ? 'closed' : 'open'}",
+      <%# t "commontator.thread.status.#{thread.is_closed? ? 'closed' : 'open'}",
             closer_name: (thread.is_closed? ? Commontator.commontator_name(thread.closer) : '') %>
     </span>
   </div>
@@ -74,13 +74,17 @@
     <%= render partial: 'commontator/threads/reply', locals: { thread: thread, user: user } %>
   <% end %>
 
-  <div id="commontator-thread-<%= thread.id %>-comment-list" class="comment-list">
-    <%=
-      render partial: 'commontator/comments/list', locals: {
-        user: user, nested_comments: nested_comments
-      }
-    %>
-  </div>
+  <% if nested_comments.any? %>
+    <div id="commontator-thread-<%= thread.id %>-comment-list" class="comment-list" style="padding-bottom: 24px; border-top: 1px solid #e8e8e8;">
+  <% else %>
+    <div id="commontator-thread-<%= thread.id %>-comment-list" class="comment-list">
+  <% end %>
+      <%=
+        render partial: 'commontator/comments/list', locals: {
+          user: user, nested_comments: nested_comments
+        }
+      %>
+    </div>
 
   <div id="commontator-thread-<%= thread.id %>-pagination" class="pagination">
     <div id="commontator-thread-<%= thread.id %>-page-entries-info" class="page-entries-info">
@@ -112,3 +116,43 @@
 <script type="text/javascript">
   <%= render partial: 'commontator/threads/hide_show_links.js', locals: { thread: thread } %>
 </script>
+
+<% if !logged_in? && nested_comments.any? %>
+  <!-- COMMENT VOTE LOGIN MODAL - Begin -->
+	<div class="modal fade login-modal upvote-login-modal" id="login-modal-upvote-comment" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header center ">
+					<%= render 'shared/svg/heart_fill_login_modal' %>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <%= render partial: 'shared/svg/button', locals: { svg: "close" } %>
+          </button>
+					<h3 class="modal-title" id="myModalLabel">
+						Like a Comment to share the love.
+					</h3>
+					<p>
+						Join Sample App now to let <span class="username">people</span> know you like their comments.
+					</p>
+				</div>
+				<div class="modal-body">
+					<%= render partial: 'shared/login_form_modal', locals: { forward_to: micropost_path(@micropost) } %>
+				</div>
+			</div>
+		</div>
+	</div><!-- COMMENT VOTE LOGIN MODAL - End -->
+
+  <script type="text/javascript">
+    $( document ).ready(function() {
+      $('.pseudo-upvote-comment-button').on('click', function (e) {
+        var $button = $(this);
+        var user_name = $button.find(".comment-username").html();
+
+        <%# Change user name in modal %>
+        $( '#login-modal-upvote-comment .username' ).html(user_name);
+
+        <%# Show modal %>
+        $( '#login-modal-upvote-comment' ).modal('show');
+      });
+    });
+  </script>
+<% end %>

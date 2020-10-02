@@ -1,3 +1,5 @@
+<%= provide :page_title, "#{@micropost.user.name} on Sample App: \"#{@micropost.content}\"" %>
+
 <!-- PAGE CONTENT - BEGIN -->
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
@@ -5,29 +7,29 @@
 			<article class="micropost-<%= @micropost.id %> micropost-container-wrapper border-bottom">
 				<div class="micropost-container border-right border-left">
 			    <div class="flex flex-column micropost-flex-container">
-			      <div class="my-flex-container flex-row ">
-			  			<div class="micropost-avatar rounded-circle overflow-hidden dimmer-wrapper loading-shimmer">
-			  				<%= link_to @micropost.user do %>
-			  					<%= gravatar_for(@micropost.user, size:50) %>
-			  					<div class="dimmer"></div>
-			  				<% end %>
-			  			</div>
-			  			<div class="my-flex-container flex-column micropost-header">
-			  				<div class="my-flex-container flex-column">
-			  					<span class="user">
-			  						<%= link_to @micropost.user.name, @micropost.user %>
-			  					</span>
-			  					<span class="username">
-			  						<%= link_to "@#{@micropost.user.username}", @micropost.user %>
-			  					</span>
-			  					<% if current_user?(@micropost.user) %>
-			  						<span class="delete">
-			  							·
-			  							<%= link_to 'delete', @micropost, method: :delete, data: { confirm: 'Are you sure?'} %>
-			  						</span>
-			  					<% end %>
-			  				</div>
+			      <div class="my-flex-container flex-row flex-center-y">
 
+			  			<%= render partial: 'shared/avatar', locals: { user: @micropost.user } %>
+
+			  			<div class="flex-grow-1 my-flex-container flex-column micropost-header">
+								<div class="flex flex-row justify-content-space-between">
+									<div class="my-flex-container flex-column">
+				  					<span class="user">
+				  						<%= link_to @micropost.user.name, @micropost.user %>
+				  					</span>
+				  					<span class="username">
+				  						<%= link_to "@#{@micropost.user.username}", @micropost.user %>
+				  					</span>
+				  				</div>
+
+									<% if current_user?(@micropost.user) %>
+										<div class="flex flex-center-y">
+											<span class="delete">
+												<%= link_to 'delete', @micropost, method: :delete, data: { confirm: 'Are you sure?'} %>
+											</span>
+										</div>
+									<% end %>
+								</div>
 			  			</div>
 			  		</div>
 			      <div class="my-flex-container flex-column micropost-main">
@@ -37,34 +39,7 @@
 			          <% end %>
 			        </div>
 			        <% if @micropost.image.attached? %>
-			          <!-- MODAL WRAPPER - BEGIN -->
-			          <div class="modal-wrapper">
-			            <!-- MODAL TOGGLE - BEGIN -->
-			            <div class="modal-toggle" data-toggle="modal" data-target="#image-modal-micropost-<%= @micropost.id %>">
-			              <div class="micropost-image-wrapper cursor-pointer">
-			                <div class="image-placeholder rounded overflow-hidden position-relative">
-			                  <div class="loading-shimmer position-absolute"></div>
-			                  <div class="micropost-image-cover position-absolute" style="background-image: url('<%= @micropost.image_url %>');">
-			                    <div class="button-position flex flex-row flex-grow-1 justify-content-flex-end">
-			                      <div class="flex-center empty">
-			                        <div class="button-wrapper flex-center right-top-corner">
-			                          <div class="button flex-center" aria-hidden="true">
-			                            <%= render 'shared/svg/fullscreen' %>
-			                          </div>
-			                        </div>
-			                      </div>
-			                    </div>
-			                  </div>
-			                </div>
-			              </div>
-			            </div>
-			            <!-- MODAL TOGGLE - END -->
-
-			            <!-- MODAL - BEGIN -->
-			            <%= render partial: 'shared/modals/image_micropost', locals: { micropost: @micropost } %>
-			            <!-- MODAL - END -->
-			          </div>
-			          <!-- MODAL WRAPPER - END -->
+		          	<%= render partial: 'shared/modals/image_micropost_toggle', locals: { micropost: @micropost } %>
 			        <% end %>
 			      </div>
 			    </div>
@@ -72,6 +47,23 @@
 						<span class="timestamp">
 							<%= @micropost.created_at.strftime("%l:%M %p · %b %e, %Y") %>
 						</span>
+					</div>
+					<div class="micropost-stats flex flex-row justify-content-space-between border-top">
+						<% if logged_in? %>
+							<div id="micropost-<%= @micropost.id %>-vote-container" class="stat-container vote-container">
+								<% if @current_user.voted_for? @micropost %>
+									<%= render partial: 'shared/micropost/info_bar/unvote_form', locals: { micropost: @micropost } %>
+								<% else %>
+									<%= render partial: 'shared/micropost/info_bar/upvote_form', locals: { micropost: @micropost } %>
+								<% end %>
+							</div>
+						<% else %>
+							<!-- Button trigger modal -->
+							<div class="pseudo-vote-container flex-center" data-toggle="modal" data-target="#login-modal-upvote-micropost">
+								<%= render partial: 'shared/micropost/info_bar/pseudo_upvote_form', locals: { micropost: @micropost } %>
+							</div>
+
+						<% end %>
 					</div>
 				</div>
 			</article>
@@ -81,4 +73,54 @@
     </div>
   </div>
 </div>
+<% if @micropost.image.attached? %>
+	<%= render partial: 'shared/modals/image_micropost'				, locals: { micropost: @micropost } %>
+<% end %>
+
+<% if !logged_in? %>
+	<!-- MODAL - Begin -->
+	<div class="modal fade login-modal upvote-login-modal" id="login-modal-upvote-micropost" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header center ">
+					<%= render 'shared/svg/heart_fill_login_modal' %>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <%= render partial: 'shared/svg/button', locals: { svg: "close" } %>
+          </button>
+					<h3 class="modal-title" id="myModalLabel">
+						Like a Micropost to share the love.
+					</h3>
+					<p>
+						Join Sample App now to let <%= @micropost.user.name %> know you like their Microposts.
+					</p>
+				</div>
+				<div class="modal-body">
+					<%= render partial: 'shared/login_form_modal', locals: { forward_to: micropost_path(@micropost) } %>
+				</div>
+			</div>
+		</div>
+	</div><!-- MODAL - End -->
+
+	<script type="text/javascript">
+    $( document ).ready(function() {
+      $('.login-modal').on('shown.bs.modal', function (e) {
+        var $modal = $(e.target);
+        var $modal_content = $modal.find(".modal-content");
+        var container = $modal_content;
+
+        var $modal_media_height_check = $modal.find(".media-height-check");
+        $( window ).resize(function() {
+          $modal_media_height_check = $modal.find(".media-height-check");
+        });
+
+        $(document).mouseup(function (e) {
+          if ($modal_media_height_check.css("height") == "0px" && !container.is(e.target) && container.has(e.target).length === 0) {
+            $modal.modal('hide');
+          }
+        });
+      });
+    });
+  </script>
+<% end %>
+
 <!-- PAGE CONTENT - END -->

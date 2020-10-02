@@ -9,20 +9,22 @@
 %>
 
 <% if !thread.nil? && thread.can_be_read_by?(user) %>
-  <div id="commontator-thread-<%= thread.id %>" class="commontator thread">
-    <% if @commontator_thread_show %>
-      <%=
-        render partial: 'commontator/threads/show', locals: {
-          thread: thread, user: user, page: page, show_all: show_all
-        }
-      %>
-    <% else %>
-      <% subscription = thread.subscription_for(user) %>
-      <%= link_to "#{
-                    (subscription.unread_comments(show_all).count.to_s + '/') if subscription
-                  }#{thread.filtered_comments(show_all).count.to_s}",
-                  commontator.thread_path(thread),
-                  remote: true %>
-    <% end %>
-  </div>
+  <% comment_count = thread.filtered_comments(show_all).count %>
+  <% if comment_count > 0 || @commontator_thread_show %>
+    <div id="commontator-thread-<%= thread.id %>" class="commontator thread">
+  <% else %>
+    <div id="commontator-thread-<%= thread.id %>" class="commontator thread" style="display: none">
+  <% end %>
+      <% if @commontator_thread_show %>
+        <%=
+          render partial: 'commontator/threads/show', locals: {
+            thread: thread, user: user, page: page, show_all: show_all
+          }
+        %>
+      <% else %>
+        <% subscription = thread.subscription_for(user) %>
+        <%= "#{(subscription.unread_comments(show_all).count.to_s + '/') if subscription
+                    }#{thread.filtered_comments(show_all).count.to_s}"%>
+      <% end %>
+    </div>
 <% end %>

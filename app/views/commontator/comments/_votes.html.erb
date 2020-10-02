@@ -13,34 +13,69 @@
 
   <% if comment_voting == :ld || comment_voting == :l %>
   <% vtype = (comment_voting == :ld) ? 'upvote' : 'like' %>
-  <span id="commontator-comment-<%= comment.id %>-<%= vtype %>" class="<%= vtype %>">
+  <span id="commontator-comment-<%= comment.id %>-<%= vtype %>" class="<%= vtype %> comment-stats">
     <% if can_vote && (vote.blank? || !vote.vote_flag) %>
       <%= form_tag commontator.upvote_comment_path(comment),
             method: :put,
             remote: true do %>
-        <%= image_submit_tag "commontator/upvote.png",
-              onmouseover: "this.src='#{image_path("commontator/upvote_hover.png")}'",
-              onmouseout: "this.src='#{image_path("commontator/upvote.png")}'" %>
+        <button>
+          <div class="upvote stat flex flex-row flex-center-y">
+            <div class="button">
+              <div class="button-wrapper flex-center">
+                <div class="button flex-center">
+                  <%= render 'shared/svg/heart' %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </button>
       <% end %>
     <% elsif can_vote %>
       <%= form_tag commontator.unvote_comment_path(comment),
             method: :put,
             remote: true do %>
-        <%= image_submit_tag "commontator/upvote_active.png",
-              onmouseover: "this.src='#{image_path("commontator/upvote.png")}'",
-              onmouseout: "this.src='#{image_path("commontator/upvote_active.png")}'"
-        %>
+        <button>
+          <div class="unvote stat flex flex-row flex-center-y">
+            <div class="button">
+              <div class="button-wrapper flex-center">
+                <div class="button flex-center">
+                  <%= render 'shared/svg/heart_fill' %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </button>
       <% end %>
     <% else %>
-      <%= image_tag "commontator/upvote_disabled.png" %>
+      <button class="pseudo-upvote-comment-button">
+        <div class="upvote stat flex flex-row flex-center-y">
+          <div class="button">
+            <div class="button-wrapper flex-center">
+              <div class="button flex-center" aria-hidden="true">
+                <%= render 'shared/svg/heart' %>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="comment-username" style="display: none">
+          <%= comment.creator.name %>
+        </div>
+      </button>
     <% end %>
   </span>
   <% end %>
 
-  <span id="commontator-comment-<%= comment.id %>-vote-count" class="vote-count">
-    <% config = thread.config %>
-    <%= config.vote_count_proc.call(thread, comment.cached_votes_up, comment.cached_votes_down) %>
-  </span>
+<%
+  config = thread.config
+  vote_count = config.vote_count_proc.call(thread, comment.cached_votes_up, comment.cached_votes_down)
+%>
+  <% if vote_count != '0' %>
+    <span id="commontator-comment-<%= comment.id %>-vote-count" class="vote-count">
+  <% else %>
+    <span id="commontator-comment-<%= comment.id %>-vote-count" class="vote-count" style="visibility: hidden">
+  <% end %>
+      <%= vote_count %>
+    </span>
 
   <% if comment_voting == :ld %>
   <span id="commontator-comment-<%= comment.id %>-downvote" class="downvote">

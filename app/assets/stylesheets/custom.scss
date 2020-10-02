@@ -118,13 +118,32 @@ section {
   }
 }
 
-// Small devices (landscape phones, less than 768px)
-@media (max-width: 767.98px) {
+@media (max-width: 575.98px) { // Extra small devices (portrait phones, less than 576px)
   .pride-banner {
     font-size: 1.1em;
     p {
       line-height: normal;
     }
+  }
+
+  .login-signup-wrapper {
+    flex-wrap: wrap;
+  }
+
+  .login-button,
+  .signup-button {
+    width: calc(100% + 25px);
+    margin-left: -11px !important;
+    justify-content: center !important;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767.98px) {
+  .login-button,
+  .signup-button {
+    width: calc(100% + 25px);
+    margin-left: -11px !important;
+    justify-content: center !important;
   }
 }
 
@@ -189,6 +208,11 @@ $current-page-gradient: linear-gradient(270deg, rgba(2,0,36,1) 0%, rgba(0,212,25
 // $hover-box-gradient: linear-gradient(270deg, rgba(2,0,36,1) 0%, rgba(0,212,255,1) 0%, rgba(18,95,139,1) 100%);
 $hover-box-gradient: transparent;
 
+.nav > li {
+  display: flex;
+  min-height: 40px;
+}
+
 div.collapse {
   ul.nav > li {
     // Add current page indicator for navbar links
@@ -242,9 +266,10 @@ div.collapse {
 .navbar-inverse .navbar-nav > .open > a,
 .navbar-inverse .navbar-nav > li > a {
   color: rgba(255, 255, 255, 0.7);
+  background-color: #232f3e ;
 
   &:focus {
-    background: transparent;
+    background-color: #232f3e;
   }
 
   &:hover {
@@ -278,6 +303,34 @@ div.collapse {
   }
 }
 
+// Center the items in navbar - BEGIN
+@media (min-width: 768px) {
+  .navbar-inverse .navbar-nav {
+    height: 100%;
+
+    > li {
+      height: 100%;
+
+      > a {
+        height: 100%;
+      }
+    }
+  }
+}
+
+.h-100 {
+  height: 100%;
+}
+// Center the items in navbar - END
+
+// Navbar-items layout - BEGIN
+.navbar-item,
+.navbar-inverse .navbar-nav li a {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  width: 100%;
+}
+
 // Change Bootstrap's default divider color
 .navbar-inverse .navbar-nav .open .dropdown-menu .divider {
 	background-color: rgba(255, 255, 255, 0.3);
@@ -290,6 +343,8 @@ div.collapse {
 	float: right;
 	width: 1.5rem;
 	height: 1.5rem;
+
+  margin-left: 7.5px;
 
   svg {
     fill: white;
@@ -333,8 +388,25 @@ a.dropdown-toggle[aria-expanded="true"] {
 
 // Navbar link texts
 .my-label {
-  margin-right: 7.5px;
+  // margin-right: 7.5px;
   font-size: 1.7rem; // Increase navbar-links' font-size
+}
+
+a.active {
+  pointer-events: none;
+
+  .my-label {
+    font-weight: bold;
+    color: white;
+  }
+}
+
+@media (min-width: 768px) {
+  a.active {
+    .my-arrow {
+      display: none;
+    }
+  }
 }
 
 .dropdown-menu {
@@ -395,13 +467,17 @@ a.dropdown-toggle[aria-expanded="true"] {
   .navbar-brand {
     margin-left: auto!important;
     margin-right: auto!important;
+
+    padding: 5px 15px;
   }
 }
 
 
 // Override Bootstrap's navbar-brand's height
 .navbar-brand {
-  height: 55px;
+  height: unset;
+  width: unset;
+  line-height: unset;
 }
 
 // Move the site logo to center absolutely position
@@ -515,8 +591,8 @@ a.dropdown-toggle[aria-expanded="true"] {
 }
 
 .my-navbar-toggle {
-  // padding: 7.5px 7.5px;
-  margin: 2.9px 10px 2.9px 5px;
+  margin-top: 7px;
+  margin-bottom: 7px;
   border: 1px solid transparent;
   border-radius: 5px 5px 5px 5px;
 }
@@ -550,6 +626,8 @@ p {
 }
 
 .jumbotron {
+  padding-bottom: 48px;
+
   h1, h2 {
     margin-bottom: .3em;
     border-bottom: 1px solid black;
@@ -746,10 +824,11 @@ section {
   }
 }
 
-/* Following stat transition - BEGIN */
+/* Following + Vote stat transition - BEGIN */
 
 .followers-wrapper,
-.following-wrapper {
+.following-wrapper,
+.vote-value-wrapper {
   overflow: hidden;
   position: relative; // Wrapper needs to use relative position so inner absolute positon respect overlay hidden.
 }
@@ -759,6 +838,10 @@ section {
   font-weight: bold;
   color: rgb(20, 23, 26);
 
+  transition-property: all;
+}
+
+.stats.vote-value {
   transition-property: all;
 }
 
@@ -787,7 +870,7 @@ section {
     box-shadow: none;
 }
 
-/* Following stat transition - END */
+/* Following + Vote stat transition - END */
 
 // Begin - Rainbow
 .rainbow-outer {
@@ -1010,21 +1093,23 @@ ul.users { // Users index
 }
 /* Old Users Index - END */
 
+/* User avatar used with avatar partial - BEGIN */
+.user-avatar {
+  height: 50px;
+  width: 50px;
+  min-width: 50px;
+  background-color: #e8e8e8;
+}
+
+.gravatar {
+  margin: 0;
+}
+/* User avatar used with avatar partial - END */
+
 /* New Users Index - BEGIN */
 
 .user-container {
   padding: 15px;
-
-  .user-avatar {
-    height: 50px;
-    width: 50px;
-    min-width: 50px;
-    background-color: #e8e8e8;
-  }
-
-  .gravatar {
-    margin: 0;
-  }
 
   .main-content {
     padding-left: 15px;
@@ -1118,17 +1203,6 @@ ul.users { // Users index
   // Add some spacing to breath
   padding: 10px 15px 0px 15px;
 
-  .micropost-avatar {
-    height: 50px;
-    width: 50px;
-    min-width: 50px;
-    background-color: #e8e8e8;
-
-    .gravatar {
-      margin: 0;
-    }
-  }
-
   .micropost-main {
     flex: 1; //Set width of flex item: Fill up remaining spacing
     padding-left: 15px;
@@ -1197,40 +1271,46 @@ ul.users { // Users index
 
 // Micropost show page - BEGIN
 .micropost-show-page {
-  .micropost-container {
-    .micropost-header {
-      margin-left: 15px;
+  .micropost-container-wrapper {
+    &:hover {
+      border-bottom: 1px solid #e8e8e8 !important;
+    }
 
-      .user {
-        font-weight: 700;
-        a {
-          color: black;
+    .micropost-container {
+      .micropost-header {
+        margin-left: 15px;
+
+        .user {
+          font-weight: 700;
+          a {
+            color: black;
+          }
+        }
+
+        .username {
+          a {
+            color: black;
+            text-decoration: none;
+            color: rgb(101, 119, 134);
+          }
         }
       }
 
-      .username {
-        a {
-          color: black;
-          text-decoration: none;
-          color: rgb(101, 119, 134);
+      .micropost-main {
+        padding-top: 10px;
+        padding-left: 0px;
+
+        .micropost-content {
+          font-size: 23px;
         }
       }
-    }
 
-    .micropost-main {
-      padding-top: 10px;
-      padding-left: 0px;
+      .micropost-info-bar {
+        margin-top: 15px;
+        padding-bottom: 10px;
 
-      .micropost-content {
-        font-size: 23px;
+        color: rgb(101, 119, 134);
       }
-    }
-
-    .micropost-info-bar {
-      margin-top: 15px;
-      padding-bottom: 10px;
-
-      color: rgb(101, 119, 134);
     }
   }
 
@@ -1338,6 +1418,13 @@ ul.users { // Users index
 
 /* Microposts Flex - END */
 
+/* Micropost/User container - BEGIN */
+.micropost-container-wrapper,
+.user-container {
+  margin-bottom: -1px; // Hide duplicate border
+}
+/* Micropost/User container - END */
+
 /* User and Micropost hover - BEGIN */
 .user-container,
 article.micropost-container-wrapper {
@@ -1346,6 +1433,11 @@ article.micropost-container-wrapper {
     background-color: rgba(245, 248, 250, 1);
     transition: background-color 0.2s linear;
     cursor: pointer;
+
+    border: 1px solid #898989;
+
+    z-index: 1;
+    position: relative; // z-index needs element's position not be static.
   }
 
   &:active:not(:has(:active)) {
@@ -1361,6 +1453,8 @@ article.micropost-container-wrapper {
     &:hover {
       background-color: white;
       cursor: auto;
+
+      border: none;
     }
   }
 }
@@ -1531,12 +1625,69 @@ aside {
     .modal-content {
       width: 90vw;
       max-width: 500px;
+
+      border-radius: 15px;
+
+      .media-height-check {
+        height: 0px;
+      }
     }
   }
 
   .modal-header {
+    border-bottom: none;
+
+    button {
+      opacity: 1;
+      outline: none;
+
+      span {
+        color: rgba(26, 145, 218, 0.9);
+      }
+    }
+
     svg {
       font-size: 7em;
+    }
+  }
+
+  .modal-body {
+    .login-signup-anchor {
+      width: 80%;
+      text-decoration: none;
+      padding: 0px;
+
+      button {
+        width: 100%;
+        margin: 5px;
+      }
+    }
+  }
+}
+
+@media (max-width: 479.98px) {
+  .login-modal {
+    padding-left: 0px;
+
+    .modal-dialog {
+      .modal-content {
+        width: 100%;
+        height: 100%;
+        border-radius: 0px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        .modal-body {
+          width: 100%;
+
+          .media-height-check {
+            height: 1px;
+          }
+        }
+      }
     }
   }
 }
@@ -1595,6 +1746,70 @@ aside {
     }
   }
 }
+
+/* SVG BUTTON - BEGIN */
+.button-container-wrapper {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  color: rgba(29, 161, 242, 1);
+
+  .button-container {
+    border-radius: 9999px; // Twitter's way to make circle
+    // Facebook's way to make circle
+    border-top-left-radius: 50%;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+
+    height: 40px;
+    width: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+
+    transform: scale(1);
+    background-color: rgba(29, 161, 242, 0.2);
+    transition: background-color 0.2s linear, transform 0.05s linear;
+
+    &:hover {
+      transform: scale(1.1);
+      background-color: rgba(29, 161, 242, 0.3);
+      transition: background-color 0.2s linear, transform 0.05s linear;
+    }
+
+    &:active,
+    &:focus,
+    &:active:focus {
+      transform: scale(1);
+      background-color: rgba(29, 161, 242, 0.2);
+      transition: background-color 0.2s linear, transform 0.05s linear;
+    }
+
+
+    .button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      height: 50%;
+      width: 50%;
+
+      color: rgba(29, 161, 242, 1);
+
+      svg {
+        height: 100%;
+        width: 100%;
+
+        fill: currentcolor;
+      }
+    }
+  }
+}
+/* SVG BUTTON - END */
 
 .flex-center {
   display: flex;
@@ -1698,6 +1913,9 @@ aside {
   min-height: 50vh;
   justify-content: flex-start;
 
+  border: 1px solid #e8e8e8;
+  border-top: none;
+
   .heading {
     font-size: 20px;
     font-weight: 800;
@@ -1782,14 +2000,12 @@ aside {
     transition: background-color 0.2s linear, border 0.2s linear, box-shadow 0.2s linear;
   }
 
-  &:active {
+  &:active,
+  &:focus,
+  &:active:focus {
     color:            var(--followButton-textColor);
     background-color: var(--followButton-active-bgColor);
     border:           var(--followButton-active-border);
-  }
-
-  &:focus {
-    color:            var(--followButton-textColor);
   }
 
   span {
@@ -1830,13 +2046,11 @@ aside {
     transition: background-color 0.2s linear, border 0.2s linear, box-shadow 0.2s linear;
   }
 
-  &:active {
+  &:active,
+  &:focus,
+  &:active:focus {
     background-color: var(--unfollowButton-active-bgColor);
     border:           var(--unfollowButton-active-border);
-  }
-
-  &:focus {
-    color:            var(--unfollowButton-textColor);
   }
 }
 /* Follow/Unfollow button - END */
@@ -1857,8 +2071,11 @@ aside {
   }
 
   &:active,
-  &:focus {
-    color: white;
+  &:focus,
+  &:active:focus {
+    color:              var(--unfollowButton-textColor);
+    background-color:   var(--unfollowButton-bgColor);
+    border:             var(--unfollowButton-border);
   }
 }
 /* MY BUTTON - END */
@@ -1998,7 +2215,10 @@ aside {
     outline: none;
   }
 
-  &:hover {
+  &:hover,
+  &:active:focus,
+  &:focus,
+  &:active {
     animation: rainbowBorder .5s linear infinite;
 
     .margin-tran {
@@ -2186,56 +2406,211 @@ aside {
 }
 
 
-.micropost-stats {
+.micropost-stats,
+.comment-stats {
   margin: 2px 0px;
 
+  div.stat-container {
+    margin-left: 40px;
+    &:first-of-type {
+      margin-left: 0px;
+    }
+  }
 
-  .stat {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  button {
+    padding: 0px;
 
-    > .button {
-      .button-wrapper {
-        background-color: white;
-        transition: none;
+    background-color: unset;
+    border: none;
+    outline: none;
 
-        .button {
-          color: rgb(101, 119, 134);
+    .stat {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
 
-          height: 60%;
-          width: 60%;
+      > .button {
+        .button-wrapper {
+          background-color: unset;
+          transition: none;
 
-          .svg {
-            fill: currentColor;
+          &:hover {
+            transform: none;
+          }
+
+          .button {
+            color: rgb(101, 119, 134);
+
+            height: 60%;
+            width: 60%;
+
+            .svg {
+              fill: currentColor;
+            }
           }
         }
       }
-    }
 
-    .value {
-      padding: 0px 2px;
-
-      a {
+      .value {
+        padding: 0px 2px;
         color: rgb(101, 119, 134);
-        text-decoration: none;
-        outline: none;
+
+        a {
+          color: rgb(101, 119, 134);
+          text-decoration: none;
+          outline: none;
+        }
       }
-    }
 
-    &:hover {
-      > .button {
-        .button-wrapper {
-          background-color: rgba(29, 161, 242, 0.1);
+      &.comment {
+        &:hover {
+          > .button {
+            .button-wrapper {
+              background-color: rgba(29, 161, 242, 0.1);
 
-          .button {
+              .button {
+                color: rgba(29, 161, 242, 1);
+              }
+            }
+          }
+
+          .value, .value a {
             color: rgba(29, 161, 242, 1);
           }
         }
       }
 
-      .value a {
+      &.upvote {
+        &:hover {
+          > .button {
+            .button-wrapper {
+              background-color: rgba(224, 36, 94, 0.1);
+
+              .button {
+                color: rgba(224, 36, 94, 1);
+              }
+            }
+          }
+
+          .value, .value a {
+            color: rgba(224, 36, 94, 1);
+          }
+        }
+      }
+
+      &.unvote {
+        > .button {
+          .button-wrapper {
+            .button {
+              color: rgba(224, 36, 94, 1);
+            }
+          }
+        }
+
+        .value, .value a {
+          color: rgba(224, 36, 94, 1);
+        }
+
+        &:hover {
+          > .button {
+            .button-wrapper {
+              background-color: rgba(224, 36, 94, 0.1);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.login-modal {
+  .modal-header {
+    svg {
+      color: rgba(26, 145, 218, 0.9);
+    }
+  }
+}
+
+.upvote-login-modal {
+  .modal-header {
+    > svg {
+      color: rgba(224, 36, 94, 1);
+    }
+  }
+}
+
+.login-button {
+  margin-left: 0px;
+  background-color: transparent;
+
+  &:active,
+  &:focus,
+  &:active:focus {
+    background-color: transparent;
+  }
+}
+
+.signup-button {
+  svg {
+    filter: brightness(1) !important;
+  }
+
+  &:hover {
+    color: rgba(255, 255, 255, 1);
+    border-color: rgba(26, 145, 218, 0.9);
+  }
+
+  &:active,
+  &:focus,
+  &:active:focus {
+    background-color: rgba(29, 161, 242, 1);
+    color: white;
+    border-color: rgba(29, 161, 242, 1);
+  }
+}
+
+.active.hide-if-active {
+  display: none;
+}
+
+.translateX--30px {
+  transform: translateX(-30px);
+}
+
+#new-micropost-form {
+  textarea {
+    margin-bottom: 0px;
+  }
+
+  input[type="submit"][name="commit"] {
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    &.disabled-appearance {
+      background-color: white;
+      color: rgba(29, 161, 242, 1);
+    }
+
+    &.disabled-function {
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+  }
+}
+
+.new-comment,
+.reply {
+  form {
+    input[type="submit"][name="commit"] {
+
+      &.disabled-appearance {
+        background-color: white;
         color: rgba(29, 161, 242, 1);
+      }
+
+      &.disabled-function {
+        cursor: not-allowed;
+        pointer-events: none;
       }
     }
   }

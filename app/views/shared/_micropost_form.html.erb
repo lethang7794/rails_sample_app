@@ -1,11 +1,11 @@
-<%= form_with(model: @micropost, local: true) do |f| %>
+<%= form_with(model: @micropost, local: true, id: "new-micropost-form") do |f| %>
   <div class="flex flex-column">
     <%= render 'shared/error_messages', object: f.object %>
     <div class="field">
-      <%= f.text_area :content, placeholder: "Compose new micropost..." %>
+      <%= f.text_area :content, class: "content", placeholder: "Compose new micropost..." %>
     </div>
     <div>
-      <%= f.submit "Post", class: "btn my-button", data: { "disable-with": "Posting ..." }  %>
+      <%= f.submit "Post", class: "btn my-button submit disabled-appearance", data: { "disable-with": "Posting ..." }  %>
     </div>
     <div class="image">
       <%= f.file_field :image, accept: "image/png, image/jpeg, image/gif" %>
@@ -20,5 +20,24 @@
       alert("Image is bigger than 3MB, please choose a smaller image.");
       $("#micropost_image").val("")
     }
+  });
+
+  $(document).ready(function(){
+    var $submit_button = $('#new-micropost-form input[type="submit"][name="commit"]');
+    var $form_content = $('#new-micropost-form textarea');
+
+    $submit_button.attr('disabled', true);
+    $submit_button.addClass("disabled-function");
+
+    $form_content.keyup(function(){
+      if($(this).val().length !=0) {
+        $submit_button.removeClass("disabled-appearance disabled-function");
+        $submit_button.attr('disabled', false);
+      }
+      else {
+        $submit_button.addClass("disabled-appearance disabled-function");
+        $submit_button.attr('disabled', true);
+      }
+    })
   });
 </script>

@@ -1,6 +1,8 @@
 class Micropost < ApplicationRecord
   belongs_to :user
+  
   acts_as_commontable
+  acts_as_votable
 
   has_one_attached :image
 

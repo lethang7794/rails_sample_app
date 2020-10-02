@@ -11,10 +11,15 @@
     <div class="modal-content">
       <div class="modal-header center">
         <%= render 'shared/svg/follow' %>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">
-          Log in to follow <strong><%= @user.name %></strong>.
-        </h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <%= render partial: 'shared/svg/button', locals: { svg: "close" } %>
+        </button>
+        <h3 class="modal-title" id="myModalLabel">
+          Follow <strong><%= @user.name %></strong> to see what they share on Sample App.
+        </h3>
+        <p>
+          Sign up so you never miss their Microposts.
+        </p>
       </div>
       <div class="modal-body">
         <%= render partial: 'shared/login_form_modal', locals: { forward_to: user_path(@user) } %>

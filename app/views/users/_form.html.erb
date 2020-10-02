@@ -1,5 +1,6 @@
 <%= form_with(model: @user, local: true) do |f| %>
   <%= render 'shared/error_messages', object: f.object %>
+  <%= hidden_field_tag 'session[forwarding_url]', params[:dest] %>
 
   <%= f.label :name %>
   <%= f.text_field :name, class: "form-control" %>
@@ -13,5 +14,5 @@
   <%= f.label :password_confirmation, "Confirmation" %>
   <%= f.password_field :password_confirmation, class: "form-control" %>
 
-  <%= f.submit yield(:button_text), class: "btn btn-primary"%>
+  <%= f.submit yield(:button_text), class: "btn btn-primary my-button"%>
 <% end %>

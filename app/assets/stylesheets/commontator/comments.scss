@@ -26,7 +26,7 @@
     // margin: 5px 7px;
 
     &.bottom {
-      margin-left: 15px;
+      margin-left: 27px;
 
       a {
         color: #8e8e8e;
@@ -81,17 +81,19 @@
 
     text-align: center;
 
+    display: flex;
+    align-items: center;
+
     input, img {
       background-color: transparent;
+      margin-bottom: 0px;
     }
   }
 
   .upvote, .downvote {
-    display: block;
-
-    height: 18px;
-
-    margin: 5px 0;
+    // display: block;
+    // height: 18px;
+    // margin: 5px 0;
   }
 
   .like {
@@ -154,18 +156,17 @@
 }
 
 .commontator.thread > .content {
-  > .header .status,
-  > .reply .new-comment,
   > .reply > p {
     margin-left: 80px;
   }
 
   > .reply .new-comment {
-    margin-right: 15px;
+    padding: 15px 15px 15px 80px;
+    // border-bottom: 1px solid #e8e8e8;
   }
 
   > .reply {
-    margin-top: 5px;
+    // margin-top: 5px;
   }
 
   .comment-list .comment .children .reply .new_comment {
@@ -174,7 +175,7 @@
 
     .replying {
       color: #8e8e8e;
-      margin-left: -40px;
+      margin-left: -28px;
 
       .reply-indicator {}
     }
@@ -212,6 +213,12 @@
         margin-left: 10px;
         margin-top: 10px;
       }
+    }
+  }
+
+  .reply .new-comment .new_comment {
+    .field {
+      margin-top: 0px;
     }
   }
 }
@@ -307,4 +314,9 @@
   .button {
     color: rgba(29, 161, 242, 1.00);
   }
+}
+
+.commontator .comment .votes .like form button {
+  border: none;
+  outline: none;
 }

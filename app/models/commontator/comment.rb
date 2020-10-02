@@ -115,7 +115,7 @@ class Commontator::Comment < ActiveRecord::Base
   end
 
   def can_be_voted_on_by?(user)
-    !user.nil? && user.is_commontator && user != creator &&
+    !user.nil? && user.is_commontator &&
     thread.can_be_read_by?(user) && can_be_voted_on?
   end
 

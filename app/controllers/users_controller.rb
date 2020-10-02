@@ -20,6 +20,7 @@ class UsersController < ApplicationController
   	@user = User.find_by("lower(username) = ?", params[:username].downcase)
     @user ||= User.new(username: params[:username])
     @microposts = @user.microposts.paginate(page: params[:page])
+    @current_user = current_user
 
     respond_to do |format|
       format.html { render 'show' }
@@ -33,7 +34,7 @@ class UsersController < ApplicationController
       @user.send_activation_email
       flash[:info] = "Please check your email to activate your account, #{@user.name}!"
       log_in @user
-      redirect_to @user
+      redirect_back_or user_path(@user)
     else
       render 'new'
     end

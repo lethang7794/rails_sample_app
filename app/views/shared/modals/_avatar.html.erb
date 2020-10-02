@@ -3,12 +3,8 @@
     <div class="modal-content" style="background-color: <%# avatar_dominant_color(user, alpha = 0.9) %>;">
       <div class="modal-body">
         <div class="flex-center max-dem no-scroll">
-          <button type="button" class="close positon-relative z-index-1" data-dismiss="modal" aria-label="Close">
-            <div class="button-wrapper my-flex-container flex-center">
-              <div class="button" aria-hidden="true">
-                <%= render 'shared/svg/close' %>
-              </div>
-            </div>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <%= render partial: 'shared/svg/button', locals: { svg: "close" } %>
           </button>
           <div class="flex-center" style="width: 500px; max-width: 100vh">
             <div class="rounded-circle overflow-hidden position-relative" style="width:100%;">

@@ -14,6 +14,7 @@ module SessionsHelper
 
 	# Returns the user corresponding to the remember token cookie
 	def current_user
+		return @current_user if @current_user
 		if (user_id = session[:user_id])
 			@current_user ||= User.find_by(id: user_id)
 		elsif (user_id = cookies.encrypted[:user_id])
@@ -56,7 +57,25 @@ module SessionsHelper
 
   # Redirects to stored location (or default)
   def redirect_back_or(default)
-    redirect_to( session[:forwarding_url] || params[:session][:forwarding_url] || default )
+    redirect_to( session[:forwarding_url] || default )
     session.delete(:forwarding_url)
   end
+
+	# Return login path with redirect address as params[:dest]
+	def login_path_with_dest
+		if request.original_fullpath == '/'
+			"#{login_path}"
+		else
+			"#{login_path}?dest=#{request.original_fullpath}"
+		end
+	end
+
+	# Return sign up path with redirect address as params[:dest]
+	def signup_path_with_dest
+		if request.original_fullpath == '/'
+			"#{signup_path}"
+		else
+			"#{signup_path}?dest=#{request.original_fullpath}"
+		end
+	end
 end

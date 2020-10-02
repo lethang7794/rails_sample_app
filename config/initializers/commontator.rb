@@ -151,7 +151,7 @@ Commontator.configure do |config|
   #   :n (never)
   # Note: For moderators, see the next option
   # Default: :l
-  config.comment_deletion = :l
+  config.comment_deletion = :a
 
   # moderator_permissions
   # Type: Symbol
@@ -172,7 +172,7 @@ Commontator.configure do |config|
   #   :l  (likes)
   #   :ld (likes/dislikes)
   # Default: :n
-  config.comment_voting = :n
+  config.comment_voting = :l
 
   # vote_count_proc
   # Type: Proc

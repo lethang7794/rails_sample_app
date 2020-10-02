@@ -1,0 +1,34 @@
+<% if logged_in? %>
+  <%= link_to 'Find people to follow', users_path, class: "btn my-button" %>
+
+<% else %>
+  <!-- Button trigger modal -->
+  <div data-toggle="modal" data-target="#login-modal-users">
+    <%= button_tag class: "btn my-button" do %>
+      <span>Find people to follow</span>
+    <% end %>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade login-modal" id="login-modal-users" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header center">
+          <%= render 'shared/svg/people' %>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <%= render partial: 'shared/svg/button', locals: { svg: "close" } %>
+          </button>
+          <h3 class="modal-title" id="myModalLabel">
+            Don't miss what happening
+          </h3>
+          <p>
+            People on Sample App are the first one to know.
+          </p>
+        </div>
+        <div class="modal-body">
+          <%= render partial: 'shared/login_form_modal' %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

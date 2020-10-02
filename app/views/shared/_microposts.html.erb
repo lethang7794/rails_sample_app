@@ -1,10 +1,54 @@
 <% if microposts.any? %>
-  <ol class="microposts border-right border-left">
+  <ol class="microposts">
     <%= render microposts %>
   </ol>
   <div class="flex-center">
     <%= will_paginate microposts %>
   </div>
+
+  <% if !logged_in? %>
+    <!-- MODAL - Begin -->
+    <div class="modal fade login-modal upvote-login-modal" id="login-modal-upvote-micropost" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header center ">
+            <%= render 'shared/svg/heart_fill_login_modal' %>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <%= render partial: 'shared/svg/button', locals: { svg: "close" } %>
+            </button>
+            <h3 class="modal-title" id="myModalLabel">
+              Like a Micropost to share the love.
+            </h3>
+            <p>
+              Join Sample App now to let <%= @user.name %> know you like their Microposts.
+            </p>
+          </div>
+          <div class="modal-body">
+            <%= render partial: 'shared/login_form_modal', locals: { forward_to: user_path(@user) } %>
+          </div>
+        </div>
+      </div>
+    </div><!-- MODAL - End -->
+
+    <script type="text/javascript">
+    	$(".micropost-container-wrapper .pseudo-vote-container").click(function(e) {
+    		$("#login-modal-upvote-micropost").modal('show');
+    		e.stopPropagation();
+    	});
+    </script>
+  <% end %>
+
 <% else %>
   <%= render 'shared/nothing' %>
 <% end %>
+
+<script type="text/javascript">
+	$(".micropost-container-wrapper a, .micropost-container-wrapper .vote-container").click(function(e) {
+	 e.stopPropagation();
+	});
+
+	$(".micropost-container-wrapper .pseudo-vote-container").click(function(e) {
+		$("#login-modal-upvote-micropost").modal('show');
+		e.stopPropagation();
+	});
+</script>
