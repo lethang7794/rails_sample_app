@@ -70,9 +70,9 @@
   vote_count = config.vote_count_proc.call(thread, comment.cached_votes_up, comment.cached_votes_down)
 %>
   <% if vote_count != '0' %>
-    <span id="commontator-comment-<%= comment.id %>-vote-count" class="vote-count">
+    <span id="commontator-comment-<%= comment.id %>-vote-count" class="vote-count tabular-nums">
   <% else %>
-    <span id="commontator-comment-<%= comment.id %>-vote-count" class="vote-count" style="visibility: hidden">
+    <span id="commontator-comment-<%= comment.id %>-vote-count" class="vote-count tabular-nums" style="visibility: hidden">
   <% end %>
       <%= vote_count %>
     </span>
