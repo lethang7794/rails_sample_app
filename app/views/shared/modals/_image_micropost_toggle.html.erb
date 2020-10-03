@@ -4,7 +4,10 @@
       <div class="image-placeholder rounded overflow-hidden position-relative">
         <div class="loading-shimmer position-absolute"></div>
         <div class="micropost-image-cover position-absolute" style="background-image: url('<%= micropost.image_url %>');">
-          <button type="button">
+          <button type="button" style="
+              border: none;
+              padding: 0px;
+          ">
             <%= render partial: 'shared/svg/button', locals: { svg: "fullscreen" } %>
           </button>
         </div>
