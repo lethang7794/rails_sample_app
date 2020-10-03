@@ -11,12 +11,12 @@ $("#micropost-<%= @micropost.id %>-vote-container").html("<%= escape_javascript(
 ) %>");
 
 // Disable all stat container buttons
-$( ".stat-container" ).attr("disabled", true);
+$( ".stat-container form > button" ).attr("disabled", true);
 
 // Re-enable all stat container buttons
 setTimeout(function () {
-  $( ".stat-container" ).attr("disabled", false);
-}, 500);
+  $( ".stat-container form > button" ).attr("disabled", false);
+}, 1000);
 
 var $vote_value = $("#micropost-<%= @micropost.id %>-vote-value");
 
