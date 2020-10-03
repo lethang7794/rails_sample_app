@@ -24,6 +24,11 @@ var $vote_value_wrapper = $("#micropost-<%= @micropost.id %>-vote-value-wrapper"
 var $vote_value_clone = $vote_value.clone().addClass("pos-abs");
 
 $vote_value_clone.html(old_vote_value)
+// Hide old vote value if equals 0
+if (old_vote_value == 0) {
+  $vote_value_clone.css("visibility", "hidden");
+}
+
 $vote_value_clone.prependTo($vote_value_wrapper);
 $vote_value.html("<%= @micropost.get_upvotes.size %>").removeClass("tran-03s").addClass("move-down tran-0s");
 
