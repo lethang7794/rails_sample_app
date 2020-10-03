@@ -861,6 +861,10 @@ section {
   transform: translate3d(0px, 1.3125em, 0px);
 }
 
+.fill-transparent {
+  fill: transparent;
+}
+
 // Override Bootstrap default value for disabled button.
 .btn.disabled, .btn[disabled], fieldset[disabled] .btn {
     cursor: pointer;
