@@ -1,5 +1,6 @@
-<%= form_tag(upvote_micropost_path(micropost), method: :put, remote: true) do %>
-  <button>
+<div id="micropost-<%= micropost.id %>-heart" class="heart" style="display: none;"></div>
+<%= form_tag(upvote_micropost_path(micropost), method: :put, remote: true, id: "micropost-#{micropost.id}-upvote-form") do %>
+  <button type="button" class="pseudo">
     <div class="upvote stat flex flex-row flex-center-y">
       <div class="button">
         <div class="button-wrapper flex-center">
@@ -21,4 +22,22 @@
       </div>
     </div>
   </button>
+  <input type="submit" style="display: none"></input>
 <% end %>
+
+<script type="text/javascript">
+  /* when a user clicks, toggle the 'is-animating' class */
+  $("#micropost-<%= micropost.id %>-upvote-form > button.pseudo").on('click', function(e) {
+    $("#micropost-<%= micropost.id %>-heart").show().toggleClass('is-animating');
+  });
+
+  $("#micropost-<%= micropost.id %>-heart").on('click', function(){
+    $(this).toggleClass('is-animating');
+  });
+
+  /*when the animation is over, remove the class*/
+  $("#micropost-<%= micropost.id %>-heart").on('animationend', function(){
+    $(this).toggleClass('is-animating');
+    $("#micropost-<%= micropost.id %>-upvote-form input").click();
+  });
+</script>

@@ -2623,3 +2623,32 @@ aside {
 .tabular-nums {
   font-variant-numeric: tabular-nums;
 }
+
+.heart {
+  position: absolute;
+  left: -15px;
+  top: -15px;
+
+  height: 70px;
+  width: 70px;
+
+  background-image:url( 'https://abs.twimg.com/a/1446542199/img/t1/web_heart_animation.png');
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: 2900%;
+
+  cursor: pointer;
+}
+
+.heart:hover {
+  background-position: right;
+}
+
+.is-animating {
+  animation: heart-burst .8s steps(28) 1;
+}
+
+@keyframes heart-burst {
+  from {background-position:left;}
+  to { background-position:right;}
+}

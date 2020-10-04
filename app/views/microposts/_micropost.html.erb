@@ -34,7 +34,7 @@
 					</div>
 
 					<% if logged_in? %>
-						<div id="micropost-<%= micropost.id %>-vote-container" class="stat-container vote-container">
+						<div id="micropost-<%= micropost.id %>-vote-container" class="stat-container vote-container" style="position: relative;">
 							<% if @current_user.voted_for? micropost %>
 								<%= render partial: 'shared/micropost/info_bar/unvote_form', locals: { micropost: micropost } %>
 							<% else %>
