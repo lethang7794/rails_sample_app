@@ -41,6 +41,7 @@ class MicropostsController < ApplicationController
     @micropost.liked_by current_user
 
     respond_to do |format|
+      format.html { redirect_to @micropost }
       format.js
     end
   end
@@ -50,6 +51,7 @@ class MicropostsController < ApplicationController
     @micropost.unliked_by current_user
 
     respond_to do |format|
+      format.html { redirect_to @micropost }
       format.js
     end
   end
