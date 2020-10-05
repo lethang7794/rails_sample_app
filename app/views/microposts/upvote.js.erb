@@ -6,9 +6,33 @@ if (old_vote_value == 0) {
   $old_vote_value.css("visibility", "visible");
 }
 
+// Replace unvote form with upvote form
 $("#micropost-<%= @micropost.id %>-vote-container").html("<%= escape_javascript(
   render partial: 'shared/micropost/info_bar/unvote_form', locals: { micropost: @micropost }
 ) %>");
+
+// Add heart animation
+$("#micropost-<%= @micropost.id %>-vote-container").prepend("<%= escape_javascript(
+  render partial: 'shared/heart_animation', locals: { micropost: @micropost }
+) %>");
+
+$("#micropost-<%= @micropost.id %>-heart").on('animationend', function(){
+  $(this).hide();
+});
+
+// Stop animation when clicked
+$("#micropost-<%= @micropost.id %>-heart").on('click', function(){
+  $(this).toggleClass('is-animating');
+});
+
+// Make sure the animation is finished
+$("#micropost-<%= @micropost.id %>-heart").on('animationcancel', function(){
+  $(this).toggleClass('is-animating');
+
+  $("#micropost-<%= @micropost.id %>-heart").on('animationend', function(){
+    $(this).hide();
+  });
+});
 
 // Disable all stat container buttons
 $( ".stat-container form > button" ).attr("disabled", true);
