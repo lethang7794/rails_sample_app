@@ -1650,6 +1650,19 @@ aside {
       span {
         color: rgba(26, 145, 218, 0.9);
       }
+
+      .button-container-wrapper .button-container {
+        background-color: rgba(29, 161, 242, 0.2);
+        &:hover {
+          background-color: rgba(29, 161, 242, 0.3);
+        }
+
+        &:active,
+        &:focus,
+        &:active:focus {
+          background-color: rgba(29, 161, 242, 0.2);
+        }
+      }
     }
 
     svg {
