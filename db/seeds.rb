@@ -15,7 +15,7 @@ def generate_bio
 end
 
 def generate_location
-  "#{Faker::Address.country}"
+  "#{Faker::Address.country}"[0,29]
 end
 
 # Return a random user in the database.
@@ -33,6 +33,11 @@ def generate_content
   "\n##{Faker::Hacker.abbreviation} ##{Faker::Hacker.noun.gsub(/(\s+)/, '_')} ##{Faker::Hacker.verb.gsub(/(\s+)/, '_')}"
 end
 
+# Generates comment's content.
+def generate_comment_content
+  "#{Faker::Hacker.say_something_smart}"
+end
+
 # Creates a main sample user.
 User.create!(
     name:                  'Admin',
@@ -47,7 +52,7 @@ User.create!(
     location:              generate_location
 )
 
-User.create!(
+demo_user = User.create!(
     name:                  'Demo User',
     username:              'DemoUser',
     email:                 'demo_user@example.com',
@@ -129,3 +134,70 @@ following.each { |followed| user2.follow(followed) }
 
 followers = users[3..39]
 followers.each { |follower| follower.follow(user2) }
+
+# Seed the comments.
+threads = Commontator::Thread.all
+threads.each_with_index do |thread, index|
+  if index % 2 == 0
+    # Comment level 1
+    3.times do
+      content = generate_comment_content
+      comment_level_1 = thread.comments.create!(
+        creator_type: "User",
+        creator_id: random_user.id,
+        body: content
+      )
+
+      # Comment level 2
+      if comment_level_1.id % 3 == 0
+        3.times do
+          content = generate_comment_content
+          comment_level_2 = thread.comments.create!(
+            creator_type: "User",
+            creator_id: random_user.id,
+            body: content,
+            parent_id: comment_level_1.id
+          )
+
+          # Comment level 3
+          if comment_level_2.id % 4 == 0
+            2.times do
+              content = generate_comment_content
+              comment_level_3 = thread.comments.create!(
+                creator_type: "User",
+                creator_id: random_user.id,
+                body: content,
+                parent_id: comment_level_2.id
+              )
+            end
+          end
+        end
+      end
+    end
+  end
+end
+
+# Seeds the votes.
+microposts = Micropost.all
+microposts.each_with_index do |micropost, index|
+  if index % 2 == 0
+    rand(1..3).times do
+      random_user.likes micropost
+    end
+  end
+  if index % 3 == 0
+    demo_user.likes micropost
+  end
+end
+
+comments = Commontator::Comment.all
+comments.each_with_index do |comment, index|
+  if index % 3 == 0
+    rand(1..3).times do
+      random_user.likes comment
+    end
+  end
+  if index % 4 == 0
+    demo_user.likes comment
+  end
+end
