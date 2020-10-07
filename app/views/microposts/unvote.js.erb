@@ -1,38 +1,52 @@
+// Save old vote value for animation
 var old_vote_value = $("#micropost-<%= @micropost.id %>-vote-value").html();
 
-$("#micropost-<%= @micropost.id %>-vote-container").html("<%= escape_javascript(
+// Replace upvote form with unvote form
+var $vote_container = $("#micropost-<%= @micropost.id %>-vote-container");
+$vote_container.html("<%= escape_javascript(
   render partial: 'shared/micropost/info_bar/upvote_form', locals: { micropost: @micropost }
 ) %>");
 
-
-// Disable all stat container buttons
-$( ".stat-container form > button" ).attr("disabled", true);
-
-var $vote_value = $("#micropost-<%= @micropost.id %>-vote-value");
-
-var $vote_value_wrapper = $("#micropost-<%= @micropost.id %>-vote-value-wrapper");
-var $vote_button_wrapper = $("#micropost-<%= @micropost.id %>-vote-button-wrapper");
-var $vote_button_svg_path_auxiliary = $vote_button_wrapper.find(".auxiliary");
-
-var $vote_value_clone = $vote_value.clone().addClass("pos-abs");
-$vote_value_clone.html(old_vote_value).css("visibility", "visible");
-$vote_value_clone.prependTo($vote_value_wrapper);
-
-$vote_value.removeClass("tran-03s").addClass("move-up tran-0s");
-
+// Heart fade out
+var $vote_button_svg_path_auxiliary = $("#micropost-<%= @micropost.id %>-vote-button-wrapper").find(".auxiliary");
 $vote_button_svg_path_auxiliary.removeClass("fill-transparent");
 
+// Disable all stat container buttons
+var $form_buttons = $( ".stat-container form > button" );
+$form_buttons.attr("disabled", true);
+
+var $vote_value_wrapper = $("#micropost-<%= @micropost.id %>-vote-value-wrapper");
+
+// Hide new vote value to avoid overlap with old value before move it up/down
+var $new_vote_value = $("#micropost-<%= @micropost.id %>-vote-value").css("visibility", "hidden");
+
+// Position: absolute --> Overlap old/new value
+var $old_vote_value = $new_vote_value.clone().addClass("pos-abs");
+
+// Unvote --> Old vote value is always not 0 --> Show
+$old_vote_value.css("visibility", "visible");
+
+// Move new vote value up at once
+$new_vote_value.removeClass("tran-03s").addClass("move-up tran-0s");
+
+// Show new vote value if not equals 0
+var new_vote_value = $new_vote_value.html();
+if (new_vote_value > 0) $new_vote_value.css("visibility", "visible");
+
+$old_vote_value.html(old_vote_value);
+$old_vote_value.prependTo($vote_value_wrapper);
+
 setTimeout(function () {
-  $vote_value_clone.addClass( "move-down" );
-  $vote_value.removeClass("move-up tran-0s").addClass("tran-03s");
+  $old_vote_value.addClass( "move-down" );
+  $new_vote_value.removeClass("move-up tran-0s").addClass("tran-03s");
   $vote_button_svg_path_auxiliary.addClass("fill-transparent");
 }, 1); // Use delay to not override transform, and cause no transition
 
-$vote_value_clone.on('animationcancel', function(){
+$old_vote_value.on('animationcancel', function(){
   $(this).remove();
 });
 
 setTimeout(function () {
-  $vote_value_clone.remove();
-  $( ".stat-container form > button" ).attr("disabled", false); // Re-enable all stat container buttons
+  $old_vote_value.remove();
+  $form_buttons.attr("disabled", false); // Re-enable all stat container buttons
 }, 301);

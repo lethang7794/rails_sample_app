@@ -1,4 +1,4 @@
-<%= form_tag(unvote_micropost_path(micropost), method: :put, remote: true) do %>
+<%= form_tag unvote_micropost_path(micropost), method: :put, remote: true, id: "micropost-#{micropost.id}-unvote-form" do %>
   <button>
     <div class="unvote stat flex flex-row flex-center-y">
       <div class="button">

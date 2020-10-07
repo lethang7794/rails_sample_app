@@ -1,57 +1,66 @@
-var $old_vote_value = $("#micropost-<%= @micropost.id %>-vote-value");
+// Save old vote value for animation
 var old_vote_value = $("#micropost-<%= @micropost.id %>-vote-value").html();
 
 // Replace unvote form with upvote form
-$("#micropost-<%= @micropost.id %>-vote-container").html("<%= escape_javascript(
+var $vote_container = $("#micropost-<%= @micropost.id %>-vote-container");
+$vote_container.html("<%= escape_javascript(
   render partial: 'shared/micropost/info_bar/unvote_form', locals: { micropost: @micropost }
 ) %>");
 
 // Add heart animation
-$("#micropost-<%= @micropost.id %>-vote-container").prepend("<%= escape_javascript(
+$vote_container.prepend("<%= escape_javascript(
   render partial: 'shared/heart_animation', locals: { micropost: @micropost }
 ) %>");
 
-$("#micropost-<%= @micropost.id %>-heart").on('animationend', function(){
+var $heart = $("#micropost-<%= @micropost.id %>-heart");
+$heart.on('animationend', function() {
   $(this).remove();
 });
 
 // Stop animation when clicked
-$("#micropost-<%= @micropost.id %>-heart").on('click', function(){
+$heart.on('click', function() {
   $(this).toggleClass('is-animating');
 });
 
 // Make sure the animation is finished
-$("#micropost-<%= @micropost.id %>-heart").on('animationcancel', function(){
+$heart.on('animationcancel', function() {
   $(this).toggleClass('is-animating');
 
-  $("#micropost-<%= @micropost.id %>-heart").on('animationend', function(){
+  $heart.on('animationend', function() {
     $(this).remove();
   });
 });
 
 // Disable all stat container buttons
-$( ".stat-container form > button" ).attr("disabled", true);
-
-var $vote_value = $("#micropost-<%= @micropost.id %>-vote-value");
+var $form_buttons = $( ".stat-container form > button" );
+$form_buttons.attr("disabled", true);
 
 var $vote_value_wrapper = $("#micropost-<%= @micropost.id %>-vote-value-wrapper");
-var $vote_value_clone = $vote_value.clone().addClass("pos-abs");
 
-// Hide old vote value if equals 0
-if (old_vote_value == 0) {
-  $vote_value_clone.css("visibility", "hidden");
-}
-$vote_value_clone.html(old_vote_value)
+// Hide new vote value to avoid overlap with old value before move it up/down
+var $new_vote_value = $("#micropost-<%= @micropost.id %>-vote-value").css("visibility", "hidden");
 
-$vote_value_clone.prependTo($vote_value_wrapper);
-$vote_value.removeClass("tran-03s").addClass("move-down tran-0s");
+// Position: absolute --> Overlap old/new value
+var $old_vote_value = $new_vote_value.clone().addClass("pos-abs");
+
+// Show old vote value if not equals 0
+if (old_vote_value != 0) $old_vote_value.css("visibility", "");
+
+// Move new vote value down at once and make it visible
+$new_vote_value.removeClass("tran-03s").addClass("move-down tran-0s");
+
+// Upvote --> New vote value is always not 0 --> Show
+$new_vote_value.css("visibility", "");
+
+$old_vote_value.html(old_vote_value);
+$old_vote_value.prependTo($vote_value_wrapper);
 
 setTimeout(function () {
-  $vote_value_clone.addClass( "move-up" );
-  $vote_value.removeClass("move-down tran-0s").addClass("tran-03s");
+  $old_vote_value.addClass( "move-up" );
+  $new_vote_value.removeClass("move-down tran-0s").addClass("tran-03s");
 }, 1); // Use delay to not override transform, and cause no transition
 
 setTimeout(function () {
-  $vote_value_clone.remove();
-  $( ".stat-container form > button" ).attr("disabled", false); // Re-enable all stat container buttons
+  $old_vote_value.remove();
+  $form_buttons.attr("disabled", false); // Re-enable all stat container buttons
 }, 301);
