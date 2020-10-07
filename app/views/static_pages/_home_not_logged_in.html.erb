@@ -38,15 +38,16 @@
           <%= link_to 'Barack Obama', '/BarackObama' %>
         </ul>
         <ul>
-          <%= link_to 'Newest user', user_path(@newest_user), target: :_blank, rel: "noopener noreferrer" %>
+          <%= link_to 'Newest user', user_path(@newest_user), target: :_blank, rel: "noopener noreferrer" if @newest_user %>
         </ul>
         <ul>
-          <%= link_to 'Demo user', user_path(@demo_user) %>
+          <%= link_to 'Demo user', user_path(@demo_user) if @demo_user%>
         </ul>
       </div>
 
       <p>Next, create an account to try its awesome features.</p>
 
+    <% if @demo_user %>
       <p>Just kidding. This is an awesome app. Just click the button below.</p>
 
       <div class="center">
@@ -92,6 +93,7 @@
           });
         </script>
       </div>
+    <% end %>
     </div>
   </div>
 </div>
