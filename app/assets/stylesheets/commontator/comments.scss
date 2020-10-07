@@ -99,11 +99,12 @@
   .like {
     float: left;
 
-    margin: 0 5px;
+    margin: 0 2px 0 5px;
   }
 
   .vote-count {
-    font-size: 110%;
+    // font-size: 110%;
+    color: #e0245e;
   }
 
   .body {
