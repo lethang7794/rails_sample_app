@@ -13,7 +13,7 @@
 
   <% if comment_voting == :ld || comment_voting == :l %>
   <% vtype = (comment_voting == :ld) ? 'upvote' : 'like' %>
-  <span id="commontator-comment-<%= comment.id %>-<%= vtype %>" class="<%= vtype %> comment-stats">
+  <span id="commontator-comment-<%= comment.id %>-<%= vtype %>" class="<%= vtype %> comment-stats" style="position:relative">
     <% if can_vote && (vote.blank? || !vote.vote_flag) %>
       <%= form_tag commontator.upvote_comment_path(comment),
             method: :put,
@@ -69,13 +69,15 @@
   config = thread.config
   vote_count = config.vote_count_proc.call(thread, comment.cached_votes_up, comment.cached_votes_down)
 %>
-  <% if vote_count != '0' %>
-    <span id="commontator-comment-<%= comment.id %>-vote-count" class="vote-count tabular-nums">
-  <% else %>
-    <span id="commontator-comment-<%= comment.id %>-vote-count" class="vote-count tabular-nums" style="visibility: hidden">
-  <% end %>
-      <%= vote_count %>
-    </span>
+  <div id="commontator-comment-<%= comment.id %>-vote-count-wrapper" class="vote-count-wrapper flex-inline">
+    <% if vote_count != '0' %>
+      <span id="commontator-comment-<%= comment.id %>-vote-count" class="vote-count tran-03s tabular-nums">
+    <% else %>
+      <span id="commontator-comment-<%= comment.id %>-vote-count" class="vote-count tran-03s tabular-nums" style="visibility: hidden">
+    <% end %>
+        <%= vote_count %>
+      </span>
+  </div>
 
   <% if comment_voting == :ld %>
   <span id="commontator-comment-<%= comment.id %>-downvote" class="downvote">

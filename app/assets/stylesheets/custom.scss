@@ -828,7 +828,8 @@ section {
 
 .followers-wrapper,
 .following-wrapper,
-.vote-value-wrapper {
+.vote-value-wrapper,
+.vote-count-wrapper {
   overflow: hidden;
   position: relative; // Wrapper needs to use relative position so inner absolute positon respect overlay hidden.
 }
@@ -841,7 +842,8 @@ section {
   transition-property: all;
 }
 
-.stats.vote-value {
+.vote-value-wrapper .vote-value,
+.vote-count-wrapper .vote-count {
   transition-property: all;
 }
 

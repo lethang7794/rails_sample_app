@@ -1,5 +1,118 @@
+// Save old vote value for animation
+var old_vote_value = $("#commontator-comment-<%= @comment.id %>-vote-count").html();
+
+// Replace unvote form with upvote form and vice versa
+var $vote_container = $("#commontator-comment-<%= @comment.id %>-votes");
 $("#commontator-comment-<%= @comment.id %>-votes").html("<%= escape_javascript(
   render partial: 'votes', locals: { comment: @comment, user: @commontator_user }
 ) %>");
+
+var new_vote_value = $("#commontator-comment-<%= @comment.id %>-vote-count").html();
+
+if (new_vote_value > old_vote_value) {
+  // Add heart animation
+  var $like_container = $("#commontator-comment-<%= @comment.id %>-like");
+  $like_container.prepend("<%= escape_javascript(
+    render partial: 'shared/heart_animation', locals: { for_comment: true, comment: @comment }
+  ) %>");
+
+  var $heart = $("#comment-<%= @comment.id %>-heart");
+  $heart.on('animationend', function() {
+    $(this).remove();
+  });
+
+  // Stop animation when clicked
+  $heart.on('click', function() {
+    $(this).toggleClass('is-animating');
+  });
+
+  // Make sure the animation is finished
+  $heart.on('animationcancel', function() {
+    $(this).toggleClass('is-animating');
+
+    $heart.on('animationend', function() {
+      $(this).remove();
+    });
+  });
+
+  // Disable all comment like buttons
+  var $form_buttons = $( ".votes .like form > button" );
+  $form_buttons.attr("disabled", true);
+
+  var $vote_value_wrapper = $("#commontator-comment-<%= @comment.id %>-vote-count-wrapper");
+
+  // Hide new vote value to avoid overlap with old value before move it up/down
+  var $new_vote_value = $("#commontator-comment-<%= @comment.id %>-vote-count").css("visibility", "hidden");
+
+  // Position: absolute --> Overlap old/new value
+  var $old_vote_value = $new_vote_value.clone().addClass("pos-abs");
+
+  // Show old vote value if not equals 0
+  if (old_vote_value != 0) $old_vote_value.css("visibility", "");
+
+  // Move new vote value down at once and make it visible
+  $new_vote_value.removeClass("tran-03s").addClass("move-down tran-0s");
+
+  // Upvote --> New vote value is always not 0 --> Show
+  $new_vote_value.css("visibility", "");
+
+  $old_vote_value.html(old_vote_value);
+  $old_vote_value.prependTo($vote_value_wrapper);
+
+  setTimeout(function () {
+    $old_vote_value.addClass( "move-up" );
+    $new_vote_value.removeClass("move-down tran-0s").addClass("tran-03s");
+  }, 1); // Use delay to not override transform, and cause no transition
+
+  setTimeout(function () {
+    $old_vote_value.remove();
+    $form_buttons.attr("disabled", false); // Re-enable all stat container buttons
+  }, 301);
+
+} else {
+  // Heart fade out
+  var $vote_button_svg_path_auxiliary = $("#commontator-comment-<%= @comment.id %>-vote-count-wrapper").find(".auxiliary");
+  $vote_button_svg_path_auxiliary.removeClass("fill-transparent");
+
+  // Disable all stat container buttons
+  var $form_buttons = $( ".votes .like form > button" );
+  $form_buttons.attr("disabled", true);
+
+  var $vote_value_wrapper = $("#commontator-comment-<%= @comment.id %>-vote-count-wrapper");
+
+  // Hide new vote value to avoid overlap with old value before move it up/down
+  var $new_vote_value = $("#commontator-comment-<%= @comment.id %>-vote-count").css("visibility", "hidden");
+
+  // Position: absolute --> Overlap old/new value
+  var $old_vote_value = $new_vote_value.clone().addClass("pos-abs");
+
+  // Show old vote value if not equals 0
+  if (old_vote_value != 0) $old_vote_value.css("visibility", "");
+
+  // Move new vote value up at once
+  $new_vote_value.removeClass("tran-03s").addClass("move-up tran-0s");
+
+  // Show new vote value if not equals 0
+  var new_vote_value = $new_vote_value.html();
+  if (new_vote_value > 0) $new_vote_value.css("visibility", "visible");
+
+  $old_vote_value.html(old_vote_value);
+  $old_vote_value.prependTo($vote_value_wrapper);
+
+  setTimeout(function () {
+    $old_vote_value.addClass( "move-down" );
+    $new_vote_value.removeClass("move-up tran-0s").addClass("tran-03s");
+    $vote_button_svg_path_auxiliary.addClass("fill-transparent");
+  }, 1); // Use delay to not override transform, and cause no transition
+
+  $old_vote_value.on('animationcancel', function(){
+    $(this).remove();
+  });
+
+  setTimeout(function () {
+    $old_vote_value.remove();
+    $form_buttons.attr("disabled", false); // Re-enable all stat container buttons
+  }, 301);
+}
 
 <%= javascript_proc %>
