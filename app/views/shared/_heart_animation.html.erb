@@ -1,1 +1,7 @@
-<div id="micropost-<%= @micropost.id %>-heart" class="heart is-animating"></div>
+<% for_comment ||= false %>
+
+<% if for_comment == false %>
+  <div id="micropost-<%= micropost.id %>-heart" class="heart is-animating"></div>
+<% else %>
+  <div id="comment-<%= comment.id %>-heart" class="heart is-animating"></div>
+<% end %>
