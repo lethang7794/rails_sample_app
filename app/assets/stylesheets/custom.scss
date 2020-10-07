@@ -1587,8 +1587,8 @@ aside {
         .close {
           // Move the button to top right
           position: absolute;
-          right: 20px;
-          top: 20px;
+          right: 10px;
+          top: 10px;
           color: rgb(255, 255, 255);
           opacity: 1; // Override Bootstrap's default value
           outline: none; // Hide the square outline when click (and after click) the close button
