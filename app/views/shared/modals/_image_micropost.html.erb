@@ -1,6 +1,12 @@
+<% show_dominant_color ||= false %>
+
 <div class="modal fade image-modal" id="image-modal-micropost-<%= micropost.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="modal-dialog" role="document">
+  <% if show_dominant_color %>
     <div class="modal-content" style="background-color: <%= micropost.image_dominant_color(alpha = 0.9) %>;">
+  <% else %>
+    <div class="modal-content">
+  <% end %>
       <div class="modal-body">
         <div class="flex-center max-dem no-scroll">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
