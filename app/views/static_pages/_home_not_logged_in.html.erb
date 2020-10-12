@@ -63,7 +63,7 @@
             <div class="wrapper flex flex-row">
               <span class="text" style="min-width: 110px;">Try this app</span>
               <span class="flex-center">
-                <span class="margin-tran">
+                <span class="margin-tran" id="demo-user-login-button-icon-container">
                   <span class="my-arrow flex-center">
                     <%= render 'shared/svg/arrow' %>
                   </span>
@@ -76,20 +76,39 @@
         <div id="logging-in-text-wrapper" style="height: 0px;"></div>
 
         <script type="text/javascript">
-          var $button = $("#demo-user-login-button .text");
-          var $button_text = $button.html();
-          console.log($button_text);
+          var $button = $("#demo-user-login-button");
+          var $button_text = $("#demo-user-login-button .text");
+          var $button_icon = $("#demo-user-login-button-icon-container");
+          var $button_icon_arrow = $("#demo-user-login-button-icon-container .my-arrow");
 
-          $("#demo-user-login-button").click(function() {
+          $button.click(function() {
+            $button.attr("disabled", true);
+
+            // Move the arrow to the right
+            $button_icon.addClass("transistion-margin-right");
+            $button_icon_arrow.addClass("transistion-translate");
+
+            $button_text.addClass("opacity-0").css("transition", "opacity 0.6s linear"); // Hide button text
+
             setTimeout(function () {
               $("#logging-in-text-wrapper").append("<%= escape_javascript(render partial: 'logging_in') %>");
-            }, 500);
+            }, 1);
+
+            setTimeout(function () {
+              $button_icon.html("<%= escape_javascript(
+                render partial: 'shared/svg/loading_center'
+              ) %>");
+
+              $button_icon.addClass("demo-login-clicked"); // Keep button layout unchange.
+
+              $button.css("animation", "rainbowBorder .5s linear infinite");
+              $button_text.html("Logging in").removeClass("opacity-0").addClass("tran-03s");
+            }, 600);
+
             setTimeout(function () {
               $("#logging-in-text").removeClass("opacity-0 translateX--30px");
-            }, 550);
-            setTimeout(function () {
               $("#demo-user-login-form").submit();
-            }, 1500);
+            }, 1000);
           });
         </script>
       </div>

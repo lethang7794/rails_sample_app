@@ -1478,11 +1478,11 @@ article.micropost-container-wrapper {
 }
 
 .tran-0s {
-  transition-duration: 0s;
+  transition-duration: 0s !important;
 }
 
 .tran-03s {
-  transition-duration: 0.3s;
+  transition-duration: 0.3s !important;
 }
 
 .dimmer-wrapper {
@@ -2243,12 +2243,12 @@ aside {
     animation: rainbowBorder .5s linear infinite;
 
     .margin-tran {
-      margin-right: 50px;
-      transition: margin-right 0.3s ease-in-out 1s; // Delay 1s before add space for the arrow
+      // margin-right: 50px;
+      // transition: margin-right 0.3s ease-in-out; // Delay 1s before add space for the arrow
 
       span.my-arrow {
-        transform: translate(50px, 0);
-        transition: transform 0.3s ease-in-out 1s; // Delay 1s before move the arrow to the right
+        // transform: translate(50px, 0);
+        // transition: transform 0.3s ease-in-out; // Delay 1s before move the arrow to the right
 
         svg {
           width: 1.5em;
@@ -2257,6 +2257,16 @@ aside {
       }
     }
   }
+}
+
+.transistion-margin-right {
+  margin-right: 50px !important;
+  transition: margin-right 0.3s ease-in-out 0.3s;
+}
+
+.transistion-translate {
+  transform: translate(50px, 0) !important;
+  transition: transform 0.3s ease-in-out 0.3s;
 }
 
 @keyframes rainbowBorder {
@@ -2412,7 +2422,7 @@ aside {
 .user-container,
 .user-edit-wrapper,
 .nothing-info {
-  background-color: white;
+  // background-color: white;
 }
 
 .color-black {
@@ -2657,4 +2667,13 @@ aside {
 @keyframes heart-burst {
   from {background-position:left;}
   to { background-position:right;}
+}
+
+#demo-user-login-button .demo-login-clicked,
+#demo-user-login-button:hover .demo-login-clicked,
+#demo-user-login-button:focus .demo-login-clicked,
+#demo-user-login-button:hover:focus .demo-login-clicked {
+  margin-right: 0px !important;
+  margin-left: 50px;
+  transition: none;
 }
