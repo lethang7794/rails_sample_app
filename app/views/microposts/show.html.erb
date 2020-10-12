@@ -74,7 +74,7 @@
   </div>
 </div>
 <% if @micropost.image.attached? %>
-	<%= render partial: 'shared/modals/image_micropost'				, locals: { micropost: @micropost } %>
+	<%= render partial: 'shared/modals/image_micropost', locals: { micropost: @micropost, show_dominant_color: true } %>
 <% end %>
 
 <% if !logged_in? %>
