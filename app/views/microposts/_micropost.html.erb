@@ -70,4 +70,11 @@
 	 $("#image-modal-micropost-<%= micropost.id %>").modal('show');
 	 e.stopPropagation();
 	});
+
+	$("#micropost-<%= micropost.id %>-container-wrapper .image-micropost-modal-toggle button").keydown(function(e) {
+		if (e.code === 'Enter') {
+			$("#image-modal-micropost-<%= micropost.id %>").modal('show');
+		 	e.stopPropagation();
+		}
+	});
 </script>
