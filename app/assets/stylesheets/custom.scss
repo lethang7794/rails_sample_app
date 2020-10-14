@@ -19,6 +19,19 @@ section {
     margin-bottom: 10px;
   }
 }
+
+@mixin outline {
+  outline: 3px solid rgb(29, 161, 242);
+  outline: 3px solid rgba(29, 161, 242, 0.6);
+  outline-offset: 1px;
+  text-decoration: none;
+  color: #337ab7;
+}
+
+a:focus {
+  @include outline;
+}
+
 /* header */
 #logo {
   font-size: 1.7em;
@@ -326,8 +339,23 @@ div.collapse {
 
       > a {
         height: 100%;
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+        outline-offset: -7px;
       }
     }
+
+    .open .dropdown-menu > li > a {
+      width: auto;
+      margin: 5px;
+    }
+  }
+}
+
+@media (max-width: 767.98px) {
+  .nav li {
+    margin-top: 4px;
+    margin-bottom: 4px;
   }
 }
 
@@ -387,6 +415,10 @@ div.collapse {
       }
     }
   }
+}
+
+a.dropdown-toggle:focus {
+  @include outline;
 }
 
 a.dropdown-toggle[aria-expanded="true"] {
