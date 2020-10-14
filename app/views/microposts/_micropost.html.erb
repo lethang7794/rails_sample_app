@@ -1,4 +1,4 @@
-<article id="micropost-<%= micropost.id %>-container-wrapper" class="micropost-container-wrapper border">
+<article id="micropost-<%= micropost.id %>-container-wrapper" class="micropost-container-wrapper border" tabindex="0">
 	<div class="micropost-container">
 		<div class="my-flex-container flex-row micropost-flex-container">
 
@@ -60,6 +60,12 @@
 <script type="text/javascript">
 	$("#micropost-<%= micropost.id %>-container-wrapper").click(function() {
 		window.location.href = "<%= url_for micropost %>";
+	});
+
+	$("#micropost-<%= micropost.id %>-container-wrapper").keydown(function(e) {
+		if (e.code === 'Enter') {
+			window.location.href = "<%= url_for micropost %>";
+		}
 	});
 
 	$("#micropost-<%= micropost.id %>-container-wrapper a, #micropost-<%= micropost.id %>-container-wrapper .vote-container").click(function(e) {

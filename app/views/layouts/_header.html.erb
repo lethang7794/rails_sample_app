@@ -132,5 +132,13 @@
         $(this).removeClass("mousedown");
       });
     });
+
+    $('.micropost-container-wrapper').mousedown(function () {
+      $(this).addClass("mousedown");
+
+      $(this).focusout(function() {
+        $(this).removeClass("mousedown");
+      });
+    });
   });
 </script>

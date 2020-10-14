@@ -1539,6 +1539,16 @@ article.micropost-container-wrapper {
     position: relative; // z-index needs element's position not be static.
   }
 
+  &:focus {
+    box-shadow: rgb(142, 208, 249) 0px 0px 0px 2px inset;
+    transition: box-shadow 0.2s ease;
+    outline: none;
+  }
+
+  &.mousedown:focus {
+    box-shadow: none;
+  }
+
   &:active:not(:has(:active)) {
     background-color: rgba(0, 0, 0, 0.1);
     transition: background-color 0.2s linear;
