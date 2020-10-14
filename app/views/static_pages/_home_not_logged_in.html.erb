@@ -11,19 +11,17 @@
       <p>A Twitter clone app <i>"built almost from scratch"</i>.</p>
 
       <p>
-        <button class="btn btn-default">
-          <%= link_to 'Rails 6', "https://rubyonrails.org/" %>
-        </button>
-        <button class="btn btn-default">
-          <%= link_to 'Bootstrap 3', "https://getbootstrap.com/docs/3.4/" %>
-        </button>
+        <%= link_to "https://rubyonrails.org/", class: "btn btn-default" do %>
+          <span>Rails 6</span>
+        <% end %>
+        <%= link_to "https://getbootstrap.com/docs/3.4/", class: "btn btn-default" do %>
+          <span>Bootstrap 3</span>
+        <% end %>
       </p>
 
-      <%= link_to "https://github.com/lethang7794/rails_sample_app" do %>
-        <button class="btn btn-default">
+      <%= link_to "https://github.com/lethang7794/rails_sample_app", class: "btn btn-default" do %>
           <%= render 'shared/svg/github' %>
           <span>View on Github</span>
-        </button>
       <% end %>
     </div>
 
