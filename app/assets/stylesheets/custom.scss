@@ -1225,7 +1225,7 @@ ul.users { // Users index
 
   .gravatar {
     margin-right: 10px;
-    margin-bottom: 10px;
+    // margin-bottom: 10px;
   }
 }
 
@@ -2763,4 +2763,18 @@ button.no-style {
   margin-right: 0px !important;
   margin-left: 50px;
   transition: none;
+}
+
+@mixin box-shadow-transition {
+  outline: none;
+  box-shadow: rgb(142, 208, 249) 0px 0px 0px 3px;
+  transition-duration: 0.2s;
+  transform-style: ease;
+  transition-property: all;
+}
+
+.avatar_anchor {
+  &:focus {
+    @include box-shadow-transition;
+  }
 }

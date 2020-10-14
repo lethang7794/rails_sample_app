@@ -1,12 +1,12 @@
 <% size ||= "50" %>
 
-<div class="rounded-circle overflow-hidden dimmer-wrapper loading-shimmer" style="
-    height: <%= size %>px;
-    width: <%= size %>px;
-    min-width: <%= size %>px;
-">
-  <%= link_to user do %>
-    <%= gravatar_for(user, size: size) %>
-    <div class="dimmer"></div>
-  <% end %>
-</div>
+<%= link_to user,
+      class: "avatar_anchor rounded-circle overflow-hidden dimmer-wrapper loading-shimmer",
+      style: "
+        height: #{size}px;
+        width: #{size}px;
+        min-width: #{size}px;
+      " do %>
+  <%= gravatar_for(user, size: size) %>
+  <div class="dimmer"></div>
+<% end %>
