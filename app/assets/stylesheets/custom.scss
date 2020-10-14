@@ -974,13 +974,18 @@ section.user_info {
     }
   }
 
-  .user-avatar-wrapper {
-    margin-bottom: 10px;
+  .avatar-modal-toggle {
+    outline: none;
 
-    // Hover content
-    height: 120px; // Avatar dimension
-    width: 120px;
-    border-radius: 50%;
+    &:focus {
+      .rainbow-inner {
+        animation: rainbowBorder .5s linear infinite;
+      }
+
+      .dimmer {
+        background-color: rgba(26, 26, 26, 0.15);
+      }
+    }
   }
 
   .user_avatar_position {

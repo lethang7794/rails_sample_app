@@ -3,17 +3,17 @@
     <div class="header"></div>
     <div class="info">
       <!-- MODAL WRAPPER - BEGIN -->
-      <div class="user-avatar-wrapper modal-wrapper rainbow-hover">
+      <div class="modal-wrapper rainbow-hover">
         <!-- MODAL TOGGLE - BEGIN -->
-        <div class="user_avatar_position">
+        <button class="avatar-modal-toggle no-style user_avatar_position modal-toggle"  data-toggle="modal" data-target="#avatar-modal-<%= @user.id %>">
           <div class="rainbow-outer cursor-pointer">
             <div class="rainbow-inner h-128 w-128 t--4 l--4"></div>
           </div>
-          <div class="user_avatar rounded-circle overflow-hidden dimmer-wrapper modal-toggle cursor-pointer loading-shimmer" data-toggle="modal" data-target="#avatar-modal-<%= @user.id %>">
+          <div class="user_avatar rounded-circle overflow-hidden dimmer-wrapper cursor-pointer loading-shimmer">
             <%= gravatar_for @user, size: 120 %>
             <div class="dimmer"></div>
           </div>
-        </div>
+        </button>
         <!-- MODAL TOGGLE - END -->
         <!-- MODAL - BEGIN -->
         <%= render partial: 'shared/modals/avatar', locals: { user: @user } %>
