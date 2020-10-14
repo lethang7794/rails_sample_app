@@ -2581,6 +2581,28 @@ button.no-style {
     }
   }
 
+  .stat-container {
+    &.vote-container {
+      button {
+        &:focus {
+          .button-wrapper {
+            box-shadow: rgb(240, 146, 175) 0px 0px 0px 3px inset;
+            background-color: rgba(224, 36, 94, 0.1);
+            transition: background-color, box-shadow;
+            transition-duration: 0.2s;
+            transition-timing-function: ease;
+          }
+        }
+
+        &.mousedown:focus {
+          .button-wrapper {
+            box-shadow: none;
+          }
+        }
+      }
+    }
+  }
+
   button {
     padding: 0px;
 
