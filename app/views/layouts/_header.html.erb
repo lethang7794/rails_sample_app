@@ -106,3 +106,15 @@
   </div>
   <!-- /.navbar-collapse -->
 </nav>
+
+<script type="text/javascript">
+  $(document).ready( function () {
+    $('a').mousedown(function () {
+      $(this).addClass("mousedown");
+
+      $(this).focusout(function() {
+        $(this).removeClass("mousedown");
+      });
+    });
+  });
+</script>

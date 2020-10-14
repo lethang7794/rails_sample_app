@@ -73,6 +73,16 @@
               } %>
 <% end %>
 
-<script>
+<script type="text/javascript">
   localStorage.setItem("previousURL", "<%= request.original_url %>");
+
+  $(document).ready(function () {
+    $('#back-button').mousedown(function () {
+      $(this).addClass("mousedown");
+
+      $(this).focusout(function () {
+        $(this).removeClass("mousedown");
+      });
+    });
+  });
 </script>

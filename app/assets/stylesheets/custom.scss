@@ -20,15 +20,35 @@ section {
   }
 }
 
-@mixin outline {
-  outline: 3px solid rgb(29, 161, 242);
-  outline: 3px solid rgba(29, 161, 242, 0.6);
-  outline-offset: 1px;
-  text-decoration: none;
-  color: #337ab7;
+@mixin box-shadow-transition {
+  &:focus {
+    outline: none;
+    box-shadow: rgb(142, 208, 249) 0px 0px 0px 3px;
+    transition-duration: 0.2s;
+    transition-timing-function: ease;
+    transition-property: all;
+  }
+
+  &.mousedown:focus {
+    box-shadow: none !important;
+  }
 }
 
-a:focus {
+@mixin outline {
+  &:focus {
+    outline: 3px solid rgb(29, 161, 242);
+    outline: 3px solid rgba(29, 161, 242, 0.6);
+    outline-offset: 1px;
+    text-decoration: none;
+    color: #337ab7;
+  }
+
+  &.mousedown:focus {
+    outline: none !important;
+  }
+}
+
+a {
   @include outline;
 }
 
@@ -417,8 +437,9 @@ div.collapse {
   }
 }
 
-a.dropdown-toggle:focus {
+a.dropdown-toggle {
   @include outline;
+  outline-offset: unset;
 }
 
 a.dropdown-toggle[aria-expanded="true"] {
@@ -1969,10 +1990,7 @@ aside {
       transition-duration: 0.2s;
     }
 
-    &:focus {
-      box-shadow: rgb(142, 208, 249) 0px 0px 0px 3px;
-      transition-property: all;
-    }
+    @include box-shadow-transition;
   }
 
   .stats.followers, .stats.following {
@@ -2174,6 +2192,13 @@ aside {
         box-shadow: rgb(142, 208, 249) 0px 0px 0px 3px;
         transition-property: box-shadow, background-color;
         transition-duration: 0.2s;
+      }
+    }
+
+    a.mousedown:focus,
+    button.mousedown:focus {
+      div.mini-navbar-button-wrapper {
+        box-shadow: none;
       }
     }
   }
@@ -2765,16 +2790,6 @@ button.no-style {
   transition: none;
 }
 
-@mixin box-shadow-transition {
-  outline: none;
-  box-shadow: rgb(142, 208, 249) 0px 0px 0px 3px;
-  transition-duration: 0.2s;
-  transform-style: ease;
-  transition-property: all;
-}
-
 .avatar_anchor {
-  &:focus {
-    @include box-shadow-transition;
-  }
+  @include box-shadow-transition;
 }
