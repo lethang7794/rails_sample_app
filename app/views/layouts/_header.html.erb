@@ -141,6 +141,14 @@
       });
     });
 
+    $('.comment-stat-container button').mousedown(function () {
+      $(this).addClass("mousedown");
+
+      $(this).focusout(function() {
+        $(this).removeClass("mousedown");
+      });
+    });
+
     $('.vote-container button').mousedown(function () {
       $(this).addClass("mousedown");
 
