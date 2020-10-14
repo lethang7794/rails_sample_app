@@ -1922,18 +1922,20 @@ aside {
       color: rgb(29, 161, 242)
     }
 
-    &:hover {
+    &:hover,
+    &:focus {
+      outline: none;
       text-decoration: none;
       color: #1da1f2;
+      background-color: rgba(29, 161, 242, 0.2);
+      transition-property: background-color;
+      transition-duration: 0.2s;
     }
 
     &:focus {
-      text-decoration: none;
+      box-shadow: rgb(142, 208, 249) 0px 0px 0px 3px;
+      transition-property: all;
     }
-  }
-
-  &:hover {
-    background-color: rgba(29, 161, 242, 0.2);
   }
 
   .stats.followers, .stats.following {
