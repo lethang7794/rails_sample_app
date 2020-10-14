@@ -116,5 +116,21 @@
         $(this).removeClass("mousedown");
       });
     });
+
+    $('.modal button').mousedown(function () {
+      $(this).addClass("mousedown");
+
+      $(this).focusout(function() {
+        $(this).removeClass("mousedown");
+      });
+    });
+
+    $('.modal-toggle button').mousedown(function () {
+      $(this).addClass("mousedown");
+
+      $(this).focusout(function() {
+        $(this).removeClass("mousedown");
+      });
+    });
   });
 </script>

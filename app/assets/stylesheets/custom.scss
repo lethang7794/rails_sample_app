@@ -1038,6 +1038,7 @@ section.user_info {
     &:focus {
       .rainbow-inner {
         animation: rainbowBorder .5s linear infinite;
+        box-shadow: rgb(142, 208, 249) 0px 0px 0px 5px;
       }
 
       .dimmer {
@@ -1345,6 +1346,23 @@ ul.users { // Users index
             opacity: 1;
           }
         }
+      }
+    }
+  }
+}
+
+.modal,
+.modal-toggle {
+  button {
+    &:focus {
+      .button-container {
+        box-shadow: rgb(29, 161, 242) 0px 0px 0px 3px;
+      }
+    }
+
+    &.mousedown:focus {
+      .button-container {
+        box-shadow: none;
       }
     }
   }
@@ -1737,6 +1755,12 @@ aside {
         &:active:focus {
           background-color: rgba(29, 161, 242, 0.2);
         }
+      }
+    }
+
+    button:focus {
+      .button-container-wrapper .button-container {
+        box-shadow: rgb(142, 208, 249) 0px 0px 0px 5px;
       }
     }
 
@@ -2561,6 +2585,7 @@ button.no-style {
 
       > .button {
         .button-wrapper {
+
           background-color: unset;
           transition: none;
 
