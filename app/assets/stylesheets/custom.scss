@@ -28,7 +28,8 @@ section {
   font-weight: bold;
 }
 
-#logo:hover {
+#logo:hover,
+#logo:focus {
   color: hsla(0,0%,100%,.7);
   text-decoration: none;
 }
@@ -2119,6 +2120,18 @@ aside {
   .left-side {
     min-width: 50px;
     margin-left: 15px;
+
+    a:focus,
+    button:focus {
+      outline: none;
+
+      div.mini-navbar-button-wrapper {
+        background-color: rgba(29, 161, 242, 0.2);
+        box-shadow: rgb(142, 208, 249) 0px 0px 0px 3px;
+        transition-property: box-shadow, background-color;
+        transition-duration: 0.2s;
+      }
+    }
   }
 
   .middle-side {
@@ -2145,6 +2158,12 @@ aside {
   .right-side {
     min-width: 50px;
   }
+}
+
+button.no-style {
+  padding: 0px;
+  border: 0px;
+  background-color: transparent;
 }
 
 // Mini-navbar button + Comment expand button
