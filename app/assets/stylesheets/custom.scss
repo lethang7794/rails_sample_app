@@ -118,6 +118,13 @@ section {
   }
 }
 
+.login-signup-wrapper {
+  a {
+    margin: 8px 8px;
+    min-height: 40px;
+  }
+}
+
 @media (max-width: 575.98px) { // Extra small devices (portrait phones, less than 576px)
   .pride-banner {
     font-size: 1.1em;
@@ -133,7 +140,7 @@ section {
   .login-button,
   .signup-button {
     width: calc(100% + 25px);
-    margin-left: -11px !important;
+    // margin-left: -11px !important;
     justify-content: center !important;
   }
 }
@@ -142,7 +149,7 @@ section {
   .login-button,
   .signup-button {
     width: calc(100% + 25px);
-    margin-left: -11px !important;
+    // margin-left: -11px !important;
     justify-content: center !important;
   }
 }
@@ -211,6 +218,7 @@ $hover-box-gradient: transparent;
 .nav > li {
   display: flex;
   min-height: 40px;
+  margin: 0 8px;
 }
 
 div.collapse {
@@ -309,7 +317,11 @@ div.collapse {
     height: 100%;
 
     > li {
-      height: 100%;
+      height: calc(100%);
+
+      &.login-signup-wrapper {
+        height: auto;
+      }
 
       > a {
         height: 100%;
@@ -342,7 +354,6 @@ div.collapse {
 .dropdown.open .dropdown-toggle .my-caret {
 	float: right;
 	width: 1.5rem;
-	height: 1.5rem;
 
   margin-left: 7.5px;
 
@@ -2599,9 +2610,22 @@ aside {
     border-color: rgba(29, 161, 242, 1);
   }
 }
+.navbar-inverse .navbar-nav > li.login-signup-wrapper {
+  > .login-button,
+  > .signup-button {
+    display: flex;
+  }
+
+  > .signup-button {
+    background-color: var(--unfollowButton-bgColor);
+    color: var(--unfollowButton-textColor);
+  }
+}
+
+
 
 .active.hide-if-active {
-  display: none;
+  display: none !important;
 }
 
 .translateX--30px {
