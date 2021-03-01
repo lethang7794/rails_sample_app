@@ -2,7 +2,13 @@
 document.title = "<%= full_title "#{@user.name} (@#{@user.username})".html_safe %>";
 
 // Change URL
-history.replaceState( history.state, "", "<%= user_path(@user) %>" );
+<% if (controller_name == 'users' and action_name != 'show') %>
+  history.replaceState( history.state, "", "<%= user_path(@user) %>" );
+<% else %>
+  <% page_query = "?page=#{params[:page]}" if params[:page] %>
+  <% path = "#{user_path(@user)}#{page_query}" %>
+  history.replaceState( history.state, "", "<%= path %>" );
+<% end %>
 
 // Change mini-navbar
 $("#mini-bar-detail").html("<%= escape_javascript("#{pluralize(@user.microposts.count, 'micropost')}") %>");

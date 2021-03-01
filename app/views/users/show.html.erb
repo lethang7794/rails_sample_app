@@ -29,7 +29,7 @@
       <%# USER TABS - END %>
 
       <div id="tab-content">
-        <%= render partial: 'shared/microposts', locals: { microposts: @microposts } %>
+        <%= render 'shared/load_with_ajax' %>
       </div>
     </div>
   </div>

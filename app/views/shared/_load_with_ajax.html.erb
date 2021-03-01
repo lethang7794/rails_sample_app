@@ -1,0 +1,8 @@
+<%= render 'shared/svg/loading_top' %>
+<script type="text/javascript">
+  $.ajax({
+    url: "<%= request.original_fullpath %>",
+    type: "GET",
+    dataType: "script"
+  });
+</script>

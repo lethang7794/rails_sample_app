@@ -6,7 +6,9 @@
     <div class="page-main-content">
       <%= render 'shared/user_new_micropost' %>
       <div class="micropost-divider border"></div>
-      <%= render 'shared/feed' %>
+      <div id="feed_wrapper">
+        <%= render 'shared/load_with_ajax' %>
+      </div>
     </div>
   </div>
 </div>

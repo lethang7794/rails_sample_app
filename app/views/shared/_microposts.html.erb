@@ -3,7 +3,7 @@
     <%= render microposts %>
   </ol>
   <div class="flex-center">
-    <%= will_paginate microposts %>
+    <%= will_paginate microposts, params: { _: nil } %>
   </div>
 
   <% if !logged_in? %>

@@ -13,6 +13,11 @@ class StaticPagesController < ApplicationController
         @current_user = current_user
         @micropost = @current_user.microposts.build
         @feed_items = @current_user.feed.paginate(page: params[:page])
+
+        respond_to do |format|
+          format.html { render 'home' }
+          format.js
+        end
       else
         logged_in_user
       end
