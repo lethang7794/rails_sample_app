@@ -45,7 +45,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'active_storage_validations', '~> 0.1'
 
 # Use Active Storage variant
-gem 'image_processing', '~> 1.11'
+gem 'image_processing', '~> 1.12'
 # Use ImageMagick to change image size, user
 gem 'mini_magick', '~> 4.10', '>= 4.10.1'
 
